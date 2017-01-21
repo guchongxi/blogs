@@ -1,5 +1,5 @@
 # Site settings
-title: Your awesome title
+title: 顾重 - 部落格
 email: your-email@domain.com
 description: > # this means to ignore newlines until "baseurl:"
   Write an awesome description for your new site here. You can edit this
@@ -11,7 +11,7 @@ url: "http://yourdomain.com" # the base hostname & protocol for your site
 
 # Sidebar filter
 # Choose 'tag' or 'category' as filter in sidebar.
-filter: 'tag'
+filter: 'category'
 
 
 # Social account
@@ -35,4 +35,4 @@ markdown: kramdown
 sass:
   style: compressed
 gems:
-  - jekyll-sitemap
+  - jekyll-paginate

@@ -1,8 +1,9 @@
-# 3-Jekyll Theme
+# 顾重 | 部落格
 
-新版 3-Jekyll，当前完成度 80%，预览请访问 [http://peiwen.lu](http://peiwen.lu)，[Github repo](https://github.com/P233/P233.github.io)。
 
-旧版请在 [https://github.com/P233/3-Jekyll/releases](https://github.com/P233/3-Jekyll/releases) 下载。
+## Fork说明
+
+ *原作请至 [https://github.com/P233/3-Jekyll](https://github.com/P233/3-Jekyll)
 
 
 ## 针对旧版的改进
