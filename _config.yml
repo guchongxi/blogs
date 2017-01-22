@@ -1,33 +1,55 @@
-# Site settings
-title: 顾重 - 部落格
-email: your-email@domain.com
-description: > # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
-baseurl: "" # the subpath of your site, e.g. /blog/
-url: "http://yourdomain.com" # the base hostname & protocol for your site
+# 作者信息
+author:
+  -
+    name: 顾重
+    email: giantzero_x@163.com
+    link: http://giant.top
+    weibo: http://weibo.com/angelgzx
+    github: http://github.com/GiantZero-x
 
+# 站点信息
+title: Welcome
+description: 个人博客(jekyll + github pages);整理、记载关于生活，学习上的点点滴滴.
+url: "http://giantr.top" # the base hostname & protocol for your site
 
-# Sidebar filter
-# Choose 'tag' or 'category' as filter in sidebar.
-filter: 'category'
+# 阅读处理
+encoding: utf-8
+markdown_ext: "markdown,mkdown,mkdn,mkd,md"
 
+# 服务器选项
+detach:  false
+port:    4000
+host:    127.0.0.1
+baseurl: "" # does not include hostname
 
-# Social account
-# twitter:  username
-# weibo:    ID
-# github:   username
-# codepen:  username
-# dribbble: username
+# 默认模版
+defaults:
+  -
+    scope:
+      path: "" # 一个空的字符串代表项目中所有的文件
+      type: "posts" # 以前的 `post`， 在 Jekyll 2.2 里。
+    values:
+      layout: "post"
 
+# 侧边栏过滤器
+filter: 'category' # Choose 'tag' or 'category' as filter in sidebar.
+
+# 输出url
+permalink: /:year/:month/:day/:title.html
 
 # Comment
 # disqus_shortname: discussion_shortname
 
+# google analytics 设置
+ga:
+  -
+    id: UA-90644077-1
+    url: giantr.top
 
-# Google Analytics
-# google_analytics: tracking_ID
+# 草稿
+post:
+  template: _post.txt
+  extension: md
 
 
 # Build settings
