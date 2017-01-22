@@ -1,5 +1,6 @@
 ---
 layout: default
+comments: true
 ---
 <article class="post container">
   <div class="post-meta">
@@ -15,18 +16,7 @@ layout: default
   {{ content }}
 </article>
 
-<div class="post-share">
-  <div class="container">
-    <a href="https://twitter.com/share?url={{ page.url | prepend: site.baseurl | prepend: site.url }}&text={{ page.title }}-{{site.title}}" target="_blank" class="post-share-icon twitter"></a>
-    <a href="https://www.evernote.com/clip.action?url={{ page.url | prepend: site.baseurl | prepend: site.url }}&title={{ page.title }}-{{site.title}}" target="_blank" class="post-share-icon evernote"></a>
-    <a href="http://service.weibo.com/share/share.php?url={{ page.url | prepend: site.baseurl | prepend: site.url }}&title={{ page.title }}-{{site.title}}" target="_blank" class="post-share-icon weibo"></a>
-  </div>
-</div>
 
-{% if site.disqus_shortname %}
-<div class="comment container">
-  <div id="disqus_thread">
-    <a href=""></a>
-  </div>
-</div>
-{% endif %}
+
+{% include share.html %}
+{% include disqus.html %}

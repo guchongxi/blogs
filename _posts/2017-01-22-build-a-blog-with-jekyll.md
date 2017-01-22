@@ -11,11 +11,13 @@ tags: jekyll GitHub Pages
 使用Github Pages搭建独立博客的过程中布满了坑，所以有了这篇指南
 
 
-### Github Pages + Jekyll 方案
+### Github Pages + Jekyll 方案  
+
 #### 优点：
 _Github免费托管源文件，自动编译符合Jekyll规范的网站。
 引入版本管理，修改网站更加安全方便。
-支持 Markdown ，编写具有优美排版的文章。_
+支持 Markdown ，编写具有优美排版的文章。_  
+
 #### 不足：
 _需要学习一些基础的Git命令。
 若要自己全权制作主题的话需要懂一点网页开发。

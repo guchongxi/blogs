@@ -38,8 +38,8 @@ filter: 'category' # Choose 'tag' or 'category' as filter in sidebar.
 # 输出url
 permalink: /:year/:month/:day/:title.html
 
-# Comment
-# disqus_shortname: discussion_shortname
+# 评论
+disqus_shortname: giantzero-x
 
 # google analytics 设置
 google_analytics: UA-90644077-1
