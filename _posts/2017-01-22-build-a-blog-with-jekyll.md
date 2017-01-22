@@ -91,8 +91,7 @@ Git环境安装及基本配置请查看，这里不再赘述
   1. 等天气好的时候再来
   2. 架梯子
   3. [推荐] 更换为[Ruby China](https://gems.ruby-china.org/)源，点进去会有详细的设置方法。
-
-  #### 开启本地实时预览
+#### 开启本地实时预览  
   上一小节的安装都完成以后，在终端中输入命令
   {% highlight cmd %}
   $ cd {local repository} // {local repository}替换成你的本地仓库的目录

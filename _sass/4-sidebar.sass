@@ -31,6 +31,9 @@
   border: $avatar-border-size solid $avatar-border-color
   border-radius: 50%
   overflow: hidden
+  transition: transform .3s ease-in-out
+  &:hover
+    transform: rotateZ(360deg)
   &-img
     display: block
     width: 100%
