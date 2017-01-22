@@ -6,10 +6,11 @@ author:
     link: http://giant.top
     weibo: http://weibo.com/angelgzx
     github: http://github.com/GiantZero-x
+    avator: /assets/img/avatar.jpg
 
 # 站点信息
 title: Welcome
-description: 个人博客(jekyll + github pages);整理、记载关于生活，学习上的点点滴滴.
+description: 个人博客(基于jekyll);整理、记载关于生活，学习上的点点滴滴.
 url: "http://giantr.top" # the base hostname & protocol for your site
 
 # 阅读处理
@@ -41,6 +42,7 @@ permalink: /:year/:month/:day/:title.html
 # disqus_shortname: discussion_shortname
 
 # google analytics 设置
+google_analytics: UA-90644077-1
 ga:
   -
     id: UA-90644077-1
