@@ -1,17 +1,17 @@
 # 作者信息
 author:
-  -
     name: 顾重
     email: giantzero_x@163.com
     link: http://giant.top
-    weibo: http://weibo.com/angelgzx
-    github: http://github.com/GiantZero-x
-    avator: /assets/img/avatar.jpg
+    weibo: angelgzx
+    github: GiantZero-x
+    avatar: /assets/img/avatar.jpg
 
 # 站点信息
 title: Welcome
 description: 个人博客(基于jekyll);整理、记载关于生活，学习上的点点滴滴.
 url: "http://giantr.top" # the base hostname & protocol for your site
+favicon: /assets/img/favicon.ico
 
 # 阅读处理
 encoding: utf-8
@@ -47,12 +47,6 @@ ga:
   -
     id: UA-90644077-1
     url: giantr.top
-
-# 草稿
-post:
-  template: _post.txt
-  extension: md
-
 
 # Build settings
 markdown: kramdown

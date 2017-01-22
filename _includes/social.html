@@ -1,19 +1,30 @@
-{% if site.twitter %}
-  <a href="https://twitter.com/{{ site.twitter }}" class="sidebar-social-icon twitter" target="_blank"></a>
+<!--源码-->
+<a href="{{ "/feed.xml" | prepend: site.baseurl }}" class="sidebar-social-icon feed"></a>
+
+<!--邮箱-->
+<a href="mailto:{{ site.author.email }}" class="sidebar-social-icon email"></a>
+
+<!--Twitter-->
+{% if site.author.twitter %}
+  <a href="https://twitter.com/{{ site.author.twitter }}" class="sidebar-social-icon twitter" target="_blank"></a>
 {% endif %}
 
-{% if site.weibo %}
-  <a href="http://www.weibo.com/{{ site.weibo }}" class="sidebar-social-icon weibo" target="_blank"></a>
+<!--微博-->
+{% if site.author.weibo %}
+  <a href="http://www.weibo.com/{{ site.author.weibo }}" class="sidebar-social-icon weibo" target="_blank"></a>
 {% endif %}
 
-{% if site.github %}
-  <a href="https://github.com/{{ site.github }}" class="sidebar-social-icon github" target="_blank"></a>
+<!--github-->
+{% if site.author.github %}
+  <a href="https://github.com/{{ site.author.github }}" class="sidebar-social-icon github" target="_blank"></a>
 {% endif %}
 
-{% if site.codepen %}
-  <a href="http://codepen.io/{{ site.codepen }}" class="sidebar-social-icon codepen" target="_blank"></a>
+<!--codepen-->
+{% if site.author.codepen %}
+  <a href="http://codepen.io/{{ site.author.codepen }}" class="sidebar-social-icon codepen" target="_blank"></a>
 {% endif %}
 
-{% if site.dribbble %}
-  <a href="https://dribbble.com/{{ site.dribbble }}" class="sidebar-social-icon dribbble" target="_blank"></a>
+<!--dribbble-->
+{% if site.author.dribbble %}
+  <a href="https://dribbble.com/{{ site.author.dribbble }}" class="sidebar-social-icon dribbble" target="_blank"></a>
 {% endif %}
