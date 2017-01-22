@@ -2,7 +2,7 @@
 title:  "Github Pages + Jekyll 创建博客"
 date:   2017-01-22
 categories: 技术
-tags: jekyll GitHubPages
+tags: jekyll GitHub Pages
 ---
 `转载自`[http://playingfingers.com/2016/03/26/build-a-blog/](http://playingfingers.com/2016/03/26/build-a-blog/)
 

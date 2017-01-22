@@ -8,7 +8,7 @@ author:
     avatar: /assets/img/avatar.jpg
 
 # 站点信息
-title: Welcome
+title: 顾重の部落格
 description: 个人博客(基于jekyll);整理、记载关于生活，学习上的点点滴滴.
 url: "http://giantr.top" # the base hostname & protocol for your site
 favicon: /assets/img/favicon.ico
@@ -43,10 +43,6 @@ permalink: /:year/:month/:day/:title.html
 
 # google analytics 设置
 google_analytics: UA-90644077-1
-ga:
-  -
-    id: UA-90644077-1
-    url: giantr.top
 
 # Build settings
 markdown: kramdown

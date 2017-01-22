@@ -76,4 +76,14 @@ $(function() {
     $(this).add(sidebar).toggleClass('open');
   });
 
+  //Search  at 2017/1/22
+  $allLink = $('.toc-link');//所有链接
+  $('#search-input').on('input', function(){
+      var value = this.value;
+      $allLink.hide();
+      $.each($allLink, function(k, v){
+          $(v).filter(":contains('"+value+"')").fadeIn(350);
+      });
+  });
+
 });
