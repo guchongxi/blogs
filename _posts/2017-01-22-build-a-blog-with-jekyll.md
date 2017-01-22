@@ -1,6 +1,6 @@
 ---
 title:  "Github Pages + Jekyll 创建博客"
-date:   2015-03-08 22:21:49
+date:   2017-01-22 16:25:49
 categories: 技术
 tags: blog jekyll
 ---
