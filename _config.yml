@@ -1,4 +1,4 @@
-# 作者信息
+# 作者信息 (调用时使用site.author.xxx
 author:
     name: 顾重
     email: giantzero_x@163.com
@@ -7,10 +7,10 @@ author:
     github: GiantZero-x
     avatar: /assets/img/avatar.jpg
 
-# 站点信息
+# 站点信息 (调用时使用site.xxx
 title: 顾重の部落格
 description: 个人博客(基于jekyll);整理、记载关于生活，学习上的点点滴滴.
-url: "http://giantr.top" # the base hostname & protocol for your site
+url: http://giantr.top # the base hostname & protocol for your site
 favicon: /assets/img/favicon.ico
 
 # 阅读处理
@@ -18,7 +18,6 @@ encoding: utf-8
 markdown_ext: "markdown,mkdown,mkdn,mkd,md"
 
 # 服务器选项
-detach:  false
 port:    4000
 host:    127.0.0.1
 baseurl: "" # does not include hostname
@@ -33,20 +32,20 @@ defaults:
       layout: "post"
 
 # 侧边栏过滤器
-filter: 'category' # Choose 'tag' or 'category' as filter in sidebar.
+filter: 'category' # 选择'tag'或者'category'来充当过滤器显示在左侧导航栏.
 
 # 输出url
-permalink: /:year/:month/:day/:title.html
+permalink: /:year/:month/:day/:title.html #文章路径会被分割为此种格式
 
 # 评论
-disqus_shortname: giantzero-x
+disqus_shortname: giantzero-x #注册disqus账号,选择安装在自己的站点
 
 # google analytics 设置
-google_analytics: UA-90644077-1
+google_analytics: UA-90644077-1 #注册Google账号,登陆Google Analytics设置自己的站点
 
 # Build settings
 markdown: kramdown
 sass:
   style: compressed
 gems:
-  - jekyll-paginate
+  - jekyll-paginate #若安装jekyll-paginate插件则在此处进行修改
