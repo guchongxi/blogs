@@ -1,12 +1,15 @@
+<!-- 网站头部 -->
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <!-- 页面关键词 -->
   <meta name="keywords" content="{% if page.keywords %}
         {{ page.keywords }}
       {% else %}
         {{ site.keywords }}
       {% endif %}">
+  <!-- 页面描述 -->
   <meta name="description" content="
       {% if page.description %}
         {{ page.description }}
@@ -14,17 +17,16 @@
         {{ site.description }}
       {% endif %}">
   <!--[if lte IE 9]>
-  <meta http-equiv="refresh" content="0;url={{ "/ie.html" | prepend: site.baseurl }}">
+  <meta http-equiv="refresh" content="0;url=/ie.html">
   <![endif]-->
 
-  <title>{% if page.title %}{{ page.title }} | {% endif %}
-    {{ site.title }}</title>
+  <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
 
   <link rel="shortcut icon" href="{{ site.favicon }}" />
   <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600|Droid+Sans+Mono'  type='text/css'>
-  <link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}">
+  <link rel="stylesheet" href="/css/main.css">
   <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
-  <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}" />
+  <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="/feed.xml" />
 
-  <script src="{{ "/assets/js/prefixfree.js" | prepend: site.baseurl }}"></script>
+  <script src="/assets/js/prefixfree.js"></script>
 </head>

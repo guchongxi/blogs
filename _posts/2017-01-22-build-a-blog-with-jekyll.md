@@ -26,15 +26,15 @@ _需要学习一些基础的Git命令。
 ### 关于域名
 域名购买方面就不做过多介绍，网上都有很多(如：[万网](https://wanwang.aliyun.com))，主要讲一下域名配置(以阿里万网为例)。
 设置DNS - 进入阿里域名控制台，选择需要使用的域名
-![](/assets/img/2017-01-22-build-a-blog-with-jekyll/1.png)
+![](/assets/img/2017-01-22/1.png)
 点击修改DNS
-![](/assets/img/2017-01-22-build-a-blog-with-jekyll/2.png)
+![](/assets/img/2017-01-22/2.png)
 修改域名服务器地址为：`F1G1NS1.DNSPOD.NET` 和 `F1G1NS2.DNSPOD.NET`
 设置好后进入[DNSPod](http://www.dnspod.cn)
 注册账号后邓丽进入域名解析,点击"添加域名"
-![](/assets/img/2017-01-22-build-a-blog-with-jekyll/3.png)
+![](/assets/img/2017-01-22/3.png)
 添加好之前购买的域名，点击你的域名进入记录管理。按照下图添加每条记录。
-![](/assets/img/2017-01-22-build-a-blog-with-jekyll/4.png)
+![](/assets/img/2017-01-22/4.png)
 前两条A型记录值 192.30.252.153 和 192.30.252.154 是GitHub的服务器地址，可以在[这里](https://help.github.com/articles/troubleshooting-custom-domains/#dns-configuration-errors)查到。
 NS类型记录是默认不可变的。
 CNAME类型的记录值填写 `{username}.github.io`
@@ -57,10 +57,10 @@ Git环境安装及基本配置请查看，这里不再赘述
   >本文主要介绍windows环境下的安装，Mac和Linux环境下可以使用自带的包管理器进行安装，可参考[这篇文章](http://www.cnblogs.com/daguo/p/4097263.html)。
 
   1.安装 [Ruby](http://rubyinstaller.org/downloads/)
-  ![](/assets/img/2017-01-22-build-a-blog-with-jekyll/5.png)
+  ![](/assets/img/2017-01-22/5.png)
 
   **注意：这里一定要勾选添加到环境变量PATH！ install-ruby-02**
-  ![](/assets/img/2017-01-22-build-a-blog-with-jekyll/6.png)
+  ![](/assets/img/2017-01-22/6.png)
 
   2.安装 [RubyGems](https://rubygems.org/pages/download)
 
@@ -113,17 +113,17 @@ Git环境安装及基本配置请查看，这里不再赘述
   $ netstat -ano
   {% endhighlight %}
   可以看到如下进程与所占用端口的对应情况，找到本地地址为 127.0.0.1:4000 的记录，看到该条记录的PID为6668 (当然你的和我的不一样)。
-   ![](/assets/img/2017-01-22-build-a-blog-with-jekyll/7.png)
+   ![](/assets/img/2017-01-22/7.png)
 
   输入命令
   {% highlight cmd %}
   $ tasklist /svc /FI "PID eq 6668"
   {% endhighlight %}
   该进程的名称就会显示出来:
-  ![](/assets/img/2017-01-22-build-a-blog-with-jekyll/8.png)
+  ![](/assets/img/2017-01-22/8.png)
 
   打开windows的任务管理器，结束它：
-  ![](/assets/img/2017-01-22-build-a-blog-with-jekyll/9.png)
+  ![](/assets/img/2017-01-22/9.png)
 
   再次运行 `jekyll serve` 就可以了。
 

@@ -1,29 +1,25 @@
-<!--源码-->
-<a href="{{ "/feed.xml" | prepend: site.baseurl }}" class="sidebar-social-icon feed"></a>
+<!-- 侧边栏社交账号 -->
 
+<!--源码-->
+<a href="/feed.xml" class="sidebar-social-icon feed"></a>
 <!--邮箱-->
 <a href="mailto:{{ site.author.email }}" class="sidebar-social-icon email"></a>
-
 <!--Twitter-->
 {% if site.author.twitter %}
   <a href="https://twitter.com/{{ site.author.twitter }}" class="sidebar-social-icon twitter" target="_blank"></a>
 {% endif %}
-
 <!--微博-->
 {% if site.author.weibo %}
   <a href="http://www.weibo.com/{{ site.author.weibo }}" class="sidebar-social-icon weibo" target="_blank"></a>
 {% endif %}
-
 <!--github-->
 {% if site.author.github %}
   <a href="https://github.com/{{ site.author.github }}" class="sidebar-social-icon github" target="_blank"></a>
 {% endif %}
-
 <!--codepen-->
 {% if site.author.codepen %}
   <a href="http://codepen.io/{{ site.author.codepen }}" class="sidebar-social-icon codepen" target="_blank"></a>
 {% endif %}
-
 <!--dribbble-->
 {% if site.author.dribbble %}
   <a href="https://dribbble.com/{{ site.author.dribbble }}" class="sidebar-social-icon dribbble" target="_blank"></a>
