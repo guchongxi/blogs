@@ -12,6 +12,7 @@ title: 顾重の部落格
 description: 个人博客(基于jekyll);整理、记载关于生活，学习上的点点滴滴.
 url: http://giantr.top # the base hostname & protocol for your site
 favicon: /assets/img/favicon.ico
+backgroundImage: 1.jpg #在文章中简写为bg
 
 # 阅读处理
 encoding: utf-8

@@ -3,11 +3,19 @@
   float: right
   width: calc(100% - #{$sidebar-width})
   height: 100%
-  overflow: auto
+  overflow-y: auto
   -webkit-overflow-scrolling: touch
   transition: width .35s $time-function
   // &.fadeIn
   //   animation: fadeIn .6s $time-function
+  &::-webkit-scrollbar
+    width: $main-scrollbar-width
+  &::-webkit-scrollbar-thumb
+    background: $main-scrollbar-color
+    border-radius: $main-scrollbar-radius
+  &::-webkit-scrollbar-track
+    background: $main-scrollbar-bgcolor
+
 
 .container
   max-width: $post-max-width
@@ -62,6 +70,7 @@ h1 + h2, h2 + h3, h3 + h4, h4 + h5, h5 + h6
     outline: none
     &:hover
       color: $post-link-hover-color
+      text-decoration: underline
 
   p, ul, ol
     margin-top: 0
@@ -77,31 +86,43 @@ h1 + h2, h2 + h3, h3 + h4, h4 + h5, h5 + h6
       margin-bottom: 0
 
   blockquote
-    position: relative
-    margin: 0 0 $post-paragraph-spacing 2em
+    color: gray
     font-style: italic
-    &:before
-      @extend %icon
-      @extend %icon-quote
-      position: absolute
-      top: 0
-      left: -1.5em
-      z-index: 1
-      transform: rotate(180deg)
+    font-size: .95em
+    margin: 0 0 $post-paragraph-spacing 0
+    padding: 10px 20px
+    border-left: 5px solid #ccc
+
+    p
+      margin-bottom: 0
+    //position: relative
+    //margin: 0 0 $post-paragraph-spacing 2em
+    //font-style: italic
+    //&:before
+    //  @extend %icon
+    //  @extend %icon-quote
+    //  position: absolute
+    //  top: 0
+    //  left: -1.5em
+    //  z-index: 1
+    //  transform: rotate(180deg)
 
   img
     display: block
     max-width: 80%
     border: $post-img-border-width solid $post-img-border-color
+    margin-bottom: $post-paragraph-spacing / 2
 
   code
     font-family: $post-code-font
     font-size: .9em
 
   *:not(pre) > code
-    padding: 0 .25em
+    padding: 2px 4px
     color: $post-code-inline-color
     background: $post-code-inline-bg
+    border-radius: 4px
+    font-size: .9em
 
   pre
     margin-top: 0

@@ -2,6 +2,11 @@
 layout: default
 comments: true
 ---
+<style>
+  body{
+    background-image: url('/assets/img/bgImage/{% if page.bg %}{{ page.bg }}{% else %}{{ site.backgroundImage }}{% endif %}');"
+  }
+</style>
 <article class="post container">
   <div class="post-meta">
     {% if page.date %}

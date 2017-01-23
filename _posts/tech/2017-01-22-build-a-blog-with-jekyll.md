@@ -4,11 +4,11 @@ date:   2017-01-22
 categories: 技术
 tags: jekyll GitHub Pages
 ---
-`转载自`[http://playingfingers.com/2016/03/26/build-a-blog/](http://playingfingers.com/2016/03/26/build-a-blog/)
 
->人生道路上布满了坑，于是有了人生导师。
-美丽的地球上布满了坑，于是有了Google Earth。
-使用Github Pages搭建独立博客的过程中布满了坑，所以有了这篇指南
+>人生道路上布满了坑，于是有了人生导师；
+美丽的地球上布满了坑，于是有了Google Earth；
+使用Github Pages搭建独立博客的过程中布满了坑，所以有了这篇指南。
+文章转载自 [http://playingfingers.com/2016/03/26/build-a-blog/](http://playingfingers.com/2016/03/26/build-a-blog/)
 
 
 ### Github Pages + Jekyll 方案  
@@ -65,11 +65,10 @@ Git环境安装及基本配置请查看，这里不再赘述
   2.安装 [RubyGems](https://rubygems.org/pages/download)
 
   windows下下载ZIP格式较为方便，下好后解压到本地任意路径，下面以 `{unzip-path}` 代替你解压的路径。 打开windows的cmd终端（按win+R快捷键打开“运行”，输入cmd，确定），输入命令:
-  {% highlight cmd %}
+  {% highlight php %}
   $ cd {unzip-path}  //如果你没有解压在C盘，windows的终端切换到其他盘需要写为 cd /d {unzip-path}
   $ ruby setup.rb
   {% endhighlight %}
-
   3.安装Jekyll
 
   在终端里输入
