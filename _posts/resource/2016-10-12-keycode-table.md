@@ -18,7 +18,6 @@ table td:nth-child(odd){
 </style>
 
 <div>
-<h4>字母和数字键的键码值(keyCode)</h4>
 <table>
 <thead><tr>
 <th>按键</th>
