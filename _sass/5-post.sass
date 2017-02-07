@@ -1,3 +1,18 @@
+::selection
+  color: #fff
+  text-shadow: none
+  background: #0085a1
+::-moz-selection
+  color: #fff
+  text-shadow: none
+  background: #0085a1
+img::selection
+  color: #fff
+  background: 0 0
+img::-moz-selection
+  color: #fff
+  background: 0 0
+
 
 #main
   float: right
@@ -16,13 +31,11 @@
   &::-webkit-scrollbar-track
     background: $main-scrollbar-bgcolor
 
-
 .container
   max-width: $post-max-width
   width: $post-width-at-3-columns
   margin: auto
   padding: 0 10px
-
 
 // Typogragh
 
@@ -34,12 +47,11 @@ h2, h3, h4, h5, h6
 h1 + h2, h2 + h3, h3 + h4, h4 + h5, h5 + h6
   margin-top: $post-paragraph-spacing
 
-
 .post
   padding-top: 2em
   font-size: $post-font-size
   line-height: $post-line-height
-  text-shadow: 1px 1px 0 #fff
+  //text-shadow: 1px 1px 0 #cccaca
 
   &-title
     margin: 0 0 $post-paragraph-spacing * .75
@@ -48,6 +60,7 @@ h1 + h2, h2 + h3, h3 + h4, h4 + h5, h5 + h6
   &-meta
     font-size: .9em
     color: $post-meta-color
+    text-shadow: 1px 1px 0 #000
     &-span
       margin-right: 1em
       &.date:before
@@ -95,17 +108,17 @@ h1 + h2, h2 + h3, h3 + h4, h4 + h5, h5 + h6
 
     p
       margin-bottom: 0
-    //position: relative
-    //margin: 0 0 $post-paragraph-spacing 2em
-    //font-style: italic
-    //&:before
-    //  @extend %icon
-    //  @extend %icon-quote
-    //  position: absolute
-    //  top: 0
-    //  left: -1.5em
-    //  z-index: 1
-    //  transform: rotate(180deg)
+  //position: relative
+  //margin: 0 0 $post-paragraph-spacing 2em
+  //font-style: italic
+  //&:before
+  //  @extend %icon
+  //  @extend %icon-quote
+  //  position: absolute
+  //  top: 0
+  //  left: -1.5em
+  //  z-index: 1
+  //  transform: rotate(180deg)
 
   img
     display: block
@@ -139,12 +152,22 @@ h1 + h2, h2 + h3, h3 + h4, h4 + h5, h5 + h6
       &:hover
         background: darken($code-scrollbar-color, 10%)
 
+  figure
+    margin: 0 0 $post-paragraph-spacing
+    pre
+      margin: 0
+      background-color: #f8f8f8
+      border-radius: 3px
+      border: 1px solid #ccc
+      padding: 6px 10px
+      code
+        text-shadow: none
+
   hr
     height: 0
     margin: $post-paragraph-spacing * 2 0
     border: none
     border-top: 1px solid $post-hr-color
-
 
 // post share
 .post-share
@@ -171,11 +194,9 @@ h1 + h2, h2 + h3, h3 + h4, h4 + h5, h5 + h6
     &.weibo:before
       @extend %icon-weibo
 
-
 // comment
 #disqus_thread > a
   color: $gradient-end
-
 
 // footer
 .footer
@@ -194,7 +215,6 @@ h1 + h2, h2 + h3, h3 + h4, h4 + h5, h5 + h6
       outline: none
       &:hover
         color: $footer-link-hover-color
-
 
 //  counter
 #counter_show
