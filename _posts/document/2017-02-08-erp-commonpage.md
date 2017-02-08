@@ -7,9 +7,9 @@ tag: 固定表头 弹窗 通用
 
 **注意：**这份文件是用 Markdown 写的，你可以[看看它的原始文件][src] 。
 
->*   下载 [最终效果.html]()
->*   下载 [页面模版.html]()
->*   下载 [弹窗模版.html]()
+*   预览 [完全效果](/table-show)
+*   下载 <a href="/assets/table-demo/table-common.html" target="_blank" download>页面模版</a>
+*   下载 <a href="/assets/table-demo/table-popup.html" target="_blank" download>弹窗模版</a>
 
 [src]: https://github.com/GiantZero-x/GiantZero-x.github.io/blob/master/_posts/document/2017-02-08-table-common.md
 

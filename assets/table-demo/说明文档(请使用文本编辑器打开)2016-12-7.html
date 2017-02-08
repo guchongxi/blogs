@@ -1,0 +1,499 @@
+1 - 前言
+    1.1 此样式结构用于 'ERP项目' 中具有固定表头式表格及点击弹窗页面（例如待办、已办）的样式统一,提高页面样式的可维护性和运行效率,协调各开发人员共用一套样式文件,避免一个页面一个样式产生过多冗余代码的情况发生.
+
+    1.2 统一样式文件已加载在全局,但在项目初始阶段没有进行样式重置,因此只能在新开发的页面单独引入'<link rel="stylesheet" type="text/css" href="static/css/reset.css"/>'进行样式重置.
+
+    1.3 样式仅由标签中的 class 类名决定,请勿随意删除,可追加自定class,除查询框和弹窗头部外的 id 值都可以增减修改.
+
+    1.4 所有代码嵌套结构在下文中已展现,请勿随意更改!
+
+    1.5 标记为可删除并标记'开始 - 结束'位置的代码段的为模块中可选项,删除不影响功能.
+
+    1.6 可先查看table-demo.html,之后再查看此文档.
+
+    因本人学识有限,功能及结构难免出现错误或疏漏,若在使用中有任何疑问或bug可随时联系我进行修改,谢谢.
+
+    --> 编辑于 2016/12/6  顾重喜 <--
+
+2 - 页面结构
+
+2.1 - 代码段位置
+2.1.1 css
+    <!--页面自定样式放在页面顶部-->
+    <style type="text/css">
+        .c_1 {width: 8%;}
+        .c_2 {width: 14%;}
+        .c_3 {width: 10%;}
+        .c_4,.c_5 {width: 21%;}
+    </style>
+2.1.2 html
+    <!--页面内容均统一为一个个单独的模块,比如导航,可隐藏查询框,表格等-->
+    <div class="single_zr">
+        <div class="right_container">
+            <!--  在这里写页面所需要的模块 -->
+        </div>
+    </div>
+
+2.2 - 模块
+2.2.1 - 导航
+    <div class="breadcrumb_nav clearfix">
+        <p class="current_nav">
+            <span class="current_nav_title">当前位置:</span>
+            <!-- 一级标题及链接地址-->
+            <a class="current_nav_item" href="链接地址">一级标题</a>
+            <span class="indicator">>></span>
+            <!-- 二级标题 可删除-开始-->
+            <span class="current_nav_item">二级标题</span>
+            <span class="indicator">>></span>
+            <!-- 结束-->
+            <!-- 当前页面标题-->
+            <span class="current_nav_item font_red">当前页面标题</span>
+            <!-- 下拉菜单 可删除-开始-->
+            <select class="drop_down_select" onchange="isPass(this)">
+                <option value>显示全部</option>
+                <option value="0">通过</option>
+                <option value="1">驳回</option>
+            </select>
+            <!-- 结束-->
+        </p>
+        <!-- 查询按钮 可删除-开始 -->
+        <div class="search_drop_down_btn fl" onclick="openShutManager(this,'drop_down_search',false,'<img src=static/img/everyclose_btn.png />','<img src=static/img/click_btn.png />')">
+            <img src="static/img/click_btn.png"/>
+        </div>
+        <!-- 结束-->
+    </div>
+
+2.2.2 - 查询框
+    <!-- 查询框与查询按钮配套相互依赖 默认隐藏 id不可更改!-->
+    <div id="drop_down_search" class="drop_down_search_bar" style="display:none">
+        <p class="search_title_bar">
+            <span class="search_title"><i></i> 查询管理</span>
+        </p>
+        <!--  查询表单 地址自定 -->
+        <form action="#" method="post">
+            <div class="search_box clearfix">
+                <!--  控件项 - 标准 可删除-开始 -->
+                <div class="search_item fl">
+                    <label for="applicant">申请人</label>
+                    <input type="text" id="applicant"/>
+                </div>
+                <!-- 结束-->
+                <!--  控件项 - 选项 可删除-开始 -->
+                <div class="search_item fl">
+                    <label for="state">缴纳状态</label>
+                    <select id="state">
+                        <option value="7">全部</option>
+                        <option value="1">未缴纳</option>
+                    </select>
+                </div>
+                <!-- 结束-->
+                <!--  控件项 - 日期 可删除-开始 -->
+                <div class="search_item search_date_range fl">
+                    <label for="apply_start_date">申请日期</label>
+                    <input type="text" id="apply_start_date" onclick="laydate()" readonly/>
+                </div>
+                <!-- 结束-->
+                <!--  控件项 - 日期 label为 '-' 可删除-开始-->
+                <div class="search_item search_date_range fl">
+                    <label for="apply_end_date" style="width: 5px;">-</label>
+                    <input type="text" id="apply_end_date" onclick="laydate()" readonly/>
+                </div>
+                <!-- 结束-->
+                <!--  查询 -->
+                <input class="search_btn " type="button" value="查询 " readonly/>
+            </div>
+        </form>
+    </div>
+
+2.2.3 - 分类 (例如公积金管理中的:上月公积金,本月变动,薪资管理,全部)
+    <div class="select_box ">
+        <ul>
+            <li>
+                <a href=" ">上月公积金</a>
+            </li>
+            <li>
+                <a href=" ">本月变动</a>
+            </li>
+            <li>
+                <a href=" ">下月变动</a>
+            </li>
+            <li>
+                <!-- 当前选中项设置class 为 hover-->
+                <a href=" " class="hover">全部</a>
+            </li>
+            job
+            <!--job_modify 仅设置图标-->
+            <li class="job_modify fr ">
+                <a href="#" >修改</a>
+            </li>
+        </ul>
+    </div>
+
+2.2.4 - 部门横向点击滚动条 (例如员工福利扣款页面)
+    <div class="dept_list ">
+        <!-- 显示于滚动条上方的点击按钮-->
+        <div class="dept_list_title ">
+            <ul>
+                <!-- 此处class对应不同图标,若无可在当前页面自行添加,常用可添加至table-commom.css 305行处-->
+                <li class="dept_save ">
+                    <a href="#">修改</a>
+                </li>
+                <!-- 上传或导入-->
+                <li class="upload">
+                    <form method="post" action="" enctype="multipart/form-data">
+                        <a>导入</a>
+                        <input type="file" name="cus_file"/>
+                    </form>
+                </li>
+                <li class="export">
+                    <a href="">导出</a>
+                </li>
+                <li class="download">
+                    <a href="">下载</a>
+                </li>
+            </ul>
+        </div>
+        <!-- 滚动列表主体-->
+        <div class="dept_list_box ">
+            <!-- 两端点击按钮-->
+            <div class="btn_box ">
+                <div class="btnlf ">&lt;</div>
+                <div class="btnrt ">&gt;</div>
+            </div>
+            <div class="dept_list_container ">
+                <ul>
+                    <!-- li可使用foreach循环生成-->
+                    <li><a href="#">xxxxxxx</a></li>
+                    <li><a href="#">xxxxxxx</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+2.2.5 - 表格
+    <div class="table_list_box ">
+        <!-- 显示于表格上方的功能按钮-->
+        <div class="table_list_header ">
+            <ul>
+                <!-- 按钮列表 header_item 为必须class  export对应不同图标,若无可在当前页面自行添加,常用可添加至table-commom.css 428行处-->
+                <li class="header_item export "><span>导出</span></li>
+            </ul>
+        </div>
+        <!--表格主体-->
+        <table class="table_list_content ">
+            <thead>
+            <!--  头部tr class为 'table_list_title' -->
+            <!-- 头部 th 可正常使用colspan,rowspan进行跨行跨列 跨列不用设置c_1等class-->
+            <!-- 若两行及以上标题行 在table标签中 追加class 'double' -->
+            <!-- 每行总宽度为100%,可根据每列内容在<style>中自定占比 -->
+            <!-- 每行最后一个td或th若无其他功能无需设置class,自适应即可 -->
+            <tr class="table_list_title ">
+                <th class="c_1">申请人</th>
+                <th class="c_2">所在部门</th>
+                <th class="c_3">类型</th>
+                <th class="c_4">详细说明</th>
+                <th class="c_5">申请日期</th>
+                <th class="c_6">接收日期</th>
+                <th class="c_7">接收日期</th>
+                <th>审核状态</th>
+            </tr>
+            <tr class="table_list_title">
+                <th colspan="6"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <!--  主体tr class为 table_list_row -->
+            <!-- 仅有tbody 中的内容会进行滚动 -->
+            <!-- 主体 td '不可'使用colspan,rowspan进行跨行跨列!! 必须单元格列数与头部保持一致 -->
+
+            <!-- 若需跨列可在每个合并格中追加class no_rbor表示无右边框 若跨行可在合并各种追加class no_bbor表示无下边框 -->
+
+            <!-- 如下结构表格 小计 占三列 并且只能放在第一列中  那么前两列需要去除右边框 并用div将文字包裹  c_content样式在本页面自定 如: .c_content{width: 300%;font-size:12px;text-align:center}
+    假设每列宽度均为10%,那么width = (10% + 10% + 10%) / 10% = 300% ,除数为文字所在列宽度
+            -->
+            <tr class="table_list_row ">
+                <td class="c_1 no_rbor"><div class="c_content">小计</div></td>
+                <td class="c_2 no_rbor"></td>
+                <td class="c_3"></td>
+                <td class="c_4">XXXX</td>
+                <td class="c_5">XXXX</td>
+                <td class="c_6">XXXX</td>
+                <td class="c_7">XXXX</td>
+                <td>xxxxx</td>
+            </tr>
+            </tbody>
+            <tfoot>
+            <!--  底部跨行跨列格式与主体一致 -->
+            <!-- 可设置显示合计,页码等 -->
+            <tr class="table_list_row ">
+                <td class="c_1 font_red">总计:</td>
+                <td class="c_2 ">xx</td>
+                <td class="c_3 ">xx</td>
+                <td class="c_4 ">xx</td>
+                <td class="c_5 ">xx</td>
+                <td>xx</td>
+            </tr>
+            <tr class="table_list_row ">
+                <td colspan="6 ">没有任何记录!</td>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+
+
+3 - 弹窗 
+
+3.1 - 代码段位置
+    主页面弹窗内容均插入在body 下的 <div class="popup_win"></div> 中 因此可在点击事件的回调函数中将数据直接插入
+
+3.2 - 弹窗页面html
+
+    3.2.1 - 头部
+    <!-- id为拖动js必须,不可更改 -->
+    <div class="popwin_header" id="popwin_header">
+        <!-- 关闭按钮 -->
+        <img class="popwin_close" src="static/img/close_icon.jpg"/>
+        <!-- 导航,当前项用span.font_red 包裹 -->
+        <p class="popwin_breadcrumb">
+            一级 &gt;&gt; 二级 &gt;&gt;
+            <span class="font_red"> 三级</span>
+            <!-- 下拉选框 可删除-开始 -->
+            <label for="wfid">选择工作流</label>
+            <select id="wfid">
+              <option value="11">销售合同管理</option>
+            </select>
+            <!-- 结束 -->
+        </p>
+    </div>
+
+    3.2.2 - 主体
+    <div class="popwin_body">
+        <!-- 图形化审核流程 -->
+        <div class="apply_process_box">
+          <p class="ap_title">流程</p>
+          <div class="ap_chart">
+            <span class="ap_item ap_ends">开始</span>
+            <i class="arrow_right"></i>
+            <!-- 此处开始循环 -->
+            <!-- span中显示用户姓名,i中显示右箭头 -->
+
+            <!-- ap_item为必须class 默认是还未审核样式,
+            ap_pass 为追加class 是已通过审核样式,
+            ap_current为追加class 是当前审核样式 -->
+
+            <!--{foreach from=$usreArr item=v key=k}-->
+            <span class="ap_item
+            {if $k < $apply.sc_state || $apply.sc_state eq 0 }
+                ap_pass
+            {elseif $k eq $apply.sc_state}
+                ap_current
+            {/if}">{$v[1][name]}</span>
+            <i class="arrow_right"></i>
+            <!--{/foreach}-->
+            <!-- 循环结束 -->
+            <span class="ap_item ap_ends">结束</span>
+          </div>
+        </div>
+        <!-- 内容主体,超高将滚动 -->
+        <!-- scroll_bar表示这是一个内容滚动的容器,将重置滚动条样式 -->
+        <div class="popwin_content scroll_bar">
+            <!-- content_box为每一模块内容容器 -->
+            <div class="content_box">
+                <h2>基本信息</h2>
+
+                <!-- 网格布局 -->
+                    <!-- 行class   
+                        row-a  -  一行中放置一列
+                        row-b  -  一行中放置两列
+                        row-c  -  一行中放置三列
+                        row-d  -  一行中放置四列
+                    
+                    列class 必须放置在row中
+                        col-a  -  一行中占一列 若在row-a中则占100%,若在row-b中则占50%,若在row-c中则占33.33%,若在row-d中则占25%.
+                        col-b  -  一行中占两列
+                        不能放置在row-a中!! 若在row-b中则占100%,若在row-c中则占66.66%,若在row-d中则占50%.
+                        col-c  -  一行中占三列
+                        不能放置在row-a/row-b中!! 若在row-c中则占100%,若在row-d中则占75%.
+                        col-d  -  一行中占四列
+                        不能放置在row-a/row-b/row-c中!! 若在row-d中则占100%.
+
+                        col后面的字母不能超过所在行 row后的字母,否则样式混乱!!
+                        -->
+
+                <!-- 例 一行中放置三列 (常用) -->
+                <div class="row-c">
+                    <!-- 此列宽度为33.3% -->
+                    <div class="col-a">
+                        <label>公司：</label>
+                        <input type="text" value="AAA"/>
+                    </div>
+                    <!-- 此列宽度为66.6% -->
+                    <div class="col-b">
+                        <label>所属公司：</label>
+                        <input type="text" value="AAA" readonly/>
+                    </div>
+                    <!-- 此列将另起一行,宽度为33.3% -->
+                    <div class="col-a">
+                        <label>公司：</label>
+                        <input type="text" value="AAA"/>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="content_box">
+                <h2>货物明细</h2>
+                <!-- 需要表格样式则使用class 'table_box' -->
+                <div class="table_box">
+                <!-- 因为是固定表头式表格,所以表头和内容分离 -->
+                    <!-- 表头样式 -->
+                    <div class="table_header">
+                        <table>
+                            <tr>
+                            <!-- 宽度自定 总宽度为100% 最后一列无需设置,自适应即可-->
+                                <th width="5%">序号</th>
+                                <th width="5%">产品名称</th>
+                                <th width="5%">产品规格</th>
+                                <th width="5%">箱规</th>
+                                <th width="5%">数量/箱</th>
+                                <th width="5%">单价/元</th>
+                                <th width="5%">总金额/元</th>
+                                <th>备注</th>
+                            </tr>
+                        </table>
+                    </div>
+                    <!-- 内容样式 -->
+                    <div class="table_content scroll_bar">
+                        <table>
+                            <!-- 内容宽度推荐设置在总计行,若设置在数据行,那么没有数据行时样式会出错! -->
+                            <!-- 此处开始循环 -->
+                            <tr>
+                                <td></td>
+                                <td>AAA</td>
+                                <td>AAA</td>
+                                <td>AAA</td>
+                                <td>AAA</td>
+                                <td>AAA</td>
+                                <td>AAA</td>
+                                <td>AAA</td>
+                            </tr>
+                            <!-- 循环结束 -->
+                            总计行
+                            <tr>
+                                <td width="5%">总计</td>
+                                <td width="5%">AAA</td>
+                                <td width="5%">AAA</td>
+                                <td width="5%">AAA</td>
+                                <td width="5%">AAA</td>
+                                <td width="5%">AAA</td>
+                                <td width="5%">AAA</td>
+                                <td>AAA</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+            <div class="content_box">
+                <h2>审核流程</h2>
+                <!-- 表格式审核流程 -->
+                <table class="process_box">
+                    <thead>
+                    <tr>
+                        <th width="10%">用户</th>
+                        <th width="60%">操作</th>
+                        <th width="10%">审核状态</th>
+                        <th>处理时间</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!-- 此处开始循环 -->
+                    <tr>
+                        <td>王文军</td>
+                        <td>发起申请</td>
+                        <td>通过</td>
+                        <td>2016-11-03 20:47:06</td>
+                    </tr>
+                    <!-- 循环结束 -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- 意见框不在滚动主体中 可删除-开始 -->
+        <div class="opinion_box">
+            <textarea name="opinion" id="opinion" placeholder="请填写意见"></textarea>
+        </div>
+        <!-- 结束 -->
+    </div>
+
+    3.2.3 - 底部
+    <div class="popwin_footer">
+        <input type="button" value="关闭" class="popwin_close">
+        <input type="button" value="取回" class="fr" onclick="newtakeback(this)" data-id="{$appid}" data-apply="contractManage" data-state="{$apply.sc_state}" data-op="sc" data-sys="sale">
+        <!-- 可删除 - 开始 -->
+        <select class="assign_person">
+            <option value="1">张嘉望</option>
+            <option value="2">AAAAAA</option>
+            <option value="3">BBBBBB</option>
+        </select>
+        <input type="button" value="驳回">
+        <!-- 结束 -->
+    </div>
+在html最后需要调用popup_window();方法,用来设置弹窗拖动和关闭
+    <script>
+        popwin_window()
+    </script>
+
+4 - 部分函数
+<script>
+    /* 点击查看详情 */
+    $('tbody .table_list_row').click(function () {
+//        可选弹窗尺寸 添加对应class 默认780px  pw_s:小号(宽度620px;) pw_l:大号(宽度1060px;)
+        $('.popup_win').addClass('pw_l').fadeIn();
+    });
+
+    /* 查询 - 打开关闭 */
+    function openShutManager(oSourceObj, oTargetObj, shutAble, oOpenTip, oShutTip) {
+        var sourceObj = typeof oSourceObj == "string" ? document.getElementById(oSourceObj) : oSourceObj;
+        var targetObj = typeof oTargetObj == "string" ? document.getElementById(oTargetObj) : oTargetObj;
+        var openTip = oOpenTip || "";
+        var shutTip = oShutTip || "";
+        if (targetObj.style.display != "none") {
+            if (shutAble) return;
+            targetObj.style.display = "none";
+            if (openTip && shutTip) {
+                sourceObj.innerHTML = shutTip;
+            }
+        } else {
+            targetObj.style.display = "block";
+            if (openTip && shutTip) {
+                sourceObj.innerHTML = openTip;
+            }
+        }
+    }
+
+    /*查询 - isPass*/
+    function isPass(that) {
+        window.location.href="index.php?sys=administration&mod=ysjm_havedo&flag=" + that.value;
+    }
+
+    /* 部门列表滚动*/
+    $(".btn_box ").on("click ", function (e) {
+        var $scrollBox = $(".dept_list_container ");
+        var scrollLeft = $scrollBox.scrollLeft();
+        if (e.target.className == "btnlf ") {
+            $scrollBox.scrollLeft(scrollLeft - 103);
+            return false;
+        }
+        if (e.target.className == "btnrt ") {
+            $scrollBox.scrollLeft(scrollLeft + 103);
+            return false;
+        }
+    });
+</script>
+
+
+
+
+
+

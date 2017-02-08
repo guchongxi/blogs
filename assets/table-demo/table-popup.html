@@ -1,0 +1,262 @@
+<!-- 头部 -->
+<div class="popwin_header" id="popwin_header">
+    <img class="popwin_close" src="static/img/close_icon.jpg"/>
+    <p class="popwin_breadcrumb">
+        行政事务 >> 二 >> 三 >>
+        <span class="font_red">{if $check}查看{else}修改{/if}</span>
+        <span class="font_blue" id="print">打印</span>
+        <span class="fr" onclick="popattBoxOpen(1)">资产申购>></span>
+    </p>
+</div>
+<!-- 主体 -->
+<div class="popwin_body">
+    {if $apply.worktype eq 1 }
+    <div class="apply_process_box">
+        <p class="ap_title">流程</p>
+        <div class="ap_chart">
+            <span class="ap_item ap_ends">开始</span>
+            <i class="arrow_right"></i>
+            {foreach from=$workflow item=v key=k}
+            <span class="ap_item
+            {if }
+            ap_pass
+            {elseif }
+            ap_current
+            {/if}">{$v[1][name]}</span>
+            <i class="arrow_right"></i>
+            {/foreach}
+            <span class="ap_item ap_ends">结束</span>
+        </div>
+    </div>
+    {/if}
+    <div class="popwin_content scroll_bar">
+        <div class="content_box">
+            <h1>标题</h1>
+        </div>
+        <div class="content_box">
+            <h2>基本信息</h2>
+            <div class="row-c">
+                <div class="col-a">
+                    <label>输入</label>
+                    <input type="text" value="" readonly/>
+                </div>
+                <div class="col-a">
+                    <label>选项</label>
+                    <select disabled>
+                        <option value=""></option>
+                    </select>
+                </div>
+                <div class="col-a">
+                    <label>日期</label>
+                    <input type="text" value="" readonly onclick="laydate()" class="input_date"/>
+                </div>
+                <div class="col-c">
+                    <label>原因</label>
+                    <textarea readonly></textarea>
+                </div>
+                <fieldset readonly>
+                    <legend>说明</legend>
+                    <textarea readonly></textarea>
+                </fieldset>
+            </div>
+        </div>
+        <div class="content_box">
+            <h2>附件
+                <iframe id="picsubmit" class="picsubmit" scrolling="no" allowtransparency="true" src="upload.php?showid=att_list&inputid=pics&picsubmit=picsubmit&ac=2&w=120h=100" {if $check}style="display:none" {/if}></iframe>
+                <input type="hidden" id="pics" value="{$yk.pics}"/>
+            </h2>
+            <ul id="att_list">
+                {foreach from=$picss key=k item=v}
+                {if $v[1] eq 1} <!--图片-->
+                <li>
+                    <img src="{$v[0]}" onclick="imgMagnify($(this).attr('src'))"/>
+                    <a href="javascript:window.parent.window.document.getElementById('picsubmit').contentWindow.delpic('{$v[0]}')" {if $check} style="display:none" {/if}>删除</a>
+                </li>
+                {else}  <!--文件-->
+                <li>
+                    <a target="_blank" href="{$v[0]}" class="att_file" download>
+                        <img src="static/img/load.jpg"/>
+                    </a>
+                    <a href="javascript:window.parent.window.document.getElementById('picsubmit').contentWindow.delpic('{$v[0]}')" {if $check} style="display:none" {/if}>删除</a>
+                </li>
+                {/if}
+                {/foreach}
+                { if $picss eq ''} <!--无图-->
+                <li>
+                    <img src="uploadfile/nopic.jpg" alt="暂无图片"/>
+                </li>
+                {/if}
+            </ul>
+        </div>
+        <div class="content_box">
+            <h2>货物明细</h2>
+            <div class="table_box">
+                <div class="table_header">
+                    <table>
+                        <tr>
+                            <th width="10%">序号</th>
+                            <th width="10%">产品名称</th>
+                            <th width="10%">产品规格</th>
+                            <th width="10%">箱规</th>
+                            <th width="10%">数量/箱</th>
+                            <th width="10%">单价/元</th>
+                            <th width="10%">总金额/元</th>
+                            <th>备注</th>
+                        </tr>
+                    </table>
+                </div>
+                <div class="table_content scroll_bar">
+                    <table>
+                        {foreach from=$bxDetail key=k item=v}
+                        <tr>
+                            <td width="10%">AAA</td>
+                            <td width="10%">AAA</td>
+                            <td width="10%">AAA</td>
+                            <td width="10%">AAA</td>
+                            <td width="10%">AAA</td>
+                            <td width="10%">AAA</td>
+                            <td width="10%">AAA</td>
+                            <td>AAA</td>
+                        </tr>
+                        {/foreach}
+                        <tr>
+                            <td width="10%" class="font_red">总计</td>
+                            <td width="10%">AAA</td>
+                            <td width="10%">AAA</td>
+                            <td width="10%">AAA</td>
+                            <td width="10%">AAA</td>
+                            <td width="10%">AAA</td>
+                            <td width="10%">AAA</td> 
+                        </tr>
+                        
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="content_box">
+            <h2>审核流程</h2>
+            <table class="process_box">
+                <thead>
+                <tr>
+                    <th width="10%">用户</th>
+                    <th width="40%">操作</th>
+                    <th width="20%">审核状态</th>
+                    <th width="30%">处理时间</th>
+                </tr>
+                </thead>
+                <tbody>
+                {foreach from=$examine item=v key=k}
+                <tr>
+                    <td>{$v.as_role}</td>
+                    <td>{$v.as_op}</td>
+                    <td>{$v.as_state}</td>
+                    <td>{$v.as_assessortime}</td>
+                </tr>
+                {/foreach}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="opinion_box">
+        <textarea id="opinion" placeholder="请填写意见"></textarea>
+    </div>
+</div>
+<!-- 底部  -->
+<div class="popwin_footer">
+    <input type="button" value="关闭" class="popwin_close" readonly>
+    {if !$check}
+    <input type="button" value="提交" class="fr"/>
+    {/if}
+    {if $st eq 2}
+    <input type="button" value="取回" class="fr" onclick="newtakeback(this)" data-id="{$apply.yc_id}"
+           data-apply="contractManage" data-state="{$apply.sc_state}" data-op="sc" data-sys='administration'>
+    {/if}
+    <select class="assign_person">
+        {foreach from = $arrUsers item = v}
+        <option value="{$v.0}-{$v.2}">{$v.1}</option>
+        {/foreach}
+    </select>
+    <input type="button" value="驳回" class="reject_file">
+</div>
+<!-- 附属弹窗 -->
+<div class="popwin_attach">
+    <!--资产申购-->
+    <div class="popatt_box">
+        <p class="popatt_header">
+            <img class="popatt_close" onclick="popattBoxClose(this)" src="static/img/close_icon.jpg"/>
+            资产申购
+        </p>
+        <div class="popatt_body">
+            <table>
+                <thead>
+                <tr>
+                    <th width="20%">编号</th>
+                    <th width="50%">资产名称</th>
+                    <th width="10%">数量</th>
+                    <th width="20%">估价</th>
+                </tr>
+                </thead>
+                <tbody>
+                {foreach from=$arrsg key=k item=v}
+                <tr>
+                    <td>{$v.sg_number}</td>
+                    <td>{$v.sg_name}</td>
+                    <td>{$v.sg_num}</td>
+                    <td>{$v.sg_money}</td>
+                </tr>
+                {/foreach}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        popup_window();
+    });
+</script>
+
+
+<script>
+    // 驳回
+    $(".reject_file").click(function() {
+        var opinion = $.trim($(".opinion_box #opinion").val());
+        if (confirm("确认是否驳回！")) {
+            if (opinion == '') {
+                alert("请填写驳回意见！");
+                return;
+            }
+            var strRefuse = $.trim($(".assign_person").val());
+            $(this).attr("disabled", true);
+            $.ajax({
+                type: "post",
+                url: "index.php?sys=administration&mod=opinion&op=nt",
+                data: {
+                    opinion: opinion,
+                    id: '{$apply.nt_id}',
+                    refuse: strRefuse //里面包含了uid和该UID所对应的流程步骤,是一个字符串
+                },
+                success: function(data) {
+                    confirmProcessbyReturn(data); //放在function.js中
+                }
+            });
+        }
+    });
+    // 同意
+    $(".submit_btn").click(function() {
+        var strOpinion = $.trim($(".opinion_box #opinion").val());
+        $(this).attr("disabled", true);
+        $.ajax({
+            type: "post",
+            url: "index.php?sys=administration&mod=opinion&op=nt",
+            data: {
+                id: '{$apply.nt_id}',
+                opinion: strOpinion,
+                agree: 1
+            },
+            success: function(data) {
+                confirmProcessbyReturn(data); //放在function.js中
+            }
+        });
+    })
+</script>

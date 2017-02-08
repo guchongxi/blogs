@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>table demo</title>
+    <script src="/assets/table-demo/js/jquery-1.11.3.js"></script>
+    <script src="/assets/table-demo/js/jquery.easydrag.handler.beta2.js"></script>
+    <script src="/assets/table-demo/js/laydate.js"></script>
+    <link rel="stylesheet" href="/assets/table-demo/js/skins/default/laydate.css">
+    <link rel="stylesheet" href="/assets/table-demo/js/need/laydate.css">
+    <!--统一样式文件:重置,表格,弹窗 -->
+    <link rel="stylesheet" type="text/css" href="/assets/table-demo/css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="/assets/table-demo/css/table-common.css"/>
+    <link rel="stylesheet" type="text/css" href="/assets/table-demo/css/table-popup.css"/>
+
+    <!-- 各列自定宽度 -->
+    <style type="text/css">
+        .c_1 {width: 8%;}
+        .c_2 {width: 14%;}
+        .c_3 {width: 10%;}
+        .c_4 {width: 21%;}
+        .c_5,.c_6 {width: 12%;}
+        .c_7 {width: 12%;}
+
+        /*  小计 跨列格
+            width = (8% + 14% + 10%) / 8% = 400% 只要比结果小就可以
+         */
+        .c_content{
+            width: 400%;
+            font-size:12px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+<!-- 页面 -->
+<div class="single_zr">
+    <div class="right_container">
+        <!--导航-->
+        <div class="breadcrumb_nav">
+            <p class="current_nav">
+                <span class="current_nav_title">当前位置:</span>
+                <!--链接使用<a>,非链接使用<span> 'current_nav_item' - 标题项-->
+                <a class="current_nav_item" href="index.php?sys=human">人力管理</a>
+                <!--'indicator - 分隔符'-->
+                <span class="indicator">>></span>
+                <span class="current_nav_item">薪资管理</span>
+                <span class="indicator">>></span>
+                <!--'font_red - 红色字'-->
+                <span class="current_nav_item font_red">公积金管理</span>
+            </p>
+            <!--查询按钮-->
+            <div class="search_drop_down_btn"
+                 onclick="openShutManager(this,'drop_down_search',false,'<img src=/assets/table-demo/img/everyclose_btn.png />','<img src=/assets/table-demo/img/click_btn.png />')">
+                <!--默认显示关闭(查询框默认打开)-->
+                <img src="/assets/table-demo/img/everyclose_btn.png"/>
+            </div>
+        </div>
+        <!-- 查询框 -->
+        <div id="drop_down_search" class="drop_down_search_bar">
+            <p class="search_title_bar">
+                <span class="search_title"><i></i> 查询管理</span>
+            </p>
+            <div class="search_box">
+                <!-- 控件项 - 标准 -->
+                <div class="search_item">
+                    <label for="applicant">申请人</label>
+                    <input type="text" id="applicant" class="clear_item"/>
+                </div>
+                <!-- 控件项 - 选项 -->
+                <div class="search_item">
+                    <label for="state">缴纳状态</label>
+                    <select id="state">
+                        <option value="7">全部</option>
+                        <option value="1">未缴纳</option>
+                    </select>
+                </div>
+                <!-- 控件项 - 单一日期 -->
+                <div class="search_item search_date_range">
+                    <label for="apply_date">提交日期</label>
+                    <input type="text" id="apply_date" onclick="laydate()" readonly  class="clear_item"/>
+                </div>
+                <!-- 由js控制起始日期格式 -->
+                <!-- 控件项 - 起始日期 -->
+                <div class="search_item search_date_range">
+                    <label for="apply_start_date">申请日期</label>
+                    <input type="text" id="apply_start_date" readonly  class="clear_item"/>
+                </div>
+                <!-- 控件项 - 终止日期 -->
+                <div class="search_item search_date_range_indicator">
+                    <label for="apply_end_date">-</label>
+                    <input type="text" id="apply_end_date" readonly  class="clear_item"/>
+                </div>
+                <!-- 查询 -->
+                <input class="search_btn" type="button" value="查询" readonly/>
+                <!-- 重置 -->
+                <input class="reset_btn" type="button" value="重置" readonly/>
+            </div>
+        </div>
+        <!-- 分类 -->
+        <div class="select_box ">
+            <ul>
+                <li>
+                    <a href=" ">上月公积金</a>
+                </li>
+                <li>
+                    <a href=" ">本月变动</a>
+                </li>
+                <li>
+                    <a href=" ">下月变动</a>
+                </li>
+                <li>
+                    <a href=" " class="hover">全部</a>
+                </li>
+                <li class="job_modify fr ">
+                    <a href="#">修改</a>
+                </li>
+            </ul>
+        </div>
+        <!-- 部门 -->
+        <div class="dept_list ">
+            <div class="dept_list_title ">
+                <ul>
+                    <li class="dept_save ">
+                        <a href="#">修改</a>
+                    </li>
+                    <!-- 使用js绑定点击<a> 触发input点击事件 -->
+                    <li class="upload">
+                        <form method="post" action="" enctype="multipart/form-data">
+                            <a id="load">导入</a>
+                            <input type="file" name="cus_file"/>
+                        </form>
+                    </li>
+                    <li class="export">
+                        <a id="export">导出</a>
+                    </li>
+                    <li class="download">
+                        <a target="_blank" href="">下载</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- 左右按钮点击事件可直接复制 -->
+            <div class="dept_list_box ">
+                <div class="btn_box ">
+                    <div class="btnlf ">&lt;</div>
+                    <div class="btnrt ">&gt;</div>
+                </div>
+                <div class="dept_list_container ">
+                    <ul>
+                        <li><a href="#">xxxxxxx</a></li>
+                        <li><a href="#">xxxxxxx</a></li>
+                        <li><a href="#">xxxxxxx</a></li>
+                        <li><a href="#">xxxxxxx</a></li>
+                        <li><a href="#">xxxxxxx</a></li>
+                        <li><a href="#">xxxxxxx</a></li>
+                        <li><a href="#">xxxxxxx</a></li>
+                        <li><a href="#">xxxxxxx</a></li>
+                        <li><a href="#">xxxxxxx</a></li>
+                        <li><a href="#">xxxxxxx</a></li>
+                        <li><a href="#">xxxxxxx</a></li>
+                        <li><a href="#">xxxxxxx</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- 表格 -->
+        <div class="table_list_box ">
+            <div class="table_list_header ">
+                <ul>
+                    <li class="header_item update"><span>更新</span></li>
+                    <li class="header_item export"><span>导出</span></li>
+                    <li class="header_item edit"><span>编辑</span></li>
+                    <li class="header_item delete"><span>删除</span></li>
+                    <!-- 使用js绑定点击<a> 触发input点击事件 -->
+                    <li class="header_item upload">
+                        <form method="post" action="" enctype="multipart/form-data">
+                            <a id="load1">导入</a>
+                            <input type="file" name="cus_file"/>
+                        </form>
+                    </li>
+                    <li class="header_item download">
+                        <a href="#">下载</a>
+                    </li>
+                    <li class="header_item apply"><span>应用</span></li>
+                </ul>
+            </div>
+            <!-- 若为两行表头则追加'double' -->
+            <table class="table_list_content double">
+                <thead>
+                <tr class="table_list_title ">
+                    <th class="c_1" rowspan="2">申请人</th>
+                    <th class="c_2" rowspan="2">所在部门</th>
+                    <th colspan="2">类型</th>
+                    <th class="c_5">申请日期</th>
+                    <th class="c_6">接收日期</th>
+                    <th class="c_7">接收日期</th>
+                    <th rowspan="2">审核状态</th>
+                </tr>
+                <tr class="table_list_title ">
+                    <th class="c_3">类型</th>
+                    <th class="c_4">详细说明</th>
+                    <th colspan="3">申请日期</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="table_list_row ">
+                    <td class="c_1">XXXX</td>
+                    <td class="c_2">XXXX</td>
+                    <td class="c_3">XXXX</td>
+                    <td class="c_4">XXXX</td>
+                    <td class="c_5">XXXX</td>
+                    <td class="c_6">XXXX</td>
+                    <td class="c_7">XXXX</td>
+                    <td>xxxxx</td>
+                </tr>
+                <!-- <tbody> 中的每一个单元格都不能合并,因此需要合并的单元格只能通过设置右(no_rbor)或下(no_bbor)边框为none视觉上进行合并,需要在合并格中显示字的放在当前行第一列中的div.c_content中 -->
+                <tr class="table_list_row ">
+                    <td class="c_1 no_rbor no_bbor"></td>
+                    <td class="c_2 no_rbor no_bbor"></td>
+                    <td class="c_3 no_bbor"></td>
+                    <td class="c_4">XXXX</td>
+                    <td class="c_5">XXXX</td>
+                    <td class="c_6">XXXX</td>
+                    <td class="c_7">XXXX</td>
+                    <td>xxxxx</td>
+                </tr>
+                <tr class="table_list_row ">
+                    <td class="c_1 no_rbor no_bbor"><div class="c_content">小计</div></td>
+                    <td class="c_2 no_rbor no_bbor"></td>
+                    <td class="c_3 no_bbor"></td>
+                    <td class="c_4">XXXX</td>
+                    <td class="c_5">XXXX</td>
+                    <td class="c_6">XXXX</td>
+                    <td class="c_7">XXXX</td>
+                    <td>xxxxx</td>
+                </tr>
+                <tr class="table_list_row ">
+                    <td class="c_1 no_rbor"></td>
+                    <td class="c_2 no_rbor"></td>
+                    <td class="c_3"></td>
+                    <td class="c_4">XXXX</td>
+                    <td class="c_5">XXXX</td>
+                    <td class="c_6">XXXX</td>
+                    <td class="c_7">XXXX</td>
+                    <td>xxxxx</td>
+                </tr>
+                </tbody>
+                <tfoot>
+                <tr class="table_list_row ">
+                    <td class="c_1 font_red">总计:</td>
+                    <td class="c_2 ">xx</td>
+                    <td class="c_3 ">xx</td>
+                    <td class="c_4 ">xx</td>
+                    <td class="c_5 ">xx</td>
+                    <td>xx</td>
+                </tr>
+                <tr class="table_list_row ">
+                    <td colspan="8 ">没有任何记录!</td>
+                </tr>
+                </tfoot>
+            </table>
+            <div class="page_down">
+                <a href="?sys=administration&amp;mod=havedo&amp;keyword=&amp;apply_start_date=&amp;apply_end_date=&amp;op=mpsq&amp;rowsall=4&amp;page=1">首页</a>
+                <a style="color:#fff;background:#d1d1d1;">1</a>
+                <a href="?sys=administration&amp;mod=havedo&amp;keyword=&amp;apply_start_date=&amp;apply_end_date=&amp;op=mpsq&amp;rowsall=4&amp;page=1">尾页</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h3 style="text-align: center;"><a href="javascript:window.history.go(-1)">返回</a></h3>
+
+<!--页面内弹窗-->
+<div class="popup_apply" style="display: none;">
+    <!-- 头部 -->
+    <div class="popwin_header" id="popapp_header">
+        <img class="popapp_close" src="/assets/table-demo/img/close_icon.jpg"/>
+        <p class="popwin_breadcrumb">
+            行政事务 >> 二 >> 三 >>
+            <span class="font_red">查看</span>
+            <span class="font_bule" id="print">打印</span>
+            <!-- poppattBoxOpen() 传参数字为该弹窗在 '.popwin_attach'中的排序-->
+            <!-- 此处 span.fr 自动右浮动,红色字 -->
+            <span class="fr" onclick="popattBoxOpen(1)">资产申购>></span>
+        </p>
+    </div>
+    <!-- 主体 -->
+    <div class="popwin_body">
+        <div class="apply_process_box">
+            <p class="ap_title">流程</p>
+            <div class="ap_chart">
+                <span class="ap_item ap_ends">开始</span>
+                <i class="arrow_right"></i>
+                <!-- 通过审核 -->
+                <span class="ap_item ap_pass ">AAA</span>
+                <i class="arrow_right"></i>
+                <!-- 正在审核 -->
+                <span class="ap_item ap_current">BBB</span>
+                <i class="arrow_right"></i>
+                <!-- 还未审核 -->
+                <span class="ap_item">CCC</span>
+                <i class="arrow_right"></i>
+                <span class="ap_item ap_ends">结束</span>
+            </div>
+        </div>
+        <div class="popwin_content scroll_bar">
+            <div class="content_box">
+                <h1>标题</h1>
+            </div>
+            <div class="content_box">
+                <h2>基本信息</h2>
+                <div class="row-c">
+                    <div class="col-a">
+                        <label>输入</label>
+                        <input type="text" value="AAA" readonly/>
+                    </div>
+                    <div class="col-a">
+                        <label>选项</label>
+                        <select disabled>
+                            <option value="A">AAA</option>
+                        </select>
+                    </div>
+                    <div class="col-a">
+                        <label>日期</label>
+                        <input type="text" value="AAAA" readonly onclick="laydate()" class="input_date"/>
+                    </div>
+                    <div class="col-c">
+                        <label>原因</label>
+                        <textarea readonly>AAA</textarea>
+                    </div>
+                    <fieldset readonly>
+                        <legend>说明</legend>
+                        <textarea readonly>AAA</textarea>
+                    </fieldset>
+                </div>
+            </div>
+            <div class="content_box">
+                <h2>附件</h2>
+                <ul id="att_list">
+                    <!--图片-->
+                    <li>
+                        <img src="/assets/table-demo/img/nopic.jpg" onclick="imgMagnify($(this).attr('src'))"/>
+                        <a href="javascript:window.parent.window.document.getElementById('picsubmit').contentWindow.delpic('{$v[0]}')">删除</a>
+                    </li>
+                    <!--文件-->
+                    <li>
+                        <a target="_blank" href="{$v[0]}" class="att_file" download >
+                            <img src="/assets/table-demo/img/load.jpg"/>
+                        </a>
+                        <a href="javascript:window.parent.window.document.getElementById('picsubmit').contentWindow.delpic('{$v[0]}')">删除</a>
+                    </li>
+                    <!--无图-->
+                    <li>
+                        <img src="uploadfile/nopic.jpg" alt="暂无图片"/>
+                    </li>
+                </ul>
+            </div>
+            <div class="content_box">
+                <h2>货物明细</h2>
+                <!-- 表头固定 -->
+                <div class="table_box">
+                    <div class="table_header">
+                        <table>
+                            <tr>
+                                <th width="10%">序号</th>
+                                <th width="10%">产品名称</th>
+                                <th width="10%">产品规格</th>
+                                <th width="10%">箱规</th>
+                                <th width="10%">数量/箱</th>
+                                <th width="10%">单价/元</th>
+                                <th width="10%">总金额/元</th>
+                                <th>备注</th>
+                            </tr>
+                        </table>
+                    </div>
+                    <!-- 主体定高超高滚动 -->
+                    <div class="table_content scroll_bar">
+                        <table>
+                            <tr>
+                                <td width="10%">AAA</td>
+                                <td width="10%">AAA</td>
+                                <td width="10%">AAA</td>
+                                <td width="10%">AAA</td>
+                                <td width="10%">AAA</td>
+                                <td width="10%">AAA</td>
+                                <td width="10%">AAA</td>
+                                <td>AAA</td>
+                            </tr>
+                            <td width="10%" class="font_red">总计</td>
+                            <td width="10%">AAA</td>
+                            <td width="10%">AAA</td>
+                            <td width="10%">AAA</td>
+                            <td width="10%">AAA</td>
+                            <td width="10%">AAA</td>
+                            <td width="10%">AAA</td>
+                            <td>AAA</td>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="content_box">
+                <h2>审核流程</h2>
+                <table class="process_box">
+                    <thead>
+                    <tr>
+                        <th width="10%">用户</th>
+                        <th width="40%">操作</th>
+                        <th width="20%">审核状态</th>
+                        <th width="30%">处理时间</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>AAA</td>
+                        <td>AAA</td>
+                        <td>AAA</td>
+                        <td>AAA</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="opinion_box">
+            <textarea name="opinion" id="" placeholder="请填写意见"></textarea>
+        </div>
+    </div>
+    <!-- 底部  -->
+    <div class="popwin_footer">
+        <input type="button" value="关闭" class="popapp_close" readonly>
+        <input type="button" value="提交" class="fr"/>
+        <input type="button" value="取回" class="fr" onclick="newtakeback(this)" data-id="{$apply.yc_id}"
+               data-apply="contractManage" data-state="{$apply.sc_state}" data-op="sc" data-sys='administration'>
+        <select class="assign_person">
+            <option value="1">张嘉望</option>
+        </select>
+        <input type="button" value="驳回" class="reject_file">
+    </div>
+    <!-- 附属弹窗 -->
+    <div class="popwin_attach">
+        <!--资产申购 该弹窗目前排位第 1-->
+        <div class="popatt_box">
+            <p class="popatt_header">
+                <img class="popatt_close" onclick="popattBoxClose(this)" src="/assets/table-demo/img/close_icon.jpg"/>
+                资产申购
+            </p>
+            <div class="popatt_body">
+                <table>
+                    <thead>
+                    <tr>
+                        <th width="20%">编号</th>
+                        <th width="50%">资产名称</th>
+                        <th width="10%">数量</th>
+                        <th width="20%">估价</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>AAA</td>
+                        <td>AAA</td>
+                        <td>AAA</td>
+                        <td>AAA</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 弹窗 -->
+<div class="popup_win">
+    <!-- 头部 -->
+    <div class="popwin_header" id="popwin_header">
+        <img class="popwin_close" src="/assets/table-demo/img/close_icon.jpg"/>
+        <p class="popwin_breadcrumb">
+            行政事务 >> 二 >> 三 >>
+            <span class="font_red">查看</span>
+            <span class="font_bule" id="print">打印</span>
+            <!-- poppattBoxOpen() 传参数字为该弹窗在 '.popwin_attach'中的排序-->
+            <!-- 此处 span.fr 自动右浮动,红色字 -->
+            <span class="fr" onclick="popattBoxOpen(1)">资产申购>></span>
+        </p>
+    </div>
+    <!-- 主体 -->
+    <div class="popwin_body">
+        <div class="apply_process_box">
+            <p class="ap_title">流程</p>
+            <div class="ap_chart">
+                <span class="ap_item ap_ends">开始</span>
+                <i class="arrow_right"></i>
+                <!-- 通过审核 -->
+                <span class="ap_item ap_pass ">AAA</span>
+                <i class="arrow_right"></i>
+                <!-- 正在审核 -->
+                <span class="ap_item ap_current">BBB</span>
+                <i class="arrow_right"></i>
+                <!-- 还未审核 -->
+                <span class="ap_item">CCC</span>
+                <i class="arrow_right"></i>
+                <span class="ap_item ap_ends">结束</span>
+            </div>
+        </div>
+        <div class="popwin_content scroll_bar">
+            <div class="content_box">
+                <h1>标题</h1>
+            </div>
+            <div class="content_box">
+                <h2>基本信息</h2>
+                <div class="row-c">
+                    <div class="col-a">
+                        <label>输入</label>
+                        <input type="text" value="AAA" readonly/>
+                    </div>
+                    <div class="col-a">
+                        <label>选项</label>
+                        <select disabled>
+                            <option value="A">AAA</option>
+                        </select>
+                    </div>
+                    <div class="col-a">
+                        <label>日期</label>
+                        <input type="text" value="AAAA" readonly onclick="laydate()" class="input_date"/>
+                    </div>
+                    <div class="col-c">
+                        <label>原因</label>
+                        <textarea readonly>AAA</textarea>
+                    </div>
+                    <fieldset readonly>
+                        <legend>说明</legend>
+                        <textarea readonly>AAA</textarea>
+                    </fieldset>
+                </div>
+            </div>
+            <div class="content_box">
+                <h2>附件</h2>
+                <ul id="att_list">
+                    <!--图片-->
+                    <li>
+                        <img src="uploadfile/nopic.jpg" onclick="imgMagnify($(this).attr('src'))"/>
+                        <a href="javascript:window.parent.window.document.getElementById('picsubmit').contentWindow.delpic('{$v[0]}')">删除</a>
+                    </li>
+                    <!--文件-->
+                    <li>
+                        <a target="_blank" href="{$v[0]}" class="att_file">
+                            <img src="/assets/table-demo/img/load.jpg"/>
+                        </a>
+                        <a href="javascript:window.parent.window.document.getElementById('picsubmit').contentWindow.delpic('{$v[0]}')">删除</a>
+                    </li>
+                    <!--无图-->
+                    <li>
+                        <img src="uploadfile/nopic.jpg" alt="暂无图片"/>
+                    </li>
+                </ul>
+            </div>
+            <div class="content_box">
+                <h2>货物明细</h2>
+                <!-- 表头固定 -->
+                <div class="table_box">
+                    <div class="table_header">
+                        <table>
+                            <tr>
+                                <th width="10%">序号</th>
+                                <th width="10%">产品名称</th>
+                                <th width="10%">产品规格</th>
+                                <th width="10%">箱规</th>
+                                <th width="10%">数量/箱</th>
+                                <th width="10%">单价/元</th>
+                                <th width="10%">总金额/元</th>
+                                <th>备注</th>
+                            </tr>
+                        </table>
+                    </div>
+                    <!-- 主体定高超高滚动 -->
+                    <div class="table_content scroll_bar">
+                        <table>
+                            <tr>
+                                <td width="10%">AAA</td>
+                                <td width="10%">AAA</td>
+                                <td width="10%">AAA</td>
+                                <td width="10%">AAA</td>
+                                <td width="10%">AAA</td>
+                                <td width="10%">AAA</td>
+                                <td width="10%">AAA</td>
+                                <td>AAA</td>
+                            </tr>
+                            <td width="10%" class="font_red">总计</td>
+                            <td width="10%">AAA</td>
+                            <td width="10%">AAA</td>
+                            <td width="10%">AAA</td>
+                            <td width="10%">AAA</td>
+                            <td width="10%">AAA</td>
+                            <td width="10%">AAA</td>
+                            <td>AAA</td>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="content_box">
+                <h2>审核流程</h2>
+                <table class="process_box">
+                    <thead>
+                    <tr>
+                        <th width="10%">用户</th>
+                        <th width="40%">操作</th>
+                        <th width="20%">审核状态</th>
+                        <th width="30%">处理时间</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>AAA</td>
+                        <td>AAA</td>
+                        <td>AAA</td>
+                        <td>AAA</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="opinion_box">
+            <textarea name="opinion" id="opinion" placeholder="请填写意见"></textarea>
+        </div>
+    </div>
+    <!-- 底部  -->
+    <div class="popwin_footer">
+        <input type="button" value="关闭" class="popwin_close" readonly>
+        <input type="button" value="提交" class="fr"/>
+        <input type="button" value="取回" class="fr" onclick="newtakeback(this)" data-id="{$apply.yc_id}"
+               data-apply="contractManage" data-state="{$apply.sc_state}" data-op="sc" data-sys='administration'>
+        <select class="assign_person">
+            <option value="1">张嘉望</option>
+        </select>
+        <input type="button" value="驳回" class="reject_file">
+    </div>
+    <!-- 附属弹窗 -->
+    <div class="popwin_attach">
+        <!--资产申购 该弹窗目前排位第 1-->
+        <div class="popatt_box">
+            <p class="popatt_header">
+                <img class="popatt_close" onclick="popattBoxClose(this)" src="/assets/table-demo/img/close_icon.jpg"/>
+                资产申购
+            </p>
+            <div class="popatt_body">
+                <table>
+                    <thead>
+                    <tr>
+                        <th width="20%">编号</th>
+                        <th width="50%">资产名称</th>
+                        <th width="10%">数量</th>
+                        <th width="20%">估价</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>AAA</td>
+                        <td>AAA</td>
+                        <td>AAA</td>
+                        <td>AAA</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    /* 所有弹窗底部必须调用此方法! 参数为关闭按钮选择器,容器选择器,导航条ID*/
+    $(function(){
+       popup_window();
+    });
+
+    /* 弹窗拖动与关闭 */
+    function popup_window(btn,box,handlerId) {
+        if(!btn){btn = '.popwin_close'}
+        if(!box){box = '.popup_win'}
+        if(!handlerId){handlerId = 'popwin_header'}
+        // 关闭按钮
+        $(btn).click(function () {
+            $(box).hide().removeClass('pw_s pw_l pw_xl').css('margin-right',0).html('');
+        });
+        // 拖动
+        $(box).easydrag().setHandler(handlerId);
+    }
+
+    /* 附属弹窗关闭 */
+    function  popattBoxClose(e){
+        $(e).parents('div.popatt_box').hide();
+        if(!($('.popwin_attach .popatt_box').is(':visible'))){
+            $('.popup_win').css('margin-right','0');
+        }
+    }
+
+    /* 附属弹窗打开 */
+    function popattBoxOpen(n){
+        n = parseInt(n) - 1;
+        $('.popup_win').css('margin-right','533px');
+        $('div.popup_win div.popatt_box').eq(n).show();
+    }
+
+    /* 点击行查看详情 */
+    $('tbody .table_list_row').click(function () {
+        $('.popup_win').show();
+    });
+
+    /* 查询 - 打开关闭 */
+    function openShutManager(oSourceObj, oTargetObj, shutAble, oOpenTip, oShutTip) {
+        var sourceObj = typeof oSourceObj == "string" ? document.getElementById(oSourceObj) : oSourceObj;
+        var targetObj = typeof oTargetObj == "string" ? document.getElementById(oTargetObj) : oTargetObj;
+        var openTip = oOpenTip || "";
+        var shutTip = oShutTip || "";
+        if (targetObj.style.display != "none") {
+            if (shutAble) return;
+            targetObj.style.display = "none";
+            if (openTip && shutTip) {
+                sourceObj.innerHTML = shutTip;
+            }
+        } else {
+            targetObj.style.display = "block";
+            if (openTip && shutTip) {
+                sourceObj.innerHTML = openTip;
+            }
+        }
+    }
+
+    /* 部门列表滚动*/
+    $(".btn_box ").on("click ", function (e) {
+        var $scrollBox = $(".dept_list_container ");
+        var scrollLeft = $scrollBox.scrollLeft();
+        if (e.target.className == "btnlf ") {
+            $scrollBox.scrollLeft(scrollLeft - 103);
+            return false;
+        }
+        if (e.target.className == "btnrt ") {
+            $scrollBox.scrollLeft(scrollLeft + 103);
+            return false;
+        }
+    });
+
+    /* 全选 */
+    $('input[name=allUser]').click(function () {
+        if (this.checked) {
+            $('input[type=checkbox]').each(function () {
+                this.checked = true;
+            });
+        } else {
+            $('input[type=checkbox]').each(function () {
+                this.checked = false;
+            });
+        }
+    });
+
+    /* 查询日期设置 */
+    var apply_start_date = {
+        elem: '#apply_start_date',
+        istime: true,
+        istoday: false,
+        choose: function (datas) {
+            apply_end_date.min = datas; //开始日选好后，重置结束日的最小日期
+            apply_end_date.start = datas; //将结束日的初始值设定为开始日
+        }
+    };
+    var apply_end_date = {
+        elem: '#apply_end_date',
+        istime: true,
+        istoday: false,
+        choose: function (datas) {
+            apply_start_date.max = datas; //结束日选好后，重置开始日的最大日期
+        }
+    };
+    laydate(apply_start_date);
+    laydate(apply_end_date);
+
+    /* 重置 */
+    $('.reset_btn').click(function() {
+        $('input.clear_item').val('');
+    });
+
+    /* 导入 */
+    $('#load').click(function () {
+        $(this).next().trigger('click');
+    });
+</script>
+</body>
+</html>

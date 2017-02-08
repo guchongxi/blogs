@@ -1,0 +1,578 @@
+/*
+  *源文件为table-popup.less
+  *请勿直接修改CSS文件!!
+  *固定表头页面公共样式 by gcx 2016/12/8
+*/
+
+//变量
+@size_s: 620px;
+@size_l: 1060px;
+@size_xl: 1350px;
+
+// 最外层div 
+
+.popup_win, .popup_apply {
+  position: absolute;
+  z-index: 10;
+  top: 5%;
+  left: 15%;
+  display: none;
+  height: auto;
+  width: 780px;
+  border: 7px solid #5ea1e0;
+  border-radius: 6px;
+  background-color: #fff;
+  font-family: "微软雅黑";
+  //不同宽度弹窗
+  &.pw_s {
+    width: @size_s;
+  }
+  &.pw_l {
+    width: @size_l;
+  }
+  &.pw_xl {
+    width: @size_xl;
+  }
+  // 具有滚动条的容器
+  .scroll_bar {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    // 设置垂直滚动条的宽度和水平滚动条的高度
+    &::-webkit-scrollbar {
+      width: 10px;
+      height: 10px;
+    }
+    // 设置滚动条的滑轨
+    &::-webkit-scrollbar-track {
+      background-color: #eee;
+    }
+    // 滑块
+    &::-webkit-scrollbar-thumb {
+      background-color: rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+    }
+    // 滑轨两头的监听按钮
+    &::-webkit-scrollbar-button {
+      background-color: #ddd;
+    }
+    // 横向滚动条和纵向滚动条相交处尖角
+    &::-webkit-scrollbar-corner {
+      //background-color: black;
+    }
+  }
+  // 弹窗顶部
+  .popwin_header {
+    height: 28px;
+    background: url(../img/apply_bg.jpg) repeat-x;
+    // 弹窗导航
+    .popwin_breadcrumb {
+      line-height: 28px;
+      width: 90%;
+      padding: 0 1%;
+      font-size: 14px;
+      label {
+        margin-left: 30px;
+      }
+      span.fr {
+        height: 28px;
+        line-height: 28px;
+        color: #f00;
+      }
+      span.font_blue {
+        margin-left: 10px;
+      }
+    }
+    // 弹窗关闭
+    .popwin_close, .popapp_close {
+      float: right;
+      cursor: pointer;
+    }
+  }
+  // 弹窗主体
+  .popwin_body {
+    padding: 0 10px;
+    // 图形流程
+    .apply_process_box {
+      position: relative;
+      padding: 0 1%;
+      .ap_title {
+        position: relative;
+        top: 10px;
+        width: 44px;
+        margin: 0 auto;
+        text-align: center;
+        background-color: #fff;
+        font-weight: bold;
+      }
+      .ap_chart {
+        padding: 28px 1% 12px;
+        text-align: center;
+        border: 1px dashed #ccc;
+        border-radius: 5px;
+        i.arrow_right {
+          display: inline-block;
+          box-sizing: content-box;
+          width: 20px;
+          height: 20px;
+          padding: 3px;
+          background: url(../img/glyphicons-halflings.png) -258px -91px;
+        }
+        .ap_item {
+          font-size: 12px;
+          line-height: 20px;
+          display: inline-block;
+          overflow: hidden;
+          padding: 3px 8px;
+          border: 1px solid #5ea1e0;
+          border-radius: 50%;
+          color: #0895fd;
+          background-color: #fff;
+          &.ap_ends {
+            color: #fff;
+            border-color: #f99393;
+            background-color: #ffb8b8;
+          }
+          &.ap_pass {
+            color: #fff;
+            border-color: #7eb0e0;
+            background-color: #add7ff;
+          }
+          &.ap_current {
+            color: #fff;
+            background-color: #0895fd;
+          }
+        }
+      }
+    }
+    // 主体信息 - 内容超高滚动
+    .popwin_content {
+      margin-top: 10px;
+      max-height: 300px;
+      // 各模块
+      .content_box {
+        padding: 0 10px 0 17px;
+        zoom: 1;
+        &:after {
+          font-size: 0;
+          display: block;
+          visibility: hidden;
+          clear: both;
+          height: 0;
+          content: '';
+        }
+        // 模块标题
+        h1 {
+          text-align: center;
+          font-weight: bold;
+        }
+        h2 {
+          margin-bottom: 6px;
+          font-size: 14px;
+          font-weight: bold;
+          line-height: 30px;
+          border-bottom: 1px dashed #ccc;
+          padding-left: 10px;
+          color: #108BF5;
+        }
+        h3 {
+          font-weight: bold;
+        }
+        fieldset {
+          border: 1px solid #DDD;
+          border-radius: 3px;
+          margin: 7px 0;
+          padding-left: 3px;
+          clear: both;
+          &[readonly], &[disabled] {
+            background: rgb(235, 235, 228);
+          }
+          legend {
+            padding: 0 3px;
+          }
+          textarea {
+            width: 99%;
+            min-height: 60px;
+            border: none;
+            padding: 5px;
+            font-family: 'Microsoft Yahei';
+            font-size: 14px;
+            .scroll_bar;
+            &[readonly] {
+              background: rgb(235, 235, 228);
+            }
+          }
+        }
+        // 布局网格 from jQuery Mobile
+        // content configurations.
+        [class*="row-"] {
+          overflow: hidden;
+        }
+        [class*="col-"] {
+          margin: 0;
+          padding: 7px 5px;
+          border: 0;
+          float: left;
+          min-height: 1px;
+          -webkit-box-sizing: border-box;
+          -moz-box-sizing: border-box;
+          box-sizing: border-box;
+          position: relative;
+        }
+        ul[class*="row-"],
+        li[class*="col-"] {
+          margin-left: 0;
+          margin-right: 0;
+          padding: 0;
+          list-style: none;
+        }
+
+        [class*="col-"] > label {
+          display: inline-block;
+          width: 73px;
+          vertical-align: middle;
+        }
+        [class*="col-"] > input[type="text"], [class*="col-"] > input[type="date"], [class*="col-"] > textarea, [class*="col-"] > select, [class*="col-"] > input[type="number"] {
+          width: calc(~"100% - 80px");
+          border: 1px solid #ccc;
+          color: #000;
+          text-indent: 5px;
+          -webkit-border-radius: 3px;
+          -moz-border-radius: 3px;
+          border-radius: 3px;
+          height: 20px;
+          line-height: 20px;
+          box-sizing: content-box;
+          font-family: 'Microsoft Yahei';
+        }
+        [class*="col-"] > select {
+          height: 22px;
+          line-height: 22px;
+          box-sizing: border-box;
+        }
+        [class*="col-"] > input[readonly], [class*="col-"] > textarea[readonly], [class*="col-"] > select[disabled] {
+          color: #000;
+          background: rgb(235, 235, 228);
+        }
+        [class*="col-"] > textarea {
+          max-height: 200px;
+          min-height: 70px;
+          vertical-align: top;
+          box-sizing: border-box;
+          padding: 5px;
+        }
+        [class*="col-"] > input[type="text"].input_date {
+          cursor: pointer;
+          background-image: url(../img/payment_input.jpg);
+          background-size: 100% 22px;
+          padding: 1px 0;
+          border: none;
+          color: #000;
+        }
+        // 一行一列
+        .row-a > .col-a,
+        .row-b > .col-b,
+        .row-c > .col-c,
+        .row-d > .col-d,
+        .row-e > .col-e {
+          width: 100%;
+        }
+        // 一行两列
+        .row-b > .col-a {
+          // width: 49.95%; IE7
+          // margin-right: -.5px; BB5
+          width: 50%;
+        }
+        // 一行三列
+        .row-c > .col-a {
+          // width: 33.25%; IE7
+          // margin-right: -.5px; BB5
+          width: 33.333%;
+        }
+        .row-c > .col-b {
+          // width: 66.5%; IE7
+          // margin-right: -.5px; BB5
+          width: 66.666%;
+        }
+        // 一行四列
+        .row-d > .col-a {
+          // width: 24.925%; IE7
+          // margin-right: -.5px; BB5
+          width: 25%;
+        }
+        .row-d > .col-b {
+          // width: 49.95%; IE7
+          // margin-right: -.5px; BB5
+          width: 50%;
+        }
+        .row-d > .col-c {
+          // width: 74.925%; IE7
+          // margin-right: -.5px; BB5
+          width: 75%;
+        }
+        // 一行五列
+        .row-e > .col-a {
+          // width: 19.925%; IE7
+          width: 20%;
+        }
+        .row-e > .col-b {
+          // width: 19.925%; IE7
+          width: 40%;
+        }
+        .row-e > .col-c {
+          // width: 19.925%; IE7
+          width: 60%;
+        }
+        .row-e > .col-d {
+          // width: 19.925%; IE7
+          width: 80%;
+        }
+
+        // 表格模块项
+        .table_box {
+          .table_header {
+            padding-right: 10px;
+            background-color: #eee;
+            border-top: 1px solid #cacaca;
+            border-right: 1px solid #cacaca;
+          }
+          .table_content {
+            max-height: 260px;
+            border-bottom: 1px solid #cacaca;
+            border-right: 1px solid #cacaca;
+          }
+          table {
+            width: 100%;
+            border-left: 1px solid #cacaca;
+            th,
+            td {
+              text-align: center;
+              font-size: 12px;
+              border-right: 1px solid #cacaca;
+              border-bottom: 1px solid #cacaca;
+              padding: 4px 0;
+              word-break: break-all;
+              &:last-child {
+                border-right: none;
+              }
+              input {
+                width: 100%;
+                text-align: center;
+                font-size:12px;
+              }
+            }
+            th {
+              font-weight: bold;
+              font-size: 14px;
+            }
+          }
+        }
+        // 表格模块项
+        .table_box_common {
+          table {
+            width: 100%;
+            border-collapse: collapse;
+            td, th {
+              border: 1px solid #ccc;
+              padding: 3px 6px;
+            }
+          }
+        }
+        // 流程模块项
+        .process_box {
+          width: 100%;
+          thead tr {
+            border-bottom: 1px dotted #ccc;
+          }
+          tbody tr {
+            border-bottom: 1px dashed #ccc;
+          }
+          th,
+          td {
+            text-align: center;
+            font-size: 12px;
+            padding: 2px 0;
+          }
+          th {
+            font-size: 14px;
+          }
+          th:first-child,
+          th:nth-child(2),
+          td:first-child,
+          td:nth-child(2) {
+            text-align: left;
+          }
+          td {
+            color: #000;
+            word-break: break-all;
+          }
+          th,
+          td:first-child {
+            font-weight: bold;
+            color: #000;
+          }
+        }
+        //附件模块项
+        //上传
+        #picsubmit, .picsubmit {
+          width: 70px;
+          height: 22px;
+          position: relative;
+          top: 6px;
+          border: none;
+        }
+        //内容
+        #att_list, .att_list {
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          max-height: 100px;
+          overflow-y: auto;
+          overflow-x: hidden;
+          margin-bottom: 10px;
+          .scroll_bar;
+          li, & > a {
+            width: 80px;
+            height: 80px;
+            padding: 2px;
+            margin: 5px;
+            border: 1px dashed #c2c2c2;
+            border-radius: 5px;
+            display: inline-block;
+            float: left;
+            position: relative;
+            img {
+              border: none;
+              margin-right: 10px;
+              width: 80px;
+              height: 80px;
+              cursor: pointer;
+            }
+            a:not(.att_file) {
+              position: absolute;
+              top: -6px;
+              right: -10px;
+              width: 20px;
+              height: 20px;
+              text-align: center;
+              transition: all 0.3s ease-in-out;
+              overflow: hidden;
+              &:hover {
+                border-radius: 50%;
+                color: #fff;
+                background: #5EA1E0;
+              }
+              &::before {
+                content: 'X';
+              }
+            }
+          }
+        }
+        .file {
+          background: #D1E6F9 url(../img/icon_fileLink.png) no-repeat 2px 6px;
+          display: block;
+          padding-left: 25px;
+          height: 30px;
+          line-height: 30px;
+          -webkit-border-radius: 5px;
+          -moz-border-radius: 5px;
+          border-radius: 5px;
+          color: #000;
+          &:hover {
+            color: #f00;
+          }
+        }
+      }
+    }
+    // 意见文本框
+    .opinion_box textarea {
+      line-height: 22px;
+      display: block;
+      width: 90%;
+      height: 60px;
+      margin: 15px auto 0;
+      padding: 5px 2%;
+      resize: none;
+      border: 1px solid #b9b9b9;
+      border-radius: 4px;
+      font-family: "Microsoft Yahei";
+    }
+    // 备注
+    .remark {
+      font-size: 12px;
+      color: #666;
+    }
+  }
+  //弹窗底部
+  .popwin_footer {
+    padding: 10px;
+    overflow: hidden;
+    input[type=button], input[type=submit] {
+      line-height: 22px;
+      height: 22px;
+      margin-right: 10px;
+      padding: 0 12px;
+      cursor: pointer;
+      text-align: center;
+      color: #fff;
+      border: none;
+      background-image: url(../img/query_btn.jpg);
+      background-size: 100% 100%;
+      font-family: "微软雅黑";
+    }
+    .popwin_close,.popapp_close {
+      float: right;
+    }
+    .assign_person {
+      line-height: 22px;
+      height: 22px;
+      margin: 0 3%;
+      min-width: 90px;
+      border: 1px solid #b9b9b9;
+    }
+  }
+  //附属弹窗
+  .popwin_attach {
+    width: 530px;
+    position: absolute;
+    top: -7px;
+    right: -540px;
+    .popatt_box {
+      border: 7px solid #5ea1e0;
+      border-radius: 6px;
+      background: #fff;
+      margin-bottom: 3px;
+      display: none;
+      .popatt_header {
+        height: 28px;
+        line-height: 28px;
+        text-align: center;
+        background: url(../img/apply_bg.jpg) repeat-x;
+        .popatt_close {
+          float: right;
+          cursor: pointer;
+        }
+      }
+      .popatt_body {
+        max-height: 287px;
+        overflow-x: hidden;
+        overflow-y: auto;
+        table {
+          width: 100%;
+          border-left: 1px solid #ccc;
+          border-top: 1px solid #ccc;
+          thead {
+            background: url(../img/payment_bg.jpg) repeat-x;
+          }
+          td, th {
+            border-bottom: 1px solid #ccc;
+            border-right: 1px solid #ccc;
+            text-align: center;
+            height: 25px
+          }
+          td {
+            font-size: 12px
+          }
+        }
+      }
+    }
+  }
+}
