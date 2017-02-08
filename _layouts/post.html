@@ -7,7 +7,7 @@ comments: true
     background-image: url('/assets/img/bgImage/{% if page.bg %}{{ page.bg }}{% else %}{{ site.backgroundImage }}{% endif %}');"
   }
 </style>
-<article class="post container">
+<article class="post container" id="article">
   <div class="post-meta">
     {% if page.date %}
     <span class="post-meta-span date">{{ page.date | date:"%Y %B %d" }}</span>
@@ -21,7 +21,10 @@ comments: true
   {{ content }}
 </article>
 
-
+<!-- 返回顶部 -->
+<div id="toTop">
+  <a href="#article" title="返回顶部"> </a>
+</div>
 
 {% include share.html %}
 {% include disqus.html %}
