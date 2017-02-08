@@ -43,17 +43,17 @@ tag: 固定表头 弹窗 通用
 2.  页面样式文件 `table-common.css` 以及弹窗样式文件 `table-popup.css` 已加载至 `\templates\home\index.html` ；但在项目初始阶段没有进行样式重置,因此部分页面需单独引入 `static\css\reset.css` 进行样式重置。
 3.  为充分进行样式复用，页面显示效果仅与标签 `class` 有关；但因涉及到部分js交互效果，以下特定标签 `id` 已被限定。<br/>
     查询框主体
-    ```html
+    {% highlight html %}
     <div id="drop_down_search" class="drop_down_search_bar">
         ···
     </div>
-    ```
+    {% endhighlight %}
     弹窗头部
-    ```html
+    {% highlight html %}
     <div class="popwin_header" id="popwin_header">
         ···
     </div>
-    ```
+    {% endhighlight %}
 4.  若在使用中有任何疑问或bug可随时联系我进行修改.
 
 ---
@@ -64,7 +64,7 @@ tag: 固定表头 弹窗 通用
 
 html文件内代码分为三个部分：CSS，HTML和Javascript
 
- ```html
+ {% highlight html %}
 <link rel="stylesheet" type="text/css" href="static/css/reset.css" />
 <style type="text/css">
     /*页面自有样式*/
@@ -81,11 +81,10 @@ html文件内代码分为三个部分：CSS，HTML和Javascript
         /*页面逻辑*/
     })
 </script>
-```
-
+{% endhighlight %}
 页面自有样式一般有表格各列宽度设定（最后一列为自适应宽度，不进行设定），宽度总和等于 `（100% - 最后一列宽度）`  
 例：表格共10列，每列宽度占比10%，宽度总和为90%
-```css
+{% highlight css %}
 .c_1,
 .c_2,
 .c_3,
@@ -97,13 +96,13 @@ html文件内代码分为三个部分：CSS，HTML和Javascript
 .c_9 {
   width: 10%
 }
-```
+{% endhighlight %}
 
 <h3 id="html2">头部</h3>
 
 ![1.png][]
 
-```html
+{% highlight html %}
 <div class="breadcrumb_nav">
     <!-- 导航 -->
     <p class="current_nav">
@@ -120,11 +119,11 @@ html文件内代码分为三个部分：CSS，HTML和Javascript
         <img src="static/img/everyclose_btn.png"/>
     </div>
 </div>
-```
+{% endhighlight %}
 
 `openShutManager()` :打开关闭查询框；参数：( `this` , `查询框容器 id` , `显示为关闭图片元素` , `显示为打开图片元素` )；定义在 `\static\js\drop.js` .<br/>
 查询框默认打开，如需设置默认关闭需修改
-```html
+{% highlight html %}
   <!-- 查询按钮 -->
   <div class="search_drop_down_btn"
        onclick="openShutManager(this,'drop_down_search',false,'<img src=static/img/everyclose_btn.png />','<img src=static/img/click_btn.png />')">
@@ -135,13 +134,13 @@ html文件内代码分为三个部分：CSS，HTML和Javascript
   <div class="popwin_header" id="popwin_header" style="display: none">
           ···
   </div>
-```
+{% endhighlight %}
 
 <h3 id="html3">查询框</h3>
 
 ![2.jpn][]
 
-```html
+{% highlight html %}
 <div id="drop_down_search" class="drop_down_search_bar">
   <p class="search_title_bar">
       <span class="search_title"><i></i> 查询管理</span>
@@ -156,19 +155,19 @@ html文件内代码分为三个部分：CSS，HTML和Javascript
       <input class="reset_btn" type="button" value="重置" readonly/>
   </div>
 </div>
-```
+{% endhighlight %}
 
 控件项
 * 标准输入
-  ```html
+  {% highlight html %}
     <div class="search_item">
         <label for="applicant">申请人</label>
         <input type="text" id="applicant"/>
     </div>
-  ```
+  {% endhighlight %}
   
 * 选项
-  ```html
+  {% highlight html %}
     <div class="search_item">
         <label for="state">缴纳状态</label>
         <select id="state">
@@ -176,36 +175,36 @@ html文件内代码分为三个部分：CSS，HTML和Javascript
             <option value="1">未缴纳</option>
         </select>
     </div>
-  ```
+  {% endhighlight %}
   
 * 选择日期
-  ```html
+  {% highlight html %}
     <div class="search_item search_date_range">
         <label for="apply_date">提交日期</label>
         <input type="text" id="apply_date" onclick="laydate()" readonly/>
     </div>
-  ```
+  {% endhighlight %}
   
   * 拾取时间使用 [laydate](http://laydate.layui.com/) 插件，若无需要可直接调用。
   
 * 起始日期
-  ```html
+  {% highlight html %}
     <div class="search_item search_date_range">
         <label for="apply_start_date">申请日期</label>
         <input type="text" id="apply_start_date" readonly/>
     </div>
-  ```
+  {% endhighlight %}
   
 * 终止日期
-  ```html
+  {% highlight html %}
     <div class="search_item search_date_range_indicator">
         <label for="apply_end_date">-</label>
         <input type="text" id="apply_end_date" readonly/>
     </div>
-  ```
+  {% endhighlight %}
   
   * 设置起止时间需在 ‘页面逻辑‘ 区添加以下代码：
-    ```js
+    {% highlight javascript %}
       /* 查询日期设置 */
       var apply_start_date = {
           elem: '#apply_start_date',
@@ -224,17 +223,17 @@ html文件内代码分为三个部分：CSS，HTML和Javascript
       };
       laydate(apply_start_date);
       laydate(apply_end_date);
-    ```
+    {% endhighlight %}
 需要进行重置的控件项追加 `class="clear_item"` ，重置逻辑定义在 ``。
-```html
+{% highlight html %}
   <input type="text" id="applicant" class="clear_item"/>
-```
+{% endhighlight %}
 
 <h3 id="html4">分类导航</h3>
 
 ![3.png][]
 
-```html
+{% highlight html %}
 <div class="select_box ">
     <ul>
         <li>
@@ -254,12 +253,12 @@ html文件内代码分为三个部分：CSS，HTML和Javascript
         </li>
     </ul>
 </div>
-```
+{% endhighlight %}
 <h3 id="html5">部门导航</h3>
 
 ![4.png][]
 
-```html
+{% highlight html %}
 <div class="dept_list ">
     <div class="dept_list_title ">
         <ul>
@@ -294,13 +293,13 @@ html文件内代码分为三个部分：CSS，HTML和Javascript
         </div>
     </div>
 </div>
-```
+{% endhighlight %}
 
 <h3 id="html6">表格头部</h3>
 
 ![5.png][]
 
-```html
+{% highlight html %}
 <div class="table_list_box ">
     <div class="table_list_header ">
         <ul>
@@ -326,11 +325,11 @@ html文件内代码分为三个部分：CSS，HTML和Javascript
     
     <!-- 分页 -->
 </div>
-```
+{% endhighlight %}
 
 <h3 id="html7">表格主体</h3>
 
-```html
+{% highlight html %}
 <table class="table_list_content double">
   <thead>
   <tr class="table_list_title ">
@@ -405,19 +404,19 @@ html文件内代码分为三个部分：CSS，HTML和Javascript
   </tr>
   </tfoot>
 </table>
-```
+{% endhighlight %}
 
 <h3 id="html8">分页</h3>
 
 ![1.png][]
 
-```html
+{% highlight html %}
 <div class="page_down">
     <a href="?sys=administration&amp;mod=havedo&amp;keyword=&amp;apply_start_date=&amp;apply_end_date=&amp;op=mpsq&amp;rowsall=4&amp;page=1">首页</a>
     <a style="color:#fff;background:#d1d1d1;">1</a>
     <a href="?sys=administration&amp;mod=havedo&amp;keyword=&amp;apply_start_date=&amp;apply_end_date=&amp;op=mpsq&amp;rowsall=4&amp;page=1">尾页</a>
 </div>
-```
+{% endhighlight %}
 
 <h3 id="html9">页面内弹窗</h3>
 
@@ -429,7 +428,7 @@ html文件内代码分为三个部分：CSS，HTML和Javascript
 
 结构
 
-```html
+{% highlight html %}
   <style type="text/css">
       /*弹窗自有样式*/
   </style>
@@ -446,11 +445,11 @@ html文件内代码分为三个部分：CSS，HTML和Javascript
           /*弹窗逻辑*/
       })
   </script>
-```
+{% endhighlight %}
 
 <h3 id="popup1">头部</h3>
 
-```html
+{% highlight html %}
 <div class="popwin_header" id="popwin_header">
     <img class="popwin_close" src="static/img/close_icon.jpg"/>
     <p class="popwin_breadcrumb">
@@ -462,11 +461,11 @@ html文件内代码分为三个部分：CSS，HTML和Javascript
         <span class="fr" onclick="popattBoxOpen(1)">资产申购>></span>
     </p>
 </div>
-```
+{% endhighlight %}
 
 <h3 id="popup2">主体</h3>
 
-```html
+{% highlight html %}
 <div class="popwin_body">
     <div class="apply_process_box">
         <p class="ap_title">流程</p>
@@ -606,11 +605,11 @@ html文件内代码分为三个部分：CSS，HTML和Javascript
         <textarea name="opinion" id="opinion" placeholder="请填写意见"></textarea>
     </div>
 </div>
-```
+{% endhighlight %}
 
 <h3 id="popup3">尾部</h3>
 
-```html
+{% highlight html %}
 <div class="popwin_footer">
     <input type="button" value="关闭" class="popwin_close" readonly>
     <input type="button" value="提交" class="fr"/>
@@ -621,11 +620,11 @@ html文件内代码分为三个部分：CSS，HTML和Javascript
     </select>
     <input type="button" value="驳回" class="reject_file">
 </div>
-```
+{% endhighlight %}
 
 <h3 id="popup4">附属</h3>
 
-```html
+{% highlight html %}
 <div class="popwin_attach">
     <!--资产申购 该弹窗目前排位第 1-->
     <div class="popatt_box">
@@ -655,14 +654,14 @@ html文件内代码分为三个部分：CSS，HTML和Javascript
         </div>
     </div>
 </div>
-```
+{% endhighlight %}
 ---
 
 <h2 id="js">交互逻辑</h2>
 
 <h3 id="js1">页面逻辑</h3>
 
-```js
+{% highlight javascript %}
 /* 点击行查看详情 */
     $('tbody .table_list_row').click(function () {
         $('.popup_win').show();
@@ -725,12 +724,12 @@ html文件内代码分为三个部分：CSS，HTML和Javascript
         $(this).next().trigger('click');
     });
     
-```
+{% endhighlight %}
 
 
 <h3 id="js2">弹窗逻辑</h3>
 
-```js
+{% highlight javascript %}
 /* 弹窗拖动与关闭 */
     function popup_window(btn,box,handlerId) {
         if(!btn){btn = '.popwin_close'}
@@ -758,11 +757,11 @@ html文件内代码分为三个部分：CSS，HTML和Javascript
         $('.popup_win').css('margin-right','533px');
         $('div.popup_win div.popatt_box').eq(n).show();
     }   
-```
+{% endhighlight %}
 
 <h3 id="js3">通用逻辑</h3>
 
-```js
+{% highlight javascript %}
 /* 查看图片 */
     function imgMagnify(imgUrl) {
         window.open('index.php?sys=administration&mod=imgmagnify&imgUrl=' + imgUrl, '', 'dialogWidth=800px;dialogHeight=500px;status=no;help=no;scrollbars=no');
@@ -805,6 +804,6 @@ html文件内代码分为三个部分：CSS，HTML和Javascript
     		}
     	});	
     }
-```
+{% endhighlight %}
 
 

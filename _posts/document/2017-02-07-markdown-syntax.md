@@ -78,7 +78,7 @@ This is a regular paragraph.
 
 This is another regular paragraph.
 
-```
+{% endhighlight %}
     This is a regular paragraph.
 
     <table>
@@ -88,7 +88,7 @@ This is another regular paragraph.
     </table>
 
     This is another regular paragraph.
-```
+{% endhighlight %}
 
 请注意，在 HTML 区块标签间的 Markdown 格式语法将不会被处理。比如，你在 HTML 区块内使用 Markdown 样式的 `*强调*` 会没有效果。。
 
@@ -278,11 +278,11 @@ Markdown 支持有序列表和无序列表。
 *   Green
 *   Blue
 
-```
+{% endhighlight %}
 *   Red
 *   Green
 *   Blue
-```
+{% endhighlight %}
 
 等同于：
 
@@ -302,11 +302,11 @@ Markdown 支持有序列表和无序列表。
 2.  McHale
 3.  Parish
 
-```
+{% endhighlight %}
 1.  Bird
 2.  McHale
 3.  Parish
-```
+{% endhighlight %}
 
 很重要的一点是，你在列表标记上使用的数字并不会影响输出的 HTML 结果，上面的列表所产生的 HTML 标记为：
 
@@ -342,13 +342,13 @@ Markdown 支持有序列表和无序列表。
 *   Donec sit amet nisl. Aliquam semper ipsum sit amet velit.
     Suspendisse id sem consectetuer libero luctus adipiscing.
 
-```
+{% endhighlight %}
 *   Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
     Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi,
     viverra nec, fringilla in, laoreet vitae, risus.
 *   Donec sit amet nisl. Aliquam semper ipsum sit amet velit.
     Suspendisse id sem consectetuer libero luctus adipiscing.
-```
+{% endhighlight %}
 
 但是如果你懒，那也行：
 
@@ -358,13 +358,13 @@ viverra nec, fringilla in, laoreet vitae, risus.
 *   Donec sit amet nisl. Aliquam semper ipsum sit amet velit.
 Suspendisse id sem consectetuer libero luctus adipiscing.
 
-```
+{% endhighlight %}
 *   Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
 Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi,
 viverra nec, fringilla in, laoreet vitae, risus.
 *   Donec sit amet nisl. Aliquam semper ipsum sit amet velit.
 Suspendisse id sem consectetuer libero luctus adipiscing.
-```
+{% endhighlight %}
 
 如果列表项目间用空行分开，在输出 HTML 时 Markdown 就会将项目内容用 `<p>`
 标签包起来，举例来说：
@@ -372,10 +372,10 @@ Suspendisse id sem consectetuer libero luctus adipiscing.
 *   Bird
 *   Magic
 
-```
+{% endhighlight %}
 *   Bird
 *   Magic
-```
+{% endhighlight %}
 
 会被转换为：
 
@@ -390,11 +390,11 @@ Suspendisse id sem consectetuer libero luctus adipiscing.
 
 *   Magic
 
-```
+{% endhighlight %}
 *   Bird
 
 *   Magic
-```
+{% endhighlight %}
 
 会被转换为：
 
@@ -415,7 +415,7 @@ Suspendisse id sem consectetuer libero luctus adipiscing.
 
 2.  Suspendisse id sem consectetuer libero luctus adipiscing.
 
-```
+{% endhighlight %}
 1.  This is a list item with two paragraphs. Lorem ipsum dolor
     sit amet, consectetuer adipiscing elit. Aliquam hendrerit
     mi posuere lectus.
@@ -425,7 +425,7 @@ Suspendisse id sem consectetuer libero luctus adipiscing.
     sit amet velit.
 
 2.  Suspendisse id sem consectetuer libero luctus adipiscing.
-```
+{% endhighlight %}
 
 如果你每行都有缩进，看起来会看好很多，当然，再次地，如果你很懒惰，Markdown 也允许：
 
@@ -444,12 +444,12 @@ Suspendisse id sem consectetuer libero luctus adipiscing.
     > This is a blockquote
     > inside a list item.
 
-```
+{% endhighlight %}
 *   A list item with a blockquote:
 
     > This is a blockquote
     > inside a list item.
-```
+{% endhighlight %}
 
 如果要放代码区块的话，该区块就需要缩进*两次*，也就是 8 个空格或是 2 个制表符：
 
@@ -457,27 +457,27 @@ Suspendisse id sem consectetuer libero luctus adipiscing.
 
         <code goes here>
 
-```
+{% endhighlight %}
 *   A list item with a code block:
 
         <code goes here>
-```
+{% endhighlight %}
 
 当然，项目列表很可能会不小心产生，像是下面这样的写法：
 
 1986. What a great season.
 
-```
+{% endhighlight %}
 1986. What a great season.
-```
+{% endhighlight %}
 
 换句话说，也就是在行首出现*数字-句点-空白*，要避免这样的状况，你可以在句点前面加上反斜杠。
 
 1986\. What a great season.
 
-```
+{% endhighlight %}
 1986\. What a great season.
-```
+{% endhighlight %}
 
 <h3 id="precode">代码区块</h3>
 
@@ -531,7 +531,7 @@ Markdown 会转换成：
 代码区块中，一般的 Markdown 语法不会被转换，像是星号便只是星号，这表示你可以很容易地以 Markdown 语法撰写 Markdown 语法相关的文件。
 
 代码高亮语法
-```javascript
+{% highlight javascript %}
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -539,9 +539,9 @@ Markdown 会转换成：
 
 ga('create', '{{ site.google_analytics }}', 'auto');
 ga('send', 'pageview');
-```
+{% endhighlight %}
 
-    ```javascript
+    {% highlight javascript %}
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -549,7 +549,7 @@ ga('send', 'pageview');
 
     ga('create', '{{ site.google_analytics }}', 'auto');
     ga('send', 'pageview');
-    ```
+    {% endhighlight %}
 
 或者这样(使用时将{与%之间的 \\ 删除!)
 
