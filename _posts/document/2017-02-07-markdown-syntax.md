@@ -13,7 +13,7 @@ Markdown Syntax. If you are seeking for English Edition
 Document. Please refer to [Markdown: Syntax][eng-doc].
 
 **注意：**这份文件是用 Markdown 写的，你可以[看看它的原始文件][src] 。
-asdfasdf
+asdkjflakjsdhflkjasdfhlkajsdhf
 
 [src]: https://github.com/GiantZero-x/GiantZero-x.github.io/blob/master/_posts/document/2017-02-07-markdown-direction.md
 [eng-doc]:http://daringfireball.net/projects/markdown/syntax
@@ -79,7 +79,7 @@ This is a regular paragraph.
 
 This is another regular paragraph.
 
-{% endhighlight %}
+{% highlight html %}
     This is a regular paragraph.
 
     <table>
@@ -279,7 +279,7 @@ Markdown 支持有序列表和无序列表。
 *   Green
 *   Blue
 
-{% endhighlight %}
+{% highlight html %}
 *   Red
 *   Green
 *   Blue
@@ -303,7 +303,7 @@ Markdown 支持有序列表和无序列表。
 2.  McHale
 3.  Parish
 
-{% endhighlight %}
+{% highlight html %}
 1.  Bird
 2.  McHale
 3.  Parish
@@ -343,7 +343,7 @@ Markdown 支持有序列表和无序列表。
 *   Donec sit amet nisl. Aliquam semper ipsum sit amet velit.
     Suspendisse id sem consectetuer libero luctus adipiscing.
 
-{% endhighlight %}
+{% highlight html %}
 *   Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
     Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi,
     viverra nec, fringilla in, laoreet vitae, risus.
@@ -359,7 +359,7 @@ viverra nec, fringilla in, laoreet vitae, risus.
 *   Donec sit amet nisl. Aliquam semper ipsum sit amet velit.
 Suspendisse id sem consectetuer libero luctus adipiscing.
 
-{% endhighlight %}
+{% highlight html %}
 *   Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
 Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi,
 viverra nec, fringilla in, laoreet vitae, risus.
@@ -373,7 +373,7 @@ Suspendisse id sem consectetuer libero luctus adipiscing.
 *   Bird
 *   Magic
 
-{% endhighlight %}
+{% highlight html %}
 *   Bird
 *   Magic
 {% endhighlight %}
@@ -391,7 +391,7 @@ Suspendisse id sem consectetuer libero luctus adipiscing.
 
 *   Magic
 
-{% endhighlight %}
+{% highlight html %}
 *   Bird
 
 *   Magic
@@ -416,7 +416,7 @@ Suspendisse id sem consectetuer libero luctus adipiscing.
 
 2.  Suspendisse id sem consectetuer libero luctus adipiscing.
 
-{% endhighlight %}
+{% highlight html %}
 1.  This is a list item with two paragraphs. Lorem ipsum dolor
     sit amet, consectetuer adipiscing elit. Aliquam hendrerit
     mi posuere lectus.
@@ -445,11 +445,12 @@ Suspendisse id sem consectetuer libero luctus adipiscing.
     > This is a blockquote
     > inside a list item.
 
-{% endhighlight %}
+{% highlight html %}
 *   A list item with a blockquote:
 
     > This is a blockquote
     > inside a list item.
+    
 {% endhighlight %}
 
 如果要放代码区块的话，该区块就需要缩进*两次*，也就是 8 个空格或是 2 个制表符：
@@ -458,7 +459,7 @@ Suspendisse id sem consectetuer libero luctus adipiscing.
 
         <code goes here>
 
-{% endhighlight %}
+{% highlight html %}
 *   A list item with a code block:
 
         <code goes here>
@@ -468,7 +469,7 @@ Suspendisse id sem consectetuer libero luctus adipiscing.
 
 1986. What a great season.
 
-{% endhighlight %}
+{% highlight html %}
 1986. What a great season.
 {% endhighlight %}
 
@@ -476,7 +477,7 @@ Suspendisse id sem consectetuer libero luctus adipiscing.
 
 1986\. What a great season.
 
-{% endhighlight %}
+{% highlight html %}
 1986\. What a great season.
 {% endhighlight %}
 
@@ -532,17 +533,18 @@ Markdown 会转换成：
 代码区块中，一般的 Markdown 语法不会被转换，像是星号便只是星号，这表示你可以很容易地以 Markdown 语法撰写 Markdown 语法相关的文件。
 
 代码高亮语法
-  {% highlight javascript %}
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-  
-  ga('create', '{{ site.google_analytics }}', 'auto');
-  ga('send', 'pageview');
-  {% endhighlight %}
+{% highlight js %}
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-    {% highlight javascript %}
+ga('create', '{{ site.google_analytics }}', 'auto');
+ga('send', 'pageview');
+{% endhighlight %}
+
+{% highlight js %}
+    ```js
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -550,7 +552,8 @@ Markdown 会转换成：
 
     ga('create', '{{ site.google_analytics }}', 'auto');
     ga('send', 'pageview');
-    {% endhighlight %}
+    ```
+{% endhighlight %}
 
 或者这样(使用时将{与%之间的 \\ 删除!)
 
