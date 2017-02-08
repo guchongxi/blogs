@@ -1,5 +1,5 @@
 ---
-title:  "不思议迷宫 - 召唤神龙愿望"
+title:  "神龙愿望"
 date:   2017-01-30
 categories: 游戏
 tags: 不思议迷宫 神龙 手游
