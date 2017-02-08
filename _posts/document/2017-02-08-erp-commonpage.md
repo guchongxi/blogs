@@ -43,17 +43,17 @@ tag: 固定表头 弹窗 通用
 2.  页面样式文件 `table-common.css` 以及弹窗样式文件 `table-popup.css` 已加载至 `\templates\home\index.html` ；但在项目初始阶段没有进行样式重置,因此部分页面需单独引入 `static\css\reset.css` 进行样式重置。
 3.  为充分进行样式复用，页面显示效果仅与标签 `class` 有关；但因涉及到部分js交互效果，以下特定标签 `id` 已被限定。<br/>
     查询框主体
-    {% highlight html %}
+{% highlight html %}
     <div id="drop_down_search" class="drop_down_search_bar">
         ···
     </div>
-    {% endhighlight %}
+{% endhighlight %}
     弹窗头部
-    {% highlight html %}
+{% highlight html %}
     <div class="popwin_header" id="popwin_header">
         ···
     </div>
-    {% endhighlight %}
+{% endhighlight %}
 4.  若在使用中有任何疑问或bug可随时联系我进行修改.
 
 ---
