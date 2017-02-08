@@ -13,7 +13,6 @@ Markdown Syntax. If you are seeking for English Edition
 Document. Please refer to [Markdown: Syntax][eng-doc].
 
 **注意：**这份文件是用 Markdown 写的，你可以[看看它的原始文件][src] 。
-asdkjflakjsdhflkjasdfhlkajsdhf
 
 [src]: https://github.com/GiantZero-x/GiantZero-x.github.io/blob/master/_posts/document/2017-02-07-markdown-direction.md
 [eng-doc]:http://daringfireball.net/projects/markdown/syntax
@@ -532,7 +531,7 @@ Markdown 会转换成：
 
 代码区块中，一般的 Markdown 语法不会被转换，像是星号便只是星号，这表示你可以很容易地以 Markdown 语法撰写 Markdown 语法相关的文件。
 
-代码高亮语法
+代码高亮语法(github pages 不支持下面这种写法！！)
 {% highlight js %}
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
