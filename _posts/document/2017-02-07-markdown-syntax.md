@@ -1,5 +1,5 @@
 ---
-title:  "Markdown语法说明"
+title:  "Markdown 语法说明"
 date:   2017-02-07
 categories: 文档
 tag: Markdown
@@ -29,7 +29,7 @@ Document. Please refer to [Markdown: Syntax][eng-doc].
     *   [代码区块](#precode)
     *   [分割线](#hr)
 *   [区段元素](#span)
-    *   [连接](#link)
+    *   [链接](#link)
     *   [强调](#em)
     *   [代码](#code)
     *   [图片](#img)
@@ -37,6 +37,8 @@ Document. Please refer to [Markdown: Syntax][eng-doc].
     *   [反斜杠](#backslash)
     *   [自动链接](#autolink)
 *   [Markdown免费编辑器](#editor)
+
+---
 
 <h2 id="overview">概述</h2>
 
@@ -53,7 +55,7 @@ Markdown 的目标是实现「易读易写」。
   [5]: http://www.triptico.com/software/grutatxt.html
   [6]: http://ettext.taint.org/doc/
 
-总之， Markdown 的语法全由一些符号所组成，这些符号经过精挑细选，其作用一目了然。比如：在文字两旁加上星号，看起来就像\*强调\*。Markdown 的列表看起来，嗯，就是列表。Markdown 的区块引用看起来就真的像是引用一段文字，就像你曾在电子邮件中见过的那样。
+总之， Markdown 的语法全由一些符号所组成，这些符号经过精挑细选，其作用一目了然。比如：在文字两旁加上星号，看起来就像 *\*强调\** 。Markdown 的列表看起来，嗯，就是列表。Markdown 的区块引用看起来就真的像是引用一段文字，就像你曾在电子邮件中见过的那样。
 
 <h3 id="html">兼容 HTML</h3>
 
@@ -67,6 +69,16 @@ Markdown 不是想要取代 HTML，甚至也没有要和它相近，它的语法
 
 例子如下，在 Markdown 文件里加上一段 HTML 表格：
 
+This is a regular paragraph.
+<table>
+    <tr>
+        <td>Foo</td>
+    </tr>
+</table>
+
+This is another regular paragraph.
+
+```
     This is a regular paragraph.
 
     <table>
@@ -76,6 +88,7 @@ Markdown 不是想要取代 HTML，甚至也没有要和它相近，它的语法
     </table>
 
     This is another regular paragraph.
+```
 
 请注意，在 HTML 区块标签间的 Markdown 格式语法将不会被处理。比如，你在 HTML 区块内使用 Markdown 样式的 `*强调*` 会没有效果。。
 
@@ -119,7 +132,7 @@ Markdown 将会把它转换为：
 
 不过需要注意的是，code 范围内，不论是行内还是区块， `<` 和 `&` 两个符号都*一定*会被转换成 HTML 实体，这项特性让你可以很容易地用 Markdown 写 HTML code （和 HTML 相对而言， HTML 语法中，你要把所有的 `<` 和 `&` 都转换为 HTML 实体，才能在 HTML 文件里面写出 HTML code。）
 
-* * *
+---
 
 <h2 id="block">区块元素</h2>
 
@@ -132,7 +145,7 @@ Markdown 将会把它转换为：
 
 如果你*确实*想要依赖 Markdown 来插入 `<br />` 标签的话，在插入处先按入两个以上的空格然后回车。
 
-的确，需要多费点事（多加空格）来产生 `<br />` ，但是简单地「每个换行都转换为 <br />」的方法在 Markdown 中并不适合， Markdown 中 email 式的 [区块引用][bq] 和多段落的 [列表][l] 在使用换行来排版的时候，不但更好用，还更方便阅读。
+的确，需要多费点事（多加空格）来产生 `<br />` ，但是简单地「每个换行都转换为 `<br />`」的方法在 Markdown 中并不适合， Markdown 中 email 式的 [区块引用][bq] 和多段落的 [列表][l] 在使用换行来排版的时候，不但更好用，还更方便阅读。
 
   [bq]: #blockquote
   [l]:  #list
@@ -142,6 +155,12 @@ Markdown 将会把它转换为：
 Markdown 支持两种标题的语法，类 [Setext] [1] 和类 [atx] [2] 形式。
 
 类 Setext 形式是用底线的形式，利用 `=` （最高阶标题）和 `-` （第二阶标题），例如：
+
+This is an H1
+=============
+
+This is an H2
+-------------
 
     This is an H1
     =============
@@ -153,6 +172,12 @@ Markdown 支持两种标题的语法，类 [Setext] [1] 和类 [atx] [2] 形式�
 
 类 Atx 形式则是在行首插入 1 到 6 个 `#` ，对应到标题 1 到 6 阶，例如：
 
+# This is an H1
+
+## This is an H2
+
+###### This is an H6
+
     # This is an H1
 
     ## This is an H2
@@ -160,6 +185,12 @@ Markdown 支持两种标题的语法，类 [Setext] [1] 和类 [atx] [2] 形式�
     ###### This is an H6
 
 你可以选择性地「闭合」类 atx 样式的标题，这纯粹只是美观用的，若是觉得这样看起来比较舒适，你就可以在行尾加上 `#`，而行尾的 `#` 数量也不用和开头一样（行首的井字符数量决定标题的阶数）：
+
+# This is an H1 #
+
+## This is an H2 ##
+
+### This is an H3 ######
 
     # This is an H1 #
 
@@ -172,6 +203,13 @@ Markdown 支持两种标题的语法，类 [Setext] [1] 和类 [atx] [2] 形式�
 
 Markdown 标记区块引用是使用类似 email 中用 `>` 的引用方式。如果你还熟悉在 email 信件中的引言部分，你就知道怎么在 Markdown 文件中建立一个区块引用，那会看起来像是你自己先断好行，然后在每行的最前面加上 `>` ：
 
+> This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
+> consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
+> Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.
+>
+> Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse
+> id sem consectetuer libero luctus adipiscing.
+
     > This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
     > consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
     > Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.
@@ -180,6 +218,13 @@ Markdown 标记区块引用是使用类似 email 中用 `>` 的引用方式。�
     > id sem consectetuer libero luctus adipiscing.
 
 Markdown 也允许你偷懒只在整个段落的第一行最前面加上 `>` ：
+
+> This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
+    consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
+    Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.
+
+> Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse
+    id sem consectetuer libero luctus adipiscing.
 
     > This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
     consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
@@ -190,6 +235,12 @@ Markdown 也允许你偷懒只在整个段落的第一行最前面加上 `>` ：
 
 区块引用可以嵌套（例如：引用内的引用），只要根据层次加上不同数量的 `>` ：
 
+> This is the first level of quoting.
+>
+> > This is nested blockquote.
+>
+> Back to the first level.
+
     > This is the first level of quoting.
     >
     > > This is nested blockquote.
@@ -197,6 +248,14 @@ Markdown 也允许你偷懒只在整个段落的第一行最前面加上 `>` ：
     > Back to the first level.
 
 引用的区块内也可以使用其他的 Markdown 语法，包括标题、列表、代码区块等：
+> ## This is a header.
+>
+> 1.   This is the first list item.
+> 2.   This is the second list item.
+>
+> Here's some example code:
+>
+>     return shell_exec("echo $input | $markdown_script");
 
 	> ## This is a header.
 	>
@@ -215,9 +274,15 @@ Markdown 支持有序列表和无序列表。
 
 无序列表使用星号、加号或是减号作为列表标记：
 
-    *   Red
-    *   Green
-    *   Blue
+*   Red
+*   Green
+*   Blue
+
+```
+*   Red
+*   Green
+*   Blue
+```
 
 等同于：
 
@@ -233,9 +298,15 @@ Markdown 支持有序列表和无序列表。
 
 有序列表则使用数字接着一个英文句点：
 
-    1.  Bird
-    2.  McHale
-    3.  Parish
+1.  Bird
+2.  McHale
+3.  Parish
+
+```
+1.  Bird
+2.  McHale
+3.  Parish
+```
 
 很重要的一点是，你在列表标记上使用的数字并不会影响输出的 HTML 结果，上面的列表所产生的 HTML 标记为：
 
@@ -265,25 +336,46 @@ Markdown 支持有序列表和无序列表。
 
 要让列表看起来更漂亮，你可以把内容用固定的缩进整理好：
 
-    *   Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-        Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi,
-        viverra nec, fringilla in, laoreet vitae, risus.
-    *   Donec sit amet nisl. Aliquam semper ipsum sit amet velit.
-        Suspendisse id sem consectetuer libero luctus adipiscing.
+*   Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+    Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi,
+    viverra nec, fringilla in, laoreet vitae, risus.
+*   Donec sit amet nisl. Aliquam semper ipsum sit amet velit.
+    Suspendisse id sem consectetuer libero luctus adipiscing.
+
+```
+*   Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+    Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi,
+    viverra nec, fringilla in, laoreet vitae, risus.
+*   Donec sit amet nisl. Aliquam semper ipsum sit amet velit.
+    Suspendisse id sem consectetuer libero luctus adipiscing.
+```
 
 但是如果你懒，那也行：
 
-    *   Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-    Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi,
-    viverra nec, fringilla in, laoreet vitae, risus.
-    *   Donec sit amet nisl. Aliquam semper ipsum sit amet velit.
-    Suspendisse id sem consectetuer libero luctus adipiscing.
+*   Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi,
+viverra nec, fringilla in, laoreet vitae, risus.
+*   Donec sit amet nisl. Aliquam semper ipsum sit amet velit.
+Suspendisse id sem consectetuer libero luctus adipiscing.
+
+```
+*   Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi,
+viverra nec, fringilla in, laoreet vitae, risus.
+*   Donec sit amet nisl. Aliquam semper ipsum sit amet velit.
+Suspendisse id sem consectetuer libero luctus adipiscing.
+```
 
 如果列表项目间用空行分开，在输出 HTML 时 Markdown 就会将项目内容用 `<p>`
 标签包起来，举例来说：
 
-    *   Bird
-    *   Magic
+*   Bird
+*   Magic
+
+```
+*   Bird
+*   Magic
+```
 
 会被转换为：
 
@@ -294,9 +386,15 @@ Markdown 支持有序列表和无序列表。
 
 但是这个：
 
-    *   Bird
+*   Bird
 
-    *   Magic
+*   Magic
+
+```
+*   Bird
+
+*   Magic
+```
 
 会被转换为：
 
@@ -307,15 +405,27 @@ Markdown 支持有序列表和无序列表。
 
 列表项目可以包含多个段落，每个项目下的段落都必须缩进 4 个空格或是 1 个制表符：
 
-    1.  This is a list item with two paragraphs. Lorem ipsum dolor
-        sit amet, consectetuer adipiscing elit. Aliquam hendrerit
-        mi posuere lectus.
+1.  This is a list item with two paragraphs. Lorem ipsum dolor
+    sit amet, consectetuer adipiscing elit. Aliquam hendrerit
+    mi posuere lectus.
 
-        Vestibulum enim wisi, viverra nec, fringilla in, laoreet
-        vitae, risus. Donec sit amet nisl. Aliquam semper ipsum
-        sit amet velit.
+    Vestibulum enim wisi, viverra nec, fringilla in, laoreet
+    vitae, risus. Donec sit amet nisl. Aliquam semper ipsum
+    sit amet velit.
 
-    2.  Suspendisse id sem consectetuer libero luctus adipiscing.
+2.  Suspendisse id sem consectetuer libero luctus adipiscing.
+
+```
+1.  This is a list item with two paragraphs. Lorem ipsum dolor
+    sit amet, consectetuer adipiscing elit. Aliquam hendrerit
+    mi posuere lectus.
+
+    Vestibulum enim wisi, viverra nec, fringilla in, laoreet
+    vitae, risus. Donec sit amet nisl. Aliquam semper ipsum
+    sit amet velit.
+
+2.  Suspendisse id sem consectetuer libero luctus adipiscing.
+```
 
 如果你每行都有缩进，看起来会看好很多，当然，再次地，如果你很懒惰，Markdown 也允许：
 
@@ -329,24 +439,45 @@ Markdown 支持有序列表和无序列表。
 
 如果要在列表项目内放进引用，那 `>` 就需要缩进：
 
-    *   A list item with a blockquote:
+*   A list item with a blockquote:
 
-        > This is a blockquote
-        > inside a list item.
+    > This is a blockquote
+    > inside a list item.
+
+```
+*   A list item with a blockquote:
+
+    > This is a blockquote
+    > inside a list item.
+```
 
 如果要放代码区块的话，该区块就需要缩进*两次*，也就是 8 个空格或是 2 个制表符：
 
-    *   A list item with a code block:
+*   A list item with a code block:
 
-            <code goes here>
+        <code goes here>
+
+```
+*   A list item with a code block:
+
+        <code goes here>
+```
 
 当然，项目列表很可能会不小心产生，像是下面这样的写法：
 
-    1986. What a great season.
+1986. What a great season.
+
+```
+1986. What a great season.
+```
 
 换句话说，也就是在行首出现*数字-句点-空白*，要避免这样的状况，你可以在句点前面加上反斜杠。
 
-    1986\. What a great season.
+1986\. What a great season.
+
+```
+1986\. What a great season.
+```
 
 <h3 id="precode">代码区块</h3>
 
@@ -399,9 +530,50 @@ Markdown 会转换成：
 
 代码区块中，一般的 Markdown 语法不会被转换，像是星号便只是星号，这表示你可以很容易地以 Markdown 语法撰写 Markdown 语法相关的文件。
 
+代码高亮语法
+```javascript
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', '{{ site.google_analytics }}', 'auto');
+    ga('send', 'pageview');
+</script>
+```
+
+    ```javascript
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', '{{ site.google_analytics }}', 'auto');
+        ga('send', 'pageview');
+    </script>
+    ```
+
+或者这样(使用时将{与%之间的 \\ 删除!)
+
+    {\% highlight javascript %}
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', '{{ site.google_analytics }}', 'auto');
+        ga('send', 'pageview');
+    </script>
+    {\% endhighlight %}
+
 <h3 id="hr">分隔线</h3>
 
 你可以在一行中用三个以上的星号、减号、底线来建立一个分隔线，行内不能有其他东西。你也可以在星号或是减号中间插入空格。下面每种写法都可以建立分隔线：
+
+* * *
 
     * * *
 
@@ -413,8 +585,7 @@ Markdown 会转换成：
 
     ---------------------------------------
 
-
-* * *
+---
 
 <h2 id="span">区段元素</h2>
 
@@ -425,6 +596,10 @@ Markdown 支持两种形式的链接语法： *行内式*和*参考式*两种形
 不管是哪一种，链接文字都是用 [方括号] 来标记。
 
 要建立一个行内式的链接，只要在方块括号后面紧接着圆括号并插入网址链接即可，如果你还想要加上链接的 title 文字，只要在网址后面，用双引号把 title 文字包起来即可，例如：
+
+This is [an example](http://example.com/ "Title") inline link.
+
+[This link](http://example.net/) has no title attribute.
 
     This is [an example](http://example.com/ "Title") inline link.
 
@@ -440,17 +615,25 @@ Markdown 支持两种形式的链接语法： *行内式*和*参考式*两种形
 
 如果你是要链接到同样主机的资源，你可以使用相对路径：
 
+See my [About](/about/) page for details.
+
     See my [About](/about/) page for details.
 
 *参考式*的链接是在链接文字的括号后面再接上另一个方括号，而在第二个方括号里面要填入用以辨识链接的标记：
+
+This is [an example][id] reference-style link.
 
     This is [an example][id] reference-style link.
 
 你也可以选择性地在两个方括号中间加上一个空格：
 
+This is [an example] [id] reference-style link.
+
     This is [an example] [id] reference-style link.
 
 接着，在文件的任意处，你可以把这个标记的链接内容定义出来：
+
+[id]: http://example.com/  "Optional Title Here"
 
     [id]: http://example.com/  "Optional Title Here"
 
@@ -543,6 +726,14 @@ Markdown 支持两种形式的链接语法： *行内式*和*参考式*两种形
 
 Markdown 使用星号（`*`）和底线（`_`）作为标记强调字词的符号，被 `*` 或 `_` 包围的字词会被转成用 `<em>` 标签包围，用两个 `*` 或 `_` 包起来的话，则会被转成 `<strong>`，例如：
 
+*single asterisks*
+
+_single underscores_
+
+**double asterisks**
+
+__double underscores__
+
     *single asterisks*
 
     _single underscores_
@@ -565,16 +756,22 @@ Markdown 使用星号（`*`）和底线（`_`）作为标记强调字词的符�
 
 强调也可以直接插在文字中间：
 
+un*frigging*believable
+
     un*frigging*believable
 
 但是如果你的 `*` 和 `_` 两边都有空白的话，它们就只会被当成普通的符号。
 如果要在文字前后直接插入普通的星号或底线，你可以用反斜线：
+
+\*this text is surrounded by literal asterisks\*
 
     \*this text is surrounded by literal asterisks\*
 
 <h3 id="code">代码</h3>
 
 如果要标记一小段行内代码，你可以用反引号把它包起来（`），例如：
+
+Use the `printf()` function.
 
     Use the `printf()` function.
 
@@ -584,6 +781,8 @@ Markdown 使用星号（`*`）和底线（`_`）作为标记强调字词的符�
 
 如果要在代码区段内插入反引号，你可以用多个反引号来开启和结束代码区段：
 
+``There is a literal backtick (`) here.``
+
     ``There is a literal backtick (`) here.``
 
 这段语法会产生：
@@ -591,6 +790,10 @@ Markdown 使用星号（`*`）和底线（`_`）作为标记强调字词的符�
     <p><code>There is a literal backtick (`) here.</code></p>
 
 代码区段的起始和结束端都可以放入一个空白，起始端后面一个，结束端前面一个，这样你就可以在区段的一开始就插入反引号：
+
+A single backtick in a code span: `` ` ``
+
+A backtick-delimited string in a code span: `` `foo` ``
 
 	A single backtick in a code span: `` ` ``
 
@@ -602,7 +805,9 @@ Markdown 使用星号（`*`）和底线（`_`）作为标记强调字词的符�
 
 	<p>A backtick-delimited string in a code span: <code>`foo`</code></p>
 
-在代码区段内，`&` 和尖括号都会被自动地转成 HTML 实体，这使得插入 HTML 原始码变得很容易，Markdown 会把下面这段：
+在代码区段内，`&` 和尖括号都会被自动地转成 HTML 实体，这使得插入 HTML原始码变得很容易，Markdown 会把下面这段：
+
+Please don't use any `<blink>` tags.
 
     Please don't use any `<blink>` tags.
 
@@ -611,6 +816,8 @@ Markdown 使用星号（`*`）和底线（`_`）作为标记强调字词的符�
     <p>Please don't use any <code>&lt;blink&gt;</code> tags.</p>
 
 你也可以这样写：
+
+`&#8212;` is the decimal-encoded equivalent of `&mdash;`.
 
     `&#8212;` is the decimal-encoded equivalent of `&mdash;`.
 
@@ -649,13 +856,15 @@ Markdown 使用一种和链接很相似的语法来标记图片，同样也允�
 
 到目前为止， Markdown 还没有办法指定图片的宽高，如果你需要的话，你可以使用普通的 `<img>` 标签。
 
-* * *
+---
 
 <h2 id="misc">其它</h2>
 
 <h3 id="autolink">自动链接</h3>
 
 Markdown 支持以比较简短的自动链接形式来处理网址和电子邮件信箱，只要是用尖括号包起来， Markdown 就会自动把它转成链接。一般网址的链接文字就和链接地址一样，例如：
+
+<http://example.com/>
 
     <http://example.com/>
 
@@ -664,6 +873,8 @@ Markdown 会转为：
     <a href="http://example.com/">http://example.com/</a>
 
 邮址的自动链接也很类似，只是 Markdown 会先做一个编码转换的过程，把文字字符转成 16 进位码的 HTML 实体，这样的格式可以糊弄一些不好的邮址收集机器人，例如：
+
+<address@example.com>
 
     <address@example.com>
 
@@ -674,7 +885,7 @@ Markdown 会转成：
     &#109;">&#x61;&#x64;&#x64;&#x72;&#x65;&#115;&#115;&#64;&#101;&#120;&#x61;
     &#109;&#x70;&#x6C;e&#x2E;&#99;&#111;&#109;</a>
 
-在浏览器里面，这段字串（其实是 <a href="mailto:address@example.com">address@example.com</a>）会变成一个可以点击的「address@example.com」链接。
+在浏览器里面，这段字串（其实是 `<a href="mailto:address@example.com"> address@example.com</a>`）会变成一个可以点击的「address@example.com」链接。
 
 （这种作法虽然可以糊弄不少的机器人，但并不能全部挡下来，不过总比什么都不做好些。不管怎样，公开你的信箱终究会引来广告信件的。）
 
@@ -686,250 +897,42 @@ Markdown 可以利用反斜杠来插入一些在语法中有其它意义的符�
 
 Markdown 支持以下这些符号前面加上反斜杠来帮助插入普通的符号：
 
-    \   反斜線
-    `   反引號
-    *   星號
-    _   底線
-    {}  大括號
-    []  方括號
-    ()  括號
-    #   井字號
-	+	加號
-	-	減號
-    .   英文句點
-    !   驚嘆號
+    \   反斜杠
+    `   反引号
+    *   星号
+    _   下划线
+    {}  大括号
+    []  方括号
+    ()  小括号
+    #   井字号
+	+   加号
+	-   减号
+    .   句点(英文)
+    !   感叹号
+
+---
 
 <h2 id="editor">Markdown 免费编辑器</h2>
 
 Windows 平台
- *  MarkdownPad
- *  MarkPad
+ *  [MarkdownPad](http://markdownpad.com/)
+ *  [MarkPad](http://code52.org/DownmarkerWPF/)
 
 Linux 平台
- *  ReText
+ *  [ReText](http://sourceforge.net/p/retext/home/ReText/)
 
 Mac 平台
- *  Mou
+ *  [Mou](http://mouapp.com/)
 
 在线编辑器
- *  Markable.in
- *  Dillinger.io
+ *  [Markable.in](http://markable.in/)
+ *  [Dillinger.io](http://dillinger.io/)
 
 浏览器插件
- *  MaDe (Chrome)
+ *  [MaDe (Chrome)](https://chrome.google.com/webstore/detail/oknndfeeopgpibecfjljjfanledpbkog)
 
 高级应用
- *  Sublime Text 2 + MarkdownEditing / 教程
+ *  [Sublime Text 2 + MarkdownEditing / 教程](http://www.sublimetext.com/2)
 
 ***
 如有更好的 Markdown 免费编辑器推荐，请到下方评论反馈，谢谢！
-
-
-
-`行内代码`
-```
-    `行内代码`
-```
-
-_斜体_
-```
-    _斜体_
-```
-
-# 一级标题
-```
-    # 一级标题
-```
-
-## 二级标题
-```
-    ## 二级标题
-```
-
-### 三级标题
-```
-    ### 三级标题
-```
-
-#### 四级标题
-```
-    #### 四级标题
-```
-
-##### 五级标题
-```
-    ##### 五级标题
-```
-
-###### 六级标题
-```
-    ###### 六级标题
-```
-
-> 区块引用
-
-```
-    > 区块引用
-```
-
-区块引用可以嵌套（例如：引用内的引用），只要根据层次加上不同数量的 >
-> This is the first level of quoting.
->
-> > This is nested blockquote.
->
-> Back to the first level.
-
-```
-    > This is the first level of quoting.
-    >
-    > > This is nested blockquote.
-    >
-    > Back to the first level.
-```
-
-引用的区块内也可以使用其他的 Markdown 语法，包括标题、列表、代码区块等
-> ## 这是一个标题。
->
-> 1.   这是第一行列表项。
-> 2.   这是第二行列表项。
->
-> 给出一些例子代码：
->
->     return shell_exec("echo $input | $markdown_script");
-
-```
-    > ## 这是一个标题。
-    >
-    > 1.   这是第一行列表项。
-    > 2.   这是第二行列表项。
-    >
-    > 给出一些例子代码：
-    >
-    >     return shell_exec("echo $input | $markdown_script");
-```
-
-*   Red
-*   Green
-*   Blue
-
-```
-    *   Red
-    *   Green
-    *   Blue
-    或
-    +   Red
-    +   Green
-    +   Blue
-    或
-    -   Red
-    -   Green
-    -   Blue
-```
-
-1.  Bird(数字顺序不重要)
-3.  McHale
-3.  Parish
-
-列表项目可以包含多个段落，每个项目下的段落都必须缩进 4 个空格或是 1 个制表符：
-1.  This is a list item with two paragraphs. Lorem ipsum dolor
-    sit amet, consectetuer adipiscing elit. Aliquam hendrerit
-    mi posuere lectus.
-
-    Vestibulum enim wisi, viverra nec, fringilla in, laoreet
-    vitae, risus. Donec sit amet nisl. Aliquam semper ipsum
-    sit amet velit.
-
-2.  Suspendisse id sem consectetuer libero luctus adipiscing.
-
-```
-    1.  This is a list item with two paragraphs. Lorem ipsum dolor
-        sit amet, consectetuer adipiscing elit. Aliquam hendrerit
-        mi posuere lectus.
-
-        Vestibulum enim wisi, viverra nec, fringilla in, laoreet
-        vitae, risus. Donec sit amet nisl. Aliquam semper ipsum
-        sit amet velit.
-
-    2.  Suspendisse id sem consectetuer libero luctus adipiscing.
-    或
-    1.   This is a list item with two paragraphs.
-
-        This is the second paragraph in the list item. You're
-    only required to indent the first line. Lorem ipsum dolor
-    sit amet, consectetuer adipiscing elit.
-
-    2.   Another item in the same list.
-```
-
-1986\. 数字加.不转义
-```
-    1986\. 数字加.不转义
-```
-
-分割线
-* * *
-
-***
-
-*****
-
-- - -
-
----------------------------------------
-```
-    * * *
-
-    ***
-
-    *****
-
-    - - -
-
-    ---------------------------------------
-```
-
-This is [an example](http://example.com/ "Title") inline link.
-
-[This link](http://example.net/) has no title attribute.
-
-```
-    This is [an example](http://example.com/ "Title") inline link.
-
-    [This link](http://example.net/) has no title attribute.
-```
-
-This is [an example][id] reference-style link.
-
-```
-    This is [an example][id] reference-style link.
-    或
-    This is [an example][ID] reference-style link.
-
-    链接内容定义的形式为：
-        *方括号（前面可以选择性地加上至多三个空格来缩进），里面输入链接文字
-        *接着一个冒号
-        *接着一个以上的空格或制表符
-        *接着链接的网址
-        *选择性地接着 title 内容，可以用单引号、双引号或是括弧包着
-    下面这三种链接的定义都是相同：
-    [id]: http://example.com/  "Optional Title Here"
-    [id]: http://example.com/  'Optional Title Here'
-    [id]: http://example.com/  (Optional Title Here)
-    链接网址也可以用尖括号包起来：
-    [id]: <http://example.com/>  "Optional Title Here"
-    你也可以把 title 属性放到下一行，也可以加一些缩进，若网址太长的话，这样会比较好看：
-    [id]: http://example.com/longish/path/to/resource/here
-        "Optional Title Here"
-```
-
-隐式链接标记功能让你可以省略指定链接标记，这种情形下，链接标记会视为等同于链接文字，要用隐式链接标记只要在链接文字后面加上一个空的方括号，如果你要让 "Google" 链接到 google.com，你可以简化成：
-[Google][]
-```
-    [Google][]
-    [Google]: http://google.com/
-```
-
-
-
-[id]: http://example.com/  "Optional Title Here"
-[Google]: http://google.com/

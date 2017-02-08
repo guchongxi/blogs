@@ -21,6 +21,7 @@
 
 #### 文章 > `/_post`
 按照 _yyyy-mm-dd-name.md_ 命名的文件会显示在侧边栏中；`/index.md`文件为主页默认展示内容。
+[markdown语法说明](https://github.com/GiantZero-x/GiantZero-x.github.io/blob/master/_posts/document/2017-02-07-markdown-direction.md)
 
 #### 资源 >　`/_assets`
 站内的图片、音频、视频等静态资源可存储在这里。

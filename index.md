@@ -18,3 +18,5 @@ title: Welcome
 ## 声明
 
 目前此站大部分文章皆转自[晚晴幽草轩](http://www.jeffjade.com)，仅作为本人平日学习工作之用；若有任何侵权等事宜请及时告知，本人将及时进行清理，谢谢。
+
+[markdown语法说明](/2017/02/07/markdown-syntax.html)

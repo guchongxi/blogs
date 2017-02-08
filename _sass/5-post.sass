@@ -39,6 +39,9 @@ img::-moz-selection
 
 // Typogragh
 
+h1
+  font-size: 2em
+
 h2, h3, h4, h5, h6
   margin-top: $post-paragraph-spacing * 1.5
   margin-bottom: $post-paragraph-spacing * .5
@@ -84,6 +87,10 @@ h1 + h2, h2 + h3, h3 + h4, h4 + h5, h5 + h6
     &:hover
       color: $post-link-hover-color
       text-decoration: underline
+
+  em
+    border-bottom: 2px dotted
+    margin: 0 2px
 
   p, ul, ol
     margin-top: 0
@@ -144,6 +151,7 @@ h1 + h2, h2 + h3, h3 + h4, h4 + h5, h5 + h6
     line-height: 1.3
     background: $post-code-block-bg
     overflow: auto
+    text-shadow: none
     -webkit-overflow-scrolling: touch
     &::-webkit-scrollbar
       height: $code-scrollbar-height
