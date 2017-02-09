@@ -14,7 +14,7 @@ Document. Please refer to [Markdown: Syntax][eng-doc].
 
 **注意：**这份文件是用 Markdown 写的，你可以[看看它的原始文件][src] 。
 
-[src]: https://github.com/GiantZero-x/GiantZero-x.github.io/blob/master/_posts/document/2017-02-07-markdown-direction.md
+[src]: https://github.com/GiantZero-x/GiantZero-x.github.io/blob/master/_posts/document/2017-02-07-markdown-syntax.md
 [eng-doc]:http://daringfireball.net/projects/markdown/syntax
 
 *   [概述](#overview)

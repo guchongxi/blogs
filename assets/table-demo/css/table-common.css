@@ -638,14 +638,12 @@ button {
   text-align: center;
   border-radius: 4px;
 }
-.red_border_btn,
-.blue_border_btn {
+.red_border_btn {
   border-width: 1px;
   border-style: solid;
   background-color: #fff;
 }
-.red_border_btn:hover,
-.blue_border_btn:hover {
+.red_border_btn:hover {
   color: #fff;
 }
 .red_border_btn {
@@ -654,13 +652,6 @@ button {
 }
 .red_border_btn:hover {
   background-color: #ff4800;
-}
-.blue_border_btn {
-  color: #108bf5;
-  border-color: #108bf5;
-}
-.blue_border_btn:hover {
-  background-color: #108bf5;
 }
 .red_bcg_btn {
   color: #fff;
@@ -671,3 +662,141 @@ button {
   color: #fff;
   background-color: #d6250a;
 }
+/*==================================2017-02-09，改版 》顾重=============================*/
+.icon {
+  background-image: url(../img/common_icon.png);
+  background-repeat: no-repeat;
+  display: inline-block;
+  margin: 0 3px -1px;
+}
+.icon.icon-add {
+  background-position: -10px -10px;
+  width: 14px;
+  height: 14px;
+}
+.icon.icon-add_blue {
+  background-position: -44px -10px;
+  width: 14px;
+  height: 14px;
+}
+.icon.icon-add_green {
+  background-position: -78px -10px;
+  width: 14px;
+  height: 14px;
+}
+.icon.icon-attachment {
+  background-position: -112px -10px;
+  width: 14px;
+  height: 14px;
+}
+.icon.icon-birth {
+  background-position: -10px -44px;
+  width: 14px;
+  height: 14px;
+}
+.icon.icon-cancel {
+  background-position: -44px -44px;
+  width: 14px;
+  height: 14px;
+}
+.icon.icon-delete {
+  background-position: -78px -44px;
+  width: 14px;
+  height: 14px;
+}
+.icon.icon-download {
+  background-position: -112px -44px;
+  width: 14px;
+  height: 14px;
+}
+.icon.icon-edit {
+  background-position: -10px -78px;
+  width: 14px;
+  height: 14px;
+}
+.icon.icon-email {
+  background-position: -44px -78px;
+  width: 14px;
+  height: 14px;
+}
+.icon.icon-home {
+  background-position: -78px -78px;
+  width: 14px;
+  height: 14px;
+}
+.icon.icon-payment {
+  background-position: -112px -78px;
+  width: 14px;
+  height: 14px;
+}
+.icon.icon-people {
+  background-position: -10px -112px;
+  width: 14px;
+  height: 14px;
+}
+.icon.icon-print {
+  background-position: -44px -112px;
+  width: 14px;
+  height: 14px;
+}
+.icon.icon-query {
+  background-position: -78px -112px;
+  width: 14px;
+  height: 14px;
+}
+.icon.icon-right {
+  background-position: -112px -112px;
+  width: 14px;
+  height: 14px;
+}
+.icon.icon-upload {
+  background-position: -146px -10px;
+  width: 14px;
+  height: 14px;
+}
+.nav_bar {
+  height: 30px;
+  margin: 10px 0;
+  border: 1px solid #c3c2c2;
+  background: linear-gradient(180deg, #fff, #E2E2E2);
+}
+.nav_bar.head {
+  margin-bottom: 0;
+  border-bottom: none;
+}
+.nav_bar ul {
+  overflow: auto;
+  height: 100%;
+}
+.nav_bar ul li {
+  float: left;
+  cursor: pointer;
+  line-height: 30px;
+}
+.nav_bar ul li:first-child {
+  margin-left: 10px;
+}
+.nav_bar ul li:hover {
+  color: #f00;
+}
+.nav_bar ul li a {
+  color: #000;
+}
+.nav_bar ul li a:hover {
+  color: #00a0e9;
+}
+.nav_bar ul.nav_text_box li {
+  padding: 0 15px;
+  text-align: center;
+  border-right: 1px solid #e2e2e2;
+}
+.nav_bar ul.nav_text_box li:first-child {
+  border-left: 1px solid #e2e2e2;
+}
+.nav_bar ul.nav_text_box li.hover {
+  background: linear-gradient(180deg, #c5c5c5, #a29898);
+}
+.nav_bar ul.nav_icon_box li {
+  padding-right: 10px;
+}
+/*==================================2017-02-09，改版 》顾重=============================*/

@@ -2,145 +2,156 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>table demo</title>
-    <script src="/assets/table-demo/js/jquery-1.11.3.js"></script>
-    <script src="/assets/table-demo/js/jquery.easydrag.handler.beta2.js"></script>
-    <script src="/assets/table-demo/js/laydate.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>ERP Common Page</title>
+
+    <link rel="shortcut icon" href="/assets/img/favicon.ico"/>
     <link rel="stylesheet" href="/assets/table-demo/js/skins/default/laydate.css">
     <link rel="stylesheet" href="/assets/table-demo/js/need/laydate.css">
-    <!--统一样式文件:重置,表格,弹窗 -->
     <link rel="stylesheet" type="text/css" href="/assets/table-demo/css/reset.css"/>
     <link rel="stylesheet" type="text/css" href="/assets/table-demo/css/table-common.css"/>
     <link rel="stylesheet" type="text/css" href="/assets/table-demo/css/table-popup.css"/>
 
-    <!-- 各列自定宽度 -->
+    <script src="/assets/table-demo/js/jquery-1.11.3.js"></script>
+    <script src="/assets/table-demo/js/jquery.easydrag.handler.beta2.js"></script>
+    <script src="/assets/table-demo/js/laydate.js"></script>
+
     <style type="text/css">
-        .c_1 {width: 8%;}
-        .c_2 {width: 14%;}
-        .c_3 {width: 10%;}
-        .c_4 {width: 21%;}
-        .c_5,.c_6 {width: 12%;}
-        .c_7 {width: 12%;}
+        .c_1 {
+            width: 8%;
+        }
+
+        .c_2 {
+            width: 14%;
+        }
+
+        .c_3 {
+            width: 10%;
+        }
+
+        .c_4 {
+            width: 21%;
+        }
+
+        .c_5,
+        .c_6 {
+            width: 12%;
+        }
+
+        .c_7 {
+            width: 12%;
+        }
 
         /*  小计 跨列格
             width = (8% + 14% + 10%) / 8% = 400% 只要比结果小就可以
          */
-        .c_content{
+        .c_content {
             width: 400%;
-            font-size:12px;
+            font-size: 12px;
             text-align: center;
         }
     </style>
 </head>
 
 <body>
-<!-- 页面 -->
 <div class="single_zr">
     <div class="right_container">
-        <!--导航-->
         <div class="breadcrumb_nav">
             <p class="current_nav">
-                <span class="current_nav_title">当前位置:</span>
-                <!--链接使用<a>,非链接使用<span> 'current_nav_item' - 标题项-->
-                <a class="current_nav_item" href="index.php?sys=human">人力管理</a>
-                <!--'indicator - 分隔符'-->
+                <span class="current_nav_title">当前位置：</span>
+                <a class="current_nav_item" href="index.php?sys=administration">一级标题</a>
                 <span class="indicator">>></span>
-                <span class="current_nav_item">薪资管理</span>
+                <span class="current_nav_item">二级标题</span>
                 <span class="indicator">>></span>
-                <!--'font_red - 红色字'-->
-                <span class="current_nav_item font_red">公积金管理</span>
+                <span class="current_nav_item font_red">当前标题</span>
             </p>
             <!--查询按钮-->
             <div class="search_drop_down_btn"
                  onclick="openShutManager(this,'drop_down_search',false,'<img src=/assets/table-demo/img/everyclose_btn.png />','<img src=/assets/table-demo/img/click_btn.png />')">
-                <!--默认显示关闭(查询框默认打开)-->
                 <img src="/assets/table-demo/img/everyclose_btn.png"/>
             </div>
         </div>
-        <!-- 查询框 -->
+
         <div id="drop_down_search" class="drop_down_search_bar">
-            <p class="search_title_bar">
-                <span class="search_title"><i></i> 查询管理</span>
-            </p>
-            <div class="search_box">
-                <!-- 控件项 - 标准 -->
-                <div class="search_item">
-                    <label for="applicant">申请人</label>
-                    <input type="text" id="applicant" class="clear_item"/>
+            <form action="" method="post">
+                <p class="search_title_bar">
+                    <span class="search_title"><i></i> 查询管理</span>
+                </p>
+                <div class="search_box">
+                    <!-- 控件项 - 标准 -->
+                    <div class="search_item">
+                        <label for="applicant">申请人</label>
+                        <input type="text" id="applicant" class="clear_item"/>
+                    </div>
+                    <!-- 控件项 - 选项 -->
+                    <div class="search_item">
+                        <label for="state">缴纳状态</label>
+                        <select id="state">
+                            <option value="7">全部</option>
+                            <option value="1">未缴纳</option>
+                        </select>
+                    </div>
+                    <!-- 控件项 - 单一日期 -->
+                    <div class="search_item search_date_range">
+                        <label for="apply_date">提交日期</label>
+                        <input type="text" id="apply_date" onclick="laydate()" readonly class="clear_item"/>
+                    </div>
+                    <!-- 控件项 - 起始日期 -->
+                    <div class="search_item search_date_range">
+                        <label for="apply_start_date">申请日期</label>
+                        <input type="text" id="apply_start_date" readonly class="clear_item"/>
+                    </div>
+                    <!-- 控件项 - 终止日期 -->
+                    <div class="search_item search_date_range_indicator">
+                        <label for="apply_end_date">-</label>
+                        <input type="text" id="apply_end_date" readonly class="clear_item"/>
+                    </div>
+                    <!-- 查询 -->
+                    <input class="search_btn" type="submit" value="查询" readonly/>
+                    <!-- 重置 -->
+                    <input class="reset_btn" type="button" value="重置" readonly/>
                 </div>
-                <!-- 控件项 - 选项 -->
-                <div class="search_item">
-                    <label for="state">缴纳状态</label>
-                    <select id="state">
-                        <option value="7">全部</option>
-                        <option value="1">未缴纳</option>
-                    </select>
-                </div>
-                <!-- 控件项 - 单一日期 -->
-                <div class="search_item search_date_range">
-                    <label for="apply_date">提交日期</label>
-                    <input type="text" id="apply_date" onclick="laydate()" readonly  class="clear_item"/>
-                </div>
-                <!-- 由js控制起始日期格式 -->
-                <!-- 控件项 - 起始日期 -->
-                <div class="search_item search_date_range">
-                    <label for="apply_start_date">申请日期</label>
-                    <input type="text" id="apply_start_date" readonly  class="clear_item"/>
-                </div>
-                <!-- 控件项 - 终止日期 -->
-                <div class="search_item search_date_range_indicator">
-                    <label for="apply_end_date">-</label>
-                    <input type="text" id="apply_end_date" readonly  class="clear_item"/>
-                </div>
-                <!-- 查询 -->
-                <input class="search_btn" type="button" value="查询" readonly/>
-                <!-- 重置 -->
-                <input class="reset_btn" type="button" value="重置" readonly/>
-            </div>
+            </form>
         </div>
-        <!-- 分类 -->
-        <div class="select_box ">
-            <ul>
-                <li>
-                    <a href=" ">上月公积金</a>
-                </li>
-                <li>
-                    <a href=" ">本月变动</a>
-                </li>
-                <li>
-                    <a href=" ">下月变动</a>
-                </li>
-                <li>
-                    <a href=" " class="hover">全部</a>
-                </li>
-                <li class="job_modify fr ">
-                    <a href="#">修改</a>
-                </li>
+
+        <div class="nav_bar">
+            <ul class="nav_text_box">
+                <li>上月公积金</li>
+                <li>本月变动</li>
+                <li>下月变动</li>
+                <li class="hover">全部</li>
             </ul>
         </div>
-        <!-- 部门 -->
+
+        <div class="nav_bar">
+            <ul class="nav_icon_box">
+                <li><i class="icon icon-add"></i>添加(黄底)</li>
+                <li><i class="icon icon-add_blue"></i>添加(白底)</li>
+                <li><i class="icon icon-add_green"></i>添加(绿底)</li>
+                <li><i class="icon icon-attachment"></i>附件</li>
+                <li><i class="icon icon-birth"></i>生日</li>
+                <li><i class="icon icon-cancel"></i>取消</li>
+                <li><i class="icon icon-delete"></i>删除</li>
+                <li><i class="icon icon-download"></i>下载</li>
+            </ul>
+        </div>
+
+        <div class="nav_bar head">
+            <ul class="nav_icon_box">
+                <li><i class="icon icon-edit"></i>编辑</li>
+                <li><i class="icon icon-email"></i>邮件</li>
+                <li><i class="icon icon-home"></i>主页</li>
+                <li><i class="icon icon-payment"></i>支付</li>
+                <li><i class="icon icon-people"></i>人员</li>
+                <li><i class="icon icon-print"></i>打印</li>
+                <li><i class="icon icon-query"></i>查询</li>
+                <li><i class="icon icon-right"></i>确认</li>
+                <li><i class="icon icon-upload"></i>上传</li>
+            </ul>
+        </div>
+
         <div class="dept_list ">
-            <div class="dept_list_title ">
-                <ul>
-                    <li class="dept_save ">
-                        <a href="#">修改</a>
-                    </li>
-                    <!-- 使用js绑定点击<a> 触发input点击事件 -->
-                    <li class="upload">
-                        <form method="post" action="" enctype="multipart/form-data">
-                            <a id="load">导入</a>
-                            <input type="file" name="cus_file"/>
-                        </form>
-                    </li>
-                    <li class="export">
-                        <a id="export">导出</a>
-                    </li>
-                    <li class="download">
-                        <a target="_blank" href="">下载</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- 左右按钮点击事件可直接复制 -->
             <div class="dept_list_box ">
                 <div class="btn_box ">
                     <div class="btnlf ">&lt;</div>
@@ -164,28 +175,14 @@
                 </div>
             </div>
         </div>
-        <!-- 表格 -->
+
+        <div class="nav_bar head">
+            <ul class="nav_icon_box">
+                <li><i class="icon icon-edit"></i>编辑</li>
+            </ul>
+        </div>
+
         <div class="table_list_box ">
-            <div class="table_list_header ">
-                <ul>
-                    <li class="header_item update"><span>更新</span></li>
-                    <li class="header_item export"><span>导出</span></li>
-                    <li class="header_item edit"><span>编辑</span></li>
-                    <li class="header_item delete"><span>删除</span></li>
-                    <!-- 使用js绑定点击<a> 触发input点击事件 -->
-                    <li class="header_item upload">
-                        <form method="post" action="" enctype="multipart/form-data">
-                            <a id="load1">导入</a>
-                            <input type="file" name="cus_file"/>
-                        </form>
-                    </li>
-                    <li class="header_item download">
-                        <a href="#">下载</a>
-                    </li>
-                    <li class="header_item apply"><span>应用</span></li>
-                </ul>
-            </div>
-            <!-- 若为两行表头则追加'double' -->
             <table class="table_list_content double">
                 <thead>
                 <tr class="table_list_title ">
@@ -214,7 +211,6 @@
                     <td class="c_7">XXXX</td>
                     <td>xxxxx</td>
                 </tr>
-                <!-- <tbody> 中的每一个单元格都不能合并,因此需要合并的单元格只能通过设置右(no_rbor)或下(no_bbor)边框为none视觉上进行合并,需要在合并格中显示字的放在当前行第一列中的div.c_content中 -->
                 <tr class="table_list_row ">
                     <td class="c_1 no_rbor no_bbor"></td>
                     <td class="c_2 no_rbor no_bbor"></td>
@@ -226,7 +222,9 @@
                     <td>xxxxx</td>
                 </tr>
                 <tr class="table_list_row ">
-                    <td class="c_1 no_rbor no_bbor"><div class="c_content">小计</div></td>
+                    <td class="c_1 no_rbor no_bbor">
+                        <div class="c_content">小计</div>
+                    </td>
                     <td class="c_2 no_rbor no_bbor"></td>
                     <td class="c_3 no_bbor"></td>
                     <td class="c_4">XXXX</td>
@@ -268,8 +266,6 @@
         </div>
     </div>
 </div>
-
-<h3 style="text-align: center;"><a href="javascript:window.history.go(-1)">返回</a></h3>
 
 <!--页面内弹窗-->
 <div class="popup_apply" style="display: none;">
@@ -345,7 +341,7 @@
                     </li>
                     <!--文件-->
                     <li>
-                        <a target="_blank" href="{$v[0]}" class="att_file" download >
+                        <a target="_blank" href="{$v[0]}" class="att_file" download>
                             <img src="/assets/table-demo/img/load.jpg"/>
                         </a>
                         <a href="javascript:window.parent.window.document.getElementById('picsubmit').contentWindow.delpic('{$v[0]}')">删除</a>
@@ -666,35 +662,41 @@
 
 <script>
     /* 所有弹窗底部必须调用此方法! 参数为关闭按钮选择器,容器选择器,导航条ID*/
-    $(function(){
-       popup_window();
+    $(function () {
+        popup_window();
     });
 
     /* 弹窗拖动与关闭 */
-    function popup_window(btn,box,handlerId) {
-        if(!btn){btn = '.popwin_close'}
-        if(!box){box = '.popup_win'}
-        if(!handlerId){handlerId = 'popwin_header'}
+    function popup_window(btn, box, handlerId) {
+        if (!btn) {
+            btn = '.popwin_close'
+        }
+        if (!box) {
+            box = '.popup_win'
+        }
+        if (!handlerId) {
+            handlerId = 'popwin_header'
+        }
         // 关闭按钮
         $(btn).click(function () {
-            $(box).hide().removeClass('pw_s pw_l pw_xl').css('margin-right',0).html('');
+            $(box).hide().removeClass('pw_s pw_l pw_xl').css('margin-right', 0);
         });
         // 拖动
         $(box).easydrag().setHandler(handlerId);
     }
 
     /* 附属弹窗关闭 */
-    function  popattBoxClose(e){
+    function popattBoxClose(e) {
         $(e).parents('div.popatt_box').hide();
-        if(!($('.popwin_attach .popatt_box').is(':visible'))){
-            $('.popup_win').css('margin-right','0');
+        if (!($('.popwin_attach .popatt_box').is(':visible'))) {
+            $('.popup_win').css('margin-right', '0');
         }
     }
 
     /* 附属弹窗打开 */
-    function popattBoxOpen(n){
+    function popattBoxOpen(n) {
         n = parseInt(n) - 1;
-        $('.popup_win').css('margin-right','533px');
+        $('.popup_win').css('margin-right', '533px');
         $('div.popup_win div.popatt_box').eq(n).show();
     }
 
@@ -772,7 +774,7 @@
     laydate(apply_end_date);
 
     /* 重置 */
-    $('.reset_btn').click(function() {
+    $('.reset_btn').click(function () {
         $('input.clear_item').val('');
     });
 

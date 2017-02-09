@@ -54,7 +54,6 @@ h1 + h2, h2 + h3, h3 + h4, h4 + h5, h5 + h6
   padding-top: 2em
   font-size: $post-font-size
   line-height: $post-line-height
-  text-shadow: 1px 1px 0 #cccaca
 
   &-title
     margin: 0 0 $post-paragraph-spacing * .75
@@ -63,7 +62,6 @@ h1 + h2, h2 + h3, h3 + h4, h4 + h5, h5 + h6
   &-meta
     font-size: .9em
     color: $post-meta-color
-    text-shadow: 1px 1px 0 #000
     &-span
       margin-right: 1em
       &.date:before
@@ -132,6 +130,10 @@ h1 + h2, h2 + h3, h3 + h4, h4 + h5, h5 + h6
     max-width: 80%
     border: $post-img-border-width solid $post-img-border-color
     margin-bottom: $post-paragraph-spacing / 2
+    
+  table img
+    display: inline-block
+    margin-bottom: 0
 
   code
     font-family: $post-code-font
@@ -152,7 +154,6 @@ h1 + h2, h2 + h3, h3 + h4, h4 + h5, h5 + h6
     background: $post-code-block-bg
     overflow: auto
     border: 1px solid #ccc
-    text-shadow: none
     border-radius: 5px
     -webkit-overflow-scrolling: touch
     &::-webkit-scrollbar
@@ -170,8 +171,6 @@ h1 + h2, h2 + h3, h3 + h4, h4 + h5, h5 + h6
       border-radius: 5px
       border: 1px solid #ccc
       padding: 6px 10px
-      code
-        text-shadow: none
 
   hr
     height: 0

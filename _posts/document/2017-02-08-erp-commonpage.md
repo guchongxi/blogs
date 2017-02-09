@@ -5,6 +5,15 @@ categories: 文档
 tag: 固定表头 弹窗 通用
 ---
 
+<style type="text/css">
+td{
+    text-align: center;
+}
+table td:nth-child(odd){
+    color: #0099CC !important
+}
+</style>
+
 **注意：**这份文件是用 Markdown 写的，你可以[看看它的原始文件][src] 。
 
 *   预览 [完全效果](/table-show)
@@ -15,7 +24,9 @@ tag: 固定表头 弹窗 通用
 
 
 1.  [前言](#introduction)
-2.  [页面模块](#html)
+1.  [通用组件](#common)
+    *   [图标](#common1)
+1.  [页面模块](#html)
     *   [结构](#html1)
     *   [头部](#html2)
     *   [查询框](#html3)
@@ -25,12 +36,12 @@ tag: 固定表头 弹窗 通用
     *   [表格主体](#html7)
     *   [分页](#html8)
     *   [页面内弹窗](#html9)
-3.  [弹窗](#popup)
+1.  [弹窗](#popup)
     *   [头部](#popup1)
     *   [主体](#popup2)
     *   [尾部](#popup3)
     *   [附属](#popup4)
-4.  [交互逻辑](#js)
+1.  [交互逻辑](#js)
     *   [页面逻辑](#js1)
     *   [弹窗逻辑](#js2)
     *   [通用逻辑](#js3)
@@ -39,22 +50,96 @@ tag: 固定表头 弹窗 通用
 
 <h2 id="introduction">前言</h2>
 
-1.  此样式结构适用于 **商翔集团ERP(PC端)** 中固定表头式表格页面及所有弹窗页面。
-2.  页面样式文件 `table-common.css` 以及弹窗样式文件 `table-popup.css` 已加载至 `\templates\home\index.html` ；但在项目初始阶段没有进行样式重置,因此部分页面需单独引入 `static\css\reset.css` 进行样式重置。
-3.  为充分进行样式复用，页面显示效果仅与标签 `class` 有关；但因涉及到部分js交互效果，以下特定标签 `id` 已被限定。<br/>
-    查询框主体
+*  此样式组件结构适用于 **商翔集团ERP(PC端)** 中固定表头式表格页面及所有弹窗页面。
+*  页面样式及通用组件文件 `table-common.css` 以及弹窗样式文件 `table-popup.css` 已加载至 `\templates\home\index.html` ；但在项目初始阶段没有进行样式重置,因此部分页面需单独引入 `static\css\reset.css` 进行样式重置。
+*  为充分进行样式复用，页面显示效果仅与标签 `class` 有关；但因涉及到部分js交互效果，以下特定标签 `id` 已被限定。
+
+查询框主体
 {% highlight html %}
     <div id="drop_down_search" class="drop_down_search_bar">
         ···
     </div>
 {% endhighlight %}
-    弹窗头部
+
+弹窗头部
 {% highlight html %}
     <div class="popwin_header" id="popwin_header">
         ···
     </div>
 {% endhighlight %}
-4.  若在使用中有任何疑问或bug可随时联系我进行修改.
+
+*  若在使用中有任何疑问或bug可随时联系我进行修改.
+
+---
+
+<h2 id="common">通用组件</h2>
+
+<h3 id="common1">图标</h3>
+
+出于性能的考虑，所有图标都需要一个基类和对应每个图标的类。例如添加按钮：<img src="/assets/icon/add.png" style="display:inline-block;margin-bottom:0;">
+{% highlight html %}
+    <i class="icon icon-add"></i>
+{% endhighlight %}
+
+所有可用的图标
+<div>
+  <table width="100%">
+    <thead>
+      <tr>
+        <th width="5%">显示</th>
+        <th width="20%">class</th>
+        <th width="5%">显示</th>
+        <th width="20%">class</th>
+        <th width="5%">显示</th>
+        <th width="20%">class</th>
+        <th width="5%">显示</th>
+        <th width="20%">class</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><img src="/assets/icon/add.png"></td>
+        <td>icon-add</td>
+        <td><img src="/assets/icon/add_blue.jpg"></td>
+        <td>icon-add_blue</td>
+        <td><img src="/assets/icon/add_green.png"></td>
+        <td>icon-add_green</td>
+        <td><img src="/assets/icon/attachment.png"></td>
+        <td>icon-attachment</td>
+      </tr>
+      <tr>
+        <td><img src="/assets/icon/birth.jpg"></td>
+        <td>icon-birth</td>
+        <td><img src="/assets/icon/cancel.png"></td>
+        <td>icon-cancel</td>
+        <td><img src="/assets/icon/delete.jpg"></td>
+        <td>icon-delete</td>
+        <td><img src="/assets/icon/download.jpg"></td>
+        <td>icon-download</td>
+      </tr>
+      <tr>
+        <td><img src="/assets/icon/edit.jpg"></td>
+        <td>icon-edit</td>
+        <td><img src="/assets/icon/email.jpg"></td>
+        <td>icon-email</td>
+        <td><img src="/assets/icon/home.jpg"></td>
+        <td>icon-home</td>
+        <td><img src="/assets/icon/payment.jpg"></td>
+        <td>icon-payment</td>
+      </tr>
+      <tr>
+        <td><img src="/assets/icon/people.jpg"></td>
+        <td>icon-people</td>
+        <td><img src="/assets/icon/print.jpg"></td>
+        <td>icon-print</td>
+        <td><img src="/assets/icon/query.jpg"></td>
+        <td>icon-query</td>
+        <td><img src="/assets/icon/right.jpg"></td>
+        <td>icon-right</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 ---
 
@@ -62,9 +147,8 @@ tag: 固定表头 弹窗 通用
 
 <h3 id="html1">结构</h3>
 
-html文件内代码分为三个部分：CSS，HTML和Javascript
-
- {% highlight html %}
+HTML文件内代码分为三个部分：CSS，HTML和Javascript
+{% highlight html %}
 <link rel="stylesheet" type="text/css" href="static/css/reset.css" />
 <style type="text/css">
     /*页面自有样式*/
@@ -82,7 +166,9 @@ html文件内代码分为三个部分：CSS，HTML和Javascript
     })
 </script>
 {% endhighlight %}
-页面自有样式一般有表格各列宽度设定（最后一列为自适应宽度，不进行设定），宽度总和等于 `（100% - 最后一列宽度）`  
+
+页面自有样式一般仅设置表格各列宽度（最后一列为自适应宽度，不进行设定），宽度总和等于 `（100% - 最后一列宽度）` 
+ 
 例：表格共10列，每列宽度占比10%，宽度总和为90%
 {% highlight css %}
 .c_1,
@@ -121,7 +207,8 @@ html文件内代码分为三个部分：CSS，HTML和Javascript
 </div>
 {% endhighlight %}
 
-`openShutManager()` :打开关闭查询框；参数：( `this` , `查询框容器 id` , `显示为关闭图片元素` , `显示为打开图片元素` )；定义在 `\static\js\drop.js` .<br/>
+`openShutManager()` :打开关闭查询框；参数：( `this` , `查询框容器 id` , `显示为关闭图片元素` , `显示为打开图片元素` )；定义在 `\static\js\drop.js` .
+
 查询框默认打开，如需设置默认关闭需修改
 {% highlight html %}
   <!-- 查询按钮 -->
@@ -138,96 +225,109 @@ html文件内代码分为三个部分：CSS，HTML和Javascript
 
 <h3 id="html3">查询框</h3>
 
-![2.jpn][]
+![2.png][]
 
 {% highlight html %}
 <div id="drop_down_search" class="drop_down_search_bar">
-  <p class="search_title_bar">
-      <span class="search_title"><i></i> 查询管理</span>
-  </p>
-  <div class="search_box">
-      
-      <!-- 控件项 -->
-      
-      <!-- 查询按钮 -->
-      <input class="search_btn" type="button" value="查询" readonly/>
-      <!-- 重置按钮 -->
-      <input class="reset_btn" type="button" value="重置" readonly/>
-  </div>
+  <form action="" method="post">
+    <p class="search_title_bar">
+        <span class="search_title"><i></i> 查询管理</span>
+    </p>
+    <div class="search_box">
+        
+        <!-- 若干控件项 -->
+        
+        <!-- 查询按钮 -->
+        <input class="search_btn" type="submit" value="查询" readonly/>
+        <!-- 重置按钮 -->
+        <input class="reset_btn" type="button" value="重置" readonly/>
+    </div>
+  </form>
 </div>
 {% endhighlight %}
 
-控件项
+**控件项**
 * 标准输入
-  {% highlight html %}
-    <div class="search_item">
-        <label for="applicant">申请人</label>
-        <input type="text" id="applicant"/>
-    </div>
-  {% endhighlight %}
+{% highlight html %}
+  <div class="search_item">
+      <label for="applicant">申请人</label>
+      <input type="text" id="applicant"/>
+  </div>
+{% endhighlight %}
   
 * 选项
-  {% highlight html %}
-    <div class="search_item">
-        <label for="state">缴纳状态</label>
-        <select id="state">
-            <option value="7">全部</option>
-            <option value="1">未缴纳</option>
-        </select>
-    </div>
-  {% endhighlight %}
+{% highlight html %}
+  <div class="search_item">
+      <label for="state">缴纳状态</label>
+      <select id="state">
+          <option value="7">全部</option>
+          <option value="1">未缴纳</option>
+      </select>
+  </div>
+{% endhighlight %}
   
 * 选择日期
-  {% highlight html %}
-    <div class="search_item search_date_range">
-        <label for="apply_date">提交日期</label>
-        <input type="text" id="apply_date" onclick="laydate()" readonly/>
-    </div>
-  {% endhighlight %}
+{% highlight html %}
+  <div class="search_item search_date_range">
+      <label for="apply_date">提交日期</label>
+      <input type="text" id="apply_date" onclick="laydate()" readonly/>
+  </div>
+{% endhighlight %}
   
-  * 拾取时间使用 [laydate](http://laydate.layui.com/) 插件，若无需要可直接调用。
+  * 拾取时间使用 [laydate] [] 插件，若无需要可直接调用。
   
 * 起始日期
-  {% highlight html %}
-    <div class="search_item search_date_range">
-        <label for="apply_start_date">申请日期</label>
-        <input type="text" id="apply_start_date" readonly/>
-    </div>
-  {% endhighlight %}
+{% highlight html %}
+  <div class="search_item search_date_range">
+      <label for="apply_start_date">申请日期</label>
+      <input type="text" id="apply_start_date" readonly/>
+  </div>
+{% endhighlight %}
   
 * 终止日期
-  {% highlight html %}
-    <div class="search_item search_date_range_indicator">
-        <label for="apply_end_date">-</label>
-        <input type="text" id="apply_end_date" readonly/>
-    </div>
-  {% endhighlight %}
+{% highlight html %}
+  <div class="search_item search_date_range_indicator">
+      <label for="apply_end_date">-</label>
+      <input type="text" id="apply_end_date" readonly/>
+  </div>
+{% endhighlight %}
   
-  * 设置起止时间需在 ‘页面逻辑‘ 区添加以下代码：
-    {% highlight javascript %}
-      /* 查询日期设置 */
-      var apply_start_date = {
-          elem: '#apply_start_date',
-          istoday: false,   //是否显示今天
-          choose: function (dates) {
-              apply_end_date.min = dates; //开始日选好后，重置结束日的最小日期
-              apply_end_date.start = dates; //将结束日的初始值设定为开始日
-          }
-      };
-      var apply_end_date = {
-          elem: '#apply_end_date',
-          istoday: false,
-          choose: function (dates) {
-              apply_start_date.max = dates; //结束日选好后，重置开始日的最大日期
-          }
-      };
-      laydate(apply_start_date);
-      laydate(apply_end_date);
-    {% endhighlight %}
-需要进行重置的控件项追加 `class="clear_item"` ，重置逻辑定义在 ``。
+  * 设置起止时间需在 ‘页面逻辑’ 区添加以下代码，其他设置项查看 [laydate官方文档][]
+{% highlight javascript %}
+  /* 查询日期设置 */
+  var apply_start_date = {
+      elem: '#apply_start_date',
+      istoday: false,   //是否显示今天
+      choose: function (dates) {
+          apply_end_date.min = dates; //开始日选好后，重置结束日的最小日期
+          apply_end_date.start = dates; //将结束日的初始值设定为开始日
+      }
+  };
+  var apply_end_date = {
+      elem: '#apply_end_date',
+      istoday: false,
+      choose: function (dates) {
+          apply_start_date.max = dates; //结束日选好后，重置开始日的最大日期
+      }
+  };
+  laydate(apply_start_date);
+  laydate(apply_end_date);
+{% endhighlight %}
+
+需要进行重置的控件项追加 `class="clear_item"` ，重置逻辑定义在‘页面逻辑’ 区。
 {% highlight html %}
   <input type="text" id="applicant" class="clear_item"/>
 {% endhighlight %}
+
+{% highlight js %}
+  // 重置
+  $('.reset_btn').click(function() {
+      $('input.clear_item').val('');
+  });
+{% endhighlight %}
+
+[laydate]:http://laydate.layui.com/
+[laydate官方文档]:http://www.layui.com/doc/modules/laydate.html
 
 <h3 id="html4">分类导航</h3>
 
@@ -264,19 +364,6 @@ html文件内代码分为三个部分：CSS，HTML和Javascript
         <ul>
             <li class="dept_save ">
                 <a href="#">修改</a>
-            </li>
-            <!-- 使用js绑定点击<a> 触发input点击事件 -->
-            <li class="upload">
-                <form method="post" action="" enctype="multipart/form-data">
-                    <a id="load">导入</a>
-                    <input type="file" name="cus_file"/>
-                </form>
-            </li>
-            <li class="export">
-                <a id="export">导出</a>
-            </li>
-            <li class="download">
-                <a target="_blank" href="">下载</a>
             </li>
         </ul>
     </div>
@@ -805,5 +892,23 @@ html文件内代码分为三个部分：CSS，HTML和Javascript
     	});	
     }
 {% endhighlight %}
+
+
+[1.png]:/assets/img/2017-02-08-erp-commonpage/1.png
+[2.png]:/assets/img/2017-02-08-erp-commonpage/2.png
+[3.png]:/assets/img/2017-02-08-erp-commonpage/3.png
+[4.png]:/assets/img/2017-02-08-erp-commonpage/4.png
+[5.png]:/assets/img/2017-02-08-erp-commonpage/5.png
+[6.png]:/assets/img/2017-02-08-erp-commonpage/6.png
+[7.png]:/assets/img/2017-02-08-erp-commonpage/7.png
+[8.png]:/assets/img/2017-02-08-erp-commonpage/8.png
+[9.png]:/assets/img/2017-02-08-erp-commonpage/9.png
+[10.png]:/assets/img/2017-02-08-erp-commonpage/10.png
+[11.png]:/assets/img/2017-02-08-erp-commonpage/1.1png
+[12.png]:/assets/img/2017-02-08-erp-commonpage/1.p2ng
+[13.png]:/assets/img/2017-02-08-erp-commonpage/1.pn3g
+[14.png]:/assets/img/2017-02-08-erp-commonpage/1.pn4g
+[15.png]:/assets/img/2017-02-08-erp-commonpage/1.pn5g
+[16.png]:/assets/img/2017-02-08-erp-commonpage/1.pn6g
 
 
