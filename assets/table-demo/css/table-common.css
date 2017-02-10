@@ -76,7 +76,7 @@
   margin: 6px 0;
 }
 .single_zr .right_container .drop_down_search_bar {
-  width: 100%;
+  width: calc(100% - 2px);
   margin-bottom: 10px;
   border: 1px solid #c3c2c2;
 }
@@ -755,7 +755,6 @@ button {
   height: 14px;
 }
 .nav_bar {
-  height: 30px;
   margin: 10px 0;
   border: 1px solid #c3c2c2;
   background: linear-gradient(180deg, #fff, #E2E2E2);
@@ -784,6 +783,9 @@ button {
 }
 .nav_bar ul li a:hover {
   color: #00a0e9;
+}
+.nav_bar ul + ul {
+  border-top: 1px solid #c3c2c2;
 }
 .nav_bar ul.nav_text_box li {
   padding: 0 15px;

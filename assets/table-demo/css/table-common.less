@@ -83,7 +83,7 @@
     //导航 - 结束
     //查询框
     .drop_down_search_bar {
-      width: 100%;
+      width: calc(~"100% - 2px");
       margin-bottom: 10px;
 
       border: 1px solid #c3c2c2;
@@ -897,8 +897,6 @@ button {
 
 //导航条
 .nav_bar {
-  height: @nav-bar-height;
-
   margin: @nav-bar-item-spacing 0;
 
   border: 1px solid @nav-bar-border-color;
@@ -929,6 +927,10 @@ button {
         }
       }
     }
+
+    + ul {
+      border-top: 1px solid @nav-bar-border-color;
+    }
   }
 
   ul.nav_text_box li {
@@ -948,9 +950,6 @@ button {
     padding-right: @nav-icon-item-spacing;
   }
 
-  ul.nav_scroll_box {
-
-  }
 }
 
 /*==================================2017-02-09，改版 》顾重=============================*/
