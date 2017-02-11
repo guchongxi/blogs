@@ -88,7 +88,7 @@
                     <!-- 控件项 - 选项 -->
                     <div class="search_item">
                         <label for="state">缴纳状态</label>
-                        <select id="state">
+                        <select id="state" class="clear_item">
                             <option value="7">全部</option>
                             <option value="1">未缴纳</option>
                         </select>
@@ -266,202 +266,6 @@
     </div>
 </div>
 
-<!--页面内弹窗-->
-<div class="popup_apply" style="display: none;">
-    <!-- 头部 -->
-    <div class="popwin_header" id="popapp_header">
-        <img class="popapp_close" src="/assets/table-demo/img/close_icon.jpg"/>
-        <p class="popwin_breadcrumb">
-            行政事务 >> 二 >> 三 >>
-            <span class="font_red">查看</span>
-            <span class="font_bule">打印</span>
-            <!-- poppattBoxOpen() 传参数字为该弹窗在 '.popwin_attach'中的排序-->
-            <!-- 此处 span.fr 自动右浮动,红色字 -->
-            <span class="fr" onclick="popattBoxOpen(1)">资产申购>></span>
-        </p>
-    </div>
-    <!-- 主体 -->
-    <div class="popwin_body">
-        <div class="apply_process_box">
-            <p class="ap_title">流程</p>
-            <div class="ap_chart">
-                <span class="ap_item ap_ends">开始</span>
-                <i class="arrow_right"></i>
-                <!-- 通过审核 -->
-                <span class="ap_item ap_pass ">AAA</span>
-                <i class="arrow_right"></i>
-                <!-- 正在审核 -->
-                <span class="ap_item ap_current">BBB</span>
-                <i class="arrow_right"></i>
-                <!-- 还未审核 -->
-                <span class="ap_item">CCC</span>
-                <i class="arrow_right"></i>
-                <span class="ap_item ap_ends">结束</span>
-            </div>
-        </div>
-        <div class="popwin_content scroll_bar">
-            <div class="content_box">
-                <h1>标题</h1>
-            </div>
-            <div class="content_box">
-                <h2>基本信息</h2>
-                <div class="row-c">
-                    <div class="col-a">
-                        <label>输入</label>
-                        <input type="text" value="AAA" readonly/>
-                    </div>
-                    <div class="col-a">
-                        <label>选项</label>
-                        <select disabled>
-                            <option value="A">AAA</option>
-                        </select>
-                    </div>
-                    <div class="col-a">
-                        <label>日期</label>
-                        <input type="text" value="AAAA" readonly onclick="laydate()" class="input_date"/>
-                    </div>
-                    <div class="col-c">
-                        <label>原因</label>
-                        <textarea readonly>AAA</textarea>
-                    </div>
-                    <fieldset readonly>
-                        <legend>说明</legend>
-                        <textarea readonly>AAA</textarea>
-                    </fieldset>
-                </div>
-            </div>
-            <div class="content_box">
-                <h2>附件</h2>
-                <ul id="att_list">
-                    <!--图片-->
-                    <li>
-                        <img src="/assets/table-demo/img/nopic.jpg" onclick="imgMagnify($(this).attr('src'))"/>
-                        <a href="javascript:window.parent.window.document.getElementById('picsubmit').contentWindow.delpic('{$v[0]}')">删除</a>
-                    </li>
-                    <!--文件-->
-                    <li>
-                        <a target="_blank" href="{$v[0]}" class="att_file" download>
-                            <img src="/assets/table-demo/img/load.jpg"/>
-                        </a>
-                        <a href="javascript:window.parent.window.document.getElementById('picsubmit').contentWindow.delpic('{$v[0]}')">删除</a>
-                    </li>
-                    <!--无图-->
-                    <li>
-                        <img src="/assets/table-demo/img/nopic.jpg" alt="暂无图片"/>
-                    </li>
-                </ul>
-            </div>
-            <div class="content_box">
-                <h2>货物明细</h2>
-                <!-- 表头固定 -->
-                <div class="table_box">
-                    <div class="table_header">
-                        <table>
-                            <tr>
-                                <th width="10%">序号</th>
-                                <th width="10%">产品名称</th>
-                                <th width="10%">产品规格</th>
-                                <th width="10%">箱规</th>
-                                <th width="10%">数量/箱</th>
-                                <th width="10%">单价/元</th>
-                                <th width="10%">总金额/元</th>
-                                <th>备注</th>
-                            </tr>
-                        </table>
-                    </div>
-                    <!-- 主体定高超高滚动 -->
-                    <div class="table_content scroll_bar">
-                        <table>
-                            <tr>
-                                <td width="10%">AAA</td>
-                                <td width="10%">AAA</td>
-                                <td width="10%">AAA</td>
-                                <td width="10%">AAA</td>
-                                <td width="10%">AAA</td>
-                                <td width="10%">AAA</td>
-                                <td width="10%">AAA</td>
-                                <td>AAA</td>
-                            </tr>
-                            <td width="10%" class="font_red">总计</td>
-                            <td width="10%">AAA</td>
-                            <td width="10%">AAA</td>
-                            <td width="10%">AAA</td>
-                            <td width="10%">AAA</td>
-                            <td width="10%">AAA</td>
-                            <td width="10%">AAA</td>
-                            <td>AAA</td>
-                        </table>
-                    </div>
-                </div>
-            </div>
-            <div class="content_box">
-                <h2>审核流程</h2>
-                <table class="process_box">
-                    <thead>
-                    <tr>
-                        <th width="10%">用户</th>
-                        <th width="40%">操作</th>
-                        <th width="20%">审核状态</th>
-                        <th width="30%">处理时间</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>AAA</td>
-                        <td>AAA</td>
-                        <td>AAA</td>
-                        <td>AAA</td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <div class="opinion_box">
-            <textarea name="opinion" id="" placeholder="请填写意见"></textarea>
-        </div>
-    </div>
-    <!-- 底部  -->
-    <div class="popwin_footer">
-        <input type="button" value="关闭" class="popapp_close" readonly>
-        <input type="button" value="提交" class="fr"/>
-        <input type="button" value="取回" class="fr" onclick="newtakeback(this)" data-id="{$apply.yc_id}"
-               data-apply="contractManage" data-state="{$apply.sc_state}" data-op="sc" data-sys='administration'>
-        <select class="assign_person">
-            <option value="1">张嘉望</option>
-        </select>
-        <input type="button" value="驳回" class="reject_file">
-    </div>
-    <!-- 附属弹窗 -->
-    <div class="popwin_attach">
-        <!--资产申购 该弹窗目前排位第 1-->
-        <div class="popatt_box">
-            <p class="popatt_header">
-                <img class="popatt_close" onclick="popattBoxClose(this)" src="/assets/table-demo/img/close_icon.jpg"/>
-                资产申购
-            </p>
-            <div class="popatt_body">
-                <table>
-                    <thead>
-                    <tr>
-                        <th width="20%">编号</th>
-                        <th width="50%">资产名称</th>
-                        <th width="10%">数量</th>
-                        <th width="20%">估价</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>AAA</td>
-                        <td>AAA</td>
-                        <td>AAA</td>
-                        <td>AAA</td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-</div>
 <!-- 弹窗 -->
 <div class="popup_win">
     <!-- 头部 -->
@@ -536,7 +340,7 @@
                     </li>
                     <!--文件-->
                     <li>
-                        <a target="_blank" href="{$v[0]}" class="att_file">
+                        <a target="_blank" href="{$v[0]}" class="att_file" download="">
                             <img src="/assets/table-demo/img/load.jpg"/>
                         </a>
                         <a href="javascript:window.parent.window.document.getElementById('picsubmit').contentWindow.delpic('{$v[0]}')">删除</a>
@@ -578,14 +382,16 @@
                                 <td width="10%">AAA</td>
                                 <td>AAA</td>
                             </tr>
-                            <td width="10%" class="font_red">总计</td>
-                            <td width="10%">AAA</td>
-                            <td width="10%">AAA</td>
-                            <td width="10%">AAA</td>
-                            <td width="10%">AAA</td>
-                            <td width="10%">AAA</td>
-                            <td width="10%">AAA</td>
-                            <td>AAA</td>
+                            <tr>
+                                <td width="10%" class="font_red">总计</td>
+                                <td width="10%">AAA</td>
+                                <td width="10%">AAA</td>
+                                <td width="10%">AAA</td>
+                                <td width="10%">AAA</td>
+                                <td width="10%">AAA</td>
+                                <td width="10%">AAA</td>
+                                <td>AAA</td>
+                            </tr>
                         </table>
                     </div>
                 </div>
@@ -693,9 +499,13 @@
     }
 
     /* 附属弹窗打开 */
-    function popattBoxOpen(n) {
+    function popattBoxOpen(n){
+        if(!isNaN(n) || n < 1){
+            alert('请正确传入popattBoxOpen()参数！');
+            return false;
+        }
         n = parseInt(n) - 1;
-        $('.popup_win').css('margin-right', '533px');
+        $('.popup_win').css('margin-right','533px');
         $('div.popup_win div.popatt_box').eq(n).show();
     }
 
@@ -754,6 +564,7 @@
     /* 查询日期设置 */
     var apply_start_date = {
         elem: '#apply_start_date',
+        format: 'YYYY-MM-DD hh:mm:ss', //日期格式
         istime: true,
         istoday: false,
         choose: function (datas) {
@@ -763,7 +574,6 @@
     };
     var apply_end_date = {
         elem: '#apply_end_date',
-        istime: true,
         istoday: false,
         choose: function (datas) {
             apply_start_date.max = datas; //结束日选好后，重置开始日的最大日期
@@ -773,9 +583,12 @@
     laydate(apply_end_date);
 
     /* 重置 */
-    $('.reset_btn').click(function () {
-        $('input.clear_item').val('');
-    });
+    function queryReset(){
+        $('.reset_btn').click(function() {
+            $('input.clear_item').val('');
+            $('select.clear_item option:first-child').attr('selected',true);
+        });
+    }
 
     /* 导入 */
     $('#load').click(function () {

@@ -9,7 +9,7 @@ tag: 固定表头 弹窗 通用
 td{
     text-align: center;
 }
-table td:nth-child(odd){
+table td:nth-child(even){
     color: #0099CC !important
 }
 </style>
@@ -26,7 +26,8 @@ table td:nth-child(odd){
 1.  [前言](#introduction)
 2.  [通用组件](#common)
     *   [图标](#common1)
-    
+    *   [树形菜单](#common2)
+   
 3.  [页面模块](#html)
     *   [结构](#html1)
     *   [头部](#html2)
@@ -51,31 +52,20 @@ table td:nth-child(odd){
 5.  [交互逻辑](#js)
     *   [页面逻辑](#js1)
     *   [弹窗逻辑](#js2)
-    *   [通用逻辑](#js3)
 
 ---
 
 <h2 id="introduction">前言</h2>
 
-*  此样式组件结构适用于 **商翔集团ERP(PC端)** 中固定表头式表格页面及所有弹窗页面。
-*  页面样式及通用组件文件 `table-common.css` 以及弹窗样式文件 `table-popup.css` 已加载至 `\templates\home\index.html` ；但在项目初始阶段没有进行样式重置,因此部分页面需单独引入 `static\css\reset.css` 进行样式重置。
-*  为充分进行样式复用，页面显示效果仅与标签 `class` 有关；但因涉及到部分js交互效果，以下特定标签 `id` 已被限定。
+*  此样式组件结构适用于 **商翔集团ERP(PC端)** 中固定表头式表格页面及所有弹窗；
 
-查询框主体
-{% highlight html %}
-    <div id="drop_down_search" class="drop_down_search_bar">
-        ···
-    </div>
-{% endhighlight %}
+*  页面样式及通用组件文件 `table-common.css(源文件为less格式)` 以及弹窗样式文件 `table-popup.css(源文件为less格式)` 已加载至 `\templates\home\index.html` 全局可用；但在项目初始阶段没有进行样式重置,因此部分页面需单独引入 `static\css\reset.css` 进行样式重置；
 
-弹窗头部
-{% highlight html %}
-    <div class="popwin_header" id="popwin_header">
-        ···
-    </div>
-{% endhighlight %}
+*  页面公共逻辑代码基本部署在 `static\js\home\header.js`；
 
-*  若在使用中有任何疑问或bug可随时联系我进行修改.
+*  为充分进行样式复用，页面显示效果仅与标签 `class` 有关；但因涉及到部分js交互效果，特定标签 `id` 已被限定，如需修改请注意修改相关函数调用参数；
+
+*  若在使用中有任何疑问或bug可随时联系我进行修改。
 
 ---
 
@@ -83,7 +73,7 @@ table td:nth-child(odd){
 
 <h3 id="common1">图标</h3>
 
-出于性能的考虑，所有图标都需要一个基类和对应每个图标的类。例如添加按钮：`<img src="/assets/icon/add.png" style="display:inline-block;margin-bottom:0;">`
+出于性能的考虑，所有图标都需要一个基类和对应每个图标的类。例如添加按钮：<img src="/assets/icon/add.png" style="display:inline-block;margin-bottom:0;">
 {% highlight html %}
     <i class="icon icon-add"></i>
 {% endhighlight %}
@@ -148,6 +138,10 @@ table td:nth-child(odd){
   </table>
 </div>
 
+<h3 id="common2">树形菜单</h3>
+
+暂未开发！
+
 ---
 
 <h2 id="html">页面模块</h2>
@@ -168,9 +162,9 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
 <div>
 
 <!--页面自有弹窗 (如申请功能弹窗)-->
-<div class="popup_apply" style="display:none;">
-  <!--弹窗模块-->
-</div>
+  ···
+<!-- 结束 -->
+
 
 <script>
     $(function(){
@@ -205,7 +199,7 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
     <!-- 导航 -->
     <p class="current_nav">
         <span class="current_nav_title">当前位置:</span>
-        <a class="current_nav_item" href="index.php?sys=human">一级标题</a>
+        <a class="current_nav_item" href="index.php?sys=">一级标题</a>
         <span class="indicator">>></span>
         <span class="current_nav_item">二级标题</span>
         <span class="indicator">>></span>
@@ -219,7 +213,7 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
 </div>
 {% endhighlight %}
 
-`openShutManager()` :打开关闭查询框；参数：( `this` , `查询框容器 id` , `显示为关闭图片元素` , `显示为打开图片元素` )；定义在 `\static\js\drop.js` .
+[openShutManager()](#openShutManager) :打开关闭查询框；参数：( `this` , `查询框容器 id` , `是否阻止`, `显示为关闭图片元素` , `显示为打开图片元素` )；定义在 `\static\js\drop.js` .
 
 查询框默认打开，如需设置默认关闭需修改
 {% highlight html %}
@@ -250,9 +244,9 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
         <!-- 若干控件项 -->
         
         <!-- 查询按钮 -->
-        <input class="search_btn" type="submit" value="查询" readonly/>
+        <input class="search_btn" type="submit" value="查询"/>
         <!-- 重置按钮 -->
-        <input class="reset_btn" type="button" value="重置" readonly/>
+        <input class="reset_btn" type="button" value="重置"/>
     </div>
   </form>
 </div>
@@ -286,7 +280,7 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
   </div>
 {% endhighlight %}
   
-  * 拾取时间使用 [laydate] [] 插件，若无需要可直接调用。
+  * 拾取时间使用 [laydate] [] 插件，若无需要可直接调用，日期控件需添加 `readonly`。
   
 * 起始日期
 {% highlight html %}
@@ -326,16 +320,9 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
   laydate(apply_end_date);
 {% endhighlight %}
 
-需要进行重置的控件项追加 `class="clear_item"` ，重置逻辑定义在‘页面逻辑’ 区。
+需要进行重置的控件项追加 `class="clear_item"` ，并在‘页面逻辑’ 区调用 [queryReset()](#queryReset) 即可。
 {% highlight html %}
   <input type="text" id="applicant" class="clear_item"/>
-{% endhighlight %}
-
-{% highlight js %}
-  // 重置
-  $('.reset_btn').click(function() {
-      $('input.clear_item').val('');
-  });
 {% endhighlight %}
 
 [laydate]:http://laydate.layui.com/
@@ -429,6 +416,8 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
 </div>
 {% endhighlight %}
 
+并在‘页面逻辑’ 区添加 [dept_scroll](#dept_scroll) js。
+
 <h3 id="html6">表格</h3>
 
 **普通表格**
@@ -485,16 +474,16 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
 </div>
 {% endhighlight %}
 
-*   说明：
+*   **说明**：
 *   每行最后一列 **不** 设定宽度，在设置其他列宽时需要注意留出。
-*   `<thead>` 和 `<tfoot>` 中的内容在表格超高后也始终显示，`<tbody>` 中的内容超高会进行滚动显示。
+*   `<thead>` 和 `<tfoot>` 中的内容始终显示，`<tbody>` 中的内容超高会进行滚动显示。
 *   分页内容由 **php** 从后台传输，一般格式为`<div class="page_down"> {$pagination} </div>` ;
 
 **多行表头式表格**
 
 ![555.png][]
 
-*   需在 `.table_list_box` 后追加 `double` 类以设置表头背景正确填充
+*   需在 `.table_list_content` 后追加 `double` 类以设置表头背景正确填充
 
 {% highlight html %}
 <table class="table_list_content double">
@@ -583,7 +572,7 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
     }
   {% endhighlight %}
   
-*   `<tfoot>` 中的 `<td>` 行列合并方式与 `<tbody>` 相同，**特例**，独占一行可使用 `colspan` ！
+*   `<tfoot>` 中的 `<td>` 行列合并方式与 `<tbody>` 相同；**特例**：独占一行可使用 `colspan` ！
   {% highlight html %}
     <tfoot>
     <tr class="table_list_row ">
@@ -635,7 +624,9 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
 </div>
 {% endhighlight %}
 
-`<div class="popup_win"></div>` 标签放置于以下文件中，使用时仅需在HTML文件中加入模块内容即可
+[popup_window()](#popup_window) ：弹窗关闭及拖动方法，参数：`关闭按钮选择器(默认.popwin_close)`，`关闭弹窗选择器(默认.popup_win)`，`拖动‘把手’id(默认popwin_header)`，除使用*页面内弹窗*，否则默认即可
+
+`<div class="popup_win"></div>` 父元素标签已放置于以下文件中，使用时仅需在HTML文件中加入内容即可
   * \logistics\lv_meta.html
   * \crm\lv_meta.html
   * \human\lv_meta.html
@@ -656,20 +647,20 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
         一级标题 >> 二级标题 >> 三级标题 >>
         <span class="font_red">查看</span>
         <span class="font_bule">打印</span>
-        <span class="fr" onclick="popattBoxOpen(1)">资产申购>></span>
+        <span class="fr" onclick="popattBoxOpen(1)">附属弹窗>></span>
     </p>
 </div>
 {% endhighlight %}
 
 *   `.popwin_header` 为默认弹窗拖动把手 *id* 
 *   `span.fr` 会右浮动并且颜色为红色
-*   `popattBoxOpen(n)` 为附属弹窗开启方法，参数 `n` 为打开附属弹窗的排序，最小为1。在 [附属弹窗](#popup4) 会进一步说明
+*   [popattBoxOpen()](#popattBoxOpen) 为附属弹窗开启方法，参数 `n` 为打开附属弹窗的排序，最小为1。在 [附属弹窗](#popup4) 会进一步说明
 
 <h3 id="popup2">主体</h3>
 
 ![8.png][]
 
-主体由 *流程* 、 *模块* 、 *文本框* 三部分组成，模块显示区限高，超高部分滚动显示。
+主体由 *流程* 、 *模块* 、 *文本框* 三部分组成，模块显示区超高部分滚动显示。
 
 <h4 id="popup_modular0">流程</h4>
 
@@ -744,6 +735,12 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
 >
 > 栅格系统用于通过一系列的行（row）与列（column）的组合来创建页面布局，你的内容就可以放入这些创建好的布局中。
 
+{% highlight html%}
+<div class="content_box">
+  <!-- 栅格系统 -->
+</div>
+{% endhighlight %}
+
 *简介*
 
 1. 每行中放置多少列取决于父容器的 `class` ：`row-a/b/c/d/e` ；每个 `row-*` 都独占一行，宽度为100%
@@ -756,7 +753,7 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
 
 5. 子容器允许跨列，例如在父容器 `row-c` 下，子容器 `col-b` ，则该列宽度为66.66%， 子容器 `col-c` ，则该列宽度为100%，效果与 `row-a` 下的 `col-a` 效果相同
 
-6. 子容器宽度级别最高为父元素允许级别，即 `row-a` 下只能存在 `col-a` ， `row-b` 下可存在 `col-a` 和 `col-b` ， 以此类推 `row-e` 可存在 `col-a` `col-b` `col-c` `col-d` `col-e`。 
+6. 子容器宽度级别最高为父元素允许级别，即 `row-a` 下只能存在 `col-a` ， `row-b` 下可存在 `col-a` 和 `col-b` ， 以此类推 `row-e` 可存在 `col-a` /`col-b` /`col-c` /`col-d` /`col-e`。 
 
 *  单列栅格
     要建立一个单列(100%)布局，首先使用容器 `class` 中 `row-a` ，并添加一个子容器 `col-a`
@@ -765,6 +762,7 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
         <div class="col-a"></div>
       </div>
     {% endhighlight %}
+    
 *  双列栅格
     要建立一个双列(50/50%)布局，首先使用容器 `class` 中 `row-b` ，并添加两个子容器 `col-a` ， 也可存在 `col-b`
     {% highlight html%}
@@ -773,6 +771,7 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
         <div class="col-a"></div>
       </div>
     {% endhighlight %}
+    
 *  三列栅格
     要建立一个三列(33/33/33%)布局，首先使用容器 `class` 中 `row-c` ，并添加三个子容器 `col-a` ，也可存在 `col-b/c`
     {% highlight html%}
@@ -782,6 +781,7 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
         <div class="col-a"></div>
       </div>
     {% endhighlight %}
+    
 *  四列栅格
     要建立一个四列(25/25/25/25%)布局，首先使用容器 `class` 中 `row-d` ，并添加四个子容器 `col-a` ，也可存在 `col-b/c/d`
      {% highlight html%}
@@ -792,6 +792,7 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
          <div class="col-a"></div>
        </div>
      {% endhighlight %}
+     
 *  五列栅格
     要建立一个五列(20/20/20/20/20%)布局，首先使用容器 `class` 中 `row-e` ，并添加五个子容器 `col-a` ，也可存在 `col-b/c/d/e`
     {% highlight html%}
@@ -804,10 +805,16 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
       </div>
     {% endhighlight %}
     
-*   混合栅格
+*  混合栅格
+    * 子容器中通常使用表单空间来填充数据，因此也对其进行样式规范
+    * 标准格式为 `<label>` + 控件项  
+    * 只读或禁用控件需添加 `readonly` 或 `disabled` 属性(显示效果相同)
+    * 显示日期需添加 `class='input_date'` ， 拾取时间还需添加 `onclick='laydate()'` ，起止时间限制可参考 [查询框](#html3)
+    * 若是使用 `fieldset > textarea` ，那么设置禁用时需同时两者的 `readonly/disabled`
+    
+    ![10.png][]
 {% highlight html%}
 <div class="content_box">
-    <h1>标题</h1>
     <h2>基本信息</h2>
     <div class="row-c">
         <div class="col-a">
@@ -822,7 +829,8 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
         </div>
         <div class="col-a">
             <label>日期</label>
-            <input type="text" value="AAAA" readonly onclick="laydate()" class="input_date"/>
+            <input type="text" value="AAAA" readonly 
+              onclick="laydate()" class="input_date"/>
         </div>
         <div class="col-c">
             <label>原因</label>
@@ -831,6 +839,9 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
         <fieldset readonly>
             <legend>说明</legend>
             <textarea readonly>AAA</textarea>
+            <!-- 如果内容自带样式(公告，工作总结等) 则将 <textarea> 替换成<div> 
+              <fieldset> 不设置 readonly/disabled-->
+            <div class="nContent">AAA</div>
         </fieldset>
     </div>
 </div>
@@ -839,13 +850,15 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
 <h5 id="popup_modular3">附件</h5>
 ![11.png][]
 
+  * `iframe` 若 `id="picsubmit"` 可不写 `class="picsubmit"` ，`ul` 同理； 
+
 {% highlight html%}
 <div class="content_box">
     <h2>附件
       <iframe id="picsubmit" class="picsubmit" scrolling="no" allowtransparency="true" src="upload.php?showid=att_list&inputid=pics&picsubmit=picsubmit&ac=2&w=120h=100" {if $check}style="display:none" {/if}></iframe>
-      <input type="hidden" id="pics" value="{$yk.pics}"/>
+      <input type="hidden" id="pics" value=""/>
     </h2>
-    <ul id="att_list">
+    <ul id="att_list" class="att_list">
         <!--图片-->
         <li>
             <img src=""{$v[0]}"" onclick="imgMagnify('{$v[0]}')"/>
@@ -853,7 +866,7 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
         </li>
         <!--文件-->
         <li>
-            <a target="_blank" href="{$v[0]}" class="att_file">
+            <a target="_blank" href="{$v[0]}" class="att_file" download>
                 <img src="static/img/load.jpg"/>
             </a>
             <a href="javascript:window.parent.window.document.getElementById('picsubmit').contentWindow.delpic('{$v[0]}')">删除</a>
@@ -866,8 +879,14 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
 </div>
 {% endhighlight %}
 
+[imgMangnify()](#imgMangnify) ：在新窗口查看大图，参数为 `图片路径`
+
+`att_file`：区分`<a>` 是删除按钮还是文件链接
+
 <h5 id="popup_modular4">表格</h5>
 ![12.png][]
+
+固定表头式
 
 {% highlight html%}
 <div class="content_box">
@@ -880,10 +899,6 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
                     <th width="10%">序号</th>
                     <th width="10%">产品名称</th>
                     <th width="10%">产品规格</th>
-                    <th width="10%">箱规</th>
-                    <th width="10%">数量/箱</th>
-                    <th width="10%">单价/元</th>
-                    <th width="10%">总金额/元</th>
                     <th>备注</th>
                 </tr>
             </table>
@@ -895,25 +910,32 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
                     <td width="10%">AAA</td>
                     <td width="10%">AAA</td>
                     <td width="10%">AAA</td>
-                    <td width="10%">AAA</td>
-                    <td width="10%">AAA</td>
+                    <td>AAA</td>
+                </tr>
+                <tr>
+                    <td width="10%" class="font_red">总计</td>
                     <td width="10%">AAA</td>
                     <td width="10%">AAA</td>
                     <td>AAA</td>
                 </tr>
-                <td width="10%" class="font_red">总计</td>
-                <td width="10%">AAA</td>
-                <td width="10%">AAA</td>
-                <td width="10%">AAA</td>
-                <td width="10%">AAA</td>
-                <td width="10%">AAA</td>
-                <td width="10%">AAA</td>
-                <td>AAA</td>
             </table>
         </div>
     </div>
 </div>
 {% endhighlight %}
+
+若仅需要普通表格可将 `table_box` 改为 `table_box_common` 即可
+{% highlight html%}
+<div class="content_box">
+    <h2>货物明细</h2>
+    <div class="table_box_common">
+        <table>
+          <!-- ··· -->
+        </table>
+    </div>
+</div>
+{% endhighlight %}
+
 
 <h5 id="popup_modular5">审核历史</h5>
 ![13.png][]
@@ -959,25 +981,28 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
 
 {% highlight html %}
 <div class="popwin_footer">
-    <input type="button" value="关闭" class="popwin_close" readonly>
+    <input type="button" value="关闭" class="popwin_close">
     <input type="button" value="提交" class="fr"/>
-    <input type="button" value="取回" class="fr" onclick="newtakeback(this)" data-id="{$apply.yc_id}"
-           data-apply="contractManage" data-state="{$apply.sc_state}" data-op="sc" data-sys='administration'>
+    <input type="button" value="取回" class="fr" onclick="newtakeback(this)" 
+      data-id="" data-apply="" data-state="" data-op="" data-sys=''>
     <select class="assign_person">
-        <option value="1">张嘉望</option>
+        <option value="1">AAA</option>
     </select>
     <input type="button" value="驳回" class="reject_file">
 </div>
 {% endhighlight %}
 
+[newtakeback()](#newtakeback) ： 审核驳回方法，所在标签需要以下自定属性：`id` ：记录id,`apply` ：申请子页面,`state` ：当前步骤,`op` ：功能简写,`sys（默认administration）` ：申请主页面,
+
 <h3 id="popup4">附属</h3>
 
 {% highlight html %}
 <div class="popwin_attach">
-    <!--资产申购 该弹窗目前排位第 1-->
+    <!--该弹窗目前排位第 1-->
     <div class="popatt_box">
         <p class="popatt_header">
-            <img class="popatt_close" onclick="popattBoxClose(this)" src="static/img/close_icon.jpg"/>
+            <img class="popatt_close" onclick="popattBoxClose(this)" 
+              src="static/img/close_icon.jpg"/>
             资产申购
         </p>
         <div class="popatt_body">
@@ -1001,21 +1026,72 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
             </table>
         </div>
     </div>
+    <!--该弹窗目前排位第 2-->
+    <div class="popatt_box"></div>
+    ...
 </div>
 {% endhighlight %}
+
+[popattBoxClose()](#popattBoxClose)：附属弹窗关闭方法，参数：`this`
+
+<h3 id="popup5">页面内弹窗</h3>
+
+如果弹窗内容是写在列表页面的话（申请弹窗），你需要在 [页面自有弹窗处](#html1) 这样写：
+
+{% highlight html%}
+<div class="popup_apply" style="display: none;">
+  <style type="text/css">
+      /*弹窗自有样式*/
+  </style>
+  
+  <div class="popwin_header" id="popapp_header">
+    <img class="popapp_close" src="/assets/table-demo/img/close_icon.jpg"/>
+    ...
+  </div>
+  <div class="popwin_body">
+    ...
+  </div>
+  <div class="popwin_footer">
+    <input type="button" value="关闭" class="popapp_close" readonly>
+    ...
+  </div>
+  
+  <script>
+      $(function(){
+          popup_window('.popapp_close','.popup_apply','popapp_header');
+          /*弹窗逻辑*/
+      })
+  </script>
+</div>
+{% endhighlight %}
+
+
+
 ---
 
-<h2 id="js">交互逻辑</h2>
+<h2 id="js">交互js</h2>
 
-<h3 id="js1">页面逻辑</h3>
+<h3 id="js1">页面js</h3>
 
+点击行查看详情
 {% highlight javascript %}
-/* 点击行查看详情 */
     $('tbody .table_list_row').click(function () {
-        $('.popup_win').show();
+        var id = $(this).data("id");
+        $.ajax({
+            type: 'post',
+            url: '',
+            data:{
+              id:id,
+            },
+            success: function(data) {
+                $('.popup_win').html(data).show();
+            }
+        });
     });
-    
-/* 查询 - 打开关闭 */
+{% endhighlight %}
+
+<span id='openShutManager'></span>查询框 - 打开关闭
+{% highlight javascript %}    
     function openShutManager(oSourceObj, oTargetObj, shutAble, oOpenTip, oShutTip) {
         var sourceObj = typeof oSourceObj == "string" ? document.getElementById(oSourceObj) : oSourceObj;
         var targetObj = typeof oTargetObj == "string" ? document.getElementById(oTargetObj) : oTargetObj;
@@ -1034,8 +1110,10 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
             }
         }
     }
+{% endhighlight %}
 
-/* 部门列表滚动*/
+<span id='dept_scroll'></span>部门列表滚动
+{% highlight javascript %}
     $(".btn_box ").on("click ", function (e) {
         var $scrollBox = $(".dept_list_container ");
         var scrollLeft = $scrollBox.scrollLeft();
@@ -1048,8 +1126,10 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
             return false;
         }
     });
+{% endhighlight %}
 
-/* 全选 */
+全选
+{% highlight javascript %}
     $('input[name=allUser]').click(function () {
         if (this.checked) {
             $('input[type=checkbox]').each(function () {
@@ -1061,68 +1141,76 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
             });
         }
     }); 
+{% endhighlight %}
 
-/* 重置 */
-    $('.reset_btn').click(function() {
-        $('input.clear_item').val('');
-    });
-
-/* 导入 */
-    $('#load').click(function () {
-        $(this).next().trigger('click');
-    });
+<span id='queryReset'></span>重置
+{% highlight javascript %}
+    function queryReset(){
+        $('.reset_btn').click(function() {
+            $('input.clear_item').val('');
+            $('select.clear_item option:first-child').attr('selected',true);
+        });
+    }
     
 {% endhighlight %}
 
 
-<h3 id="js2">弹窗逻辑</h3>
+<h3 id="js2">弹窗js</h3>
 
+<span id='popup_window'></span>弹窗拖动与关闭
 {% highlight javascript %}
-/* 弹窗拖动与关闭 */
     function popup_window(btn,box,handlerId) {
         if(!btn){btn = '.popwin_close'}
         if(!box){box = '.popup_win'}
         if(!handlerId){handlerId = 'popwin_header'}
         // 关闭按钮
         $(btn).click(function () {
-            $(box).hide().removeClass('pw_s pw_l pw_xl').css('margin-right',0).html('');
+            $(box).hide().removeClass('pw_s pw_l pw_xl').css('margin-right',0);
         });
         // 拖动
         $(box).easydrag().setHandler(handlerId);
     }
-    
-/* 附属弹窗关闭 */
+{% endhighlight %}
+
+<span id='popattBoxClose'></span>附属弹窗关闭
+{% highlight javascript %}    
     function  popattBoxClose(e){
         $(e).parents('div.popatt_box').hide();
         if(!($('.popwin_attach .popatt_box').is(':visible'))){
             $('.popup_win').css('margin-right','0');
         }
     }
+{% endhighlight %}
 
-/* 附属弹窗打开 */
+<span id='popattBoxOpen'></span>附属弹窗打开
+{% highlight javascript %}
     function popattBoxOpen(n){
+        if(!isNaN(n) || n < 1){
+            alert('请正确传入popattBoxOpen()参数！');
+            return false;
+        }
         n = parseInt(n) - 1;
         $('.popup_win').css('margin-right','533px');
         $('div.popup_win div.popatt_box').eq(n).show();
-    }   
+    }
 {% endhighlight %}
 
-<h3 id="js3">通用逻辑</h3>
-
-{% highlight javascript %}
-/* 查看图片 */
+<span id='imgMagnify'></span>查看图片
+{% highlight javascript %}    
     function imgMagnify(imgUrl) {
         window.open('index.php?sys=administration&mod=imgmagnify&imgUrl=' + imgUrl, '', 'dialogWidth=800px;dialogHeight=500px;status=no;help=no;scrollbars=no');
     }
-    
-/* 取回 */
+{% endhighlight %}
+
+<span id='newtakeback'></span>取回
+{% highlight javascript %}    
     function newtakeback(data){
     	var nId = $(data).attr("data-id");	
     	var state = $(data).attr("data-state");	
     	var apply = $(data).attr("data-apply");	
     	var op = $(data).attr("data-op");	
     	var sys = $(data).attr("data-sys");
-    
+
     	if(!sys){
     	   sys = 'administration';
         }
