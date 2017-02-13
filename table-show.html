@@ -16,6 +16,7 @@
     <script src="/assets/table-demo/js/jquery-1.11.3.js"></script>
     <script src="/assets/table-demo/js/jquery.easydrag.handler.beta2.js"></script>
     <script src="/assets/table-demo/js/laydate.js"></script>
+    <script src="/assets/table-demo/js/treeList.js"></script>
 
     <style type="text/css">
         .c_1 {
@@ -55,7 +56,7 @@
 </head>
 
 <body>
-<div class="single_zr">
+<div class="single_zr" style="overflow: hidden;">
     <div class="right_container">
 
         <!--面包屑导航-->
@@ -470,10 +471,119 @@
     </div>
 </div>
 
+<ul id="demo"></ul>
+<ul id="demo1"></ul>
+
 <script>
     /* 所有弹窗底部必须调用此方法! 参数为关闭按钮选择器,容器选择器,导航条ID*/
     $(function () {
         popup_window();
+        tree({
+            elem: '#demo', //传入元素选择器
+            nodes: [ //节点
+                {
+                    name: '1',
+                    id: 1,
+                    alias: '1',
+                    children: [
+                        {
+                            name: '1-1',
+                            id: 11,
+                            href: 'http://www.layui.com/',
+                            alias: 'weidu'
+                        },
+                        {
+                            name: '1-2',
+                            id: 12
+                        },
+                        {
+                            name: '1-3',
+                            id: 13
+                        }
+                    ]
+                },
+                {
+                    name: '2',
+                    id: 2,
+                    children: [
+                        {
+                            name: '2-1',
+                            id: 21,
+                            spread: true,
+                            children: [
+                                {
+                                    name: '2-1-1',
+                                    id: 211,
+                                    children: [
+                                        {
+                                            name: '2-1-1-1',
+                                            id: 2111
+                                        }, {
+                                            name: '2-1-1-2',
+                                            id: 2112
+                                        }, {
+                                            name: '2-1-1-3',
+                                            id: 2113
+                                        }
+                                    ]
+                                },
+                                {
+                                    name: '2-1-2',
+                                    id: 212
+                                },
+                                {
+                                    name: '2-1-3',
+                                    id: 213
+                                }
+                            ]
+                        },
+                        {
+                            name: '2-2',
+                            id: 22,
+                            children: [
+                                {
+                                    name: '2-2-1',
+                                    id: 221
+                                },
+                                {
+                                    name: '2-2-2',
+                                    id: 222
+                                },
+                                {
+                                    name: '2-2-3'
+                                    , id: 223
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        });
+        tree({
+            elem: '#demo1', //传入元素选择器
+            nodes: [{ //节点
+                name: '父节点1',
+                children: [{
+                    name: '子节点11'
+                },
+                    {
+                        name: '子节点12',
+                        drag: true
+                    }]
+            },
+                {
+                    name: '父节点2（可以点左侧箭头，也可以双击标题）',
+                    children: [{
+                        name: '子节点21',
+                        children: [{
+                            name: '子节点211'
+                        }]
+                    }]
+                }],
+            click: function (node) {
+                console.log(node); //node即为当前点击的节点数据
+            }
+        })
     });
 
     /* 弹窗拖动与关闭 */
@@ -504,13 +614,13 @@
     }
 
     /* 附属弹窗打开 */
-    function popattBoxOpen(n){
-        if(isNaN(n) || n < 1){
+    function popattBoxOpen(n) {
+        if (isNaN(n) || n < 1) {
             alert('请正确传入popattBoxOpen()参数！');
             return false;
         }
         n = parseInt(n) - 1;
-        $('.popup_win').css('margin-right','533px');
+        $('.popup_win').css('margin-right', '533px');
         $('div.popup_win div.popatt_box').eq(n).show();
     }
 
@@ -588,10 +698,10 @@
     laydate(apply_end_date);
 
     /* 重置 */
-    function queryReset(){
-        $('.reset_btn').click(function() {
+    function queryReset() {
+        $('.reset_btn').click(function () {
             $('input.clear_item').val('');
-            $('select.clear_item option:first-child').attr('selected',true);
+            $('select.clear_item option:first-child').attr('selected', true);
         });
     }
 

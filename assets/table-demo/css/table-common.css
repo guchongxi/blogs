@@ -1299,4 +1299,81 @@ fieldset[disabled] .btn-orange.active {
   -moz-border-radius: 3px;
   border-radius: 3px;
 }
+/** 树组件 **/
+@font-face {
+  font-family: 'tree-icon';
+  src: url('../font/iconfont.eot');
+  src: url('../font/iconfont.eot?#iefix') format('embedded-opentype'), url('../font/iconfont.woff') format('woff'), url('../font/iconfont.ttf') format('truetype'), url('../font/iconfont.svg#iconfont') format('svg');
+}
+.tree-box {
+  line-height: 26px;
+  box-sizing: content-box;
+}
+.tree-show {
+  display: block !important;
+}
+.tree-icon {
+  font-family: "tree-icon" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.tree-box li {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.tree-box li a,
+.tree-box li .tree-spread {
+  display: inline-block;
+  vertical-align: top;
+  height: 26px;
+  *display: inline;
+  *zoom: 1;
+  cursor: pointer;
+}
+.tree-box li a {
+  font-size: 0;
+}
+.tree-box li a i {
+  font-size: 16px;
+}
+.tree-box li a cite {
+  padding: 0 6px;
+  font-size: 14px;
+  font-style: normal;
+}
+.tree-box li i {
+  padding-left: 6px;
+  color: #333;
+  -moz-user-select: none;
+}
+.tree-box li .tree-check {
+  font-size: 13px;
+}
+.tree-box li .tree-check:hover {
+  color: #009E94;
+}
+.tree-box li ul {
+  display: none;
+  margin-left: 20px;
+}
+.tree-box li .tree-enter {
+  line-height: 24px;
+  border: 1px dotted #000;
+}
+.tree-drag {
+  display: none;
+  position: absolute;
+  left: -666px;
+  top: -666px;
+  background-color: #f2f2f2;
+  padding: 5px 10px;
+  border: 1px dotted #000;
+  white-space: nowrap;
+}
+.tree-drag i {
+  padding-right: 5px;
+}
 /*==================================2017-02-09，改版 》顾重=============================*/
