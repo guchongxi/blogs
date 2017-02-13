@@ -57,11 +57,12 @@
 <body>
 <div class="single_zr">
     <div class="right_container">
+
         <!--面包屑导航-->
         <div class="breadcrumb_nav">
             <p class="current_nav">
                 <span class="current_nav_title">当前位置：</span>
-                <a class="current_nav_item" href="index.php?sys=administration">一级标题</a>
+                <a class="current_nav_item" href="">一级标题</a>
                 <span class="indicator">>></span>
                 <span class="current_nav_item">二级标题</span>
                 <span class="indicator">>></span>
@@ -274,9 +275,7 @@
         <p class="popwin_breadcrumb">
             行政事务 >> 二 >> 三 >>
             <span class="font_red">查看</span>
-            <span class="font_bule" id="print">打印</span>
-            <!-- poppattBoxOpen() 传参数字为该弹窗在 '.popwin_attach'中的排序-->
-            <!-- 此处 span.fr 自动右浮动,红色字 -->
+            <span class="font_blue" id="print">打印</span>
             <span class="fr" onclick="popattBoxOpen(1)">资产申购>></span>
         </p>
     </div>
@@ -500,7 +499,7 @@
 
     /* 附属弹窗打开 */
     function popattBoxOpen(n){
-        if(!isNaN(n) || n < 1){
+        if(isNaN(n) || n < 1){
             alert('请正确传入popattBoxOpen()参数！');
             return false;
         }

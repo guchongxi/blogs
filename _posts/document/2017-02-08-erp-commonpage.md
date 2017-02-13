@@ -25,8 +25,11 @@ table td:nth-child(even){
 
 1.  [前言](#introduction)
 2.  [通用组件](#common)
-    *   [图标](#common1)
-    *   [树形菜单](#common2)
+    *   [浮动](#common1)
+    *   [图标](#common2)
+    *   [颜色](#common3)
+    *   [按钮](#common4)
+    *   [树形菜单](#common5)
    
 3.  [页面模块](#html)
     *   [结构](#html1)
@@ -57,23 +60,29 @@ table td:nth-child(even){
 
 <h2 id="introduction">前言</h2>
 
-*  此样式组件结构适用于 **商翔集团ERP(PC端)** 中固定表头式表格页面及所有弹窗；
+*  此样式组件结构适用于 **商翔集团ERP(PC端)** 固定表头式表格页面及所有弹窗；
 
-*  页面样式及通用组件文件 `table-common.css(源文件为less格式)` 以及弹窗样式文件 `table-popup.css(源文件为less格式)` 已加载至 `\templates\home\index.html` 全局可用；但在项目初始阶段没有进行样式重置,因此部分页面需单独引入 `static\css\reset.css` 进行样式重置；
+*  页面样式及通用组件文件 `table-common.css(源文件为同名less文件)` 以及弹窗样式文件 `table-popup.css(源文件为同名less文件)` 已加载至 `\templates\home\index.html` 全局可用；但在项目初始阶段没有进行样式重置,因此部分页面需单独引入 `static\css\reset.css` 进行样式重置；
 
 *  页面公共逻辑代码基本部署在 `static\js\home\header.js`；
 
 *  为充分进行样式复用，页面显示效果仅与标签 `class` 有关；但因涉及到部分js交互效果，特定标签 `id` 已被限定，如需修改请注意修改相关函数调用参数；
 
-*  若在使用中有任何疑问或bug可随时联系我进行修改。
+*  若在使用中有任何疑问或bug可随时联系我。
 
 ---
 
 <h2 id="common">通用组件</h2>
 
-<h3 id="common1">图标</h3>
+<h3 id="common1">浮动</h3>
 
-出于性能的考虑，所有图标都需要一个基类和对应每个图标的类。例如添加按钮：<img src="/assets/icon/add.png" style="display:inline-block;margin-bottom:0;">
+*   左浮动 ：`fl`
+*   右浮动 ：`fl`
+*   清除浮动 ：`clearfix`
+
+<h3 id="common2">图标</h3>
+
+所有图标都需要一个基类和对应每个图标的类。例如添加按钮：<img src="/assets/icon/add.png" style="display:inline-block;margin-bottom:0;">
 {% highlight html %}
     <i class="icon icon-add"></i>
 {% endhighlight %}
@@ -138,7 +147,25 @@ table td:nth-child(even){
   </table>
 </div>
 
-<h3 id="common2">树形菜单</h3>
+<h3 id="common3">字体颜色</h3>
+
+*   红色：`font_red`
+*   蓝色：`font_blue`
+*   绿色：`font_green`
+
+必填项 `*`
+
+*   前方：`necessary_front`
+*   后方：`necessary_back`
+
+<h3 id="common4">按钮</h3>
+
+*   通用：`common_btn`
+*   红色空心：`red_border_btn`
+*   红色实心：`red_bcg_btn`
+*   蓝色空心：`blue_border_btn`
+
+<h3 id="common5">树形菜单</h3>
 
 暂未开发！
 
@@ -253,6 +280,7 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
 {% endhighlight %}
 
 **控件项**
+
 * 标准输入
 {% highlight html %}
   <div class="search_item">
@@ -416,7 +444,7 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
 </div>
 {% endhighlight %}
 
-并在‘页面逻辑’ 区添加 [dept_scroll](#dept_scroll) js。
+并在‘页面逻辑’ 区添加 [dept_scroll](#dept_scroll) 代码。
 
 <h3 id="html6">表格</h3>
 
@@ -483,7 +511,7 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
 
 ![555.png][]
 
-*   需在 `.table_list_content` 后追加 `double` 类以设置表头背景正确填充
+*   需在 `.table_list_content` 后追加 `double` 类以设置两行表头背景正确填充
 
 {% highlight html %}
 <table class="table_list_content double">
@@ -627,14 +655,15 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
 [popup_window()](#popup_window) ：弹窗关闭及拖动方法，参数：`关闭按钮选择器(默认.popwin_close)`，`关闭弹窗选择器(默认.popup_win)`，`拖动‘把手’id(默认popwin_header)`，除使用*页面内弹窗*，否则默认即可
 
 `<div class="popup_win"></div>` 父元素标签已放置于以下文件中，使用时仅需在HTML文件中加入内容即可
-  * \logistics\lv_meta.html
-  * \crm\lv_meta.html
-  * \human\lv_meta.html
-  * \sale\lv_meta.html
-  * \trade\lv_meta.html
-  * \financial\lv_meta.html
-  * \salary\lv_meta.html
-  * \administration\lv_meta.html
+
+  *   \logistics\lv_meta.html
+  *   \crm\lv_meta.html
+  *   \human\lv_meta.html
+  *   \sale\lv_meta.html
+  *   \trade\lv_meta.html
+  *   \financial\lv_meta.html
+  *   \salary\lv_meta.html
+  *   \administration\lv_meta.html
 
 <h3 id="popup1">头部</h3>
 
@@ -646,14 +675,14 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
     <p class="popwin_breadcrumb">
         一级标题 >> 二级标题 >> 三级标题 >>
         <span class="font_red">查看</span>
-        <span class="font_bule">打印</span>
+        <span class="font_blue">打印</span>
         <span class="fr" onclick="popattBoxOpen(1)">附属弹窗>></span>
     </p>
 </div>
 {% endhighlight %}
 
 *   `.popwin_header` 为默认弹窗拖动把手 *id* 
-*   `span.fr` 会右浮动并且颜色为红色
+*   `span.fr` 会进行右浮动并且颜色为红色
 *   [popattBoxOpen()](#popattBoxOpen) 为附属弹窗开启方法，参数 `n` 为打开附属弹窗的排序，最小为1。在 [附属弹窗](#popup4) 会进一步说明
 
 <h3 id="popup2">主体</h3>
