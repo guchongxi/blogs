@@ -82,7 +82,7 @@ table td:nth-child(even){
 
 <h3 id="common2">图标</h3>
 
-所有图标都需要一个基类和对应每个图标的类。例如添加按钮：<img src="/assets/icon/add.png" style="display:inline-block;margin-bottom:0;">
+所有图标都需要一个基类 `icon` 和对应每个图标的类
 {% highlight html %}
     <i class="icon icon-add"></i>
 {% endhighlight %}
@@ -105,33 +105,33 @@ table td:nth-child(even){
     <tbody>
       <tr>
         <td><img src="/assets/icon/add.png"></td>
-        <td>icon-add</td>
+        <td>icon icon-add</td>
         <td><img src="/assets/icon/add_blue.jpg"></td>
-        <td>icon-add_blue</td>
+        <td>icon icon-add_blue</td>
         <td><img src="/assets/icon/add_green.png"></td>
-        <td>icon-add_green</td>
+        <td>icon icon-add_green</td>
         <td><img src="/assets/icon/attachment.png"></td>
-        <td>icon-attachment</td>
+        <td>icon icon-attachment</td>
       </tr>
       <tr>
         <td><img src="/assets/icon/birth.jpg"></td>
-        <td>icon-birth</td>
+        <td>icon icon-birth</td>
         <td><img src="/assets/icon/cancel.png"></td>
-        <td>icon-cancel</td>
+        <td>icon icon-cancel</td>
         <td><img src="/assets/icon/delete.jpg"></td>
-        <td>icon-delete</td>
+        <td>icon icon-delete</td>
         <td><img src="/assets/icon/download.jpg"></td>
-        <td>icon-download</td>
+        <td>icon icon-download</td>
       </tr>
       <tr>
         <td><img src="/assets/icon/edit.jpg"></td>
-        <td>icon-edit</td>
+        <td>icon icon-edit</td>
         <td><img src="/assets/icon/email.jpg"></td>
-        <td>icon-email</td>
+        <td>icon icon-email</td>
         <td><img src="/assets/icon/home.jpg"></td>
-        <td>icon-home</td>
+        <td>icon icon-home</td>
         <td><img src="/assets/icon/payment.jpg"></td>
-        <td>icon-payment</td>
+        <td>icon icon-payment</td>
       </tr>
       <tr>
         <td><img src="/assets/icon/people.jpg"></td>
@@ -160,10 +160,50 @@ table td:nth-child(even){
 
 <h3 id="common4">按钮</h3>
 
-*   通用：`common_btn`
-*   红色空心：`red_border_btn`
-*   红色实心：`red_bcg_btn`
-*   蓝色空心：`blue_border_btn`
+和图标一样，所有按钮都需要一个基类 `btn` 和对应每个按钮的类。如果你使用过 [bootstrap] []，对此应该会很熟悉！
+
+所有可用的按钮
+<div>
+  <table width="100%">
+    <thead>
+      <tr>
+        <th>显示</th>
+        <th>class</th>
+        <th>显示</th>
+        <th>class</th>
+        <th>显示</th>
+        <th>class</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><img src="/assets/img/2017-02-08-erp-commonpage/18.png"></td>
+        <td>btn btn-default</td>
+        <td><img src="/assets/img/2017-02-08-erp-commonpage/17.png"></td>
+        <td>btn btn-primary</td>
+        <td><img src="/assets/img/2017-02-08-erp-commonpage/19.png"></td>
+        <td>btn btn-danger</td>
+      </tr>
+      <tr>
+        <td><img src="/assets/img/2017-02-08-erp-commonpage/20.png"></td>
+        <td>btn btn-info</td>
+        <td><img src="/assets/img/2017-02-08-erp-commonpage/21.png"></td>
+        <td>btn btn-success</td>
+        <td><img src="/assets/img/2017-02-08-erp-commonpage/22.png"></td>
+        <td>btn btn-orange</td>
+      </tr>
+      <tr>
+        <td><img src="/assets/img/2017-02-08-erp-commonpage/23.png"></td>
+        <td>btn btn-warning</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
 
 <h3 id="common5">树形菜单</h3>
 
@@ -759,7 +799,7 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
 
 <h5 id="popup_modular2">栅格</h5>
 
-> 栅格系统参考自 [jQuery Mobile](http://demos.jquerymobile.com/1.4.5/grids/) 以及 [bootstrap](http://v3.bootcss.com/css/#grid)
+> 栅格系统参考自 [jQuery Mobile](http://demos.jquerymobile.com/1.4.5/grids/) 以及 [bootstrap][]
 >
 >
 > 栅格系统用于通过一系列的行（row）与列（column）的组合来创建页面布局，你的内容就可以放入这些创建好的布局中。
@@ -1293,5 +1333,7 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
 [14.png]:/assets/img/2017-02-08-erp-commonpage/14.png
 [15.png]:/assets/img/2017-02-08-erp-commonpage/15.png
 [16.png]:/assets/img/2017-02-08-erp-commonpage/16.png
+
+[bootstrap]:http://v3.bootcss.com/css
 
 

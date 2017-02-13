@@ -78,8 +78,7 @@ summary,
 time,
 mark,
 audio,
-video
-{
+video {
     font: 14px/20px 'Microsoft Yahei', 'Arial', 'Times New Roman', '宋体', 'Georgia', 'Serif';
 
     margin: 0;
@@ -88,23 +87,19 @@ video
     border: 0;
 }
 
-*
-{
+* {
     background-repeat: no-repeat;
 }
 
-h1
-{
+h1 {
     font-size: 22px;
 }
 
-h2
-{
+h2 {
     font-size: 18px;
 }
 
-h3
-{
+h3 {
     font-size: 16px;
 }
 
@@ -118,60 +113,52 @@ header,
 hgroup,
 menu,
 nav,
-section
-{
+section {
     display: block;
 }
 
 ol,
-ul
-{
+ul {
     list-style: none;
 }
 
 blockquote,
-q
-{
+q {
     quotes: none;
 }
 
 blockquote:before,
 blockquote:after,
 q:before,
-q:after
-{
+q:after {
     content: '';
     content: none;
 }
 
-table
-{
+table {
     border-spacing: 0;
     border-collapse: collapse;
 }
 
-a
-{
+a {
     text-decoration: none;
 
     color: #00a0e9;
 }
 
-a:hover
-{
+a:hover {
     color: #006bbc;
 }
 
 select,
-button
-{
+button {
     cursor: pointer;
 }
 
 input,
 select,
-button
-{
+button {
+    font-family: 'Microsoft Yahei', 'Arial', 'Times New Roman', '宋体', 'Georgia', 'Serif';;
     margin: 0;
     padding: 0;
 
@@ -179,8 +166,7 @@ button
 }
 
 input,
-button
-{
+button {
     border: none;
 }
 
@@ -189,18 +175,15 @@ input[type='submit'],
 input[type='reset'],
 input[type='checkbox'],
 input[type='radio'],
-label
-{
+label {
     cursor: pointer;
 }
 
-small
-{
+small {
     font-size: 12px;
 }
 
-textarea
-{
+textarea {
     resize: none;
 
     border: #dfdfdf solid 1px;
