@@ -335,10 +335,17 @@
                 white-space: nowrap;
                 text-indent: 0;
                 text-overflow: ellipsis;
+                -webkit-border-radius: 3px;
+                -moz-border-radius: 3px;
+                border-radius: 3px;
 
                 color: #fff;
                 background: -webkit-linear-gradient(top, #67abd6 0%, #4a7ec2 100%);
                 background: linear-gradient(to bottom, #67abd6 0%, #4a7ec2 100%);
+                &.hover, &:hover {
+                  background: -webkit-linear-gradient(top, #143042 0%, #4a7ec2 100%);
+                  background: linear-gradient(to bottom, #143042 0%, #4a7ec2 100%);
+                }
               }
             }
           }
@@ -797,8 +804,6 @@ button {
 
 /*==================================2017-02-09，改版 》顾重=============================*/
 
-
-
 //图标
 .stitches-icon(@x: 0, @y: 0, @width: 0, @height: 0) {
   background-position: @x @y;
@@ -1105,27 +1110,32 @@ button {
 
 //树形菜单
 /** 树组件 **/
-@font-face {font-family: 'tree-icon';
+@font-face {
+  font-family: 'tree-icon';
   src: url('../font/iconfont.eot');
   src: url('../font/iconfont.eot?#iefix') format('embedded-opentype'),
   url('../font/iconfont.woff') format('woff'),
   url('../font/iconfont.ttf') format('truetype'),
   url('../font/iconfont.svg#iconfont') format('svg');
 }
+
 .tree-box {
   line-height: 26px;
   box-sizing: content-box;
 }
-.tree-show{
+
+.tree-show {
   display: block !important;
 }
-.tree-icon{
-  font-family:"tree-icon" !important;
+
+.tree-icon {
+  font-family: "tree-icon" !important;
   font-size: 16px;
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
 .tree-box li {
   text-overflow: ellipsis;
   overflow: hidden;

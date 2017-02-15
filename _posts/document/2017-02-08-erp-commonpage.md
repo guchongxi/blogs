@@ -388,7 +388,7 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
   laydate(apply_end_date);
 {% endhighlight %}
 
-需要进行重置的控件项追加 `class="clear_item"` ，并在‘页面逻辑’ 区调用 [queryReset()](#queryReset) 即可。
+需要进行重置的控件项追加 `class="clear_item"` 即可
 {% highlight html %}
   <input type="text" id="applicant" class="clear_item"/>
 {% endhighlight %}

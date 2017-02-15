@@ -168,7 +168,7 @@
                 </div>
                 <div class="dept_list_container ">
                     <ul>
-                        <li><a href="#">xxxxxxx</a></li>
+                        <li><a href="#" class="hover">xxxxxxx</a></li>
                         <li><a href="#">xxxxxxx</a></li>
                         <li><a href="#">xxxxxxx</a></li>
                         <li><a href="#">xxxxxxx</a></li>
@@ -471,14 +471,14 @@
     </div>
 </div>
 
-<ul id="demo"></ul>
-<ul id="demo1"></ul>
+<!--<ul id="demo"></ul>
+<ul id="demo1"></ul>-->
 
 <script>
     /* 所有弹窗底部必须调用此方法! 参数为关闭按钮选择器,容器选择器,导航条ID*/
     $(function () {
         popup_window();
-        tree({
+        /*tree({
             elem: '#demo', //传入元素选择器
             nodes: [ //节点
                 {
@@ -583,7 +583,7 @@
             click: function (node) {
                 console.log(node); //node即为当前点击的节点数据
             }
-        })
+        })*/
     });
 
     /* 弹窗拖动与关闭 */
@@ -679,9 +679,6 @@
     /* 查询日期设置 */
     var apply_start_date = {
         elem: '#apply_start_date',
-        format: 'YYYY-MM-DD hh:mm:ss', //日期格式
-        istime: true,
-        istoday: false,
         choose: function (datas) {
             apply_end_date.min = datas; //开始日选好后，重置结束日的最小日期
             apply_end_date.start = datas; //将结束日的初始值设定为开始日
@@ -689,7 +686,6 @@
     };
     var apply_end_date = {
         elem: '#apply_end_date',
-        istoday: false,
         choose: function (datas) {
             apply_start_date.max = datas; //结束日选好后，重置开始日的最大日期
         }
@@ -698,12 +694,11 @@
     laydate(apply_end_date);
 
     /* 重置 */
-    function queryReset() {
-        $('.reset_btn').click(function () {
-            $('input.clear_item').val('');
-            $('select.clear_item option:first-child').attr('selected', true);
-        });
-    }
+    $('.reset_btn').click(function () {
+        $('input.clear_item').val('');
+        $('select.clear_item option:first-child').attr('selected', true);
+    });
+    queryReset();
 
     /* 导入 */
     $('#load').click(function () {

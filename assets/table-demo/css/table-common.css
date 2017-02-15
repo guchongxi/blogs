@@ -298,9 +298,17 @@
   white-space: nowrap;
   text-indent: 0;
   text-overflow: ellipsis;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
   color: #fff;
   background: -webkit-linear-gradient(top, #67abd6 0%, #4a7ec2 100%);
   background: linear-gradient(to bottom, #67abd6 0%, #4a7ec2 100%);
+}
+.single_zr .right_container .dept_list .dept_list_box .dept_list_container ul li a.hover,
+.single_zr .right_container .dept_list .dept_list_box .dept_list_container ul li a:hover {
+  background: -webkit-linear-gradient(top, #143042 0%, #4a7ec2 100%);
+  background: linear-gradient(to bottom, #143042 0%, #4a7ec2 100%);
 }
 .single_zr .right_container .table_list_box {
   width: 100%;
