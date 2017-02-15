@@ -1,7 +1,7 @@
 ---
 title:  "Github Pages + Jekyll 创建博客"
 date:   2017-01-22
-categories: 文档
+categories: 技术
 tags: jekyll GitHub Pages
 ---
 
