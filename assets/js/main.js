@@ -116,11 +116,19 @@ Math.easeout = function (A, B, rate, callback) {
 
         //backTop
         toTop.on('click',function () {
-            console.log(11);
-            Math.easeout(main[0].scrollTop, 0, 4, function (value) {
-                main[0].scrollTop = value;
+            Math.easeout(main.scrollTop(), 0, 4, function (value) {
+                main.scrollTop(value);
             });
         });
+        main.on('scroll',function () {
+            var top = this.scrollTop;
+            if(top > 200){
+                toTop.is(':visible') || toTop.fadeIn();
+            }else {
+                toTop.is(':visible') && toTop.fadeOut();
+            }
+        });
+        main.scroll();
 
     });
 
