@@ -696,14 +696,7 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
 
 `<div class="popup_win"></div>` 父元素标签已放置于以下文件中，使用时仅需在HTML文件中加入内容即可
 
-  *   \logistics\lv_meta.html
-  *   \crm\lv_meta.html
-  *   \human\lv_meta.html
-  *   \sale\lv_meta.html
-  *   \trade\lv_meta.html
-  *   \financial\lv_meta.html
-  *   \salary\lv_meta.html
-  *   \administration\lv_meta.html
+  *   \home\header.html
 
 <h3 id="popup1">头部</h3>
 
