@@ -84,7 +84,7 @@ table td:nth-child(even){
 
 所有图标都需要一个基类 `icon` 和对应每个图标的类
 {% highlight html %}
-    <i class="icon icon-add"></i>
+    <i class="newIcon icon_add"></i>
 {% endhighlight %}
 
 所有可用的图标
@@ -105,43 +105,43 @@ table td:nth-child(even){
     <tbody>
       <tr>
         <td><img src="/assets/icon/add.png"></td>
-        <td>icon icon-add</td>
+        <td>newIcon icon_add</td>
         <td><img src="/assets/icon/add_blue.jpg"></td>
-        <td>icon icon-add_blue</td>
+        <td>newIcon icon_add_blue</td>
         <td><img src="/assets/icon/add_green.png"></td>
-        <td>icon icon-add_green</td>
+        <td>newIcon icon_add_green</td>
         <td><img src="/assets/icon/attachment.png"></td>
-        <td>icon icon-attachment</td>
+        <td>newIcon icon_attachment</td>
       </tr>
       <tr>
         <td><img src="/assets/icon/birth.jpg"></td>
-        <td>icon icon-birth</td>
+        <td>newIcon icon_birth</td>
         <td><img src="/assets/icon/cancel.png"></td>
-        <td>icon icon-cancel</td>
+        <td>newIcon icon_cancel</td>
         <td><img src="/assets/icon/delete.jpg"></td>
-        <td>icon icon-delete</td>
+        <td>newIcon icon_delete</td>
         <td><img src="/assets/icon/download.jpg"></td>
-        <td>icon icon-download</td>
+        <td>newIcon icon_download</td>
       </tr>
       <tr>
         <td><img src="/assets/icon/edit.jpg"></td>
-        <td>icon icon-edit</td>
+        <td>newIcon icon_edit</td>
         <td><img src="/assets/icon/email.jpg"></td>
-        <td>icon icon-email</td>
+        <td>newIcon icon_email</td>
         <td><img src="/assets/icon/home.jpg"></td>
-        <td>icon icon-home</td>
+        <td>newIcon icon_home</td>
         <td><img src="/assets/icon/payment.jpg"></td>
-        <td>icon icon-payment</td>
+        <td>newIcon icon_payment</td>
       </tr>
       <tr>
         <td><img src="/assets/icon/people.jpg"></td>
-        <td>icon-people</td>
+        <td>newIcon icon_people</td>
         <td><img src="/assets/icon/print.jpg"></td>
-        <td>icon-print</td>
+        <td>newIcon icon_print</td>
         <td><img src="/assets/icon/query.jpg"></td>
-        <td>icon-query</td>
+        <td>newIcon icon_query</td>
         <td><img src="/assets/icon/right.jpg"></td>
-        <td>icon-right</td>
+        <td>newIcon icon_right</td>
       </tr>
     </tbody>
   </table>
@@ -418,14 +418,14 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
 {% highlight html %}
 <div class="nav_bar ">
   <ul class="nav_icon_box">
-      <li><i class="icon icon-add"></i>添加(黄底)</li>
-      <li><i class="icon icon-add_blue"></i>添加(白底)</li>
-      <li><i class="icon icon-add_green"></i>添加(绿底)</li>
-      <li><i class="icon icon-attachment"></i>附件</li>
-      <li><i class="icon icon-birth"></i>生日</li>
-      <li><i class="icon icon-cancel"></i>取消</li>
-      <li><i class="icon icon-delete"></i>删除</li>
-      <li><i class="icon icon-download"></i>下载</li>
+      <li><i class="newIcon icon_add"></i>添加(黄底)</li>
+      <li><i class="newIcon icon_add_blue"></i>添加(白底)</li>
+      <li><i class="newIcon icon_add_green"></i>添加(绿底)</li>
+      <li><i class="newIcon icon_attachment"></i>附件</li>
+      <li><i class="newIcon icon_birth"></i>生日</li>
+      <li><i class="newIcon icon_cancel"></i>取消</li>
+      <li><i class="newIcon icon_delete"></i>删除</li>
+      <li><i class="newIcon icon_download"></i>下载</li>
   </ul>
 </div>
 {% endhighlight %}
