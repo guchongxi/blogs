@@ -457,15 +457,15 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
 <!-- 通用导航条作为头部使用 -->
 <div class="nav_bar head">
     <ul class="nav_icon_box">
-        <li><i class="icon icon-edit"></i>编辑</li>
-        <li><i class="icon icon-email"></i>邮件</li>
-        <li><i class="icon icon-home"></i>主页</li>
-        <li><i class="icon icon-payment"></i>支付</li>
-        <li><i class="icon icon-people"></i>人员</li>
-        <li><i class="icon icon-print"></i>打印</li>
-        <li><i class="icon icon-query"></i>查询</li>
-        <li><i class="icon icon-right"></i>确认</li>
-        <li><i class="icon icon-upload"></i>上传</li>
+        <li><i class="newIcon icon_edit"></i>编辑</li>
+        <li><i class="newIcon icon_email"></i>邮件</li>
+        <li><i class="newIcon icon_home"></i>主页</li>
+        <li><i class="newIcon icon_payment"></i>支付</li>
+        <li><i class="newIcon icon_people"></i>人员</li>
+        <li><i class="newIcon icon_print"></i>打印</li>
+        <li><i class="newIcon icon_query"></i>查询</li>
+        <li><i class="newIcon icon_right"></i>确认</li>
+        <li><i class="newIcon icon_upload"></i>上传</li>
     </ul>
 </div>
 <!-- 滚动导航条-->
