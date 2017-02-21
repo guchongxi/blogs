@@ -97,11 +97,6 @@
 </div>
 <script>
     $(function() {
-        $('#keyword').keydown(function (e) {
-            if(e.keyCode == 13){
-                $('.search_box .search_btn').click();
-            }
-        });
         // 弹窗查看
         $('tbody .table_list_row').click(function() {
             $.ajax({
@@ -115,8 +110,6 @@
                 }
             });
         });
-        // 重置
-        queryReset();
         // 查询日期设置
         var apply_start_date = {
             elem: '#apply_start_date',

@@ -921,22 +921,25 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
       <input type="hidden" id="pics" value=""/>
     </h2>
     <ul id="att_list" class="att_list">
-        <!--图片-->
+        {if $v.suffix eq 2}<!--图片-->
         <li>
-            <img src=""{$v[0]}"" onclick="imgMagnify('{$v[0]}')"/>
+            <img src="{$v.url}.thumb.jpg" onclick="imgMagnify('{$v.url}')"/>
             <a href="javascript:window.parent.window.document.getElementById('picsubmit').contentWindow.delpic('{$v[0]}')">删除</a>
         </li>
-        <!--文件-->
+        {else}<!--文件-->
         <li>
-            <a target="_blank" href="{$v[0]}" class="att_file" download>
+            <a target="_blank" href="{$v.url}" class="att_file" download>
                 <img src="static/img/load.jpg"/>
             </a>
             <a href="javascript:window.parent.window.document.getElementById('picsubmit').contentWindow.delpic('{$v[0]}')">删除</a>
         </li>
-        <!--无图-->
+        {/if}
+        {/foreach}
+        { if $pics eq ''} <!--无图-->
         <li>
             <img src="uploadfile/nopic.jpg" alt="暂无图片"/>
         </li>
+        {/if}
     </ul>
 </div>
 {% endhighlight %}
