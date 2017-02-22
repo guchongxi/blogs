@@ -152,6 +152,7 @@ table td:nth-child(even){
 *   红色：`font_red`
 *   蓝色：`font_blue`
 *   绿色：`font_green`
+*   加粗：`font_weight`
 
 必填项 `*`
 
@@ -392,6 +393,8 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
 {% highlight html %}
   <input type="text" id="applicant" class="clear_item"/>
 {% endhighlight %}
+
+查询框中的 `type=text` 并且 `readonly='false'` 的 `input` 在获取焦点时按下 `Enter` 会提交查询表单 
 
 [laydate]:http://laydate.layui.com/
 [laydate官方文档]:http://www.layui.com/doc/modules/laydate.html
@@ -873,6 +876,7 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
     * 只读或禁用控件需添加 `readonly` 或 `disabled` 属性(显示效果相同)
     * 显示日期需添加 `class='input_date'` ， 拾取时间还需添加 `onclick='laydate()'` ，起止时间限制可参考 [查询框](#html3)
     * 若是使用 `fieldset > textarea` ，那么设置禁用时需同时两者的 `readonly/disabled`
+    * 备注项可设置在独占一行的 `col` 中,使用 `<p class="remark"><p>` 包裹即可
     
     ![10.png][]
 {% highlight html%}
@@ -882,6 +886,9 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
         <div class="col-a">
             <label>输入</label>
             <input type="text" value="AAA" readonly/>
+        </div>
+        <div class="col-c">
+            <p class="remark">备注：</p>
         </div>
         <div class="col-a">
             <label>选项</label>

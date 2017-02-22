@@ -40,10 +40,13 @@
                     <span class="search_title"><i></i> 查询管理</span>
                 </p>
                 <div class="search_box">
-                    <!-- 控件项 - 日期 -->
                     <div class="search_item fl">
                         <label for="keyword">关键字</label>
                         <input type="text" placeholder="说明" id="keyword" name="keyword" value="{$keyword}" class="clear_item"/>
+                    </div>
+                    <div class="search_item search_date_range">
+                        <label for="apply_date">提交日期</label>
+                        <input type="text" id="apply_date" name="apply_date" onclick="laydate()" readonly class="clear_item" value="{$apply_date}"/>
                     </div>
                     <div class="search_item search_date_range">
                         <label for="apply_start_date">申请时间</label>
@@ -52,7 +55,7 @@
                     <!-- 控件项 - 日期 label为 '-' -->
                     <div class="search_item search_date_range_indicator">
                         <label for="apply_end_date">-</label>
-                        <input type="text" id="apply_end_date" value="{$smarty.post.apply_end_date}" name="apply_end_date" class="clear_item" readonly/>
+                        <input type="text" id="apply_end_date" value="{$apply_end_date}" name="apply_end_date" class="clear_item" readonly/>
                     </div>
                     <!-- 查询 -->
                     <input class="search_btn" type="submit" value="查询" readonly/>

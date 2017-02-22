@@ -735,6 +735,10 @@
   color: green !important;
 }
 
+.font_weight {
+  font-weight: bold;
+}
+
 //按钮样式
 button {
   cursor: pointer;
@@ -811,77 +815,77 @@ button {
   height: @height;
 }
 
-.icon {
+.newIcon {
   background-image: url(../img/common_icon.png);
   background-repeat: no-repeat;
   display: inline-block;
   margin: 0 3px -1px;
 
-  &.icon-add {
+  &.icon_add {
     .stitches-icon(-10px, -10px, 14px, 14px);
   }
 
-  &.icon-add_blue {
+  &.icon_add_blue {
     .stitches-icon(-44px, -10px, 14px, 14px);
   }
 
-  &.icon-add_green {
+  &.icon_add_green {
     .stitches-icon(-78px, -10px, 14px, 14px);
   }
 
-  &.icon-attachment {
+  &.icon_attachment {
     .stitches-icon(-112px, -10px, 14px, 14px);
   }
 
-  &.icon-birth {
+  &.icon_birth {
     .stitches-icon(-10px, -44px, 14px, 14px);
   }
 
-  &.icon-cancel {
+  &.icon_cancel {
     .stitches-icon(-44px, -44px, 14px, 14px);
   }
 
-  &.icon-delete {
+  &.icon_delete {
     .stitches-icon(-78px, -44px, 14px, 14px);
   }
 
-  &.icon-download {
+  &.icon_download {
     .stitches-icon(-112px, -44px, 14px, 14px);
   }
 
-  &.icon-edit {
+  &.icon_edit {
     .stitches-icon(-10px, -78px, 14px, 14px);
   }
 
-  &.icon-email {
+  &.icon_email {
     .stitches-icon(-44px, -78px, 14px, 14px);
   }
 
-  &.icon-home {
+  &.icon_home {
     .stitches-icon(-78px, -78px, 14px, 14px);
   }
 
-  &.icon-payment {
+  &.icon_payment {
     .stitches-icon(-112px, -78px, 14px, 14px);
   }
 
-  &.icon-people {
+  &.icon_people {
     .stitches-icon(-10px, -112px, 14px, 14px);
   }
 
-  &.icon-print {
+  &.icon_print {
     .stitches-icon(-44px, -112px, 14px, 14px);
   }
 
-  &.icon-query {
+  &.icon_query {
     .stitches-icon(-78px, -112px, 14px, 14px);
   }
 
-  &.icon-right {
+  &.icon_right {
     .stitches-icon(-112px, -112px, 14px, 14px);
   }
 
-  &.icon-upload {
+  &.icon_upload {
     .stitches-icon(-146px, -10px, 14px, 14px);
   }
 }
@@ -1108,101 +1112,5 @@ button {
   }
 }
 
-//树形菜单
-/** 树组件 **/
-@font-face {
-  font-family: 'tree-icon';
-  src: url('../font/iconfont.eot');
-  src: url('../font/iconfont.eot?#iefix') format('embedded-opentype'),
-  url('../font/iconfont.woff') format('woff'),
-  url('../font/iconfont.ttf') format('truetype'),
-  url('../font/iconfont.svg#iconfont') format('svg');
-}
-
-.tree-box {
-  line-height: 26px;
-  box-sizing: content-box;
-}
-
-.tree-show {
-  display: block !important;
-}
-
-.tree-icon {
-  font-family: "tree-icon" !important;
-  font-size: 16px;
-  font-style: normal;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-.tree-box li {
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-}
-
-.tree-box li a,
-.tree-box li .tree-spread {
-  display: inline-block;
-  vertical-align: top;
-  height: 26px;
-  *display: inline;
-  *zoom: 1;
-  cursor: pointer;
-}
-
-.tree-box li a {
-  font-size: 0;
-}
-
-.tree-box li a i {
-  font-size: 16px;
-}
-
-.tree-box li a cite {
-  padding: 0 6px;
-  font-size: 14px;
-  font-style: normal;
-}
-
-.tree-box li i {
-  padding-left: 6px;
-  color: #333;
-  -moz-user-select: none;
-}
-
-.tree-box li .tree-check {
-  font-size: 13px;
-}
-
-.tree-box li .tree-check:hover {
-  color: #009E94;
-}
-
-.tree-box li ul {
-  display: none;
-  margin-left: 20px;
-}
-
-.tree-box li .tree-enter {
-  line-height: 24px;
-  border: 1px dotted #000;
-}
-
-.tree-drag {
-  display: none;
-  position: absolute;
-  left: -666px;
-  top: -666px;
-  background-color: #f2f2f2;
-  padding: 5px 10px;
-  border: 1px dotted #000;
-  white-space: nowrap
-}
-
-.tree-drag i {
-  padding-right: 5px;
-}
 
 /*==================================2017-02-09，改版 》顾重=============================*/

@@ -23,6 +23,7 @@
   border-radius: 6px;
   background-color: #fff;
   font-family: "微软雅黑";
+  font-size: 14px;
   //不同宽度弹窗
   &.pw_s {
     width: @size_s;
@@ -77,6 +78,7 @@
         height: 28px;
         line-height: 28px;
         color: #f00;
+        margin-left: 10px;
       }
       span.font_blue {
         margin-left: 10px;
@@ -95,6 +97,7 @@
     .apply_process_box {
       position: relative;
       padding: 0 1%;
+      margin-top: 0; //样式名冲突，取消影响
       .ap_title {
         position: relative;
         top: 10px;
@@ -105,7 +108,7 @@
         font-weight: bold;
       }
       .ap_chart {
-        padding: 28px 1% 12px;
+        padding: 18px 1% 12px;
         text-align: center;
         border: 1px dashed #ccc;
         border-radius: 5px;
@@ -114,7 +117,7 @@
           box-sizing: content-box;
           width: 20px;
           height: 20px;
-          padding: 3px;
+          padding: 3px 0;
           background: url(../img/glyphicons-halflings.png) -258px -91px;
         }
         .ap_item {
@@ -201,6 +204,25 @@
               background: rgb(235, 235, 228);
             }
           }
+          .nContent {
+            max-height: 200px;
+            min-height: 50px;
+            vertical-align: top;
+            color: #000;
+            width: 100%;
+            text-indent: 5px;
+            padding: 2px 0;
+            display: inline-block;
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            border-radius: 3px;
+            overflow: auto;
+            img {
+              max-width: 100%;
+              margin: 5px 0;
+              vertical-align: middle;
+            }
+          }
         }
         // 布局网格 from jQuery Mobile
         // content configurations.
@@ -209,7 +231,7 @@
         }
         [class*="col-"] {
           margin: 0;
-          padding: 7px 5px;
+          padding: 6px 5px;
           border: 0;
           float: left;
           min-height: 1px;
@@ -264,7 +286,7 @@
           cursor: pointer;
           background-image: url(../img/payment_input.jpg);
           background-size: 100% 22px;
-          padding: 1px 0;
+          padding: 1px;
           border: none;
           color: #000;
         }
@@ -354,10 +376,11 @@
               &:last-child {
                 border-right: none;
               }
-              input {
+              input[type="text"] {
                 width: 100%;
                 text-align: center;
-                font-size:12px;
+                font-size: 12px;
+                border: none;
               }
             }
             th {
@@ -374,6 +397,10 @@
             td, th {
               border: 1px solid #ccc;
               padding: 3px 6px;
+            }
+            th {
+              background-color: #f5f7fa;
+              text-align: center;
             }
           }
         }
@@ -518,13 +545,13 @@
       background-size: 100% 100%;
       font-family: "微软雅黑";
     }
-    .popwin_close,.popapp_close {
+    .popwin_close, .popapp_close {
       float: right;
     }
     .assign_person {
       line-height: 22px;
       height: 22px;
-      margin: 0 3%;
+      margin: auto 10px;
       min-width: 90px;
       border: 1px solid #b9b9b9;
     }
@@ -570,6 +597,29 @@
           }
           td {
             font-size: 12px
+          }
+          .td_detail p,.td_Explanation p{
+            display: inline-block;
+            width: 138px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            vertical-align: middle
+          }
+          .div_detail,.div_Explanation{
+            display: none;
+            position: absolute;
+            z-index: 9;
+            background: #fff;
+            margin-left: -99px;
+            margin-top: -10px;
+            width: 155px;
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px #ccc solid
+          }
+          .td_detail:hover .div_detail,.td_Explanation:hover .div_Explanation{
+            display: block;
           }
         }
       }

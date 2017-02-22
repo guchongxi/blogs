@@ -622,6 +622,9 @@
 .font_green {
   color: green !important;
 }
+.font_weight {
+  font-weight: bold;
+}
 button {
   cursor: pointer;
 }
@@ -671,93 +674,93 @@ button {
   background-color: #d6250a;
 }
 /*==================================2017-02-09，改版 》顾重=============================*/
-.icon {
+.newIcon {
   background-image: url(../img/common_icon.png);
   background-repeat: no-repeat;
   display: inline-block;
   margin: 0 3px -1px;
 }
-.icon.icon-add {
+.newIcon.icon_add {
   background-position: -10px -10px;
   width: 14px;
   height: 14px;
 }
-.icon.icon-add_blue {
+.newIcon.icon_add_blue {
   background-position: -44px -10px;
   width: 14px;
   height: 14px;
 }
-.icon.icon-add_green {
+.newIcon.icon_add_green {
   background-position: -78px -10px;
   width: 14px;
   height: 14px;
 }
-.icon.icon-attachment {
+.newIcon.icon_attachment {
   background-position: -112px -10px;
   width: 14px;
   height: 14px;
 }
-.icon.icon-birth {
+.newIcon.icon_birth {
   background-position: -10px -44px;
   width: 14px;
   height: 14px;
 }
-.icon.icon-cancel {
+.newIcon.icon_cancel {
   background-position: -44px -44px;
   width: 14px;
   height: 14px;
 }
-.icon.icon-delete {
+.newIcon.icon_delete {
   background-position: -78px -44px;
   width: 14px;
   height: 14px;
 }
-.icon.icon-download {
+.newIcon.icon_download {
   background-position: -112px -44px;
   width: 14px;
   height: 14px;
 }
-.icon.icon-edit {
+.newIcon.icon_edit {
   background-position: -10px -78px;
   width: 14px;
   height: 14px;
 }
-.icon.icon-email {
+.newIcon.icon_email {
   background-position: -44px -78px;
   width: 14px;
   height: 14px;
 }
-.icon.icon-home {
+.newIcon.icon_home {
   background-position: -78px -78px;
   width: 14px;
   height: 14px;
 }
-.icon.icon-payment {
+.newIcon.icon_payment {
   background-position: -112px -78px;
   width: 14px;
   height: 14px;
 }
-.icon.icon-people {
+.newIcon.icon_people {
   background-position: -10px -112px;
   width: 14px;
   height: 14px;
 }
-.icon.icon-print {
+.newIcon.icon_print {
   background-position: -44px -112px;
   width: 14px;
   height: 14px;
 }
-.icon.icon-query {
+.newIcon.icon_query {
   background-position: -78px -112px;
   width: 14px;
   height: 14px;
 }
-.icon.icon-right {
+.newIcon.icon_right {
   background-position: -112px -112px;
   width: 14px;
   height: 14px;
 }
-.icon.icon-upload {
+.newIcon.icon_upload {
   background-position: -146px -10px;
   width: 14px;
   height: 14px;
@@ -1306,82 +1309,5 @@ fieldset[disabled] .btn-orange.active {
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
-}
-/** 树组件 **/
-@font-face {
-  font-family: 'tree-icon';
-  src: url('../font/iconfont.eot');
-  src: url('../font/iconfont.eot?#iefix') format('embedded-opentype'), url('../font/iconfont.woff') format('woff'), url('../font/iconfont.ttf') format('truetype'), url('../font/iconfont.svg#iconfont') format('svg');
-}
-.tree-box {
-  line-height: 26px;
-  box-sizing: content-box;
-}
-.tree-show {
-  display: block !important;
-}
-.tree-icon {
-  font-family: "tree-icon" !important;
-  font-size: 16px;
-  font-style: normal;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-.tree-box li {
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-}
-.tree-box li a,
-.tree-box li .tree-spread {
-  display: inline-block;
-  vertical-align: top;
-  height: 26px;
-  *display: inline;
-  *zoom: 1;
-  cursor: pointer;
-}
-.tree-box li a {
-  font-size: 0;
-}
-.tree-box li a i {
-  font-size: 16px;
-}
-.tree-box li a cite {
-  padding: 0 6px;
-  font-size: 14px;
-  font-style: normal;
-}
-.tree-box li i {
-  padding-left: 6px;
-  color: #333;
-  -moz-user-select: none;
-}
-.tree-box li .tree-check {
-  font-size: 13px;
-}
-.tree-box li .tree-check:hover {
-  color: #009E94;
-}
-.tree-box li ul {
-  display: none;
-  margin-left: 20px;
-}
-.tree-box li .tree-enter {
-  line-height: 24px;
-  border: 1px dotted #000;
-}
-.tree-drag {
-  display: none;
-  position: absolute;
-  left: -666px;
-  top: -666px;
-  background-color: #f2f2f2;
-  padding: 5px 10px;
-  border: 1px dotted #000;
-  white-space: nowrap;
-}
-.tree-drag i {
-  padding-right: 5px;
 }
 /*==================================2017-02-09，改版 》顾重=============================*/
