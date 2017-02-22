@@ -1137,6 +1137,15 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
 </div>
 {% endhighlight %}
 
+调用时在列表页面逻辑处添加
+{% highlight js %}
+//    申请按钮
+    $('.apply_btn').click(function(){
+        $('.popup_apply').addClass('pw_l').show();
+    });
+//    ... 其他逻辑
+{% endhighlight %}
+
 
 
 ---
