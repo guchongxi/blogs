@@ -700,6 +700,8 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
 `<div class="popup_win"></div>` 父元素标签已放置于以下文件中，使用时仅需在HTML文件中加入内容即可
 
   *   \home\header.html
+  
+弹窗默认宽度为 `780px` ,可追加 class : `pw_s`(620px) \ `pw_l`(1060px) \ `pw_xl`(1350px) 来改变其宽度; 在关闭弹窗时会同时清理除 `popup_win` 外其他 class
 
 <h3 id="popup1">头部</h3>
 
@@ -1141,7 +1143,7 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
 {% highlight js %}
 //    申请按钮
     $('.apply_btn').click(function(){
-        $('.popup_apply').addClass('pw_l').show();
+        $('.popup_apply').show();
     });
 //    ... 其他逻辑
 {% endhighlight %}
