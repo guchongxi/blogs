@@ -52,24 +52,24 @@
                 <div class="search_box">
                     <div class="search_item fl">
                         <label for="keyword">关键字</label>
-                        <input type="text" placeholder="说明" id="keyword" name="keyword" value="{$keyword}" class="clear_item"/>
+                        <input type="text" placeholder="说明" id="keyword" name="keyword" value="{$keyword}"/>
                     </div>
                     <div class="search_item search_date_range">
                         <label for="apply_date">提交日期</label>
-                        <input type="text" id="apply_date" name="apply_date" onclick="laydate()" readonly class="clear_item" value="{$apply_date}"/>
+                        <input type="text" id="apply_date" name="apply_date" onclick="laydate()" readonly value="{$apply_date}"/>
                     </div>
                     <div class="search_item search_date_range">
                         <label for="apply_start_date">申请时间</label>
-                        <input type="text" id="apply_start_date" value="{$apply_start_date}" name="apply_start_date" class="clear_item" readonly/>
+                        <input type="text" id="apply_start_date" value="{$apply_start_date}" name="apply_start_date" readonly/>
                     </div>
                     <!-- 控件项 - 日期 label为 '-' -->
                     <div class="search_item search_date_range_indicator">
                         <label for="apply_end_date">-</label>
-                        <input type="text" id="apply_end_date" value="{$apply_end_date}" name="apply_end_date" class="clear_item" readonly/>
+                        <input type="text" id="apply_end_date" value="{$apply_end_date}" name="apply_end_date" readonly/>
                     </div>
                     <div class="search_item">
                         <label for="state">审核状态</label>
-                        <select name="state" id="state" class="clear_item">
+                        <select name="state" id="state">
                             <option value=""></option>
                         </select>
                     </div>
@@ -144,20 +144,6 @@
             });
         });
         // 查询日期设置
-        var apply_start_date = {
-            elem: '#apply_start_date',
-            choose: function(datas) {
-                apply_end_date.min = datas; //开始日选好后，重置结束日的最小日期
-                apply_end_date.apply_start_date = datas; //将结束日的初始值设定为开始日
-            }
-        },
-         apply_end_date = {
-            elem: '#apply_end_date',
-            choose: function(datas) {
-                apply_start_date.max = datas; //结束日选好后，重置开始日的最大日期
-            }
-        };
-        laydate(apply_start_date);
-        laydate(apply_end_date);
+        setDateRange();
     });
 </script>
