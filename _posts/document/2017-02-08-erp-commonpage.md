@@ -314,7 +314,7 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
         <!-- 查询按钮 -->
         <input class="search_btn" type="submit" value="查询"/>
         <!-- 重置按钮 -->
-        <input class="reset_btn" type="button" value="重置"/>
+        <input class="reset_btn" type="reset" value="重置"/>
     </div>
   </form>
 </div>
@@ -367,34 +367,10 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
   </div>
 {% endhighlight %}
   
-  * 设置起止时间需在 **页面逻辑** 区添加以下代码，其他设置项查看 [laydate官方文档][]
-{% highlight javascript %}
-  /* 查询日期设置 */
-  var apply_start_date = {
-      elem: '#apply_start_date',
-      istoday: false,   //是否显示今天
-      choose: function (dates) {
-          apply_end_date.min = dates; //开始日选好后，重置结束日的最小日期
-          apply_end_date.start = dates; //将结束日的初始值设定为开始日
-      }
-  };
-  var apply_end_date = {
-      elem: '#apply_end_date',
-      istoday: false,
-      choose: function (dates) {
-          apply_start_date.max = dates; //结束日选好后，重置开始日的最大日期
-      }
-  };
-  laydate(apply_start_date);
-  laydate(apply_end_date);
-{% endhighlight %}
+  * 设置起止时间需在 **页面逻辑** 区调用 [setDateRange()](#setDateRange),接收参数(`起始input id` , `结束input id`),默认为 `apply_start_date`, `apply_end_date`
 
-需要进行重置的控件项追加 `class="clear_item"` 即可
-{% highlight html %}
-  <input type="text" id="applicant" class="clear_item"/>
-{% endhighlight %}
-
-查询框中的 `type=text` 并且 `readonly='false'` 的 `input` 在获取焦点时按下 `Enter` 会提交查询表单 
+查询框中的 `type=text` 并且 `readonly='false'` 的 `input` 在获取焦点时按下 `Enter` 会提交查询表单;
+快捷查询[逻辑](#quickQuery)加载在 `header.js` 中;
 
 [laydate]:http://laydate.layui.com/
 [laydate官方文档]:http://www.layui.com/doc/modules/laydate.html
@@ -1195,6 +1171,29 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
     }
 {% endhighlight %}
 
+<span id='setDataRange'></span>设定日期区间查询,接收参数(起始input id, 结束input id)
+{% highlight javascript %}
+function setDateRange(startId,endId) {
+    startId = startId || 'apply_start_date';
+    endId = endId || 'apply_end_date';
+    var apply_start_date = {
+            elem: '#' + startId,
+            choose: function(datas) {
+                apply_end_date.min = datas; //开始日选好后，重置结束日的最小日期
+                apply_end_date.apply_start_date = datas; //将结束日的初始值设定为开始日
+            }
+        },
+        apply_end_date = {
+            elem: '#' + endId,
+            choose: function(datas) {
+                apply_start_date.max = datas; //结束日选好后，重置开始日的最大日期
+            }
+        };
+    laydate(apply_start_date);
+    laydate(apply_end_date);
+}
+{% endhighlight %}
+
 <span id='dept_scroll'></span>部门列表滚动
 {% highlight javascript %}
     $(".btn_box ").on("click ", function (e) {
@@ -1213,28 +1212,21 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
 
 全选
 {% highlight javascript %}
-    $('input[name=allUser]').click(function () {
-        if (this.checked) {
-            $('input[type=checkbox]').each(function () {
-                this.checked = true;
-            });
-        } else {
-            $('input[type=checkbox]').each(function () {
-                this.checked = false;
-            });
-        }
+    $('input.select_all').click(function () {
+        var flag = this.checked;
+        $('input.select_item').each(function (i,n) {
+            n.checked = flag;
+        });
     }); 
 {% endhighlight %}
 
-<span id='queryReset'></span>重置
+<span id='quickQuery'></span>快捷查询
 {% highlight javascript %}
-    function queryReset(){
-        $('.reset_btn').click(function() {
-            $('input.clear_item').val('');
-            $('select.clear_item option:first-child').attr('selected',true);
-        });
-    }
-    
+    $('.search_box input[type=text]:not([readonly])').keydown(function (e) {
+        if(e.keyCode == 13){
+            $(this).closest('form').submit();
+        }
+    });
 {% endhighlight %}
 
 
