@@ -18,7 +18,9 @@ table td:nth-child(even){
 
 *   预览 [完全效果](/table-show)
 *   下载 <a href="/assets/table-demo/table-common.html" target="_blank" download>页面模版</a>
+*   下载 <a href="/assets/table-demo/css/table-common.less" target="_blank" download>页面样式</a>
 *   下载 <a href="/assets/table-demo/table-popup.html" target="_blank" download>弹窗模版</a>
+*   下载 <a href="/assets/table-demo/css/table-popup.less" target="_blank" download>弹窗样式</a>
 
 [src]: https://github.com/GiantZero-x/GiantZero-x.github.io/blob/master/_posts/document/2017-02-08-erp-commonpage.md
 
@@ -71,9 +73,10 @@ table td:nth-child(even){
 
 ### 更新日志
 *   2017-02-24 : 
-    *   [#](#setDateRange) 添加 `setDateRange()` 设定时间区间;
-    *   [#](#quickQuery) 添加 _查询框_ 快捷键操作;
-    *   添加文字颜色 橙色:　`font_orahge`
+    *   [+](#setDateRange) 添加 `setDateRange()` 设定时间区间;
+    *   [+](#quickQuery) 添加 _查询框_ 快捷键操作;
+    *   + 添加文字颜色 橙色:　`font_orahge`
+    *   + 添加下载样式文件
     *   若干排版修正.
 
 ---
