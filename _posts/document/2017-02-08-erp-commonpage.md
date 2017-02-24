@@ -14,7 +14,7 @@ table td:nth-child(even){
 }
 </style>
 
-**注意：**这份文件是用 Markdown 写的，你可以[看看它的原始文件][src] 。
+**注意：**这份文件是用 Markdown 写的，你可以[看看它的原始文件][src] .
 
 *   预览 [完全效果](/table-show)
 *   下载 <a href="/assets/table-demo/table-common.html" target="_blank" download>页面模版</a>
@@ -27,17 +27,16 @@ table td:nth-child(even){
 2.  [通用组件](#common)
     *   [浮动](#common1)
     *   [图标](#common2)
-    *   [颜色](#common3)
+    *   [字体](#common3)
     *   [按钮](#common4)
-    *   [树形菜单](#common5)
    
-3.  [页面模块](#html)
+3.  [页面](#html)
     *   [结构](#html1)
-    *   [头部](#html2)
-    *   [查询框](#html3)
-    *   [通用导航条](#html4)
-    *   [滚动导航条](#html5)
-    *   [表格](#html6)
+    *   [头部模块](#html2)
+    *   [查询框模块](#html3)
+    *   [通用导航条模块](#html4)
+    *   [滚动导航条模块](#html5)
+    *   [表格模块](#html6)
     
 4.  [弹窗](#popup)
     *   [头部](#popup1)
@@ -68,7 +67,7 @@ table td:nth-child(even){
 
 *  为充分进行样式复用，页面显示效果仅与标签 `class` 有关；但因涉及到部分js交互效果，特定标签 `id` 已被限定，如需修改请注意修改相关函数调用参数；
 
-*  若在使用中有任何疑问或bug可随时联系我。
+*  若在使用中有任何疑问或bug可随时联系我.
 
 ---
 
@@ -105,49 +104,49 @@ table td:nth-child(even){
     <tbody>
       <tr>
         <td><img src="/assets/icon/add.png"></td>
-        <td>newIcon icon_add</td>
+        <td>icon_add</td>
         <td><img src="/assets/icon/add_blue.jpg"></td>
-        <td>newIcon icon_add_blue</td>
+        <td>icon_add_blue</td>
         <td><img src="/assets/icon/add_green.png"></td>
-        <td>newIcon icon_add_green</td>
+        <td>icon_add_green</td>
         <td><img src="/assets/icon/attachment.png"></td>
-        <td>newIcon icon_attachment</td>
+        <td>icon_attachment</td>
       </tr>
       <tr>
         <td><img src="/assets/icon/birth.jpg"></td>
-        <td>newIcon icon_birth</td>
+        <td>icon_birth</td>
         <td><img src="/assets/icon/cancel.png"></td>
-        <td>newIcon icon_cancel</td>
+        <td>icon_cancel</td>
         <td><img src="/assets/icon/delete.jpg"></td>
-        <td>newIcon icon_delete</td>
+        <td>icon_delete</td>
         <td><img src="/assets/icon/download.jpg"></td>
-        <td>newIcon icon_download</td>
+        <td>icon_download</td>
       </tr>
       <tr>
         <td><img src="/assets/icon/edit.jpg"></td>
-        <td>newIcon icon_edit</td>
+        <td>icon_edit</td>
         <td><img src="/assets/icon/email.jpg"></td>
-        <td>newIcon icon_email</td>
+        <td>icon_email</td>
         <td><img src="/assets/icon/home.jpg"></td>
-        <td>newIcon icon_home</td>
+        <td>icon_home</td>
         <td><img src="/assets/icon/payment.jpg"></td>
-        <td>newIcon icon_payment</td>
+        <td>icon_payment</td>
       </tr>
       <tr>
         <td><img src="/assets/icon/people.jpg"></td>
-        <td>newIcon icon_people</td>
+        <td>icon_people</td>
         <td><img src="/assets/icon/print.jpg"></td>
-        <td>newIcon icon_print</td>
+        <td>icon_print</td>
         <td><img src="/assets/icon/query.jpg"></td>
-        <td>newIcon icon_query</td>
+        <td>icon_query</td>
         <td><img src="/assets/icon/right.jpg"></td>
-        <td>newIcon icon_right</td>
+        <td>icon_right</td>
       </tr>
     </tbody>
   </table>
 </div>
 
-<h3 id="common3">字体颜色</h3>
+<h3 id="common3">字体相关</h3>
 
 *   红色：`font_red`
 *   蓝色：`font_blue`
@@ -161,7 +160,10 @@ table td:nth-child(even){
 
 <h3 id="common4">按钮</h3>
 
-和图标一样，所有按钮都需要一个基类 `btn` 和对应每个按钮的类。如果你使用过 [bootstrap] []，对此应该会很熟悉！
+和图标一样，所有按钮都需要一个基类 `btn` 和对应每个按钮的类.如果你使用过 [bootstrap] []，对此应该会很熟悉！
+{% highlight html %}
+    <span class="btn btn-default"></span>
+{% endhighlight %}
 
 所有可用的按钮
 <div>
@@ -205,14 +207,9 @@ table td:nth-child(even){
   </table>
 </div>
 
-
-<h3 id="common5">树形菜单</h3>
-
-暂未开发！
-
 ---
 
-<h2 id="html">页面模块</h2>
+<h2 id="html">页面</h2>
 
 <h3 id="html1">结构</h3>
 
@@ -229,10 +226,9 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
     </div>
 <div>
 
-<!--页面自有弹窗 (如申请功能弹窗)-->
-  ···
-<!-- 结束 -->
-
+<div class="popup_apply">
+    <!--页面自有弹窗 (如申请功能弹窗)-->
+</div>
 
 <script>
     $(function(){
@@ -241,7 +237,7 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
 </script>
 {% endhighlight %}
 
-页面自有样式一般仅设置表格各列宽度（最后一列为自适应宽度，不进行设定），宽度总和等于 `（100% - 最后一列宽度）` 
+**页面自有样式**一般仅设置表格各列宽度（最后一列为自适应宽度，不进行设定），宽度总和等于 `（100% - 最后一列宽度）` 
  
 例：表格共10列，每列宽度占比10%，宽度总和为90%
 {% highlight css %}
@@ -258,7 +254,7 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
 }
 {% endhighlight %}
 
-<h3 id="html2">头部</h3>
+<h3 id="html2">头部模块</h3>
 
 ![1.png][]
 
@@ -303,7 +299,7 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
 
 {% highlight html %}
 <div id="drop_down_search" class="drop_down_search_bar">
-  <form action="" method="post">
+  <form method="post">
     <p class="search_title_bar">
         <span class="search_title"><i></i> 查询管理</span>
     </p>
@@ -312,9 +308,9 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
         <!-- 若干控件项 -->
         
         <!-- 查询按钮 -->
-        <input class="search_btn" type="submit" value="查询"/>
+        <input type="submit" value="查询"/>
         <!-- 重置按钮 -->
-        <input class="reset_btn" type="reset" value="重置"/>
+        <input type="reset" value="重置"/>
     </div>
   </form>
 </div>
@@ -326,7 +322,7 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
 {% highlight html %}
   <div class="search_item">
       <label for="applicant">申请人</label>
-      <input type="text" id="applicant"/>
+      <input type="text" id="applicant" name="applicant" value="{$applicant}"/>
   </div>
 {% endhighlight %}
   
@@ -334,9 +330,8 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
 {% highlight html %}
   <div class="search_item">
       <label for="state">缴纳状态</label>
-      <select id="state">
+      <select id="state" name="state" data-sel="{$state}">
           <option value="7">全部</option>
-          <option value="1">未缴纳</option>
       </select>
   </div>
 {% endhighlight %}
@@ -345,17 +340,17 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
 {% highlight html %}
   <div class="search_item search_date_range">
       <label for="apply_date">提交日期</label>
-      <input type="text" id="apply_date" onclick="laydate()" readonly/>
+      <input type="text" id="apply_date" name="apply_date" value="{$apply_date}" onclick="laydate()" readonly/>
   </div>
 {% endhighlight %}
   
-  * 拾取时间使用 [laydate] [] 插件，若无需要可直接调用，日期控件需添加 `readonly`。
+  * 拾取时间使用 [laydate] [] 插件，若无需要可直接调用，日期控件需添加 `readonly` 以禁止用户键盘输入.
   
 * 起始日期
 {% highlight html %}
   <div class="search_item search_date_range">
       <label for="apply_start_date">申请日期</label>
-      <input type="text" id="apply_start_date" readonly/>
+      <input type="text" id="apply_start_date" name="apply_start_date" value="{$apply_start_date}" readonly/>
   </div>
 {% endhighlight %}
   
@@ -363,13 +358,14 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
 {% highlight html %}
   <div class="search_item search_date_range_indicator">
       <label for="apply_end_date">-</label>
-      <input type="text" id="apply_end_date" readonly/>
+      <input type="text" id="apply_end_date" name="apply_end_date" value="{$apply_end_date}" readonly/>
   </div>
 {% endhighlight %}
   
-  * 设置起止时间需在 **页面逻辑** 区调用 [setDateRange()](#setDateRange),接收参数(`起始input id` , `结束input id`),默认为 `apply_start_date`, `apply_end_date`
+  * 设置起止时间需在 **页面逻辑** 区调用 [setDateRange()](#setDateRange),接收参数(`起始控件ID (默认 apply_start_date)` , `结束控件ID (默认 apply_end_date)`),同一页面可多次调用.
+  * 若需自定义设置可查看 [laydate官方文档].
 
-查询框中的 `type=text` 并且 `readonly='false'` 的 `input` 在获取焦点时按下 `Enter` 会提交查询表单;
+查询框中的 `type=text` 并且 `readonly='false'(排除日期控件)` 的 `input` 在获取焦点时按下 `回车(Enter)` 会提交查询;
 快捷查询[逻辑](#quickQuery)加载在 `header.js` 中;
 
 [laydate]:http://laydate.layui.com/
@@ -411,7 +407,7 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
 
 可用图标可查看 [图标组件](#common1)
 
-结合使用时会为除第一个外的 `ul` 添加上边框
+结合使用时会为第一个 `ul` 之后的 `ul` 添加上边框.
 
 ![333.png][]
 
@@ -420,20 +416,19 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
   <ul class="nav_icon_box">
       ···
   </ul>
-  <ul class="nav_text_box">
+  <ul class="nav_icon_box">
         ···
     </ul>
 </div>
 {% endhighlight %}
 
-通用导航条作为其他模块头部使用时可以在 `nav_bar` 后追加 `head` ，以将下边框及下外边距移除
-
 <h3 id="html5">滚动导航条</h3>
 
 ![44.png][]
 
+通用导航条作为其他模块头部使用时可以在 `nav_bar` 后追加 `head` ，以将下边框及下外边距移除
 {% highlight html %}
-<!-- 通用导航条作为头部使用 -->
+<!-- 通用导航条作为滚动导航条头部使用 -->
 <div class="nav_bar head">
     <ul class="nav_icon_box">
         <li><i class="newIcon icon_edit"></i>编辑</li>
@@ -463,7 +458,7 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
 </div>
 {% endhighlight %}
 
-并在‘页面逻辑’ 区添加 [dept_scroll](#dept_scroll) 代码。
+并在‘页面逻辑’ 区调用 [dept_scroll()](#dept_scroll).
 
 <h3 id="html6">表格</h3>
 
@@ -512,21 +507,16 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
         </tr>
         </tfoot>
     </table>
-    <!-- 分页 内容为虚拟数据-->
-    <div class="page_down">
-        <a href="#">首页</a>
-        <a style="color:#fff;background:#d1d1d1;">1</a>
-        <a href="#">尾页</a>
-    </div>
+    <!-- 分页 内容由后端传输 -->
+    <div class="page_down">{$pagination}</div>
 </div>
 {% endhighlight %}
 
 *   **说明**：
-*   每行最后一列 **不** 设定宽度，在设置其他列宽时需要注意留出。
-*   `<thead>` 和 `<tfoot>` 中的内容始终显示，`<tbody>` 中的内容超高会进行滚动显示。
-*   分页内容由 **php** 从后台传输，一般格式为`<div class="page_down"> {$pagination} </div>` ;
+*   每行最后一列 **不** 设定宽度，在设置其他列宽时需要注意留出.
+*   `<thead>` 和 `<tfoot>` 中的内容始终显示，`<tbody>` 中的内容超高会进行滚动显示.
 
-**多行表头式表格**
+**两行表头式表格**
 
 ![555.png][]
 
@@ -605,21 +595,21 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
 </tbody>
 {% endhighlight %}
 
-*   由于设计原因，`<tbody>` 中的 `<td>` 无法使用 `colspan` 和 `rowspan` ，因此所有的单元格都必须存在！
-*   使用 `no_rbor` 移除 *右* 边框，`no_bbor` 移除 *下* 边框。
+*   由于不可描述的原因，`<tbody>` 中的 `<td>` 无法使用 `colspan` 和 `rowspan` ，因此所有的单元格都必须存在！
+*   使用 `no_rbor` 移除 *右* 边框，`no_bbor` 移除 *下* 边框,制造合并单元格的假象.
 *   在列合并格中添加居中文字需在该行第一个单元格中添加 `<div class="c_content">文字</div>` ，并在 `页面自有样式` 处添加
   {% highlight css %}
     /*  跨列格
         width = (合并列宽度和) / 第一列宽度 
      */
     .c_content {
-        width: width;  //只要比结果小就可以 (%)
+        width: width;  /* 只要比结果小就可以 (%) */
         font-size: 12px;
         text-align: center;
     }
   {% endhighlight %}
   
-*   `<tfoot>` 中的 `<td>` 行列合并方式与 `<tbody>` 相同；**特例**：独占一行可使用 `colspan` ！
+*   `<tfoot>` 中的 `<td>` 行列合并方式与 `<tbody>` 相同；<br/>**特例**：独占一行可使用 `colspan` ！
   {% highlight html %}
     <tfoot>
     <tr class="table_list_row ">
@@ -677,7 +667,7 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
 
   *   \home\header.html
   
-弹窗默认宽度为 `780px` ,可追加 class : `pw_s`(620px) \ `pw_l`(1060px) \ `pw_xl`(1350px) 来改变其宽度; 在关闭弹窗时会同时清理除 `popup_win` 外其他 class
+弹窗默认宽度为 `780px` ,可追加 class : `pw_s(620px)` \ `pw_l(1060px)` \ `pw_xl(1350px)` 来改变其宽度; 在关闭弹窗时会同时清理除 `popup_win(或popup_apply)` 外其他 class
 
 <h3 id="popup1">头部</h3>
 
@@ -695,15 +685,15 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
 </div>
 {% endhighlight %}
 
-*   `.popwin_header` 为默认弹窗拖动把手 *id* 
+*   `popwin_header` 为默认弹窗拖动把手 *id* 
 *   `span.fr` 会进行右浮动并且颜色为红色
-*   [popattBoxOpen()](#popattBoxOpen) 为附属弹窗开启方法，参数 `n` 为打开附属弹窗的排序，最小为1。在 [附属弹窗](#popup4) 会进一步说明
+*   [popattBoxOpen()](#popattBoxOpen) 为附属弹窗开启方法，参数 `n` 为打开附属弹窗的排序，最小为1.在 [附属弹窗](#popup4) 会进一步说明
 
 <h3 id="popup2">主体</h3>
 
 ![8.png][]
 
-主体由 *流程* 、 *模块* 、 *文本框* 三部分组成，模块显示区超高部分滚动显示。
+主体由 *流程* 、 *模块* 、 *文本框* 三部分组成，模块显示区超高部分滚动显示.
 
 <h4 id="popup_modular0">流程</h4>
 
@@ -741,9 +731,9 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
       <i class="arrow_right"></i>
       {foreach from=$workflow item=v key=k}
       <span class="ap_item
-      {if }
+      {if 条件语句}
       ap_pass
-      {elseif }
+      {elseif 条件语句}
       ap_current
       {/if}">{$v[1][name]}</span>
       <i class="arrow_right"></i>
@@ -762,6 +752,8 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
 </div>
 {% endhighlight %}
 
+如**确定**模块区高度不超过300px则可省略不写 `scroll_bar` 以去除始终显示滚动条效果.
+
 <h5 id="popup_modular1">标题</h5>
 
 {% highlight html%}
@@ -776,7 +768,7 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
 > 栅格系统参考自 [jQuery Mobile](http://demos.jquerymobile.com/1.4.5/grids/) 以及 [bootstrap][]
 >
 >
-> 栅格系统用于通过一系列的行（row）与列（column）的组合来创建页面布局，你的内容就可以放入这些创建好的布局中。
+> 栅格系统用于通过一系列的行（row）与列（column）的组合来创建页面布局，你的内容就可以放入这些创建好的布局中.
 
 {% highlight html%}
 <div class="content_box">
@@ -788,15 +780,15 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
 
 1. 每行中放置多少列取决于父容器的 `class` ：`row-a/b/c/d/e` ；每个 `row-*` 都独占一行，宽度为100%
 
-2. 确定父容器 `class` 后再确定子容器的 `class` ：`col-a/b/c/d/e`。
+2. 确定父容器 `class` 后再确定子容器的 `class` ：`col-a/b/c/d/e`.
 
-3. 不同父容器 `class` 下的子容器 `class` 宽度不定，比如在 `row-a` 下 `col-a` 的子容器宽度为100%，而在 `row-b` 下 `col-a` 的子容器宽度则为50%，`row-c` 下 `col-a` 的子容器宽度则为33.33%，以此类推。
+3. 不同父容器 `class` 下的子容器 `class` 宽度不定，比如在 `row-a` 下 `col-a` 的子容器宽度为100%，而在 `row-b` 下 `col-a` 的子容器宽度则为50%，`row-c` 下 `col-a` 的子容器宽度则为33.33%，以此类推.
 
-4. 允许混合栅格，即允许仅设置*一次*父容器 `class` ，之后子容器全部放在这一个父容器中。例如设置父容器 `row-c` ，填充4个子容器 `class='col-a'` ，那么前三个子容器会在一行平均分配，最后一个子容器会另起一行并处在首位。
+4. 允许混合栅格，即允许仅设置*一次*父容器 `class` ，之后子容器全部放在这一个父容器中.例如设置父容器 `row-c` ，填充4个子容器 `class='col-a'` ，那么前三个子容器会在一行平均分配，最后一个子容器会另起一行并处在首位.
 
 5. 子容器允许跨列，例如在父容器 `row-c` 下，子容器 `col-b` ，则该列宽度为66.66%， 子容器 `col-c` ，则该列宽度为100%，效果与 `row-a` 下的 `col-a` 效果相同
 
-6. 子容器宽度级别最高为父元素允许级别，即 `row-a` 下只能存在 `col-a` ， `row-b` 下可存在 `col-a` 和 `col-b` ， 以此类推 `row-e` 可存在 `col-a` /`col-b` /`col-c` /`col-d` /`col-e`。 
+6. 子容器宽度级别最高为父元素允许级别，即 `row-a` 下只能存在 `col-a` ， `row-b` 下可存在 `col-a` 和 `col-b` ， 以此类推 `row-e` 可存在 `col-a` /`col-b` /`col-c` /`col-d` /`col-e`. 
 
 *  单列栅格
     要建立一个单列(100%)布局，首先使用容器 `class` 中 `row-a` ，并添加一个子容器 `col-a`
@@ -852,9 +844,10 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
     * 子容器中通常使用表单空间来填充数据，因此也对其进行样式规范
     * 标准格式为 `<label>` + 控件项  
     * 只读或禁用控件需添加 `readonly` 或 `disabled` 属性(显示效果相同)
-    * 显示日期需添加 `class='input_date'` ， 拾取时间还需添加 `onclick='laydate()'` ，起止时间限制可参考 [查询框](#html3)
-    * 若是使用 `fieldset > textarea` ，那么设置禁用时需同时两者的 `readonly/disabled`
+    * 显示日期需添加 `class='input_date'` ， 拾取时间还需添加 `onclick='laydate()'` ，起止时间限制可调用[setDateRange()](#setDateRange) 参考 [查询框](#html3)
+    * 若是使用 `fieldset > textarea` ，那么设置禁用时需**同时**设置两者的 `readonly/disabled`
     * 备注项可设置在独占一行的 `col` 中,使用 `<p class="remark"><p>` 包裹即可
+    * 也可直接在列中直接放置 `img` 标签,宽度已被限制在 100% 以下.
     
     ![10.png][]
 {% highlight html%}
@@ -886,9 +879,9 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
         <fieldset readonly>
             <legend>说明</legend>
             <textarea readonly>AAA</textarea>
-            <!-- 如果内容自带样式(公告，工作总结等) 则将 <textarea> 替换成<div> 
+            <!-- 如果内容自带样式(公告，工作总结等) 则将 <textarea> 替换成<div class="nContent">AAA</div>
               <fieldset> 不设置 readonly/disabled-->
-            <div class="nContent">AAA</div>
+            
         </fieldset>
     </div>
 </div>
@@ -896,8 +889,6 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
 
 <h5 id="popup_modular3">附件</h5>
 ![11.png][]
-
-  * `iframe` 若 `id="picsubmit"` 可不写 `class="picsubmit"` ，`ul` 同理； 
 
 {% highlight html%}
 <div class="content_box">
@@ -929,7 +920,8 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
 </div>
 {% endhighlight %}
 
-[imgMangnify()](#imgMangnify) ：在新窗口查看大图，参数为 `图片路径`
+* 若`iframe` 的 `id="picsubmit"` 可不写 `class="picsubmit"` ，`ul` 同理； 
+*[imgMangnify()](#imgMangnify) ：在新窗口查看大图，参数为 `图片路径`
 
 `att_file`：区分`<a>` 是删除按钮还是文件链接
 
@@ -1171,7 +1163,7 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
     }
 {% endhighlight %}
 
-<span id='setDataRange'></span>设定日期区间查询,接收参数(起始input id, 结束input id)
+<span id='setDateRange'></span>设定日期区间查询,接收参数(起始input id, 结束input id)
 {% highlight javascript %}
 function setDateRange(startId,endId) {
     startId = startId || 'apply_start_date';
@@ -1196,18 +1188,22 @@ function setDateRange(startId,endId) {
 
 <span id='dept_scroll'></span>部门列表滚动
 {% highlight javascript %}
-    $(".btn_box ").on("click ", function (e) {
-        var $scrollBox = $(".dept_list_container ");
-        var scrollLeft = $scrollBox.scrollLeft();
-        if (e.target.className == "btnlf ") {
-            $scrollBox.scrollLeft(scrollLeft - 103);
-            return false;
-        }
-        if (e.target.className == "btnrt ") {
-            $scrollBox.scrollLeft(scrollLeft + 103);
-            return false;
-        }
-    });
+    function deptScroll(){
+        var 
+        $(".btn_box ").on("click ", function (e) {
+                var $scrollBox = $(".dept_list_container ");
+                var scrollLeft = $scrollBox.scrollLeft();
+                if (e.target.className == "btnlf ") {
+                    $scrollBox.scrollLeft(scrollLeft - 103);
+                    return false;
+                }
+                if (e.target.className == "btnrt ") {
+                    $scrollBox.scrollLeft(scrollLeft + 103);
+                    return false;
+                }
+            });
+    }
+    
 {% endhighlight %}
 
 全选
