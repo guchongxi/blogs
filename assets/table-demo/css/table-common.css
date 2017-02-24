@@ -119,38 +119,43 @@
 }
 .single_zr .right_container .drop_down_search_bar .search_box .search_item {
   font-size: 14px;
-  line-height: 26px;
   float: left;
+  margin-left: 5px;
 }
 .single_zr .right_container .drop_down_search_bar .search_box .search_item label {
-  line-height: 26px;
+  line-height: 28px;
   float: left;
-  width: 70px;
-  cursor: auto;
-  text-align: right;
+  cursor: pointer;
 }
 .single_zr .right_container .drop_down_search_bar .search_box .search_item input,
 .single_zr .right_container .drop_down_search_bar .search_box .search_item select {
   float: left;
-  width: 120px;
+  width: 95px;
   margin: 2px 6px;
+  height: 19px;
   padding: 2px 6px;
-  border: none;
-  background-image: url(../img/query_box.jpg);
-  background-size: 100% 100%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: content-box;
 }
 .single_zr .right_container .drop_down_search_bar .search_box .search_item.search_date_range input,
 .single_zr .right_container .drop_down_search_bar .search_box .search_item.search_date_range_indicator input {
   cursor: pointer;
-  background-image: url(../img/payment_input.jpg);
+  background: url(../img/calendar.png) no-repeat right;
+  background-size: 24px;
+}
+.single_zr .right_container .drop_down_search_bar .search_box .search_item.search_date_range + .search_date_range_indicator {
+  margin-left: 0;
 }
 .single_zr .right_container .drop_down_search_bar .search_box .search_item.search_date_range_indicator label {
   width: 5px;
 }
 .single_zr .right_container .drop_down_search_bar .search_box input.search_btn,
-.single_zr .right_container .drop_down_search_bar .search_box input.reset_btn {
+.single_zr .right_container .drop_down_search_bar .search_box input.reset_btn,
+.single_zr .right_container .drop_down_search_bar .search_box input[type=submit],
+.single_zr .right_container .drop_down_search_bar .search_box input[type=reset] {
   float: left;
-  margin: auto 10px;
+  margin: 2px 10px 0;
   text-align: center;
 }
 .single_zr .right_container .drop_down_search_bar .search_box .date_range {
@@ -165,10 +170,9 @@
 .single_zr .right_container input.search_btn,
 .single_zr .right_container input.reset_btn {
   font-size: 14px;
-  line-height: 24px;
+  line-height: 25px;
   display: inline-block;
   width: 50px;
-  height: 24px;
   cursor: pointer;
   color: #fff;
   border: none;
@@ -622,6 +626,9 @@
 .font_green {
   color: green !important;
 }
+.font_orange {
+  color: #eb520f !important;
+}
 .font_weight {
   font-weight: bold;
 }
@@ -767,6 +774,7 @@ button {
 }
 .btn {
   display: inline-block;
+  margin: 0 2px;
   padding: 0 10px;
   font-size: 14px;
   line-height: 22px;
@@ -1272,8 +1280,6 @@ fieldset[disabled] .btn-orange.active {
   float: left;
   cursor: pointer;
   line-height: 30px;
-}
-.nav_bar ul li:first-child {
   margin-left: 10px;
 }
 .nav_bar ul li:hover {
@@ -1300,7 +1306,7 @@ fieldset[disabled] .btn-orange.active {
   background: linear-gradient(180deg, #c5c5c5, #a29898);
 }
 .nav_icon_box li {
-  padding-right: 10px;
+  margin-right: 10px;
 }
 .nav_icon_box li input[type=text],
 .nav_icon_box li select {

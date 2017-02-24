@@ -75,10 +75,15 @@
   line-height: 28px;
   color: #f00;
   margin-left: 10px;
+  cursor: pointer;
 }
 .popup_win .popwin_header .popwin_breadcrumb span.font_blue,
 .popup_apply .popwin_header .popwin_breadcrumb span.font_blue {
   margin-left: 10px;
+}
+.popup_win .popwin_header .popwin_breadcrumb select.process-select,
+.popup_apply .popwin_header .popwin_breadcrumb select.process-select {
+  margin-top: -3px;
 }
 .popup_win .popwin_header .popwin_close,
 .popup_apply .popwin_header .popwin_close,
@@ -328,7 +333,7 @@
 .popup_win .popwin_body .popwin_content .content_box [class*="col-"] > select[disabled],
 .popup_apply .popwin_body .popwin_content .content_box [class*="col-"] > select[disabled] {
   color: #000;
-  background: #ebebe4;
+  background-color: #ebebe4;
 }
 .popup_win .popwin_body .popwin_content .content_box [class*="col-"] > textarea,
 .popup_apply .popwin_body .popwin_content .content_box [class*="col-"] > textarea {
@@ -341,11 +346,10 @@
 .popup_win .popwin_body .popwin_content .content_box [class*="col-"] > input[type="text"].input_date,
 .popup_apply .popwin_body .popwin_content .content_box [class*="col-"] > input[type="text"].input_date {
   cursor: pointer;
-  background-image: url(../img/payment_input.jpg);
-  background-size: 100% 22px;
-  padding: 1px;
-  border: none;
-  color: #000;
+  background-image: url(../img/calendar.png);
+  background-position: right;
+  background-repeat: no-repeat;
+  background-size: 24px;
 }
 .popup_win .popwin_body .popwin_content .content_box .row-a > .col-a,
 .popup_apply .popwin_body .popwin_content .content_box .row-a > .col-a,
@@ -516,7 +520,7 @@
 .popup_win .popwin_body .popwin_content .content_box .picsubmit,
 .popup_apply .popwin_body .popwin_content .content_box .picsubmit {
   width: 70px;
-  height: 22px;
+  height: 23px;
   position: relative;
   top: 6px;
   border: none;
@@ -672,7 +676,9 @@
 .popup_win .popwin_footer input[type=button],
 .popup_apply .popwin_footer input[type=button],
 .popup_win .popwin_footer input[type=submit],
-.popup_apply .popwin_footer input[type=submit] {
+.popup_apply .popwin_footer input[type=submit],
+.popup_win .popwin_footer input[type=reset],
+.popup_apply .popwin_footer input[type=reset] {
   line-height: 22px;
   height: 22px;
   margin-right: 10px;

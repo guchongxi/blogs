@@ -79,9 +79,13 @@
         line-height: 28px;
         color: #f00;
         margin-left: 10px;
+        cursor: pointer;
       }
       span.font_blue {
         margin-left: 10px;
+      }
+      select.process-select{
+        margin-top: -3px;
       }
     }
     // 弹窗关闭
@@ -273,7 +277,7 @@
         }
         [class*="col-"] > input[readonly], [class*="col-"] > textarea[readonly], [class*="col-"] > select[disabled] {
           color: #000;
-          background: rgb(235, 235, 228);
+          background-color: rgb(235, 235, 228);
         }
         [class*="col-"] > textarea {
           max-height: 200px;
@@ -284,11 +288,10 @@
         }
         [class*="col-"] > input[type="text"].input_date {
           cursor: pointer;
-          background-image: url(../img/payment_input.jpg);
-          background-size: 100% 22px;
-          padding: 1px;
-          border: none;
-          color: #000;
+          background-image: url(../img/calendar.png);
+          background-position: right;
+          background-repeat: no-repeat;
+          background-size: 24px;
         }
         // 一行一列
         .row-a > .col-a,
@@ -442,7 +445,7 @@
         //上传
         #picsubmit, .picsubmit {
           width: 70px;
-          height: 22px;
+          height: 23px;
           position: relative;
           top: 6px;
           border: none;
@@ -532,7 +535,7 @@
   .popwin_footer {
     padding: 10px;
     overflow: hidden;
-    input[type=button], input[type=submit] {
+    input[type=button], input[type=submit],input[type=reset] {
       line-height: 22px;
       height: 22px;
       margin-right: 10px;
