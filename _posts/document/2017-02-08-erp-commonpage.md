@@ -73,6 +73,7 @@ table td:nth-child(even){
 *   2017-02-24 : 
     *   [#](#setDateRange) 添加 `setDateRange()` 设定时间区间;
     *   [#](#quickQuery) 添加 _查询框_ 快捷键操作;
+    *   添加文字颜色 橙色:　`font_orahge`
     *   若干排版修正.
 
 ---
@@ -154,10 +155,11 @@ table td:nth-child(even){
 
 <h3 id="common3">字体相关</h3>
 
-*   红色：`font_red`
-*   蓝色：`font_blue`
-*   绿色：`font_green`
-*   加粗：`font_weight`
+*   红色: `font_red`
+*   蓝色: `font_blue`
+*   绿色: `font_green`
+*   橙色:  `font_orange`
+*   加粗: `font_weight`
 
 必填项 `*`
 
@@ -929,7 +931,7 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
 {% endhighlight %}
 
 * 若`iframe` 的 `id="picsubmit"` 可不写 `class="picsubmit"` ，`ul` 同理； 
-*[imgMangnify()](#imgMangnify) ：在新窗口查看大图，参数为 `图片路径`
+* [imgMangnify()](#imgMangnify) ：在新窗口查看大图，参数为 `图片路径`
 
 `att_file`：区分`<a>` 是删除按钮还是文件链接
 
