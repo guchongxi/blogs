@@ -1107,10 +1107,7 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
   </div>
   
   <script>
-      $(function(){
-          popup_window('.popapp_close','.popup_apply','popapp_header');
-          /*弹窗逻辑*/
-      })
+      /*弹窗逻辑*/
   </script>
 </div>
 {% endhighlight %}
@@ -1120,11 +1117,10 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
 //    申请按钮
     $('.apply_btn').click(function(){
         $('.popup_apply').show();
+        popup_window('.popapp_close','.popup_apply','popapp_header');
     });
 //    ... 其他逻辑
 {% endhighlight %}
-
-
 
 ---
 
