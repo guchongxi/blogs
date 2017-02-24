@@ -69,6 +69,13 @@ table td:nth-child(even){
 
 *  若在使用中有任何疑问或bug可随时联系我.
 
+### 更新日志
+*   2017-02-24 : 
+    *   [#](#setDateRange) 添加 `setDateRange()` 设定时间区间;
+    *   [#](#quickQuery) 添加 _查询框_ 快捷键操作;
+    *   删除 _查询框_ 重置逻辑;
+    *   若干排版修正.
+
 ---
 
 <h2 id="common">通用组件</h2>
@@ -181,23 +188,23 @@ table td:nth-child(even){
     <tbody>
       <tr>
         <td><img src="/assets/img/2017-02-08-erp-commonpage/18.png"></td>
-        <td>btn btn-default</td>
+        <td>btn-default</td>
         <td><img src="/assets/img/2017-02-08-erp-commonpage/17.png"></td>
-        <td>btn btn-primary</td>
+        <td>btn-primary</td>
         <td><img src="/assets/img/2017-02-08-erp-commonpage/19.png"></td>
-        <td>btn btn-danger</td>
+        <td>btn-danger</td>
       </tr>
       <tr>
         <td><img src="/assets/img/2017-02-08-erp-commonpage/20.png"></td>
-        <td>btn btn-info</td>
+        <td>btn-info</td>
         <td><img src="/assets/img/2017-02-08-erp-commonpage/21.png"></td>
-        <td>btn btn-success</td>
+        <td>btn-success</td>
         <td><img src="/assets/img/2017-02-08-erp-commonpage/22.png"></td>
-        <td>btn btn-orange</td>
+        <td>btn-orange</td>
       </tr>
       <tr>
         <td><img src="/assets/img/2017-02-08-erp-commonpage/23.png"></td>
-        <td>btn btn-warning</td>
+        <td>btn-warning</td>
         <td>-</td>
         <td>-</td>
         <td>-</td>
