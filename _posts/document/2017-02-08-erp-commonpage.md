@@ -913,14 +913,14 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
         {if $v.suffix eq 2}<!--图片-->
         <li>
             <img src="{$v.url}.thumb.jpg" onclick="imgMagnify('{$v.url}')"/>
-            <a href="javascript:window.parent.window.document.getElementById('picsubmit').contentWindow.delpic('{$v[0]}')">删除</a>
+            <a href="javascript:document.getElementById('picsubmit').contentWindow.delpic('{$v[0]}')">删除</a>
         </li>
         {else}<!--文件-->
         <li>
             <a target="_blank" href="{$v.url}" class="att_file" download>
                 <img src="static/img/load.jpg"/>
             </a>
-            <a href="javascript:window.parent.window.document.getElementById('picsubmit').contentWindow.delpic('{$v[0]}')">删除</a>
+            <a href="javascript:document.getElementById('picsubmit').contentWindow.delpic('{$v[0]}')">删除</a>
         </li>
         {/if}
         {/foreach}
