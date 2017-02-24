@@ -73,7 +73,6 @@ table td:nth-child(even){
 *   2017-02-24 : 
     *   [#](#setDateRange) 添加 `setDateRange()` 设定时间区间;
     *   [#](#quickQuery) 添加 _查询框_ 快捷键操作;
-    *   删除 _查询框_ 重置逻辑;
     *   若干排版修正.
 
 ---
@@ -315,9 +314,9 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
         <!-- 若干控件项 -->
         
         <!-- 查询按钮 -->
-        <input type="submit" value="查询"/>
+        <input type="submit" class="search_btn" value="查询"/>
         <!-- 重置按钮 -->
-        <input type="reset" value="重置"/>
+        <input type="button" class="reset_btn" value="重置"/>
     </div>
   </form>
 </div>
@@ -375,8 +374,10 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
 查询框中的 `type=text` 并且 `readonly='false'(排除日期控件)` 的 `input` 在获取焦点时按下 `回车(Enter)` 会提交查询;
 快捷查询[逻辑](#quickQuery)加载在 `header.js` 中;
 
-[laydate]:http://laydate.layui.com/
-[laydate官方文档]:http://www.layui.com/doc/modules/laydate.html
+需要进行重置的控件项追加 `class="clear_item"` 即可,[重置逻辑](#queryReset)
+{% highlight html %}
+  <input type="text" id="applicant" class="clear_item"/>[laydate]:http://laydate.layui.com/
+{% endhighlight %}[laydate官方文档]:http://www.layui.com/doc/modules/laydate.html
 
 <h3 id="html4">通用导航条</h3>
 
@@ -1232,7 +1233,15 @@ function setDateRange(startId,endId) {
     });
 {% endhighlight %}
 
-
+<span id="queryReset"></span>重置
+{% highlight javascript %}
+    function queryReset(){
+        $('.reset_btn').click(function() {
+            $('input.clear_item').val('');
+            $('select.clear_item option:first-child').attr('selected',true);
+        });
+    }
+{% endhighlight %}
 <h3 id="js2">弹窗js</h3>
 
 <span id='popup_window'></span>弹窗拖动与关闭
