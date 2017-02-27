@@ -72,6 +72,8 @@ table td:nth-child(even){
 *  若在使用中有任何疑问或bug可随时联系我.
 
 ### 更新日志
+*   2017-02-27 :
+    *   更新模版
 *   2017-02-24 : 
     *   [+](#setDateRange) 添加 `setDateRange()` 设定时间区间;
     *   [+](#quickQuery) 添加 _查询框_ 快捷键操作;
