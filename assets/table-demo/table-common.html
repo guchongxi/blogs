@@ -71,8 +71,10 @@
                     </div>
                     <div class="search_item">
                         <label for="state">审核状态</label>
-                        <select name="state" id="state" class="clear_item">
-                            <option value=""></option>
+                        <select name="apply_state" id="state" class="clear_item">
+                            {foreach from=$applyState key=k item=v}
+                            <option value="{$k}" {if $k eq $apply_state}selected{/if}>{$v}</option>
+                            {/foreach}
                         </select>
                     </div>
                     <!-- 查询 -->
@@ -82,7 +84,7 @@
             </form>
         </div>
         <!-- 功能导航条-->
-        <div class="nav_bar">
+        <div class="nav_bar head">
             <ul class="nav_bar_box">
                 <li>
                     <i class="newIcon icon_add"></i>申请

@@ -1218,10 +1218,7 @@ function setDateRange(startId,endId) {
 全选
 {% highlight javascript %}
     $('input.select_all').click(function () {
-        var flag = this.checked;
-        $('input.select_item').each(function (i,n) {
-            n.checked = flag;
-        });
+        $('input.select_item').prop('checked',this.checked);
     }); 
 {% endhighlight %}
 

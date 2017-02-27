@@ -115,22 +115,21 @@
                 {if $v.suffix eq 'pic'} <!--图片-->
                 <li>
                     <img src="{$v.url}.thumb.jpg" onclick="imgMagnify('{$v.url}')"/>
-                    <a href="javascript:window.parent.window.document.getElementById('picsubmit').contentWindow.delpic('{$v.url}')" {if $check} style="display:none" {/if}>删除</a>
+                    <a href="javascript:document.getElementById('picsubmit').contentWindow.delpic('{$v.url}')" {if $check} style="display:none" {/if}>删除</a>
                 </li>
                 {else}  <!--文件-->
                 <li>
                     <a target="_blank" href="{$v.url}" class="att_file" download>
                         <img src="static/img/load.jpg"/>
                     </a>
-                    <a href="javascript:window.parent.window.document.getElementById('picsubmit').contentWindow.delpic('{$v.url}')" {if $check} style="display:none" {/if}>删除</a>
+                    <a href="javascript:document.getElementById('picsubmit').contentWindow.delpic('{$v.url}')" {if $check} style="display:none" {/if}>删除</a>
                 </li>
-                {/if}
-                {/foreach}
+                {foreachelse}
                 { if $picss eq ''} <!--无图-->
                 <li>
                     <img src="uploadfile/nopic.jpg" alt="暂无图片"/>
                 </li>
-                {/if}
+                {/foreach}
             </ul>
         </div>
         <div class="content_box">
