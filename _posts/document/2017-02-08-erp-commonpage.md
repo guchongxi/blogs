@@ -26,6 +26,7 @@ table td:nth-child(even){
 
 
 1.  [前言](#introduction)
+    *   [更新日志](#changeLog)
 2.  [通用组件](#common)
     *   [浮动](#common1)
     *   [图标](#common2)
@@ -71,7 +72,7 @@ table td:nth-child(even){
 
 *  若在使用中有任何疑问或bug可随时联系我.
 
-### 更新日志
+<h2 id="changeLog">更新日志</h2>
 *   2017-02-28 : 
     *   [*] 修改附属弹窗[打开方法](#popattBoxOpen), [关闭方法](#popattBoxClose),及打开位置(table-popup.less),显示为中间打开
     *   [*] 更新模版等文件
