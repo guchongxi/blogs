@@ -9,8 +9,84 @@
 @size_l: 1060px;
 @size_xl: 1350px;
 
-// 最外层div 
+// 具有滚动条的容器
+.scroll_bar {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  // 设置垂直滚动条的宽度和水平滚动条的高度
+  &::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  // 设置滚动条的滑轨
+  &::-webkit-scrollbar-track {
+    background-color: #eee;
+  }
+  // 滑块
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+  }
+  // 滑轨两头的监听按钮
+  &::-webkit-scrollbar-button {
+    background-color: #ddd;
+  }
+  // 横向滚动条和纵向滚动条相交处尖角
+  &::-webkit-scrollbar-corner {
+    //background-color: black;
+  }
+}
 
+// 附件
+#att_list, .att_list {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  max-height: 100px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin-bottom: 10px;
+  li, & > a {
+    width: 80px;
+    height: 80px;
+    padding: 2px;
+    margin: 5px;
+    border: 1px dashed #c2c2c2;
+    border-radius: 5px;
+    display: inline-block;
+    float: left;
+    position: relative;
+    font-size: 14px;
+    img {
+      border: none;
+      margin-right: 10px;
+      width: 80px;
+      height: 80px;
+      cursor: pointer;
+    }
+    a:not(.att_file) {
+      position: absolute;
+      top: -6px;
+      right: -10px;
+      width: 20px;
+      height: 20px;
+      line-height: 20px;
+      text-align: center;
+      transition: all 0.3s ease-in-out;
+      overflow: hidden;
+      color: #f00;
+      &:hover {
+        border-radius: 50%;
+        color: #fff;
+        background: #5EA1E0;
+      }
+      &::before {
+        content: 'X';
+      }
+    }
+  }
+}
+
+// 弹窗
 .popup_win, .popup_apply {
   position: absolute;
   z-index: 10;
@@ -33,33 +109,6 @@
   }
   &.pw_xl {
     width: @size_xl;
-  }
-  // 具有滚动条的容器
-  .scroll_bar {
-    overflow-y: scroll;
-    overflow-x: hidden;
-    // 设置垂直滚动条的宽度和水平滚动条的高度
-    &::-webkit-scrollbar {
-      width: 10px;
-      height: 10px;
-    }
-    // 设置滚动条的滑轨
-    &::-webkit-scrollbar-track {
-      background-color: #eee;
-    }
-    // 滑块
-    &::-webkit-scrollbar-thumb {
-      background-color: rgba(0, 0, 0, 0.1);
-      border-radius: 5px;
-    }
-    // 滑轨两头的监听按钮
-    &::-webkit-scrollbar-button {
-      background-color: #ddd;
-    }
-    // 横向滚动条和纵向滚动条相交处尖角
-    &::-webkit-scrollbar-corner {
-      //background-color: black;
-    }
   }
   // 弹窗顶部
   .popwin_header {
@@ -84,7 +133,7 @@
       span.font_blue {
         margin-left: 10px;
       }
-      select.process-select{
+      select{
         margin-top: -3px;
       }
     }
@@ -379,7 +428,7 @@
               &:last-child {
                 border-right: none;
               }
-              input[type="text"] {
+              input[type=text] {
                 width: 100%;
                 text-align: center;
                 font-size: 12px;
@@ -451,51 +500,6 @@
           border: none;
         }
         //内容
-        #att_list, .att_list {
-          border: 1px solid #ccc;
-          border-radius: 5px;
-          max-height: 100px;
-          overflow-y: auto;
-          overflow-x: hidden;
-          margin-bottom: 10px;
-          .scroll_bar;
-          li, & > a {
-            width: 80px;
-            height: 80px;
-            padding: 2px;
-            margin: 5px;
-            border: 1px dashed #c2c2c2;
-            border-radius: 5px;
-            display: inline-block;
-            float: left;
-            position: relative;
-            img {
-              border: none;
-              margin-right: 10px;
-              width: 80px;
-              height: 80px;
-              cursor: pointer;
-            }
-            a:not(.att_file) {
-              position: absolute;
-              top: -6px;
-              right: -10px;
-              width: 20px;
-              height: 20px;
-              text-align: center;
-              transition: all 0.3s ease-in-out;
-              overflow: hidden;
-              &:hover {
-                border-radius: 50%;
-                color: #fff;
-                background: #5EA1E0;
-              }
-              &::before {
-                content: 'X';
-              }
-            }
-          }
-        }
         .file {
           background: #D1E6F9 url(../img/icon_fileLink.png) no-repeat 2px 6px;
           display: block;
@@ -563,8 +567,9 @@
   .popwin_attach {
     width: 530px;
     position: absolute;
-    top: -7px;
-    right: -540px;
+    top: 40px;
+    left: 50%;
+    margin-left: -265px;
     .popatt_box {
       border: 7px solid #5ea1e0;
       border-radius: 6px;
@@ -629,3 +634,4 @@
     }
   }
 }
+

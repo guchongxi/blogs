@@ -3,6 +3,87 @@
   *请勿直接修改CSS文件!!
   *固定表头页面公共样式 by gcx 2016/12/8
 */
+.scroll_bar {
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.scroll_bar::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+.scroll_bar::-webkit-scrollbar-track {
+  background-color: #eee;
+}
+.scroll_bar::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+.scroll_bar::-webkit-scrollbar-button {
+  background-color: #ddd;
+}
+#att_list,
+.att_list {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  max-height: 100px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin-bottom: 10px;
+}
+#att_list li,
+.att_list li,
+#att_list > a,
+.att_list > a {
+  width: 80px;
+  height: 80px;
+  padding: 2px;
+  margin: 5px;
+  border: 1px dashed #c2c2c2;
+  border-radius: 5px;
+  display: inline-block;
+  float: left;
+  position: relative;
+  font-size: 14px;
+}
+#att_list li img,
+.att_list li img,
+#att_list > a img,
+.att_list > a img {
+  border: none;
+  margin-right: 10px;
+  width: 80px;
+  height: 80px;
+  cursor: pointer;
+}
+#att_list li a:not(.att_file),
+.att_list li a:not(.att_file),
+#att_list > a a:not(.att_file),
+.att_list > a a:not(.att_file) {
+  position: absolute;
+  top: -6px;
+  right: -10px;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+  overflow: hidden;
+  color: #f00;
+}
+#att_list li a:not(.att_file):hover,
+.att_list li a:not(.att_file):hover,
+#att_list > a a:not(.att_file):hover,
+.att_list > a a:not(.att_file):hover {
+  border-radius: 50%;
+  color: #fff;
+  background: #5EA1E0;
+}
+#att_list li a:not(.att_file)::before,
+.att_list li a:not(.att_file)::before,
+#att_list > a a:not(.att_file)::before,
+.att_list > a a:not(.att_file)::before {
+  content: 'X';
+}
 .popup_win,
 .popup_apply {
   position: absolute;
@@ -29,29 +110,6 @@
 .popup_win.pw_xl,
 .popup_apply.pw_xl {
   width: 1350px;
-}
-.popup_win .scroll_bar,
-.popup_apply .scroll_bar {
-  overflow-y: scroll;
-  overflow-x: hidden;
-}
-.popup_win .scroll_bar::-webkit-scrollbar,
-.popup_apply .scroll_bar::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
-}
-.popup_win .scroll_bar::-webkit-scrollbar-track,
-.popup_apply .scroll_bar::-webkit-scrollbar-track {
-  background-color: #eee;
-}
-.popup_win .scroll_bar::-webkit-scrollbar-thumb,
-.popup_apply .scroll_bar::-webkit-scrollbar-thumb {
-  background-color: rgba(0, 0, 0, 0.1);
-  border-radius: 5px;
-}
-.popup_win .scroll_bar::-webkit-scrollbar-button,
-.popup_apply .scroll_bar::-webkit-scrollbar-button {
-  background-color: #ddd;
 }
 .popup_win .popwin_header,
 .popup_apply .popwin_header {
@@ -81,8 +139,8 @@
 .popup_apply .popwin_header .popwin_breadcrumb span.font_blue {
   margin-left: 10px;
 }
-.popup_win .popwin_header .popwin_breadcrumb select.process-select,
-.popup_apply .popwin_header .popwin_breadcrumb select.process-select {
+.popup_win .popwin_header .popwin_breadcrumb select,
+.popup_apply .popwin_header .popwin_breadcrumb select {
   margin-top: -3px;
 }
 .popup_win .popwin_header .popwin_close,
@@ -438,10 +496,10 @@
 .popup_apply .popwin_body .popwin_content .content_box .table_box table td:last-child {
   border-right: none;
 }
-.popup_win .popwin_body .popwin_content .content_box .table_box table th input[type="text"],
-.popup_apply .popwin_body .popwin_content .content_box .table_box table th input[type="text"],
-.popup_win .popwin_body .popwin_content .content_box .table_box table td input[type="text"],
-.popup_apply .popwin_body .popwin_content .content_box .table_box table td input[type="text"] {
+.popup_win .popwin_body .popwin_content .content_box .table_box table th input[type=text],
+.popup_apply .popwin_body .popwin_content .content_box .table_box table th input[type=text],
+.popup_win .popwin_body .popwin_content .content_box .table_box table td input[type=text],
+.popup_apply .popwin_body .popwin_content .content_box .table_box table td input[type=text] {
   width: 100%;
   text-align: center;
   font-size: 12px;
@@ -525,115 +583,6 @@
   top: 6px;
   border: none;
 }
-.popup_win .popwin_body .popwin_content .content_box #att_list,
-.popup_apply .popwin_body .popwin_content .content_box #att_list,
-.popup_win .popwin_body .popwin_content .content_box .att_list,
-.popup_apply .popwin_body .popwin_content .content_box .att_list {
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  max-height: 100px;
-  overflow-y: auto;
-  margin-bottom: 10px;
-  overflow-y: scroll;
-  overflow-x: hidden;
-}
-.popup_win .popwin_body .popwin_content .content_box #att_list::-webkit-scrollbar,
-.popup_apply .popwin_body .popwin_content .content_box #att_list::-webkit-scrollbar,
-.popup_win .popwin_body .popwin_content .content_box .att_list::-webkit-scrollbar,
-.popup_apply .popwin_body .popwin_content .content_box .att_list::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
-}
-.popup_win .popwin_body .popwin_content .content_box #att_list::-webkit-scrollbar-track,
-.popup_apply .popwin_body .popwin_content .content_box #att_list::-webkit-scrollbar-track,
-.popup_win .popwin_body .popwin_content .content_box .att_list::-webkit-scrollbar-track,
-.popup_apply .popwin_body .popwin_content .content_box .att_list::-webkit-scrollbar-track {
-  background-color: #eee;
-}
-.popup_win .popwin_body .popwin_content .content_box #att_list::-webkit-scrollbar-thumb,
-.popup_apply .popwin_body .popwin_content .content_box #att_list::-webkit-scrollbar-thumb,
-.popup_win .popwin_body .popwin_content .content_box .att_list::-webkit-scrollbar-thumb,
-.popup_apply .popwin_body .popwin_content .content_box .att_list::-webkit-scrollbar-thumb {
-  background-color: rgba(0, 0, 0, 0.1);
-  border-radius: 5px;
-}
-.popup_win .popwin_body .popwin_content .content_box #att_list::-webkit-scrollbar-button,
-.popup_apply .popwin_body .popwin_content .content_box #att_list::-webkit-scrollbar-button,
-.popup_win .popwin_body .popwin_content .content_box .att_list::-webkit-scrollbar-button,
-.popup_apply .popwin_body .popwin_content .content_box .att_list::-webkit-scrollbar-button {
-  background-color: #ddd;
-}
-.popup_win .popwin_body .popwin_content .content_box #att_list li,
-.popup_apply .popwin_body .popwin_content .content_box #att_list li,
-.popup_win .popwin_body .popwin_content .content_box .att_list li,
-.popup_apply .popwin_body .popwin_content .content_box .att_list li,
-.popup_win .popwin_body .popwin_content .content_box #att_list > a,
-.popup_apply .popwin_body .popwin_content .content_box #att_list > a,
-.popup_win .popwin_body .popwin_content .content_box .att_list > a,
-.popup_apply .popwin_body .popwin_content .content_box .att_list > a {
-  width: 80px;
-  height: 80px;
-  padding: 2px;
-  margin: 5px;
-  border: 1px dashed #c2c2c2;
-  border-radius: 5px;
-  display: inline-block;
-  float: left;
-  position: relative;
-}
-.popup_win .popwin_body .popwin_content .content_box #att_list li img,
-.popup_apply .popwin_body .popwin_content .content_box #att_list li img,
-.popup_win .popwin_body .popwin_content .content_box .att_list li img,
-.popup_apply .popwin_body .popwin_content .content_box .att_list li img,
-.popup_win .popwin_body .popwin_content .content_box #att_list > a img,
-.popup_apply .popwin_body .popwin_content .content_box #att_list > a img,
-.popup_win .popwin_body .popwin_content .content_box .att_list > a img,
-.popup_apply .popwin_body .popwin_content .content_box .att_list > a img {
-  border: none;
-  margin-right: 10px;
-  width: 80px;
-  height: 80px;
-  cursor: pointer;
-}
-.popup_win .popwin_body .popwin_content .content_box #att_list li a:not(.att_file),
-.popup_apply .popwin_body .popwin_content .content_box #att_list li a:not(.att_file),
-.popup_win .popwin_body .popwin_content .content_box .att_list li a:not(.att_file),
-.popup_apply .popwin_body .popwin_content .content_box .att_list li a:not(.att_file),
-.popup_win .popwin_body .popwin_content .content_box #att_list > a a:not(.att_file),
-.popup_apply .popwin_body .popwin_content .content_box #att_list > a a:not(.att_file),
-.popup_win .popwin_body .popwin_content .content_box .att_list > a a:not(.att_file),
-.popup_apply .popwin_body .popwin_content .content_box .att_list > a a:not(.att_file) {
-  position: absolute;
-  top: -6px;
-  right: -10px;
-  width: 20px;
-  height: 20px;
-  text-align: center;
-  transition: all 0.3s ease-in-out;
-  overflow: hidden;
-}
-.popup_win .popwin_body .popwin_content .content_box #att_list li a:not(.att_file):hover,
-.popup_apply .popwin_body .popwin_content .content_box #att_list li a:not(.att_file):hover,
-.popup_win .popwin_body .popwin_content .content_box .att_list li a:not(.att_file):hover,
-.popup_apply .popwin_body .popwin_content .content_box .att_list li a:not(.att_file):hover,
-.popup_win .popwin_body .popwin_content .content_box #att_list > a a:not(.att_file):hover,
-.popup_apply .popwin_body .popwin_content .content_box #att_list > a a:not(.att_file):hover,
-.popup_win .popwin_body .popwin_content .content_box .att_list > a a:not(.att_file):hover,
-.popup_apply .popwin_body .popwin_content .content_box .att_list > a a:not(.att_file):hover {
-  border-radius: 50%;
-  color: #fff;
-  background: #5EA1E0;
-}
-.popup_win .popwin_body .popwin_content .content_box #att_list li a:not(.att_file)::before,
-.popup_apply .popwin_body .popwin_content .content_box #att_list li a:not(.att_file)::before,
-.popup_win .popwin_body .popwin_content .content_box .att_list li a:not(.att_file)::before,
-.popup_apply .popwin_body .popwin_content .content_box .att_list li a:not(.att_file)::before,
-.popup_win .popwin_body .popwin_content .content_box #att_list > a a:not(.att_file)::before,
-.popup_apply .popwin_body .popwin_content .content_box #att_list > a a:not(.att_file)::before,
-.popup_win .popwin_body .popwin_content .content_box .att_list > a a:not(.att_file)::before,
-.popup_apply .popwin_body .popwin_content .content_box .att_list > a a:not(.att_file)::before {
-  content: 'X';
-}
 .popup_win .popwin_body .popwin_content .content_box .file,
 .popup_apply .popwin_body .popwin_content .content_box .file {
   background: #D1E6F9 url(../img/icon_fileLink.png) no-repeat 2px 6px;
@@ -709,8 +658,9 @@
 .popup_apply .popwin_attach {
   width: 530px;
   position: absolute;
-  top: -7px;
-  right: -540px;
+  top: 40px;
+  left: 50%;
+  margin-left: -265px;
 }
 .popup_win .popwin_attach .popatt_box,
 .popup_apply .popwin_attach .popatt_box {

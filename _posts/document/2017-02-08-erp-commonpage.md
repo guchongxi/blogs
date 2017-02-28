@@ -72,14 +72,17 @@ table td:nth-child(even){
 *  若在使用中有任何疑问或bug可随时联系我.
 
 ### 更新日志
+*   2017-02-28 : 
+    *   [*] 修改附属弹窗[打开方法](#popattBoxOpen), [关闭方法](#popattBoxClose),及打开位置(table-popup.less),显示为中间打开
+    *   [*] 更新模版等文件
 *   2017-02-27 :
-    *   更新模版
+    *   [*] 更新模版等文件
 *   2017-02-24 : 
     *   [+](#setDateRange) 添加 `setDateRange()` 设定时间区间;
     *   [+](#quickQuery) 添加 _查询框_ 快捷键操作;
-    *   + 添加文字颜色 橙色:　`font_orahge`
-    *   + 添加下载样式文件
-    *   若干排版修正.
+    *   [+] 添加文字颜色 橙色:　`font_orahge`
+    *   [+] 添加下载样式文件
+    *   [*] 若干排版修正.
 
 ---
 
@@ -1199,22 +1202,18 @@ function setDateRange(startId,endId) {
 
 <span id='dept_scroll'></span>部门列表滚动
 {% highlight javascript %}
-    function deptScroll(){
-        var 
-        $(".btn_box ").on("click ", function (e) {
-                var $scrollBox = $(".dept_list_container ");
-                var scrollLeft = $scrollBox.scrollLeft();
-                if (e.target.className == "btnlf ") {
-                    $scrollBox.scrollLeft(scrollLeft - 103);
-                    return false;
-                }
-                if (e.target.className == "btnrt ") {
-                    $scrollBox.scrollLeft(scrollLeft + 103);
-                    return false;
-                }
-            });
-    }
-    
+    $(".btn_box ").on("click ", function (e) {
+            var $scrollBox = $(".dept_list_container ");
+            var scrollLeft = $scrollBox.scrollLeft();
+            if (e.target.className == "btnlf ") {
+                $scrollBox.scrollLeft(scrollLeft - 103);
+                return false;
+            }
+            if (e.target.className == "btnrt ") {
+                $scrollBox.scrollLeft(scrollLeft + 103);
+                return false;
+            }
+        });
 {% endhighlight %}
 
 全选
@@ -1251,8 +1250,9 @@ function setDateRange(startId,endId) {
         if(!box){box = '.popup_win'}
         if(!handlerId){handlerId = 'popwin_header'}
         // 关闭按钮
-        $(btn).click(function () {
-            $(box).hide().removeClass('pw_s pw_l pw_xl').css('margin-right',0);
+        $(btn).click(function (e) {
+            e.stopPropagation();
+            $(box).hide().removeClass().addClass(box.replace('.','')).css('margin-right',0);
         });
         // 拖动
         $(box).easydrag().setHandler(handlerId);
@@ -1261,24 +1261,21 @@ function setDateRange(startId,endId) {
 
 <span id='popattBoxClose'></span>附属弹窗关闭
 {% highlight javascript %}    
-    function  popattBoxClose(e){
-        $(e).parents('div.popatt_box').hide();
-        if(!($('.popwin_attach .popatt_box').is(':visible'))){
-            $('.popup_win').css('margin-right','0');
-        }
+    function popattBoxClose(e) {
+        $(e).parents('div.popatt_box').slideUp('fast');
     }
 {% endhighlight %}
 
 <span id='popattBoxOpen'></span>附属弹窗打开
 {% highlight javascript %}
-    function popattBoxOpen(n){
-        if(!isNaN(n) || n < 1){
-            alert('请正确传入popattBoxOpen()参数！');
-            return false;
-        }
+    function popattBoxOpen(n) {
         n = parseInt(n) - 1;
-        $('.popup_win').css('margin-right','533px');
-        $('div.popup_win div.popatt_box').eq(n).show();
+        var box = '.popup_win';
+        if (!$(box).is(':visible')) {
+            box = '.popup_apply'
+        }
+        var boxAtt = $(box + ' div.popatt_box').eq(n);
+        boxAtt.slideToggle('fast');
     }
 {% endhighlight %}
 

@@ -283,7 +283,9 @@
             行政事务 >> 二 >> 三 >>
             <span class="font_red">查看</span>
             <span class="font_blue" id="print">打印</span>
-            <span class="fr" onclick="popattBoxOpen(1)">资产申购>></span>
+            <span class="fr" onclick="popattBoxOpen(1)">一号>></span>
+            <span class="fr" onclick="popattBoxOpen(2)">二号>></span>
+            <span class="fr" onclick="popattBoxOpen(3)">三号>></span>
         </p>
     </div>
     <!-- 主体 -->
@@ -441,11 +443,63 @@
     </div>
     <!-- 附属弹窗 -->
     <div class="popwin_attach">
-        <!--资产申购 该弹窗目前排位第 1-->
+        <!--一号 该弹窗目前排位第 1-->
         <div class="popatt_box">
             <p class="popatt_header">
                 <img class="popatt_close" onclick="popattBoxClose(this)" src="/assets/table-demo/img/close_icon.jpg"/>
-                资产申购
+                一号
+            </p>
+            <div class="popatt_body">
+                <table>
+                    <thead>
+                    <tr>
+                        <th width="20%">编号</th>
+                        <th width="50%">资产名称</th>
+                        <th width="10%">数量</th>
+                        <th width="20%">估价</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>AAA</td>
+                        <td>AAA</td>
+                        <td>AAA</td>
+                        <td>AAA</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="popatt_box">
+            <p class="popatt_header">
+                <img class="popatt_close" onclick="popattBoxClose(this)" src="/assets/table-demo/img/close_icon.jpg"/>
+                二号
+            </p>
+            <div class="popatt_body">
+                <table>
+                    <thead>
+                    <tr>
+                        <th width="20%">编号</th>
+                        <th width="50%">资产名称</th>
+                        <th width="10%">数量</th>
+                        <th width="20%">估价</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>AAA</td>
+                        <td>AAA</td>
+                        <td>AAA</td>
+                        <td>AAA</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="popatt_box">
+            <p class="popatt_header">
+                <img class="popatt_close" onclick="popattBoxClose(this)" src="/assets/table-demo/img/close_icon.jpg"/>
+                三号
             </p>
             <div class="popatt_body">
                 <table>
@@ -471,6 +525,9 @@
     </div>
 </div>
 
+<!-- 模态框 -->
+<div class="popup_wrap"></div>
+
 <!--<ul id="demo"></ul>
 <ul id="demo1"></ul>-->
 
@@ -479,111 +536,111 @@
     $(function () {
         popup_window();
         /*tree({
-            elem: '#demo', //传入元素选择器
-            nodes: [ //节点
-                {
-                    name: '1',
-                    id: 1,
-                    alias: '1',
-                    children: [
-                        {
-                            name: '1-1',
-                            id: 11,
-                            href: 'http://www.layui.com/',
-                            alias: 'weidu'
-                        },
-                        {
-                            name: '1-2',
-                            id: 12
-                        },
-                        {
-                            name: '1-3',
-                            id: 13
-                        }
-                    ]
-                },
-                {
-                    name: '2',
-                    id: 2,
-                    children: [
-                        {
-                            name: '2-1',
-                            id: 21,
-                            spread: true,
-                            children: [
-                                {
-                                    name: '2-1-1',
-                                    id: 211,
-                                    children: [
-                                        {
-                                            name: '2-1-1-1',
-                                            id: 2111
-                                        }, {
-                                            name: '2-1-1-2',
-                                            id: 2112
-                                        }, {
-                                            name: '2-1-1-3',
-                                            id: 2113
-                                        }
-                                    ]
-                                },
-                                {
-                                    name: '2-1-2',
-                                    id: 212
-                                },
-                                {
-                                    name: '2-1-3',
-                                    id: 213
-                                }
-                            ]
-                        },
-                        {
-                            name: '2-2',
-                            id: 22,
-                            children: [
-                                {
-                                    name: '2-2-1',
-                                    id: 221
-                                },
-                                {
-                                    name: '2-2-2',
-                                    id: 222
-                                },
-                                {
-                                    name: '2-2-3'
-                                    , id: 223
-                                }
-                            ]
-                        }
-                    ]
-                }
-            ]
-        });
-        tree({
-            elem: '#demo1', //传入元素选择器
-            nodes: [{ //节点
-                name: '父节点1',
-                children: [{
-                    name: '子节点11'
-                },
-                    {
-                        name: '子节点12',
-                        drag: true
-                    }]
-            },
-                {
-                    name: '父节点2（可以点左侧箭头，也可以双击标题）',
-                    children: [{
-                        name: '子节点21',
-                        children: [{
-                            name: '子节点211'
-                        }]
-                    }]
-                }],
-            click: function (node) {
-                console.log(node); //node即为当前点击的节点数据
-            }
-        })*/
+         elem: '#demo', //传入元素选择器
+         nodes: [ //节点
+         {
+         name: '1',
+         id: 1,
+         alias: '1',
+         children: [
+         {
+         name: '1-1',
+         id: 11,
+         href: 'http://www.layui.com/',
+         alias: 'weidu'
+         },
+         {
+         name: '1-2',
+         id: 12
+         },
+         {
+         name: '1-3',
+         id: 13
+         }
+         ]
+         },
+         {
+         name: '2',
+         id: 2,
+         children: [
+         {
+         name: '2-1',
+         id: 21,
+         spread: true,
+         children: [
+         {
+         name: '2-1-1',
+         id: 211,
+         children: [
+         {
+         name: '2-1-1-1',
+         id: 2111
+         }, {
+         name: '2-1-1-2',
+         id: 2112
+         }, {
+         name: '2-1-1-3',
+         id: 2113
+         }
+         ]
+         },
+         {
+         name: '2-1-2',
+         id: 212
+         },
+         {
+         name: '2-1-3',
+         id: 213
+         }
+         ]
+         },
+         {
+         name: '2-2',
+         id: 22,
+         children: [
+         {
+         name: '2-2-1',
+         id: 221
+         },
+         {
+         name: '2-2-2',
+         id: 222
+         },
+         {
+         name: '2-2-3'
+         , id: 223
+         }
+         ]
+         }
+         ]
+         }
+         ]
+         });
+         tree({
+         elem: '#demo1', //传入元素选择器
+         nodes: [{ //节点
+         name: '父节点1',
+         children: [{
+         name: '子节点11'
+         },
+         {
+         name: '子节点12',
+         drag: true
+         }]
+         },
+         {
+         name: '父节点2（可以点左侧箭头，也可以双击标题）',
+         children: [{
+         name: '子节点21',
+         children: [{
+         name: '子节点211'
+         }]
+         }]
+         }],
+         click: function (node) {
+         console.log(node); //node即为当前点击的节点数据
+         }
+         })*/
     });
 
     /* 弹窗拖动与关闭 */
@@ -598,8 +655,9 @@
             handlerId = 'popwin_header'
         }
         // 关闭按钮
-        $(btn).click(function () {
-            $(box).hide().removeClass('pw_s pw_l pw_xl').css('margin-right', 0);
+        $(btn).click(function (e) {
+            e.stopPropagation();
+            $(box).hide().removeClass().addClass(box.replace('.', '')).css('margin-right', 0);
         });
         // 拖动
         $(box).easydrag().setHandler(handlerId);
@@ -607,21 +665,18 @@
 
     /* 附属弹窗关闭 */
     function popattBoxClose(e) {
-        $(e).parents('div.popatt_box').hide();
-        if (!($('.popwin_attach .popatt_box').is(':visible'))) {
-            $('.popup_win').css('margin-right', '0');
-        }
+        $(e).parents('div.popatt_box').slideUp('fast');
     }
 
     /* 附属弹窗打开 */
     function popattBoxOpen(n) {
-        if (isNaN(n) || n < 1) {
-            alert('请正确传入popattBoxOpen()参数！');
-            return false;
-        }
         n = parseInt(n) - 1;
-        $('.popup_win').css('margin-right', '533px');
-        $('div.popup_win div.popatt_box').eq(n).show();
+        var box = '.popup_win';
+        if (!$(box).is(':visible')) {
+            box = '.popup_apply'
+        }
+        var boxAtt = $(box + ' div.popatt_box').eq(n);
+        boxAtt.slideToggle('fast');
     }
 
     /* 点击行查看详情 */
@@ -664,46 +719,46 @@
     });
 
     /* 全选 */
-    $('input[name=allUser]').click(function () {
-        if (this.checked) {
-            $('input[type=checkbox]').each(function () {
-                this.checked = true;
-            });
-        } else {
-            $('input[type=checkbox]').each(function () {
-                this.checked = false;
-            });
-        }
+    $('input.select_all').click(function () {
+        $('input.select_item').prop('checked', this.checked);
     });
 
     /* 查询日期设置 */
-    var apply_start_date = {
-        elem: '#apply_start_date',
-        choose: function (datas) {
-            apply_end_date.min = datas; //开始日选好后，重置结束日的最小日期
-            apply_end_date.start = datas; //将结束日的初始值设定为开始日
-        }
-    };
-    var apply_end_date = {
-        elem: '#apply_end_date',
-        choose: function (datas) {
-            apply_start_date.max = datas; //结束日选好后，重置开始日的最大日期
-        }
-    };
-    laydate(apply_start_date);
-    laydate(apply_end_date);
+    function setDateRange(startId, endId) {
+        startId = startId || 'apply_start_date';
+        endId = endId || 'apply_end_date';
+        var apply_start_date = {
+                elem: '#' + startId,
+                choose: function (datas) {
+                    apply_end_date.min = datas; //开始日选好后，重置结束日的最小日期
+                    apply_end_date.apply_start_date = datas; //将结束日的初始值设定为开始日
+                }
+            },
+            apply_end_date = {
+                elem: '#' + endId,
+                choose: function (datas) {
+                    apply_start_date.max = datas; //结束日选好后，重置开始日的最大日期
+                }
+            };
+        laydate(apply_start_date);
+        laydate(apply_end_date);
+    }
+
+    setDateRange();
 
     /* 重置 */
     $('.reset_btn').click(function () {
         $('input.clear_item').val('');
         $('select.clear_item option:first-child').attr('selected', true);
     });
-    queryReset();
 
-    /* 导入 */
-    $('#load').click(function () {
-        $(this).next().trigger('click');
+    /* 快捷查询 */
+    $('.search_box input[type=text]:not([readonly])').keydown(function (e) {
+        if (e.keyCode == 13) {
+            $(this).closest('form').submit();
+        }
     });
+
 </script>
 </body>
 </html>
