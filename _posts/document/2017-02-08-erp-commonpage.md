@@ -1113,7 +1113,7 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
     ...
   </div>
   <div class="popwin_footer">
-    <input type="button" value="关闭" class="popapp_close" readonly>
+    <input type="button" value="关闭" class="popapp_close">
     ...
   </div>
   

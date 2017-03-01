@@ -119,13 +119,13 @@
                 </li>
                 {else}  <!--文件-->
                 <li>
-                    <a target="_blank" href="{$v.url}" class="att_file" download>
-                        <img src="static/img/load.jpg"/>
-                    </a>
-                    <a href="javascript:document.getElementById('picsubmit').contentWindow.delpic('{$v.url}')" {if $check} style="display:none" {/if}>删除</a>
+                <a target="_blank" href="{$v.url}" class="att_file" download>
+                    <img src="static/img/load.jpg"/>
+                </a>
+                <a href="javascript:document.getElementById('picsubmit').contentWindow.delpic('{$v.url}')" {if $check} style="display:none" {/if}>删除</a>
                 </li>
-                {foreachelse}
-                { if $picss eq ''} <!--无图-->
+                {/if}
+                {foreachelse}<!--无图-->
                 <li>
                     <img src="uploadfile/nopic.jpg" alt="暂无图片"/>
                 </li>
