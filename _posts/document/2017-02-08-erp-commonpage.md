@@ -1106,7 +1106,7 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
   </style>
   
   <div class="popwin_header" id="popapp_header">
-    <img class="popapp_close" src="/assets/table-demo/img/close_icon.jpg"/>
+    <img class="popapp_close" src="static/img/close_icon.jpg"/>
     ...
   </div>
   <div class="popwin_body">
