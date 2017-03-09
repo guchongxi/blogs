@@ -32,7 +32,7 @@ table td:nth-child(even){
     *   [图标](#common2)
     *   [字体](#common3)
     *   [按钮](#common4)
-   
+
 3.  [页面](#html)
     *   [结构](#html1)
     *   [头部模块](#html2)
@@ -40,7 +40,7 @@ table td:nth-child(even){
     *   [通用导航条模块](#html4)
     *   [滚动导航条模块](#html5)
     *   [表格模块](#html6)
-    
+
 4.  [弹窗](#popup)
     *   [头部](#popup1)
     *   [主体](#popup2)
@@ -53,7 +53,7 @@ table td:nth-child(even){
     *   [尾部](#popup3)
     *   [附属](#popup4)
     *   [页面内弹窗](#popup5)
-    
+
 5.  [交互逻辑](#js)
     *   [页面逻辑](#js1)
     *   [弹窗逻辑](#js2)
@@ -73,12 +73,12 @@ table td:nth-child(even){
 *  若在使用中有任何疑问或bug可随时联系我.
 
 <h2 id="changeLog">更新日志</h2>
-*   2017-02-28 : 
+*   2017-02-28 :
     *   [*] 修改附属弹窗[打开方法](#popattBoxOpen), [关闭方法](#popattBoxClose),及打开位置(table-popup.less),显示为中间打开
     *   [*] 更新模版等文件
 *   2017-02-27 :
     *   [*] 更新模版等文件
-*   2017-02-24 : 
+*   2017-02-24 :
     *   [+](#setDateRange) 添加 `setDateRange()` 设定时间区间;
     *   [+](#quickQuery) 添加 _查询框_ 快捷键操作;
     *   [+] 添加文字颜色 橙色:　`font_orahge`
@@ -99,7 +99,7 @@ table td:nth-child(even){
 
 所有图标都需要一个基类 `icon` 和对应每个图标的类
 {% highlight html %}
-    <i class="newIcon icon_add"></i>
+  <i class="newIcon icon_add"></i>
 {% endhighlight %}
 
 所有可用的图标
@@ -179,7 +179,7 @@ table td:nth-child(even){
 
 和图标一样，所有按钮都需要一个基类 `btn` 和对应每个按钮的类.如果你使用过 [bootstrap] []，对此应该会很熟悉！
 {% highlight html %}
-    <span class="btn btn-default"></span>
+  <span class="btn btn-default"></span>
 {% endhighlight %}
 
 所有可用的按钮
@@ -233,29 +233,30 @@ table td:nth-child(even){
 HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
 {% highlight html %}
 <link rel="stylesheet" type="text/css" href="static/css/reset.css" />
+
 <style type="text/css">
-    /*页面自有样式*/
+  /*页面自有样式*/
 </style>
 
 <div class="single_zr">
     <div class="right_container">
-        <!--页面模块-->
+      <!--页面模块-->
     </div>
 <div>
 
 <div class="popup_apply">
-    <!--页面自有弹窗 (如申请功能弹窗)-->
+  <!--页面自有弹窗 (如申请功能弹窗)-->
 </div>
 
 <script>
     $(function(){
-        /*页面逻辑*/
+      /*页面逻辑*/
     })
 </script>
 {% endhighlight %}
 
-**页面自有样式**一般仅设置表格各列宽度（最后一列为自适应宽度，不进行设定），宽度总和等于 `（100% - 最后一列宽度）` 
- 
+**页面自有样式**一般仅设置表格各列宽度（最后一列为自适应宽度，不进行设定），宽度总和等于 `（100% - 最后一列宽度）`
+
 例：表格共10列，每列宽度占比10%，宽度总和为90%
 {% highlight css %}
 .c_1,
@@ -321,9 +322,9 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
         <span class="search_title"><i></i> 查询管理</span>
     </p>
     <div class="search_box">
-        
+
         <!-- 若干控件项 -->
-        
+
         <!-- 查询按钮 -->
         <input type="submit" class="search_btn" value="查询"/>
         <!-- 重置按钮 -->
@@ -342,7 +343,7 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
       <input type="text" id="applicant" name="applicant" value="{$applicant}"/>
   </div>
 {% endhighlight %}
-  
+
 * 选项
 {% highlight html %}
   <div class="search_item">
@@ -352,7 +353,7 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
       </select>
   </div>
 {% endhighlight %}
-  
+
 * 选择日期
 {% highlight html %}
   <div class="search_item search_date_range">
@@ -360,9 +361,9 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
       <input type="text" id="apply_date" name="apply_date" value="{$apply_date}" onclick="laydate()" readonly/>
   </div>
 {% endhighlight %}
-  
+
   * 拾取时间使用 [laydate] [] 插件，若无需要可直接调用，日期控件需添加 `readonly` 以禁止用户键盘输入.
-  
+
 * 起始日期
 {% highlight html %}
   <div class="search_item search_date_range">
@@ -370,7 +371,7 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
       <input type="text" id="apply_start_date" name="apply_start_date" value="{$apply_start_date}" readonly/>
   </div>
 {% endhighlight %}
-  
+
 * 终止日期
 {% highlight html %}
   <div class="search_item search_date_range_indicator">
@@ -378,7 +379,7 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
       <input type="text" id="apply_end_date" name="apply_end_date" value="{$apply_end_date}" readonly/>
   </div>
 {% endhighlight %}
-  
+
   * 设置起止时间需在 **页面逻辑** 区调用 [setDateRange()](#setDateRange),接收参数(`起始控件ID (默认 apply_start_date)` , `结束控件ID (默认 apply_end_date)`),同一页面可多次调用.
   * 若需自定义设置可查看 [laydate官方文档].
 
@@ -619,7 +620,7 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
 *   在列合并格中添加居中文字需在该行第一个单元格中添加 `<div class="c_content">文字</div>` ，并在 `页面自有样式` 处添加
   {% highlight css %}
     /*  跨列格
-        width = (合并列宽度和) / 第一列宽度 
+        width = (合并列宽度和) / 第一列宽度
      */
     .c_content {
         width: width;  /* 只要比结果小就可以 (%) */
@@ -627,7 +628,7 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
         text-align: center;
     }
   {% endhighlight %}
-  
+
 *   `<tfoot>` 中的 `<td>` 行列合并方式与 `<tbody>` 相同；<br/>**特例**：独占一行可使用 `colspan` ！
   {% highlight html %}
     <tfoot>
@@ -648,7 +649,7 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
     </tr>
     </tfoot>
   {% endhighlight %}
-  
+
 ---
 
 <h2 id="popup">弹窗</h2>
@@ -660,7 +661,7 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
   <style type="text/css">
       /*弹窗自有样式*/
   </style>
-  
+
   <div class="popwin_header" id="popwin_header">
     ...
   </div>
@@ -670,7 +671,7 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
   <div class="popwin_footer">
     ...
   </div>
-  
+
   <script>
       $(function(){
           popup_window()
@@ -685,7 +686,7 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
 `<div class="popup_win"></div>` 父元素标签已放置于以下文件中，使用时仅需在HTML文件中加入内容即可
 
   *   \home\header.html
-  
+
 弹窗默认宽度为 `780px` ,可追加 class : `pw_s(620px)` \ `pw_l(1060px)` \ `pw_xl(1350px)` 来改变其宽度; 在关闭弹窗时会同时清理除 `popup_win(或popup_apply)` 外其他 class
 
 <h3 id="popup1">头部</h3>
@@ -704,7 +705,7 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
 </div>
 {% endhighlight %}
 
-*   `popwin_header` 为默认弹窗拖动把手 *id* 
+*   `popwin_header` 为默认弹窗拖动把手 *id*
 *   `span.fr` 会进行右浮动并且颜色为红色
 *   [popattBoxOpen()](#popattBoxOpen) 为附属弹窗开启方法，参数 `n` 为打开附属弹窗的排序，最小为1.在 [附属弹窗](#popup4) 会进一步说明
 
@@ -807,7 +808,7 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
 
 5. 子容器允许跨列，例如在父容器 `row-c` 下，子容器 `col-b` ，则该列宽度为66.66%， 子容器 `col-c` ，则该列宽度为100%，效果与 `row-a` 下的 `col-a` 效果相同
 
-6. 子容器宽度级别最高为父元素允许级别，即 `row-a` 下只能存在 `col-a` ， `row-b` 下可存在 `col-a` 和 `col-b` ， 以此类推 `row-e` 可存在 `col-a` /`col-b` /`col-c` /`col-d` /`col-e`. 
+6. 子容器宽度级别最高为父元素允许级别，即 `row-a` 下只能存在 `col-a` ， `row-b` 下可存在 `col-a` 和 `col-b` ， 以此类推 `row-e` 可存在 `col-a` /`col-b` /`col-c` /`col-d` /`col-e`.
 
 *  单列栅格
     要建立一个单列(100%)布局，首先使用容器 `class` 中 `row-a` ，并添加一个子容器 `col-a`
@@ -816,7 +817,7 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
         <div class="col-a"></div>
       </div>
     {% endhighlight %}
-    
+
 *  双列栅格
     要建立一个双列(50/50%)布局，首先使用容器 `class` 中 `row-b` ，并添加两个子容器 `col-a` ， 也可存在 `col-b`
     {% highlight html%}
@@ -825,7 +826,7 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
         <div class="col-a"></div>
       </div>
     {% endhighlight %}
-    
+
 *  三列栅格
     要建立一个三列(33/33/33%)布局，首先使用容器 `class` 中 `row-c` ，并添加三个子容器 `col-a` ，也可存在 `col-b/c`
     {% highlight html%}
@@ -835,7 +836,7 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
         <div class="col-a"></div>
       </div>
     {% endhighlight %}
-    
+
 *  四列栅格
     要建立一个四列(25/25/25/25%)布局，首先使用容器 `class` 中 `row-d` ，并添加四个子容器 `col-a` ，也可存在 `col-b/c/d`
      {% highlight html%}
@@ -846,7 +847,7 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
          <div class="col-a"></div>
        </div>
      {% endhighlight %}
-     
+
 *  五列栅格
     要建立一个五列(20/20/20/20/20%)布局，首先使用容器 `class` 中 `row-e` ，并添加五个子容器 `col-a` ，也可存在 `col-b/c/d/e`
     {% highlight html%}
@@ -858,16 +859,16 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
         <div class="col-a"></div>
       </div>
     {% endhighlight %}
-    
+
 *  混合栅格
     * 子容器中通常使用表单空间来填充数据，因此也对其进行样式规范
-    * 标准格式为 `<label>` + 控件项  
+    * 标准格式为 `<label>` + 控件项
     * 只读或禁用控件需添加 `readonly` 或 `disabled` 属性(显示效果相同)
     * 显示日期需添加 `class='input_date'` ， 拾取时间还需添加 `onclick='laydate()'` ，起止时间限制可调用[setDateRange()](#setDateRange) 参考 [查询框](#html3)
     * 若是使用 `fieldset > textarea` ，那么设置禁用时需**同时**设置两者的 `readonly/disabled`
     * 备注项可设置在独占一行的 `col` 中,使用 `<p class="remark"><p>` 包裹即可
     * 也可直接在列中直接放置 `img` 标签,宽度已被限制在 100% 以下.
-    
+
     ![10.png][]
 {% highlight html%}
 <div class="content_box">
@@ -888,7 +889,7 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
         </div>
         <div class="col-a">
             <label>日期</label>
-            <input type="text" value="AAAA" readonly 
+            <input type="text" value="AAAA" readonly
               onclick="laydate()" class="input_date"/>
         </div>
         <div class="col-c">
@@ -900,7 +901,7 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
             <textarea readonly>AAA</textarea>
             <!-- 如果内容自带样式(公告，工作总结等) 则将 <textarea> 替换成<div class="nContent">AAA</div>
               <fieldset> 不设置 readonly/disabled-->
-            
+
         </fieldset>
     </div>
 </div>
@@ -939,7 +940,7 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
 </div>
 {% endhighlight %}
 
-* 若`iframe` 的 `id="picsubmit"` 可不写 `class="picsubmit"` ，`ul` 同理； 
+* 若`iframe` 的 `id="picsubmit"` 可不写 `class="picsubmit"` ，`ul` 同理；
 * [imgMangnify()](#imgMangnify) ：在新窗口查看大图，参数为 `图片路径`
 
 `att_file`：区分`<a>` 是删除按钮还是文件链接
@@ -1044,7 +1045,7 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
 <div class="popwin_footer">
     <input type="button" value="关闭" class="popwin_close">
     <input type="button" value="提交" class="fr"/>
-    <input type="button" value="取回" class="fr" onclick="newtakeback(this)" 
+    <input type="button" value="取回" class="fr" onclick="newtakeback(this)"
       data-id="" data-apply="" data-state="" data-op="" data-sys=''>
     <select class="assign_person">
         <option value="1">AAA</option>
@@ -1062,7 +1063,7 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
     <!--该弹窗目前排位第 1-->
     <div class="popatt_box">
         <p class="popatt_header">
-            <img class="popatt_close" onclick="popattBoxClose(this)" 
+            <img class="popatt_close" onclick="popattBoxClose(this)"
               src="static/img/close_icon.jpg"/>
             资产申购
         </p>
@@ -1104,7 +1105,7 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
   <style type="text/css">
       /*弹窗自有样式*/
   </style>
-  
+
   <div class="popwin_header" id="popapp_header">
     <img class="popapp_close" src="static/img/close_icon.jpg"/>
     ...
@@ -1116,7 +1117,7 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
     <input type="button" value="关闭" class="popapp_close">
     ...
   </div>
-  
+
   <script>
       /*弹窗逻辑*/
   </script>
@@ -1124,7 +1125,7 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
 {% endhighlight %}
 
 调用时在列表页面逻辑处添加
-{% highlight js %}
+{% highlight js linenos %}
 //    申请按钮
     $('.apply_btn').click(function(){
         $('.popup_apply').show();
@@ -1157,7 +1158,7 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
 {% endhighlight %}
 
 <span id='openShutManager'></span>查询框 - 打开关闭
-{% highlight javascript %}    
+{% highlight javascript %}
     function openShutManager(oSourceObj, oTargetObj, shutAble, oOpenTip, oShutTip) {
         var sourceObj = typeof oSourceObj == "string" ? document.getElementById(oSourceObj) : oSourceObj;
         var targetObj = typeof oTargetObj == "string" ? document.getElementById(oTargetObj) : oTargetObj;
@@ -1221,7 +1222,7 @@ function setDateRange(startId,endId) {
 {% highlight javascript %}
     $('input.select_all').click(function () {
         $('input.select_item').prop('checked',this.checked);
-    }); 
+    });
 {% endhighlight %}
 
 <span id='quickQuery'></span>快捷查询
@@ -1261,7 +1262,7 @@ function setDateRange(startId,endId) {
 {% endhighlight %}
 
 <span id='popattBoxClose'></span>附属弹窗关闭
-{% highlight javascript %}    
+{% highlight javascript %}
     function popattBoxClose(e) {
         $(e).parents('div.popatt_box').slideUp('fast');
     }
@@ -1281,19 +1282,19 @@ function setDateRange(startId,endId) {
 {% endhighlight %}
 
 <span id='imgMagnify'></span>查看图片
-{% highlight javascript %}    
+{% highlight javascript %}
     function imgMagnify(imgUrl) {
         window.open('index.php?sys=administration&mod=imgmagnify&imgUrl=' + imgUrl, '', 'dialogWidth=800px;dialogHeight=500px;status=no;help=no;scrollbars=no');
     }
 {% endhighlight %}
 
 <span id='newtakeback'></span>取回
-{% highlight javascript %}    
+{% highlight javascript %}
     function newtakeback(data){
-    	var nId = $(data).attr("data-id");	
-    	var state = $(data).attr("data-state");	
-    	var apply = $(data).attr("data-apply");	
-    	var op = $(data).attr("data-op");	
+    	var nId = $(data).attr("data-id");
+    	var state = $(data).attr("data-state");
+    	var apply = $(data).attr("data-apply");
+    	var op = $(data).attr("data-op");
     	var sys = $(data).attr("data-sys");
 
     	if(!sys){
@@ -1302,7 +1303,7 @@ function setDateRange(startId,endId) {
     	$.ajax({
     		type:"post",
     		url:"index.php?sys=administration&mod=takeback&op="+op,
-    		data: {				
+    		data: {
     			nid: nId,
     			state:state
     		},
@@ -1323,7 +1324,7 @@ function setDateRange(startId,endId) {
     				}
     			}
     		}
-    	});	
+    	});
     }
 {% endhighlight %}
 

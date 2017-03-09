@@ -1,10 +1,10 @@
 ---
 layout: post
-title: Keycode对照表（键码对照表）
+title: Keycode对照表
 category: 资源
 tags: Keycode
 keywords: Keycode
-description: Keycode对照表（键码对照表）
+description: Keycode对照表
 ---
 
 <style type="text/css">

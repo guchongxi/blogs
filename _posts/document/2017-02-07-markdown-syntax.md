@@ -449,7 +449,7 @@ Suspendisse id sem consectetuer libero luctus adipiscing.
 
     > This is a blockquote
     > inside a list item.
-    
+
 {% endhighlight %}
 
 如果要放代码区块的话，该区块就需要缩进*两次*，也就是 8 个空格或是 2 个制表符：
@@ -532,7 +532,7 @@ Markdown 会转换成：
 代码区块中，一般的 Markdown 语法不会被转换，像是星号便只是星号，这表示你可以很容易地以 Markdown 语法撰写 Markdown 语法相关的文件。
 
 代码高亮语法(github pages 不支持下面这种写法！！)
-{% highlight js %}
+{% highlight js linenos %}
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -542,7 +542,7 @@ ga('create', '{{ site.google_analytics }}', 'auto');
 ga('send', 'pageview');
 {% endhighlight %}
 
-{% highlight js %}
+{% highlight js linenos %}
     ```js
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -554,7 +554,7 @@ ga('send', 'pageview');
     ```
 {% endhighlight %}
 
-或者这样(使用时将{与%之间的 \\ 删除!)
+或者这样(使用时将 { 与 % 之间的 \\ 删除!)
 
     {\% highlight javascript %}
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

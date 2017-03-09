@@ -127,7 +127,7 @@ $('<style>.red::before{color:green}</style>').appendTo('head');
 
 ### 法1. 使用CSSStyleSheet的insertRule来为伪元素修改样式
 
-```
+```js
 var latestContent = "新修改的内容";
 document.styleSheets[0].addRule('#jadeId::before','content: "' + latestContent + '"');  // 兼容IE浏览器
 
@@ -158,6 +158,6 @@ $('.jadeId').attr('data-attr', '新修改的内容');
 
 ---
 
-相关参考文章：  
-- [使用JS控制伪元素的几种方法](http://www.dengzhr.com/frontend/css/797)     
-- [总结伪类与伪元素](http://www.alloyteam.com/2016/05/summary-of-pseudo-classes-and-pseudo-elements/)      
+相关参考文章：
+- [使用JS控制伪元素的几种方法](http://www.dengzhr.com/frontend/css/797)
+- [总结伪类与伪元素](http://www.alloyteam.com/2016/05/summary-of-pseudo-classes-and-pseudo-elements/)

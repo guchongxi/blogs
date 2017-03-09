@@ -103,7 +103,7 @@ h1 + h2, h2 + h3, h3 + h4, h4 + h5, h5 + h6
       margin-bottom: 0
 
   blockquote
-    color: gray
+    color: #494e58
     font-style: italic
     font-size: .95em
     margin: 0 0 $post-paragraph-spacing 0
@@ -129,7 +129,7 @@ h1 + h2, h2 + h3, h3 + h4, h4 + h5, h5 + h6
     max-width: 80%
     //border: $post-img-border-width solid $post-img-border-color
     margin-bottom: $post-paragraph-spacing / 2
-    
+
   table img
     display: inline-block
     margin-bottom: 0
@@ -137,6 +137,7 @@ h1 + h2, h2 + h3, h3 + h4, h4 + h5, h5 + h6
   code
     font-family: $post-code-font
     font-size: .9em
+    color: #cacaca
 
   *:not(pre) > code
     padding: 2px 4px
@@ -149,12 +150,12 @@ h1 + h2, h2 + h3, h3 + h4, h4 + h5, h5 + h6
     margin-top: 0
     margin-bottom: $post-paragraph-spacing
     padding: 1em
-    line-height: 1.3
+    line-height: 1.5
     background: $post-code-block-bg
     overflow: auto
-    border: 2px solid $post-code-block-border-color
     border-radius: 5px
     -webkit-overflow-scrolling: touch
+    font-family: $post-code-font
     &::-webkit-scrollbar
       height: $code-scrollbar-height
     &::-webkit-scrollbar-thumb
@@ -168,7 +169,6 @@ h1 + h2, h2 + h3, h3 + h4, h4 + h5, h5 + h6
       margin: 0
       background-color: $post-code-block-bg
       border-radius: 5px
-      border: 1px solid #ccc
       padding: 6px 10px
       code
         color: $post-code-normal-text-color

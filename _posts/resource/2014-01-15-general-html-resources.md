@@ -4,7 +4,7 @@ title: HTML 常用资源
 category: 资源
 tags: HTML
 keywords: HTML
-description: 
+description:
 ---
 
 ## 常用属性
@@ -23,3 +23,11 @@ viewport的作用是告诉浏览器，目前的装置情况。
 - minimum-scale:最小0.25，最大5   最小缩放
 - maximum-scale:最小0.25，最大5   最大缩放
 - user-scalable:1或0(yes or no)  是否允许用户缩放
+
+### 在meta中增加http-equiv选项
+作用是告诉浏览器以什么版本内核来渲染页面
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+- IE: ie浏览器 edge 最新内核渲染
+- chrome: 谷歌浏览器 1 最新内核渲染

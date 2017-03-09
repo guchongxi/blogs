@@ -48,12 +48,12 @@ tag: vue webpack config
   │   ├─prod.env.js <br/>
   │   └─test.env.js <br/>
   ├─... <br/>
-  └─package.json 
+  └─package.json
 
 <h2 id="p2">指令分析</h2>
 
 首先看package.json里面的scripts字段，
-{% highlight js %}
+{% highlight js linenos %}
     "scripts": {
       "dev": "node build/dev-server.js",
       "build": "node build/build.js",
@@ -71,7 +71,7 @@ tag: vue webpack config
 <h3 id="p31">build/dev-server.js</h3>
 
 首先来看执行”npm run dev”时候最先执行的build/dev-server.js文件。
-{% highlight js %}
+{% highlight js linenos %}
     /*
     * 执行”npm run dev”时候最先执行此文件
      1. 检查node和npm的版本
@@ -83,17 +83,17 @@ tag: vue webpack config
      7. 启动服务器监听特定端口（8080）
      8. 自动打开浏览器并打开特定网址（localhost:8080）
     */
-    
+
     // 检查NodeJS和npm的版本
     require('./check-versions')()
-    
+
     // 获取配置
     var config = require('../config')
     // 如果Node的环境变量中没有设置当前的环境（NODE_ENV），则使用config中的配置作为当前的环境
     if (!process.env.NODE_ENV) {
       process.env.NODE_ENV = JSON.parse(config.dev.env.NODE_ENV)
     }
-    
+
     // 一个可以调用默认软件打开网址、图片、文件等内容的插件
     // 这里用它来调用默认浏览器打开dev-server监听的端口，例如：localhost:8080
     var opn = require('opn')
@@ -103,31 +103,31 @@ tag: vue webpack config
     var express = require('express')
     // 引入node为webpack提供的一个模块服务 github https://github.com/webpack/webpack
     var webpack = require('webpack')
-    
+
     // 一个express中间件，用于将http请求代理到其他服务器 https://github.com/chimurai/http-proxy-middleware
     // 例：localhost:8080/api/xxx  -->  localhost:3000/api/xxx
     // 这里使用该插件可以将前端开发中涉及到的请求代理到API服务器上，方便与服务器对接
     var proxyMiddleware = require('http-proxy-middleware')
-    
+
     // 根据 Node 环境来引入相应的 webpack 配置
     var webpackConfig = process.env.NODE_ENV === 'testing'
       ? require('./webpack.prod.conf')
       : require('./webpack.dev.conf')
-    
+
     // dev-server 监听的端口，默认为config.dev.port设置的端口，即8080
     var port = process.env.PORT || config.dev.port
-    
+
     // 用于判断是否要自动打开浏览器的布尔变量，当配置文件中没有设置自动打开浏览器的时候其值为 false
     var autoOpenBrowser = !!config.dev.autoOpenBrowser
-    
+
     // // 获取需要代理的服务api
     var proxyTable = config.dev.proxyTable
-    
+
     // 创建1个 express 实例
     var app = express()
     // 根据webpack配置文件创建Compiler对象
     var compiler = webpack(webpackConfig)
-    
+
     // webpack-dev-middleware使用compiler对象来对相应的文件进行编译和绑定
     // 编译绑定后将得到的产物存放在内存中而没有写进磁盘
     // 将这个中间件交给express使用之后即可访问这些编译后的产品文件
@@ -135,12 +135,12 @@ tag: vue webpack config
       publicPath: webpackConfig.output.publicPath,
       quiet: true
     })
-    
+
     // webpack-hot-middleware，用于实现热重载功能的中间件 https://github.com/glenjamin/webpack-hot-middleware
     var hotMiddleware = require('webpack-hot-middleware')(compiler, {
       log: () => {}
     })
-    
+
     // 当html-webpack-plugin提交之后通过热重载中间件发布重载动作使得页面重载
     compiler.plugin('compilation', function (compilation) {
       compilation.plugin('html-webpack-plugin-after-emit', function (data, cb) {
@@ -148,7 +148,7 @@ tag: vue webpack config
         cb()
       })
     })
-    
+
     // 将 proxyTable 中的代理请求配置挂在到express服务器上 遍历代理的配置信息,并且使用中间件加载进去
     Object.keys(proxyTable).forEach(function (context) {
       var options = proxyTable[context]
@@ -157,38 +157,38 @@ tag: vue webpack config
       }
       app.use(proxyMiddleware(options.filter || context, options))
     })
-    
+
     // 当访问找不到的页面的时候，该中间件指定了一个默认的页面返回https://github.com/bripkens/connect-history-api-fallback
     app.use(require('connect-history-api-fallback')())
-    
+
     // 使用webpack开发中间件
     // 即将webpack编译后输出到内存中的文件资源挂到express服务器上
     app.use(devMiddleware)
-    
+
     // 将热重载中间件挂在到express服务器上
     app.use(hotMiddleware)
-    
+
     // 静态资源的路径
     var staticPath = path.posix.join(config.dev.assetsPublicPath, config.dev.assetsSubDirectory)
-    
+
     // 将静态资源挂到express服务器上
     app.use(staticPath, express.static('./static'))
-    
+
     // 应用的地址信息，例如：http://localhost:8080
     var uri = 'http://localhost:' + port
-    
+
     // webpack开发中间件合法（valid）之后输出提示语到控制台，表明服务器已启动
     devMiddleware.waitUntilValid(function () {
       console.log('> Listening at ' + uri + '\n')
     })
-    
+
     // 导出配置 启动express服务器并监听相应的端口（8080）
     module.exports = app.listen(port, function (err) {
       if (err) {
         console.log(err)
         return
       }
-    
+
       // 如果符合自动打开浏览器的条件，则通过opn插件调用系统默认浏览器打开对应的地址uri
       if (autoOpenBrowser && process.env.NODE_ENV !== 'testing') {
         opn(uri)
@@ -200,7 +200,7 @@ tag: vue webpack config
 <h3 id="p32">build/webpack.base.conf.js</h3>
 
 从代码中看到，dev-server使用的webpack配置来自build/webpack.dev.conf.js文件（测试环境下使用的是build/webpack.prod.conf.js，这里暂时不考虑测试环境）。而build/webpack.dev.conf.js中又引用了webpack.base.conf.js，所以这里我先分析webpack.base.conf.js。
-{% highlight js %}
+{% highlight js linenos %}
     /*
     * webpack基本配置文件
      1. 配置webpack编译入口
@@ -208,19 +208,19 @@ tag: vue webpack config
      3. 配置模块resolve规则
      4. 配置不同类型模块的处理规则
     */
-    
-    
+
+
     var path = require('path')
     var utils = require('./utils')
     var config = require('../config')
     // vue-loader的配置
     var vueLoaderConfig = require('./vue-loader.conf')
-    
+
     // 给出正确的绝对路径
     function resolve (dir) {
       return path.join(__dirname, '..', dir)
     }
-    
+
     // 导出的对象，就是webpack的配置项，详情可以参考的webpack的配置说明，这里会将出现的都一一说明一下
     module.exports = {
       // 配置webpack编译入口
@@ -297,7 +297,7 @@ tag: vue webpack config
 <h3 id="p33">build/webpack.dev.conf.js</h3>
 
 接下来看webpack.dev.conf.js，这里面在webpack.base.conf的基础上增加完善了开发环境下面的配置，主要包括下面几件事情：
-{% highlight js %}
+{% highlight js linenos %}
     /*
     * 这里面在webpack.base.conf的基础上增加完善了开发环境下面的配置
      1. 将hot-reload相关的代码添加到entry chunks
@@ -306,26 +306,26 @@ tag: vue webpack config
      4. 配置Source Maps
      5. 配置webpack插件
      */
-    
+
     var utils = require('./utils')
     var webpack = require('webpack')
     var config = require('../config')
-    
+
     // 一个可以合并数组和对象的插件
     var merge = require('webpack-merge')
     var baseWebpackConfig = require('./webpack.base.conf')
-    
+
     // 一个用于生成HTML文件并自动注入依赖文件（link/script）的webpack插件
     var HtmlWebpackPlugin = require('html-webpack-plugin')
-    
+
     // 用于更友好地输出webpack的警告、错误等信息
     var FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
-    
+
     // 将热重载相关代码添加到入口文件
     Object.keys(baseWebpackConfig.entry).forEach(function (name) {
       baseWebpackConfig.entry[name] = ['./build/dev-client'].concat(baseWebpackConfig.entry[name])
     })
-    
+
     // 输入webpack开发配置  合并基础的webpack配置
     module.exports = merge(baseWebpackConfig, {
       // 配置样式文件的处理规则，使用styleLoaders
@@ -360,28 +360,28 @@ tag: vue webpack config
 <h3 id="p34">build/utils.js和build/vue-loader.conf.js</h3>
 
 前面的webpack配置文件中使用到了utils.js和vue-loader.conf.js这两个文件
-{% highlight js %}
+{% highlight js linenos %}
     /* utils.js
     *
      1. 配置静态资源路径
      2. 生成cssLoaders用于加载.vue文件中的样式
      3. 生成styleLoaders用于加载不在.vue文件中的单独存在的样式文件
     */
-    
+
     var path = require('path')
     var config = require('../config')
     var ExtractTextPlugin = require('extract-text-webpack-plugin')
-    
+
     exports.assetsPath = function (_path) {
       var assetsSubDirectory = process.env.NODE_ENV === 'production'
         ? config.build.assetsSubDirectory
         : config.dev.assetsSubDirectory
       return path.posix.join(assetsSubDirectory, _path)
     }
-    
+
     exports.cssLoaders = function (options) {
       options = options || {}
-    
+
       var cssLoader = {
         loader: 'css-loader',
         options: {
@@ -389,7 +389,7 @@ tag: vue webpack config
           sourceMap: options.sourceMap
         }
       }
-    
+
       // generate loader string to be used with extract text plugin
       function generateLoaders (loader, loaderOptions) {
         var loaders = [cssLoader]
@@ -401,7 +401,7 @@ tag: vue webpack config
             })
           })
         }
-    
+
         // Extract CSS when that option is specified
         // (which is the case during production build)
         if (options.extract) {
@@ -413,7 +413,7 @@ tag: vue webpack config
           return ['vue-style-loader'].concat(loaders)
         }
       }
-    
+
       // http://vuejs.github.io/vue-loader/en/configurations/extract-css.html
       return {
         css: generateLoaders(),
@@ -425,7 +425,7 @@ tag: vue webpack config
         styl: generateLoaders('stylus')
       }
     }
-    
+
     // Generate loaders for standalone style files (outside of .vue)
     exports.styleLoaders = function (options) {
       var output = []
@@ -442,12 +442,12 @@ tag: vue webpack config
 
 {% endhighlight %}
 
-{% highlight js %}
+{% highlight js linenos %}
     // vue-loader.js
     var utils = require('./utils')
     var config = require('../config')
     var isProduction = process.env.NODE_ENV === 'production'
-    
+
     module.exports = {
       // css加载器
       loaders: utils.cssLoaders({
@@ -469,7 +469,7 @@ tag: vue webpack config
 <h3 id="p35">build/build.js</h3>
 
 讲完了开发环境下的配置，下面开始来看构建环境下的配置。执行”npm run build”的时候首先执行的是build/build.js文件
-{% highlight js %}
+{% highlight js linenos %}
     /*
     *执行”npm run build”的时候首先执行的是此文件
      1. loading动画
@@ -477,33 +477,33 @@ tag: vue webpack config
      3. webpack编译
      4. 输出信息
     */
-    
+
     // 检查NodeJS和npm的版本
     require('./check-versions')()
-    
+
     // 设置NODE环境变量为生产环境
     process.env.NODE_ENV = 'production'
-    
+
     // Elegant terminal spinner
     var ora = require('ora')
     var path = require('path')
-    
+
     // 执行Unix命令删除的插件
     var rm = require('rimraf')
-    
+
     // 用于在控制台输出带颜色字体的插件
     var chalk = require('chalk')
-    
+
     //引入webpack配置文件
     var webpack = require('webpack')
     var config = require('../config')
     var webpackConfig = require('./webpack.prod.conf')
-    
+
     var spinner = ora('building for production...')
-    
+
     // 开启loading动画
     spinner.start()
-    
+
     // 递归删除旧的目标文件夹
     rm(path.join(config.build.assetsRoot, config.build.assetsSubDirectory), err => {
       if (err) throw err
@@ -520,7 +520,7 @@ tag: vue webpack config
           chunks: false,
           chunkModules: false
         }) + '\n\n')
-    
+
         console.log(chalk.cyan('  Build complete.\n'))
         console.log(chalk.yellow(
           '  Tip: built files are meant to be served over an HTTP server.\n' +
@@ -534,9 +534,9 @@ tag: vue webpack config
 <h3 id="p36">build/webpack.prod.conf.js</h3>
 
 构建的时候用到的webpack配置来自webpack.prod.conf.js，该配置同样是在webpack.base.conf基础上的进一步完善。
-{% highlight js %}
+{% highlight js linenos %}
     /*
-    * 
+    *
      1. 合并基础的webpack配置
      2. 使用styleLoaders
      3. 配置webpack的输出
@@ -545,7 +545,7 @@ tag: vue webpack config
      6. webpack-bundle分析
      说明： webpack插件里面多了丑化压缩代码以及抽离css文件等插件。
     */
-    
+
     var path = require('path')
     var utils = require('./utils')
     var webpack = require('webpack')
@@ -554,16 +554,16 @@ tag: vue webpack config
     var baseWebpackConfig = require('./webpack.base.conf')
     var CopyWebpackPlugin = require('copy-webpack-plugin')
     var HtmlWebpackPlugin = require('html-webpack-plugin')
-    
+
     // 用于从webpack生成的bundle中提取文本到特定文件中的插件
     // 可以抽取出css，js文件将其与webpack输出的bundle分离
     var ExtractTextPlugin = require('extract-text-webpack-plugin')
     var OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
-    
+
     var env = process.env.NODE_ENV === 'testing'
       ? require('../config/test.env')
       : config.build.env
-    
+
     // 合并基础的webpack配置
     var webpackConfig = merge(baseWebpackConfig, {
       module: {
@@ -650,11 +650,11 @@ tag: vue webpack config
         ])
       ]
     })
-    
+
     // gzip模式下需要引入compression插件进行压缩
     if (config.build.productionGzip) {
       var CompressionWebpackPlugin = require('compression-webpack-plugin')
-    
+
       webpackConfig.plugins.push(
         new CompressionWebpackPlugin({
           asset: '[path].gz[query]',
@@ -669,12 +669,12 @@ tag: vue webpack config
         })
       )
     }
-    
+
     if (config.build.bundleAnalyzerReport) {
       var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
       webpackConfig.plugins.push(new BundleAnalyzerPlugin())
     }
-    
+
     module.exports = webpackConfig
 
 {% endhighlight %}
@@ -682,19 +682,19 @@ tag: vue webpack config
 <h3 id="p37">build/check-versions.js和build/dev-client.js</h3>
 
 最后是build文件夹下面两个比较简单的文件，dev-client.js似乎没有使用到，代码也比较简单，这里不多讲。check-version.js完成对node和npm的版本检测
-{% highlight js %}
+{% highlight js linenos %}
     // 用于在控制台输出带颜色字体的插件
     var chalk = require('chalk')
     // 语义化版本检查插件（The semantic version parser used by npm）
     var semver = require('semver')
     // 引入package.json
     var packageConfig = require('../package.json')
-    
+
     // 开辟子进程执行指令cmd并返回结果
     function exec (cmd) {
       return require('child_process').execSync(cmd).toString().trim()
     }
-    
+
     // node和npm版本需求
     var versionRequirements = [
       {
@@ -710,7 +710,7 @@ tag: vue webpack config
         versionRequirement: packageConfig.engines.npm
       }
     ]
-    
+
     module.exports = function () {
       var warnings = []
       // 依次判断版本是否符合要求
@@ -743,10 +743,10 @@ tag: vue webpack config
 
 <h3 id="p41">config/index.js</h3>
 config文件夹下最主要的文件就是index.js了，在这里面描述了开发和构建两种环境下的配置，前面的build文件夹下也有不少文件引用了index.js里面的配置。
-{% highlight js %}
+{% highlight js linenos %}
     // see http://vuejs-templates.github.io/webpack for documentation.
     var path = require('path')
-    
+
     module.exports = {
       // 构建产品时使用的配置
       build: {
@@ -813,14 +813,14 @@ config文件夹下最主要的文件就是index.js了，在这里面描述了开
 <h3 id="p51">vue-cli的webpack项目，webpack-hot-middleware热加载热部署有时候不刷新页面</h3>
 
 在dev-server.js里面
-{% highlight js %}
-    var hotMiddleware = require('webpack-hot-middleware')(compiler)  
-    // force page reload when html-webpack-plugin template changes  
-    compiler.plugin('compilation', function (compilation) {  
-      compilation.plugin('html-webpack-plugin-after-emit', function (data, cb) {  
-        hotMiddleware.publish({ action: 'reload' })  
-        cb()  
-      })  
+{% highlight js linenos %}
+    var hotMiddleware = require('webpack-hot-middleware')(compiler)
+    // force page reload when html-webpack-plugin template changes
+    compiler.plugin('compilation', function (compilation) {
+      compilation.plugin('html-webpack-plugin-after-emit', function (data, cb) {
+        hotMiddleware.publish({ action: 'reload' })
+        cb()
+      })
     })
 {% endhighlight %}
 

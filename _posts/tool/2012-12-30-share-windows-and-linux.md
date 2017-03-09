@@ -30,13 +30,56 @@ description: 如果你也像我一样经常工作于Windows和Linux，那么这�
 
 1. 安装vmware
     安装过程不多说，提醒一点就是，记得在配置中设置，关闭vmware后不关闭运行的虚拟机，原因待会说。
-2. 安装ubuntu server 
+2. 安装ubuntu server
     我选择了ubuntu server最小化安装，不安装x window，结果就是512内存和1cpu就顺畅运行，做各种开发木有问题
 3. 安装securecrt或者putty
     vmware下直接用字符界面很蛋疼，没有全屏，所以使用securecrt来连接linux，这就是为啥第一步关闭vmware后还留下虚拟机。这么做可以让资源尽可能充足应用。
 4. 给Linux共享文件
-    在字符界面下安装vmtools不是很容易，方法请参考我的另外一篇文章[给Vmware下的Ubuntu Server共享文件](http://yansublog.sinaapp.com/2012/12/17/%e7%bb%99vmware%e4%b8%8b%e7%9a%84ubuntu-server%e5%85%b1%e4%ba%ab%e6%96%87%e4%bb%b6/ "给Vmware下的Ubuntu Server共享文件")。这么做主要是为了在Windows下些代码，在Linux上运行
+    在字符界面下安装vmtools不是很容易。这么做主要是为了在Windows下些代码，在Linux上运行
 
-## 总结
+## 给Vmware下的Ubuntu Server共享文件
 
-我是个实用主义，怎么顺手怎么来，如果你希望使用Windows下的软件，又无法离开Linux开发（有自己的服务器除外），那么这样的方式挺好。
+### 一、首先安装vmtools
+
+这一步比较关键，因为字符界面没有x window好安装
+{% highlight cmd linenos %}
+  #Change to super user
+  sudo su
+  #Update your sources
+  apt-get update
+  #Upgrade your installed packages and force kernel upgrade
+  apt-get dist-upgrade
+  ###
+  #  Now reboot
+  ###
+  reboot
+  #back to super user
+  sudo su
+  #Install Build tools
+  apt-get install linux-headers-server build-essential
+  ###
+  #  Now you are ready to install VMWare tools.
+  ###
+  #Mount the VMWare Tools CD ISO (make sure you have told VMWare you want to install tools)
+  mkdir /mnt/cdrom
+  mount /dev/cdrom /mnt/cdrom
+  #Copy VMware Tools
+  cp /mnt/cdrom/VMwareTools-x.x.x-xxxxx.tar.gz /tmp
+  #Go tmp
+  cd /tmp
+  #Extract
+  tar -zxf VMwareTools-x.x.x-xxxxx.tar.gz
+  #Change to extracted directory
+  cd vmware-tools-distrib
+  #Start the installer
+  ./vmware-install.pl -d
+{% endhighlight %}
+
+这个过程仔细看一下，可能会出现缺少必要软件，比如gcc等，少啥补啥
+
+### 二、设置共享文件，共享位置在/mnt/hgfs
+{% highlight cmd linenos %}
+  #sym link and name vmSharedFolder
+  ln -s /mnt/hgfs/ ~/vmSharedFolder
+{% endhighlight %}
+
