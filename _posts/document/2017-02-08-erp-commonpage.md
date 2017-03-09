@@ -2,7 +2,7 @@
 title:  "ERP 通用页面及弹窗说明文档"
 date:   2017-02-08
 categories: 文档
-tag: 固定表头 弹窗 通用
+tag: 固定表头 弹窗
 ---
 
 <style type="text/css">
@@ -13,8 +13,6 @@ table td:nth-child(even){
     color: #0099CC !important
 }
 </style>
-
-**注意：**这份文件是用 Markdown 写的，你可以[看看它的原始文件][src] .
 
 *   预览 [完全效果](/table-show)
 *   下载 <a href="/assets/table-demo/table-common.html" target="_blank" download>页面模版</a>
@@ -103,6 +101,23 @@ table td:nth-child(even){
   <i class="newIcon icon_add"></i>
 ```
 
+爱上多久发货
+```html
+  <i class="newIcon icon_add"></i>
+```
+
+
+```html
+  <i class="newIcon icon_add"></i>
+```
+爱的时间发货了
+
+按时交电费和
+```html
+  <i class="newIcon icon_add"></i>
+```
+爱的色放号津
+
 所有可用的图标
 <div>
   <table width="100%">
@@ -179,9 +194,10 @@ table td:nth-child(even){
 <h3 id="common4">按钮</h3>
 
 和图标一样，所有按钮都需要一个基类 `btn` 和对应每个按钮的类.如果你使用过 [bootstrap] []，对此应该会很熟悉！
-{% highlight html %}
+
+```html
   <span class="btn btn-default"></span>
-{% endhighlight %}
+```
 
 所有可用的按钮
 <div>
@@ -232,7 +248,8 @@ table td:nth-child(even){
 <h3 id="html1">结构</h3>
 
 HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
-{% highlight html %}
+
+```html
 <link rel="stylesheet" type="text/css" href="static/css/reset.css" />
 
 <style type="text/css">
@@ -254,7 +271,7 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
       /*页面逻辑*/
     })
 </script>
-{% endhighlight %}
+```
 
 **页面自有样式**一般仅设置表格各列宽度（最后一列为自适应宽度，不进行设定），宽度总和等于 `（100% - 最后一列宽度）`
 
@@ -278,7 +295,7 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
 
 ![1.png][]
 
-{% highlight html %}
+```html
 <div class="breadcrumb_nav">
     <!-- 导航 -->
     <p class="current_nav">
@@ -295,12 +312,13 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
         <img src="static/img/everyclose_btn.png"/>
     </div>
 </div>
-{% endhighlight %}
+```
 
 [openShutManager()](#openShutManager) :打开关闭查询框；参数：( `this` , `查询框容器 id` , `是否阻止`, `显示为关闭图片元素` , `显示为打开图片元素` )；定义在 `\static\js\drop.js` .
 
 查询框默认打开，如需设置默认关闭需修改
-{% highlight html %}
+
+```html
   <!-- 查询按钮 -->
   <div class="search_drop_down_btn"
        onclick="openShutManager(this,'drop_down_search',false,'<img src=static/img/everyclose_btn.png />','<img src=static/img/click_btn.png />')">
@@ -311,13 +329,13 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
   <div class="popwin_header" id="popwin_header" style="display: none">
           ···
   </div>
-{% endhighlight %}
+```
 
 <h3 id="html3">查询框</h3>
 
 ![2.png][]
 
-{% highlight html %}
+```html
 <div id="drop_down_search" class="drop_down_search_bar">
   <form method="post">
     <p class="search_title_bar">
@@ -334,53 +352,58 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
     </div>
   </form>
 </div>
-{% endhighlight %}
+```
 
 **控件项**
 
 * 标准输入
-{% highlight html %}
+
+```html
   <div class="search_item">
       <label for="applicant">申请人</label>
       <input type="text" id="applicant" name="applicant" value="{$applicant}"/>
   </div>
-{% endhighlight %}
+```
 
 * 选项
-{% highlight html %}
+
+```html
   <div class="search_item">
       <label for="state">缴纳状态</label>
       <select id="state" name="state" data-sel="{$state}">
           <option value="7">全部</option>
       </select>
   </div>
-{% endhighlight %}
+```
 
 * 选择日期
-{% highlight html %}
+
+```html
   <div class="search_item search_date_range">
       <label for="apply_date">提交日期</label>
       <input type="text" id="apply_date" name="apply_date" value="{$apply_date}" onclick="laydate()" readonly/>
   </div>
-{% endhighlight %}
+```
 
   * 拾取时间使用 [laydate] [] 插件，若无需要可直接调用，日期控件需添加 `readonly` 以禁止用户键盘输入.
 
 * 起始日期
-{% highlight html %}
+
+```html
   <div class="search_item search_date_range">
       <label for="apply_start_date">申请日期</label>
       <input type="text" id="apply_start_date" name="apply_start_date" value="{$apply_start_date}" readonly/>
   </div>
-{% endhighlight %}
+```
 
 * 终止日期
-{% highlight html %}
+
+```html
   <div class="search_item search_date_range_indicator">
       <label for="apply_end_date">-</label>
       <input type="text" id="apply_end_date" name="apply_end_date" value="{$apply_end_date}" readonly/>
   </div>
-{% endhighlight %}
+```
 
   * 设置起止时间需在 **页面逻辑** 区调用 [setDateRange()](#setDateRange),接收参数(`起始控件ID (默认 apply_start_date)` , `结束控件ID (默认 apply_end_date)`),同一页面可多次调用.
   * 若需自定义设置可查看 [laydate官方文档].
@@ -389,9 +412,12 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
 快捷查询[逻辑](#quickQuery)加载在 `header.js` 中;
 
 需要进行重置的控件项追加 `class="clear_item"` 即可,[重置逻辑](#queryReset)
-{% highlight html %}
+
+```html
   <input type="text" id="applicant" class="clear_item"/>[laydate]:http://laydate.layui.com/
-{% endhighlight %}[laydate官方文档]:http://www.layui.com/doc/modules/laydate.html
+```
+
+[laydate官方文档](http://www.layui.com/doc/modules/laydate.html)
 
 <h3 id="html4">通用导航条</h3>
 

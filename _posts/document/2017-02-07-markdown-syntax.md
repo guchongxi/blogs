@@ -531,7 +531,7 @@ Markdown 会转换成：
 
 代码区块中，一般的 Markdown 语法不会被转换，像是星号便只是星号，这表示你可以很容易地以 Markdown 语法撰写 Markdown 语法相关的文件。
 
-代码高亮语法(github pages 不支持下面这种写法！！)
+代码高亮语法
 {% highlight js linenos %}
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
