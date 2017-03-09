@@ -98,9 +98,10 @@ table td:nth-child(even){
 <h3 id="common2">图标</h3>
 
 所有图标都需要一个基类 `icon` 和对应每个图标的类
-{% highlight html %}
+
+```html
   <i class="newIcon icon_add"></i>
-{% endhighlight %}
+```
 
 所有可用的图标
 <div>
@@ -258,7 +259,8 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
 **页面自有样式**一般仅设置表格各列宽度（最后一列为自适应宽度，不进行设定），宽度总和等于 `（100% - 最后一列宽度）`
 
 例：表格共10列，每列宽度占比10%，宽度总和为90%
-{% highlight css %}
+
+```css
 .c_1,
 .c_2,
 .c_3,
@@ -270,7 +272,7 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
 .c_9 {
   width: 10%
 }
-{% endhighlight %}
+```
 
 <h3 id="html2">头部模块</h3>
 
