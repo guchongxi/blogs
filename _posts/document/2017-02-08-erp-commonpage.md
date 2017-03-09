@@ -6,10 +6,10 @@ tag: 固定表头 弹窗
 ---
 
 <style type="text/css">
-td{
+.table td{
     text-align: center;
 }
-table td:nth-child(even){
+.table td:nth-child(even){
     color: #0099CC !important
 }
 </style>
@@ -19,9 +19,6 @@ table td:nth-child(even){
 *   下载 <a href="/assets/table-demo/css/table-common.less" target="_blank" download>页面样式</a>
 *   下载 <a href="/assets/table-demo/table-popup.html" target="_blank" download>弹窗模版</a>
 *   下载 <a href="/assets/table-demo/css/table-popup.less" target="_blank" download>弹窗样式</a>
-
-[src]: https://github.com/GiantZero-x/GiantZero-x.github.io/blob/master/_posts/document/2017-02-08-erp-commonpage.md
-
 
 1.  [前言](#introduction)
     *   [更新日志](#changeLog)
@@ -60,7 +57,7 @@ table td:nth-child(even){
 
 <h2 id="introduction">前言</h2>
 
-*  此样式组件结构适用于 **商翔集团ERP(PC端)** 固定表头式表格页面及所有弹窗；
+*  此样式组件结构适用于 **SX ERP(PC端)** 固定表头式表格页面及所有弹窗；
 
 *  页面样式及通用组件文件 `table-common.css(源文件为同名less文件)` 以及弹窗样式文件 `table-popup.css(源文件为同名less文件)` 已加载至 `\templates\home\index.html` 全局可用；但在项目初始阶段没有进行样式重置,因此部分页面需单独引入 `static\css\reset.css` 进行样式重置；
 
@@ -68,20 +65,22 @@ table td:nth-child(even){
 
 *  为充分进行样式复用，页面显示效果仅与标签 `class` 有关；但因涉及到部分js交互效果，特定标签 `id` 已被限定，如需修改请注意修改相关函数调用参数；
 
-*  若在使用中有任何疑问或bug可随时联系我.
+*  因为一些历史遗留原因,样式重复\冲突之处数不胜数,因此夹杂较多冗余代码实属不得已而为之; 另因本人学识技术水平有限,若在使用中有任何疑问或bug可随时联系我.
 
-<h2 id="changeLog">更新日志</h2>
+<h3 id="changeLog">更新日志</h3>
+*   2017-03-09 :
+    *   [+](javascript:) js代码添加行号,更易阅读
 *   2017-02-28 :
-    *   [*] 修改附属弹窗[打开方法](#popattBoxOpen), [关闭方法](#popattBoxClose),及打开位置(table-popup.less),显示为中间打开
-    *   [*] 更新模版等文件
+    *   [*](javascript:) 修改附属弹窗[打开方法](#popattBoxOpen), [关闭方法](#popattBoxClose),及打开位置(table-popup.less),显示为中间打开
+    *   [*](javascript:) 更新模版等文件
 *   2017-02-27 :
-    *   [*] 更新模版等文件
+    *   [*](javascript:) 更新模版等文件
 *   2017-02-24 :
     *   [+](#setDateRange) 添加 `setDateRange()` 设定时间区间;
     *   [+](#quickQuery) 添加 _查询框_ 快捷键操作;
-    *   [+] 添加文字颜色 橙色:　`font_orahge`
-    *   [+] 添加下载样式文件
-    *   [*] 若干排版修正.
+    *   [+](javascript:) 添加文字颜色 橙色:　`font_orahge`
+    *   [+](javascript:) 添加下载样式文件
+    *   [*](javascript:) 若干排版修正.
 
 ---
 
@@ -101,26 +100,9 @@ table td:nth-child(even){
   <i class="newIcon icon_add"></i>
 ```
 
-爱上多久发货
-```html
-  <i class="newIcon icon_add"></i>
-```
-
-
-```html
-  <i class="newIcon icon_add"></i>
-```
-爱的时间发货了
-
-按时交电费和
-```html
-  <i class="newIcon icon_add"></i>
-```
-爱的色放号津
-
 所有可用的图标
 <div>
-  <table width="100%">
+  <table width="100%" class="table">
     <thead>
       <tr>
         <th width="5%">显示</th>
@@ -201,7 +183,7 @@ table td:nth-child(even){
 
 所有可用的按钮
 <div>
-  <table width="100%">
+  <table width="100%" class="table">
     <thead>
       <tr>
         <th>显示</th>
@@ -406,7 +388,7 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
 ```
 
   * 设置起止时间需在 **页面逻辑** 区调用 [setDateRange()](#setDateRange),接收参数(`起始控件ID (默认 apply_start_date)` , `结束控件ID (默认 apply_end_date)`),同一页面可多次调用.
-  * 若需自定义设置可查看 [laydate官方文档].
+  * 若需自定义设置可查看 [laydate官方文档][].
 
 查询框中的 `type=text` 并且 `readonly='false'(排除日期控件)` 的 `input` 在获取焦点时按下 `回车(Enter)` 会提交查询;
 快捷查询[逻辑](#quickQuery)加载在 `header.js` 中;
@@ -414,17 +396,17 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
 需要进行重置的控件项追加 `class="clear_item"` 即可,[重置逻辑](#queryReset)
 
 ```html
-  <input type="text" id="applicant" class="clear_item"/>[laydate]:http://laydate.layui.com/
+  <input type="text" id="applicant" class="clear_item"/>
 ```
 
-[laydate官方文档](http://www.layui.com/doc/modules/laydate.html)
+[laydate官方文档]: http://www.layui.com/doc/modules/laydate.html
 
 <h3 id="html4">通用导航条</h3>
 
 **文字类**
 ![3.png][]
 
-{% highlight html %}
+```html
 <div class="nav_bar ">
   <ul class="nav_text_box">
       <li>上月公积金</li>
@@ -433,12 +415,12 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
       <li class="hover">全部</li>
   </ul>
 </div>
-{% endhighlight %}
+```
 
 **图标类**
 ![33.png][]
 
-{% highlight html %}
+```html
 <div class="nav_bar ">
   <ul class="nav_icon_box">
       <li><i class="newIcon icon_add"></i>添加(黄底)</li>
@@ -451,7 +433,7 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
       <li><i class="newIcon icon_download"></i>下载</li>
   </ul>
 </div>
-{% endhighlight %}
+```
 
 可用图标可查看 [图标组件](#common1)
 
@@ -459,7 +441,7 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
 
 ![333.png][]
 
-{% highlight html %}
+```html
 <div class="nav_bar ">
   <ul class="nav_icon_box">
       ···
@@ -468,14 +450,15 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
         ···
     </ul>
 </div>
-{% endhighlight %}
+```
 
 <h3 id="html5">滚动导航条</h3>
 
 ![44.png][]
 
 通用导航条作为其他模块头部使用时可以在 `nav_bar` 后追加 `head` ，以将下边框及下外边距移除
-{% highlight html %}
+
+```html
 <!-- 通用导航条作为滚动导航条头部使用 -->
 <div class="nav_bar head">
     <ul class="nav_icon_box">
@@ -504,7 +487,7 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
         </div>
     </div>
 </div>
-{% endhighlight %}
+```
 
 并在‘页面逻辑’ 区调用 [dept_scroll()](#dept_scroll).
 
@@ -513,7 +496,7 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
 **普通表格**
 ![55.png][]
 
-{% highlight html %}
+```html
 <div class="table_list_box ">
     <table class="table_list_content">
         <thead>
@@ -558,7 +541,7 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
     <!-- 分页 内容由后端传输 -->
     <div class="page_down">{$pagination}</div>
 </div>
-{% endhighlight %}
+```
 
 *   **说明**：
 *   每行最后一列 **不** 设定宽度，在设置其他列宽时需要注意留出.
@@ -570,7 +553,7 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
 
 *   需在 `.table_list_content` 后追加 `double` 类以设置两行表头背景正确填充
 
-{% highlight html %}
+```html
 <table class="table_list_content double">
   <thead>
   <tr class="table_list_title ">
@@ -590,13 +573,13 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
   </thead>
   <!-- *** -->
 </table>
-{% endhighlight %}
+```
 
 **<tbody> 中跨行与跨列**
 
 ![5555.png][]
 
-{% highlight html %}
+```html
 <tbody>
 <tr class="table_list_row ">
     <td class="c_1">XXXX</td>
@@ -641,12 +624,12 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
     <td>xxxxx</td>
 </tr>
 </tbody>
-{% endhighlight %}
+```
 
 *   由于不可描述的原因，`<tbody>` 中的 `<td>` 无法使用 `colspan` 和 `rowspan` ，因此所有的单元格都必须存在！
 *   使用 `no_rbor` 移除 *右* 边框，`no_bbor` 移除 *下* 边框,制造合并单元格的假象.
 *   在列合并格中添加居中文字需在该行第一个单元格中添加 `<div class="c_content">文字</div>` ，并在 `页面自有样式` 处添加
-  {% highlight css %}
+  ```css
     /*  跨列格
         width = (合并列宽度和) / 第一列宽度
      */
@@ -655,10 +638,10 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
         font-size: 12px;
         text-align: center;
     }
-  {% endhighlight %}
+  ```
 
 *   `<tfoot>` 中的 `<td>` 行列合并方式与 `<tbody>` 相同；<br/>**特例**：独占一行可使用 `colspan` ！
-  {% highlight html %}
+  ```html
     <tfoot>
     <tr class="table_list_row ">
         <td class="c_1 no_rbor">
@@ -676,7 +659,7 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
         <td colspan="8 ">没有任何记录!</td>
     </tr>
     </tfoot>
-  {% endhighlight %}
+  ```
 
 ---
 
@@ -684,7 +667,7 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
 
 **结构**
 
-{% highlight html %}
+```html
 <div class="popup_win">
   <style type="text/css">
       /*弹窗自有样式*/
@@ -707,7 +690,7 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
       })
   </script>
 </div>
-{% endhighlight %}
+```
 
 [popup_window()](#popup_window) ：弹窗关闭及拖动方法，参数：`关闭按钮选择器(默认.popwin_close)`，`关闭弹窗选择器(默认.popup_win)`，`拖动‘把手’id(默认popwin_header)`，除使用*页面内弹窗*，否则默认即可
 
@@ -721,7 +704,7 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
 
 ![7.png][]
 
-{% highlight html %}
+```html
 <div class="popwin_header" id="popwin_header">
     <img class="popwin_close" src="static/img/close_icon.jpg"/>
     <p class="popwin_breadcrumb">
@@ -731,7 +714,7 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
         <span class="fr" onclick="popattBoxOpen(1)">附属弹窗>></span>
     </p>
 </div>
-{% endhighlight %}
+```
 
 *   `popwin_header` 为默认弹窗拖动把手 *id*
 *   `span.fr` 会进行右浮动并且颜色为红色
@@ -745,7 +728,7 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
 
 <h4 id="popup_modular0">流程</h4>
 
-{% highlight html %}
+```html
 <div class="popwin_body">
     <div class="apply_process_box">
         <p class="ap_title">流程</p>
@@ -767,14 +750,14 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
     <!-- 模块 -->
     <!-- 文本框 -->
 </div>
-{% endhighlight %}
+```
 
   *   开始与结束需添加 `ap_ends`
   *   已审核需添加 `ap_pass`
   *   当前审核需添加 `ap_current`
   *   未审核为默认样式
   *   实际开发中通常写为
-    {% highlight html %}
+    ```html
       <span class="ap_item ap_ends">开始</span>
       <i class="arrow_right"></i>
       {foreach from=$workflow item=v key=k}
@@ -787,10 +770,11 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
       <i class="arrow_right"></i>
       {/foreach}
       <span class="ap_item ap_ends">结束</span>
-    {% endhighlight %}
+    ```
 
 **模块**
-{% highlight html%}
+
+```html
 <div class="popwin_body">
   <!-- 流程 -->
   <div class="popwin_content scroll_bar">
@@ -798,17 +782,17 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
   </div>
   <!-- 文本框 -->
 </div>
-{% endhighlight %}
+```
 
 如**确定**模块区高度不超过300px则可省略不写 `scroll_bar` 以去除始终显示滚动条效果.
 
 <h5 id="popup_modular1">标题</h5>
 
-{% highlight html%}
+```html
 <div class="content_box">
   <h1>标题</h1>
 </div>
-{% endhighlight %}
+```
 
 
 <h5 id="popup_modular2">栅格</h5>
@@ -818,11 +802,11 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
 >
 > 栅格系统用于通过一系列的行（row）与列（column）的组合来创建页面布局，你的内容就可以放入这些创建好的布局中.
 
-{% highlight html%}
+```html
 <div class="content_box">
   <!-- 栅格系统 -->
 </div>
-{% endhighlight %}
+```
 
 *简介*
 
@@ -840,45 +824,45 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
 
 *  单列栅格
     要建立一个单列(100%)布局，首先使用容器 `class` 中 `row-a` ，并添加一个子容器 `col-a`
-    {% highlight html%}
+    ```html
       <div class="row-a">
         <div class="col-a"></div>
       </div>
-    {% endhighlight %}
+    ```
 
 *  双列栅格
     要建立一个双列(50/50%)布局，首先使用容器 `class` 中 `row-b` ，并添加两个子容器 `col-a` ， 也可存在 `col-b`
-    {% highlight html%}
+    ```html
       <div class="row-b">
         <div class="col-a"></div>
         <div class="col-a"></div>
       </div>
-    {% endhighlight %}
+    ```
 
 *  三列栅格
     要建立一个三列(33/33/33%)布局，首先使用容器 `class` 中 `row-c` ，并添加三个子容器 `col-a` ，也可存在 `col-b/c`
-    {% highlight html%}
+    ```html
       <div class="row-c">
         <div class="col-a"></div>
         <div class="col-a"></div>
         <div class="col-a"></div>
       </div>
-    {% endhighlight %}
+    ```
 
 *  四列栅格
     要建立一个四列(25/25/25/25%)布局，首先使用容器 `class` 中 `row-d` ，并添加四个子容器 `col-a` ，也可存在 `col-b/c/d`
-     {% highlight html%}
+     ```html
        <div class="row-d">
          <div class="col-a"></div>
          <div class="col-a"></div>
          <div class="col-a"></div>
          <div class="col-a"></div>
        </div>
-     {% endhighlight %}
+     ```
 
 *  五列栅格
     要建立一个五列(20/20/20/20/20%)布局，首先使用容器 `class` 中 `row-e` ，并添加五个子容器 `col-a` ，也可存在 `col-b/c/d/e`
-    {% highlight html%}
+    ```html
       <div class="row-e">
         <div class="col-a"></div>
         <div class="col-a"></div>
@@ -886,7 +870,7 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
         <div class="col-a"></div>
         <div class="col-a"></div>
       </div>
-    {% endhighlight %}
+    ```
 
 *  混合栅格
     * 子容器中通常使用表单空间来填充数据，因此也对其进行样式规范
@@ -898,7 +882,8 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
     * 也可直接在列中直接放置 `img` 标签,宽度已被限制在 100% 以下.
 
     ![10.png][]
-{% highlight html%}
+
+```html
 <div class="content_box">
     <h2>基本信息</h2>
     <div class="row-c">
@@ -933,12 +918,12 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
         </fieldset>
     </div>
 </div>
-{% endhighlight %}
+```
 
 <h5 id="popup_modular3">附件</h5>
 ![11.png][]
 
-{% highlight html%}
+```html
 <div class="content_box">
     <h2>附件
       <iframe id="picsubmit" class="picsubmit" scrolling="no" allowtransparency="true" src="upload.php?showid=att_list&inputid=pics&picsubmit=picsubmit&ac=2&w=120h=100" {if $check}style="display:none" {/if}></iframe>
@@ -966,7 +951,7 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
         {/if}
     </ul>
 </div>
-{% endhighlight %}
+```
 
 * 若`iframe` 的 `id="picsubmit"` 可不写 `class="picsubmit"` ，`ul` 同理；
 * [imgMangnify()](#imgMangnify) ：在新窗口查看大图，参数为 `图片路径`
@@ -978,7 +963,7 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
 
 固定表头式
 
-{% highlight html%}
+```html
 <div class="content_box">
     <h2>货物明细</h2>
     <div class="table_box">
@@ -1012,10 +997,11 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
         </div>
     </div>
 </div>
-{% endhighlight %}
+```
 
 若仅需要普通表格可将 `table_box` 改为 `table_box_common` 即可
-{% highlight html%}
+
+```html
 <div class="content_box">
     <h2>货物明细</h2>
     <div class="table_box_common">
@@ -1024,13 +1010,13 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
         </table>
     </div>
 </div>
-{% endhighlight %}
+```
 
 
 <h5 id="popup_modular5">审核历史</h5>
 ![13.png][]
 
-{% highlight html%}
+```html
 <div class="content_box">
     <h2>审核流程</h2>
     <table class="process_box">
@@ -1052,12 +1038,12 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
         </tbody>
     </table>
 </div>
-{% endhighlight %}
+```
 
 
 **文本框**
 
-{% highlight html%}
+```html
 <div class="popwin_body">
   <!-- 流程 -->
   <!-- 模块 -->
@@ -1065,11 +1051,11 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
       <textarea placeholder="请填写意见"></textarea>
   </div>
 </div>
-{% endhighlight %}
+```
 
 <h3 id="popup3">尾部</h3>
 
-{% highlight html %}
+```html
 <div class="popwin_footer">
     <input type="button" value="关闭" class="popwin_close">
     <input type="button" value="提交" class="fr"/>
@@ -1080,13 +1066,13 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
     </select>
     <input type="button" value="驳回" class="reject_file">
 </div>
-{% endhighlight %}
+```
 
 [newtakeback()](#newtakeback) ： 审核驳回方法，所在标签需要以下自定属性：`id` ：记录id,`apply` ：申请子页面,`state` ：当前步骤,`op` ：功能简写,`sys（默认administration）` ：申请主页面,
 
 <h3 id="popup4">附属</h3>
 
-{% highlight html %}
+```html
 <div class="popwin_attach">
     <!--该弹窗目前排位第 1-->
     <div class="popatt_box">
@@ -1120,7 +1106,7 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
     <div class="popatt_box"></div>
     ...
 </div>
-{% endhighlight %}
+```
 
 [popattBoxClose()](#popattBoxClose)：附属弹窗关闭方法，参数：`this`
 
@@ -1128,7 +1114,7 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
 
 如果弹窗内容是写在列表页面的话（申请弹窗），你需要在 [页面自有弹窗处](#html1) 这样写：
 
-{% highlight html%}
+```html
 <div class="popup_apply" style="display: none;">
   <style type="text/css">
       /*弹窗自有样式*/
@@ -1150,16 +1136,17 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
       /*弹窗逻辑*/
   </script>
 </div>
-{% endhighlight %}
+```
 
 调用时在列表页面逻辑处添加
+
 {% highlight js linenos %}
-//    申请按钮
-    $('.apply_btn').click(function(){
-        $('.popup_apply').show();
-        popup_window('.popapp_close','.popup_apply','popapp_header');
-    });
-//    ... 其他逻辑
+//  申请按钮
+  $('.apply_btn').click(function(){
+    $('.popup_apply').show();
+      popup_window('.popapp_close','.popup_apply','popapp_header');
+  });
+//  ... 其他逻辑
 {% endhighlight %}
 
 ---
@@ -1169,191 +1156,205 @@ HTML文件内代码分为三个部分：`CSS`，`HTML` 和 `Javascript`
 <h3 id="js1">页面js</h3>
 
 点击行查看详情
-{% highlight javascript %}
-    $('tbody .table_list_row').click(function () {
-        var id = $(this).data("id");
-        $.ajax({
-            type: 'post',
-            url: '',
-            data:{
-              id:id,
-            },
-            success: function(data) {
-                $('.popup_win').html(data).show();
-            }
-        });
+
+{% highlight js linenos %}
+  $('tbody .table_list_row').click(function () {
+    var id = $(this).data("id");
+    $.ajax({
+      type: 'post',
+      url: '',
+      data:{
+        id:id,
+      },
+      success: function(data) {
+        $('.popup_win').html(data).show();
+      }
     });
+  });
 {% endhighlight %}
 
 <span id='openShutManager'></span>查询框 - 打开关闭
-{% highlight javascript %}
-    function openShutManager(oSourceObj, oTargetObj, shutAble, oOpenTip, oShutTip) {
-        var sourceObj = typeof oSourceObj == "string" ? document.getElementById(oSourceObj) : oSourceObj;
-        var targetObj = typeof oTargetObj == "string" ? document.getElementById(oTargetObj) : oTargetObj;
-        var openTip = oOpenTip || "";
-        var shutTip = oShutTip || "";
-        if (targetObj.style.display != "none") {
-            if (shutAble) return;
-            targetObj.style.display = "none";
-            if (openTip && shutTip) {
-                sourceObj.innerHTML = shutTip;
-            }
-        } else {
-            targetObj.style.display = "block";
-            if (openTip && shutTip) {
-                sourceObj.innerHTML = openTip;
-            }
-        }
+
+{% highlight js linenos %}
+  function openShutManager(oSourceObj, oTargetObj, shutAble, oOpenTip, oShutTip) {
+    var sourceObj = typeof oSourceObj == "string" ? document.getElementById(oSourceObj) : oSourceObj;
+    var targetObj = typeof oTargetObj == "string" ? document.getElementById(oTargetObj) : oTargetObj;
+    var openTip = oOpenTip || "";
+    var shutTip = oShutTip || "";
+    if (targetObj.style.display != "none") {
+      if (shutAble) return;
+      targetObj.style.display = "none";
+      if (openTip && shutTip) {
+        sourceObj.innerHTML = shutTip;
+      }
+    } else {
+      targetObj.style.display = "block";
+      if (openTip && shutTip) {
+        sourceObj.innerHTML = openTip;
+      }
     }
+  }
 {% endhighlight %}
 
 <span id='setDateRange'></span>设定日期区间查询,接收参数(起始input id, 结束input id)
-{% highlight javascript %}
-function setDateRange(startId,endId) {
+
+{% highlight js linenos %}
+  function setDateRange(startId,endId) {
     startId = startId || 'apply_start_date';
     endId = endId || 'apply_end_date';
     var apply_start_date = {
-            elem: '#' + startId,
-            choose: function(datas) {
-                apply_end_date.min = datas; //开始日选好后，重置结束日的最小日期
-                apply_end_date.apply_start_date = datas; //将结束日的初始值设定为开始日
-            }
-        },
-        apply_end_date = {
-            elem: '#' + endId,
-            choose: function(datas) {
-                apply_start_date.max = datas; //结束日选好后，重置开始日的最大日期
-            }
-        };
+      elem: '#' + startId,
+      choose: function(datas) {
+        apply_end_date.min = datas; //开始日选好后，重置结束日的最小日期
+        apply_end_date.apply_start_date = datas; //将结束日的初始值设定为开始日
+      }
+    },
+    apply_end_date = {
+      elem: '#' + endId,
+      choose: function(datas) {
+        apply_start_date.max = datas; //结束日选好后，重置开始日的最大日期
+      }
+    };
     laydate(apply_start_date);
     laydate(apply_end_date);
-}
+  }
 {% endhighlight %}
 
 <span id='dept_scroll'></span>部门列表滚动
-{% highlight javascript %}
-    $(".btn_box ").on("click ", function (e) {
-            var $scrollBox = $(".dept_list_container ");
-            var scrollLeft = $scrollBox.scrollLeft();
-            if (e.target.className == "btnlf ") {
-                $scrollBox.scrollLeft(scrollLeft - 103);
-                return false;
-            }
-            if (e.target.className == "btnrt ") {
-                $scrollBox.scrollLeft(scrollLeft + 103);
-                return false;
-            }
-        });
+
+{% highlight js linenos %}
+  $(".btn_box ").on("click ", function (e) {
+    var $scrollBox = $(".dept_list_container ");
+    var scrollLeft = $scrollBox.scrollLeft();
+    if (e.target.className == "btnlf ") {
+      $scrollBox.scrollLeft(scrollLeft - 103);
+      return false;
+    }
+    if (e.target.className == "btnrt ") {
+      $scrollBox.scrollLeft(scrollLeft + 103);
+      return false;
+    }
+  });
 {% endhighlight %}
 
 全选
-{% highlight javascript %}
-    $('input.select_all').click(function () {
-        $('input.select_item').prop('checked',this.checked);
-    });
+
+{% highlight js linenos %}
+  $('input.select_all').click(function () {
+    $('input.select_item').prop('checked',this.checked);
+  });
 {% endhighlight %}
 
 <span id='quickQuery'></span>快捷查询
-{% highlight javascript %}
-    $('.search_box input[type=text]:not([readonly])').keydown(function (e) {
-        if(e.keyCode == 13){
-            $(this).closest('form').submit();
-        }
-    });
+
+{% highlight js linenos %}
+  $('.search_box input[type=text]:not([readonly])').keydown(function (e) {
+    if(e.keyCode == 13){
+      $(this).closest('form').submit();
+    }
+  });
 {% endhighlight %}
 
 <span id="queryReset"></span>重置
-{% highlight javascript %}
-    function queryReset(){
-        $('.reset_btn').click(function() {
-            $('input.clear_item').val('');
-            $('select.clear_item option:first-child').attr('selected',true);
-        });
-    }
+
+{% highlight js linenos %}
+  function queryReset(){
+    $('.reset_btn').click(function() {
+      $('input.clear_item').val('');
+      $('select.clear_item option:first-child').attr('selected',true);
+    });
+  }
 {% endhighlight %}
+
 <h3 id="js2">弹窗js</h3>
 
 <span id='popup_window'></span>弹窗拖动与关闭
-{% highlight javascript %}
-    function popup_window(btn,box,handlerId) {
-        if(!btn){btn = '.popwin_close'}
-        if(!box){box = '.popup_win'}
-        if(!handlerId){handlerId = 'popwin_header'}
-        // 关闭按钮
-        $(btn).click(function (e) {
-            e.stopPropagation();
-            $(box).hide().removeClass().addClass(box.replace('.','')).css('margin-right',0);
-        });
-        // 拖动
-        $(box).easydrag().setHandler(handlerId);
-    }
+
+{% highlight js linenos %}
+  function popup_window(btn,box,handlerId) {
+    if(!btn){btn = '.popwin_close'}
+    if(!box){box = '.popup_win'}
+    if(!handlerId){handlerId = 'popwin_header'}
+    // 关闭按钮
+    $(btn).click(function (e) {
+      e.stopPropagation();
+      $(box).hide().removeClass().addClass(box.replace('.','')).css('margin-right',0);
+    });
+    // 拖动
+    $(box).easydrag().setHandler(handlerId);
+  }
 {% endhighlight %}
 
 <span id='popattBoxClose'></span>附属弹窗关闭
-{% highlight javascript %}
-    function popattBoxClose(e) {
-        $(e).parents('div.popatt_box').slideUp('fast');
-    }
+
+{% highlight js linenos %}
+  function popattBoxClose(e) {
+    $(e).parents('div.popatt_box').slideUp('fast');
+  }
 {% endhighlight %}
 
 <span id='popattBoxOpen'></span>附属弹窗打开
-{% highlight javascript %}
-    function popattBoxOpen(n) {
-        n = parseInt(n) - 1;
-        var box = '.popup_win';
-        if (!$(box).is(':visible')) {
-            box = '.popup_apply'
-        }
-        var boxAtt = $(box + ' div.popatt_box').eq(n);
-        boxAtt.slideToggle('fast');
+
+{% highlight js linenos %}
+  function popattBoxOpen(n) {
+    n = parseInt(n) - 1;
+    var box = '.popup_win';
+    if (!$(box).is(':visible')) {
+      box = '.popup_apply'
     }
+    var boxAtt = $(box + ' div.popatt_box').eq(n);
+    boxAtt.slideToggle('fast');
+  }
 {% endhighlight %}
 
 <span id='imgMagnify'></span>查看图片
-{% highlight javascript %}
-    function imgMagnify(imgUrl) {
-        window.open('index.php?sys=administration&mod=imgmagnify&imgUrl=' + imgUrl, '', 'dialogWidth=800px;dialogHeight=500px;status=no;help=no;scrollbars=no');
-    }
+
+{% highlight js linenos %}
+  function imgMagnify(imgUrl) {
+    window.open('index.php?sys=administration&mod=imgmagnify&imgUrl=' + imgUrl, '', 'dialogWidth=800px;dialogHeight=500px;status=no;help=no;scrollbars=no');
+  }
 {% endhighlight %}
 
 <span id='newtakeback'></span>取回
-{% highlight javascript %}
-    function newtakeback(data){
-    	var nId = $(data).attr("data-id");
-    	var state = $(data).attr("data-state");
-    	var apply = $(data).attr("data-apply");
-    	var op = $(data).attr("data-op");
-    	var sys = $(data).attr("data-sys");
 
-    	if(!sys){
-    	   sys = 'administration';
-        }
-    	$.ajax({
-    		type:"post",
-    		url:"index.php?sys=administration&mod=takeback&op="+op,
-    		data: {
-    			nid: nId,
-    			state:state
-    		},
-    		success: function(data){
-    			if(data){
-    				alert(data);
-    				return false;
-    			}else{
-    				if(state == 2){
-    					location.href="index.php?sys="+sys+"&mod="+apply;
-    				}else{
-    					if(op=='td'){
-    						location.href='index.php?sys=logistics&mod=export/ex_upcoming';
-    						return false;
-    					}
-              $.cookie('selmenu','navContent80');
-              location.href="index.php?sys=administration&mod=undoto";
-    				}
-    			}
-    		}
-    	});
+{% highlight js linenos %}
+  function newtakeback(data){
+    var nId = $(data).attr("data-id");
+    var state = $(data).attr("data-state");
+    var apply = $(data).attr("data-apply");
+    var op = $(data).attr("data-op");
+    var sys = $(data).attr("data-sys");
+
+    if(!sys){
+      sys = 'administration';
     }
+
+    $.ajax({
+      type:"post",
+      url:"index.php?sys=administration&mod=takeback&op="+op,
+      data: {
+        nid: nId,
+        state:state
+      },
+      success: function(data){
+        if(data){
+          alert(data);
+          return false;
+        }else{
+          if(state == 2){
+            location.href="index.php?sys="+sys+"&mod="+apply;
+          }else{
+            if(op=='td'){
+              location.href='index.php?sys=logistics&mod=export/ex_upcoming';
+              return false;
+            }
+            $.cookie('selmenu','navContent80');
+            location.href="index.php?sys=administration&mod=undoto";
+          }
+        }
+      }
+    });
+  }
 {% endhighlight %}
 
 
