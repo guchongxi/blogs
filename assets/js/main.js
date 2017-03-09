@@ -37,6 +37,22 @@ Math.easeout = function (A, B, rate, callback) {
             toTop    = $('#toTop'),
             x1, y1;
 
+      //backTop
+      toTop.on('click',function () {
+        Math.easeout(main.scrollTop(), 0, 4, function (value) {
+          main.scrollTop(value);
+        });
+      });
+      main.on('scroll',function () {
+        var top = this.scrollTop;
+        if(top > 200){
+          toTop.is(':visible') || toTop.fadeIn();
+        }else {
+          toTop.is(':visible') && toTop.fadeOut();
+        }
+      });
+      main.scroll();
+
         // run this function after pjax load.
         var afterPjax = function() {
             // open links in new tab.
@@ -113,23 +129,6 @@ Math.easeout = function (A, B, rate, callback) {
                 $(v).filter(":contains('"+value+"')").fadeIn(350);
             });
         });
-
-        //backTop
-        toTop.on('click',function () {
-            Math.easeout(main.scrollTop(), 0, 4, function (value) {
-                main.scrollTop(value);
-            });
-        });
-        main.on('scroll',function () {
-            var top = this.scrollTop;
-            if(top > 200){
-                toTop.is(':visible') || toTop.fadeIn();
-            }else {
-                toTop.is(':visible') && toTop.fadeOut();
-            }
-        });
-        main.scroll();
-
     });
 
 
