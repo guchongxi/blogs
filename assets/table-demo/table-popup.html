@@ -38,25 +38,25 @@
             <div class="row-c">
                 <div class="col-a">
                     <label>输入</label>
-                    <input type="text" value="" readonly/>
+                    <input type="text" value="" {$check}/>
                 </div>
                 <div class="col-a">
                     <label>选项</label>
-                    <select disabled>
+                    <select {$check}>
                         <option value=""></option>
                     </select>
                 </div>
                 <div class="col-a">
                     <label>日期</label>
-                    <input type="text" value="" readonly onclick="laydate()" class="input_date"/>
+                    <input type="text" value="" {$check} onclick="laydate()" class="input_date"/>
                 </div>
                 <div class="col-c">
                     <label>原因</label>
-                    <textarea readonly></textarea>
+                    <textarea {$check}></textarea>
                 </div>
                 <fieldset readonly>
                     <legend>说明</legend>
-                    <textarea readonly></textarea>
+                    <textarea {$check}></textarea>
                 </fieldset>
             </div>
         </div>
